@@ -260,7 +260,7 @@
     preparing: "재판을 준비하는 중…",
     randomDesc: "누를 때마다 새 사건을 그 자리에서 만든다. 답이 하나뿐인지는 확인하지만, 재미와 난이도는 운에 맡긴다.",
     records: "사건 기록",
-    recordsNote: "판결을 끝낸 사건에는 도장이, 한 번도 돌아오지 않고 끝냈다면 붉게 찬 도장이 찍힌다",
+    recordsNote: "판결을 끝낸 사건은 붉은 테두리로, 한 번도 돌아오지 않고 끝냈다면 붉게 칠해 표시한다",
     tileLabel: (tier, i, rec) => `${TIER[tier]} ${i}번${rec ? `, 판결 끝, 최소 회귀 ${rec.r}번` : ""}`,
     back: "사건 기록으로",
     where: (q, index, date) => q.tier === "tutorial" ? "튜토리얼"
