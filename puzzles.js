@@ -4,12 +4,14 @@ window.PUZZLES = {
   "easy": [
    {
     "id": "easy-1",
+    "key": "cc10fe95e821",
     "tier": "easy",
     "incident": "아리사의 성냥갑이 텅 비어 있었다.",
     "verb": "가져갔어",
     "victim": {
      "id": "arisa",
      "name": "시토 아리사",
+     "no": 666,
      "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
      "written": false
     },
@@ -24,6 +26,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "에마는 안 가져갔다!"
      },
@@ -31,6 +34,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "에마 아니면 레이아가 가져갔노라."
      },
@@ -38,6 +42,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "안안쨩은 안 가져갔어!"
      }
@@ -80,12 +85,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-2",
+    "key": "fd4835a8f693",
     "tier": "easy",
     "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
     "verb": "펼쳐 봤어",
     "victim": {
      "id": "ema",
      "name": "사쿠라바 에마",
+     "no": 658,
      "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
      "written": false
     },
@@ -100,6 +107,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "토노는 안 봤어."
      },
@@ -107,6 +115,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "아리사 아니면 한나가 펼쳐 봤음 ㅇㅇ"
      },
@@ -114,6 +123,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "아리사 씨 아니면 코코 씨가 펼쳐 봤사와요!"
      }
@@ -157,12 +167,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-3",
+    "key": "f1e6291d5059",
     "tier": "easy",
     "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
     "verb": "껐어",
     "victim": {
      "id": "coco",
      "name": "사와타리 코코",
+     "no": 669,
      "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
      "written": false
     },
@@ -177,6 +189,7 @@ window.PUZZLES = {
       "id": "sherry",
       "name": "셰리",
       "full": "타치바나 셰리",
+      "no": 667,
       "written": false,
       "says": "저 아니면 한나 씨가 껐어요!"
      },
@@ -184,6 +197,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "범인은 셰리 씨이와요!"
      },
@@ -191,6 +205,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "노아는 안 껐어~"
      }
@@ -230,12 +245,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-4",
+    "key": "9b0bd484e364",
     "tier": "easy",
     "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
     "verb": "바꿔 놨어",
     "victim": {
      "id": "miria",
      "name": "사에키 미리아",
+     "no": 663,
      "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
      "written": false
     },
@@ -250,6 +267,7 @@ window.PUZZLES = {
       "id": "meruru",
       "name": "메루루",
       "full": "히카미 메루루",
+      "no": 670,
       "written": false,
       "says": "노, 노아 씨는 안 바꿨어요…"
      },
@@ -257,6 +275,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "단언하지! 메루루가 바꿔 놨다!"
      },
@@ -264,6 +283,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "노아 아니면 메루루쨩이 바꿔 놨어~"
      },
@@ -271,6 +291,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "레이아쨩이 바꿔 놨어♡"
      }
@@ -319,12 +340,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-5",
+    "key": "b6fdc37241f6",
     "tier": "easy",
     "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
     "verb": "낙서했어",
     "victim": {
      "id": "reia",
      "name": "하스미 레이아",
+     "no": 662,
      "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
      "written": false
     },
@@ -339,6 +362,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "사와타리 아니면 쿠로베가 낙서했어."
      },
@@ -346,6 +370,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "아리사 씨 아니면 코코 씨가 낙서했사와요!"
      },
@@ -353,6 +378,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "나 아니면 한나가 낙서했어."
      },
@@ -360,6 +386,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "나노카는 안 그랬음"
      }
@@ -410,12 +437,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-6",
+    "key": "37a4fcdf1fc8",
     "tier": "easy",
     "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
     "verb": "먹었어",
     "victim": {
      "id": "nanoka",
      "name": "쿠로베 나노카",
+     "no": 665,
      "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
      "written": false
     },
@@ -430,6 +459,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "노아 아니면 한나쨩이 먹었어~"
      },
@@ -437,13 +467,15 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
-      "says": "나 아니면 레이아 씨가 먹었사와요!"
+      "says": "저 아니면 레이아 씨가 먹었사와요!"
      },
      {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "미리아 아니면 노아가 먹었다!"
      },
@@ -451,6 +483,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "아저씨 아니면 노아쨩이 먹었어."
      }
@@ -500,12 +533,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-7",
+    "key": "72cea2a92b97",
     "tier": "easy",
     "incident": "한나의 리본 하나가 없어졌다.",
     "verb": "가져갔어",
     "victim": {
      "id": "hanna",
      "name": "토노 한나",
+     "no": 668,
      "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!",
      "written": false
     },
@@ -520,6 +555,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "코코 아니면 나노카가 가져갔노라."
      },
@@ -527,6 +563,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "코코 아니면 마고가 가져갔어."
      },
@@ -534,6 +571,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "코코쨩은 안 가져갔어."
      },
@@ -541,6 +579,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "범인은 마고임 빼박"
      }
@@ -591,12 +630,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-8",
+    "key": "3370885691f8",
     "tier": "easy",
     "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
     "verb": "바꿔 놨어",
     "victim": {
      "id": "miria",
      "name": "사에키 미리아",
+     "no": 663,
      "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
      "written": false
     },
@@ -611,6 +652,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "범인은 하스미야. 됐냐?"
      },
@@ -618,6 +660,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "나 아니면 안안이 바꿔 놨다!"
      },
@@ -625,6 +668,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "아리사는 안 바꿨노라."
      }
@@ -666,12 +710,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-9",
+    "key": "9cefb6fd302c",
     "tier": "easy",
     "incident": "아리사의 성냥갑이 텅 비어 있었다.",
     "verb": "가져갔어",
     "victim": {
      "id": "arisa",
      "name": "시토 아리사",
+     "no": 666,
      "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
      "written": false
     },
@@ -686,6 +732,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "나 아니면 에마가 가져갔음"
      },
@@ -693,6 +740,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "코코쨩은 안 가져갔어!"
      },
@@ -700,6 +748,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "노아 아니면 셰리쨩이 가져갔어~"
      },
@@ -707,6 +756,7 @@ window.PUZZLES = {
       "id": "sherry",
       "name": "셰리",
       "full": "타치바나 셰리",
+      "no": 667,
       "written": false,
       "says": "명탐정의 추리로는, 범인은 에마 씨예요!"
      }
@@ -755,12 +805,14 @@ window.PUZZLES = {
    },
    {
     "id": "easy-10",
+    "key": "dfc90344a413",
     "tier": "easy",
     "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
     "verb": "먹었어",
     "victim": {
      "id": "nanoka",
      "name": "쿠로베 나노카",
+     "no": 665,
      "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
      "written": false
     },
@@ -775,6 +827,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "아리사 씨 아니면 미리아 씨가 먹었사와요!"
      },
@@ -782,6 +835,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "아리사쨩은 안 먹었어."
      },
@@ -789,6 +843,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "난 안 먹었어. 꺼져."
      }
@@ -831,12 +886,14 @@ window.PUZZLES = {
   "normal": [
    {
     "id": "normal-1",
+    "key": "3df2047012d0",
     "tier": "normal",
     "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
     "verb": "낙서했어",
     "victim": {
      "id": "reia",
      "name": "하스미 레이아",
+     "no": 662,
      "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
      "written": false
     },
@@ -857,6 +914,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "코코는 안 그랬노라."
      },
@@ -864,6 +922,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "나츠메 아니면 사와타리가 낙서했어."
      },
@@ -871,6 +930,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "범인은 에마임 빼박"
      },
@@ -878,6 +938,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "안안쨩이 낙서했어!"
      }
@@ -931,12 +992,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-2",
+    "key": "91b6e6417fd6",
     "tier": "normal",
     "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
     "verb": "엎었어",
     "victim": {
      "id": "sherry",
      "name": "타치바나 셰리",
+     "no": 667,
      "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
      "written": false
     },
@@ -957,6 +1020,7 @@ window.PUZZLES = {
       "id": "meruru",
       "name": "메루루",
       "full": "히카미 메루루",
+      "no": 670,
       "written": false,
       "says": "미, 미리아 씨는 안 엎었어요…"
      },
@@ -964,6 +1028,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "아아, 메루루의 말은 맞다!"
      },
@@ -971,6 +1036,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "메루루쨩이 엎었어."
      },
@@ -978,6 +1044,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "레이아는 안 엎었노라."
      }
@@ -1030,12 +1097,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-3",
+    "key": "2981b999006b",
     "tier": "normal",
     "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
     "verb": "껐어",
     "victim": {
      "id": "coco",
      "name": "사와타리 코코",
+     "no": 669,
      "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
      "written": false
     },
@@ -1056,6 +1125,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "에마쨩 아니면 한나쨩이 껐어."
      },
@@ -1063,6 +1133,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "에마는 안 껐어."
      },
@@ -1070,6 +1141,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "범인은 나노카쨩이야~"
      },
@@ -1077,6 +1149,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "오호호, 마고 씨의 말은 틀렸사와요!"
      },
@@ -1084,6 +1157,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "범인은 한나쨩이야!"
      }
@@ -1144,12 +1218,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-4",
+    "key": "b4886e0d7474",
     "tier": "normal",
     "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
     "verb": "먹었어",
     "victim": {
      "id": "nanoka",
      "name": "쿠로베 나노카",
+     "no": 665,
      "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
      "written": false
     },
@@ -1170,13 +1246,15 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
-      "says": "나는 안 먹었사와요!"
+      "says": "저는 안 먹었사와요!"
      },
      {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "미리아의 말은 그릇되었도다."
      },
@@ -1184,6 +1262,7 @@ window.PUZZLES = {
       "id": "sherry",
       "name": "셰리",
       "full": "타치바나 셰리",
+      "no": 667,
       "written": false,
       "says": "명탐정의 추리로는, 범인은 안안 씨예요!"
      },
@@ -1191,6 +1270,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "안안쨩 아니면 한나쨩이 먹었어."
      }
@@ -1243,12 +1323,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-5",
+    "key": "ea5abb19c25b",
     "tier": "normal",
     "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
     "verb": "껐어",
     "victim": {
      "id": "coco",
      "name": "사와타리 코코",
+     "no": 669,
      "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
      "written": false
     },
@@ -1269,6 +1351,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "레이아 씨가 껐사와요!"
      },
@@ -1276,6 +1359,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "아아, 마고의 말은 틀렸다!"
      },
@@ -1283,6 +1367,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "한나 아니면 레이아가 껐노라."
      },
@@ -1290,6 +1375,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "범인은 안안쨩이야♡"
      }
@@ -1343,12 +1429,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-6",
+    "key": "579818967712",
     "tier": "normal",
     "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
     "verb": "낙서했어",
     "victim": {
      "id": "reia",
      "name": "하스미 레이아",
+     "no": 662,
      "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
      "written": false
     },
@@ -1369,6 +1457,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "안안쨩 아니면 아리사쨩이 낙서했어."
      },
@@ -1376,6 +1465,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "에마가 낙서했어."
      },
@@ -1383,6 +1473,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "나는 안 그랬어!"
      },
@@ -1390,6 +1481,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "호쇼 새끼가 낙서했어."
      },
@@ -1397,6 +1489,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "아리사 아니면 마고가 낙서했노라."
      }
@@ -1456,12 +1549,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-7",
+    "key": "955267d93174",
     "tier": "normal",
     "incident": "아리사의 성냥갑이 텅 비어 있었다.",
     "verb": "가져갔어",
     "victim": {
      "id": "arisa",
      "name": "시토 아리사",
+     "no": 666,
      "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
      "written": false
     },
@@ -1482,6 +1577,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "단언하지! 메루루가 가져갔다!"
      },
@@ -1489,6 +1585,7 @@ window.PUZZLES = {
       "id": "sherry",
       "name": "셰리",
       "full": "타치바나 셰리",
+      "no": 667,
       "written": false,
       "says": "저는 안 가져갔어요!"
      },
@@ -1496,6 +1593,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "후후, 코코쨩의 말은 틀렸어."
      },
@@ -1503,6 +1601,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "메루루는 안 가져갔음"
      },
@@ -1510,6 +1609,7 @@ window.PUZZLES = {
       "id": "meruru",
       "name": "메루루",
       "full": "히카미 메루루",
+      "no": 670,
       "written": false,
       "says": "코, 코코 씨가 가져갔어요…"
      }
@@ -1567,12 +1667,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-8",
+    "key": "b341f38b901f",
     "tier": "normal",
     "incident": "한나의 리본 하나가 없어졌다.",
     "verb": "가져갔어",
     "victim": {
      "id": "hanna",
      "name": "토노 한나",
+     "no": 668,
      "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!",
      "written": false
     },
@@ -1593,6 +1695,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "나노카가 가져갔노라."
      },
@@ -1600,6 +1703,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "단언하지! 안안이 가져갔다!"
      },
@@ -1607,6 +1711,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "미리아 말은 틀렸어."
      },
@@ -1614,6 +1719,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "범인은 나츠메야. 됐냐?"
      },
@@ -1621,6 +1727,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "안안쨩 아니면 나노카쨩이 가져갔어."
      }
@@ -1681,12 +1788,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-9",
+    "key": "09360e941450",
     "tier": "normal",
     "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
     "verb": "먹었어",
     "victim": {
      "id": "nanoka",
      "name": "쿠로베 나노카",
+     "no": 665,
      "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
      "written": false
     },
@@ -1707,6 +1816,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "한나쨩의 말은 틀렸어!"
      },
@@ -1714,6 +1824,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "이 몸 아니면 에마가 먹었노라."
      },
@@ -1721,6 +1832,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "안안쨩 아니면 레이아쨩이 먹었어."
      },
@@ -1728,6 +1840,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "에마 아니면 한나가 먹었다!"
      },
@@ -1735,6 +1848,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "에마 씨는 안 먹었사와요!"
      }
@@ -1796,12 +1910,14 @@ window.PUZZLES = {
    },
    {
     "id": "normal-10",
+    "key": "a075c262a3af",
     "tier": "normal",
     "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
     "verb": "엎었어",
     "victim": {
      "id": "sherry",
      "name": "타치바나 셰리",
+     "no": 667,
      "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
      "written": false
     },
@@ -1822,6 +1938,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "아리사쨩의 말은 틀렸어!"
      },
@@ -1829,6 +1946,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "사쿠라바 아니면 호쇼가 엎었어."
      },
@@ -1836,6 +1954,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "에마쨩이 엎었어♡"
      },
@@ -1843,6 +1962,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "아저씨는 아리사쨩과 영혼이 바뀌어 있어."
      }
@@ -1897,12 +2017,14 @@ window.PUZZLES = {
   "hard": [
    {
     "id": "hard-1",
+    "key": "649191d11574",
     "tier": "hard",
     "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
     "verb": "다 썼어",
     "victim": {
      "id": "meruru",
      "name": "히카미 메루루",
+     "no": 670,
      "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
      "written": false
     },
@@ -1928,6 +2050,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "노아 아니면 나노카쨩이 다 썼어~"
      },
@@ -1935,6 +2058,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "마고 말은 틀렸음 ㅋㅋ"
      },
@@ -1942,6 +2066,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "나 아니면 사와타리가 다 썼어."
      },
@@ -1949,6 +2074,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "마고 아니면 노아가 다 썼어."
      },
@@ -1956,6 +2082,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "아리사쨩은 안 썼어."
      },
@@ -1963,6 +2090,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "범인은 노아로다."
      }
@@ -2034,12 +2162,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-2",
+    "key": "f2571a0b87ca",
     "tier": "hard",
     "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
     "verb": "먹었어",
     "victim": {
      "id": "nanoka",
      "name": "쿠로베 나노카",
+     "no": 665,
      "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
      "written": false
     },
@@ -2065,13 +2195,15 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
-      "says": "나 아니면 미리아 씨가 먹었사와요!"
+      "says": "저 아니면 미리아 씨가 먹었사와요!"
      },
      {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "범인은 노아쨩이야."
      },
@@ -2079,6 +2211,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "범인은 마고쨩이야~"
      },
@@ -2086,6 +2219,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "범인은 한나로다."
      },
@@ -2093,6 +2227,7 @@ window.PUZZLES = {
       "id": "meruru",
       "name": "메루루",
       "full": "히카미 메루루",
+      "no": 670,
       "written": false,
       "says": "미, 미리아 씨와 마고 씨는 영혼이 바뀌어 있어요…"
      },
@@ -2100,6 +2235,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "메루루쨩이 먹었어♡"
      }
@@ -2169,12 +2305,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-3",
+    "key": "59af8df9ec38",
     "tier": "hard",
     "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
     "verb": "껐어",
     "victim": {
      "id": "coco",
      "name": "사와타리 코코",
+     "no": 669,
      "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
      "written": false
     },
@@ -2195,6 +2333,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "안안 씨 아니면 미리아 씨가 껐사와요!"
      },
@@ -2202,6 +2341,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "한나 아니면 노아가 껐노라."
      },
@@ -2209,6 +2349,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "한나쨩은 안 껐어."
      },
@@ -2216,6 +2357,7 @@ window.PUZZLES = {
       "id": "meruru",
       "name": "메루루",
       "full": "히카미 메루루",
+      "no": 670,
       "written": false,
       "says": "노, 노아 씨는 안 껐어요…"
      },
@@ -2223,6 +2365,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "노아는 안 껐어~"
      }
@@ -2283,12 +2426,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-4",
+    "key": "7e4b1a1fe5cf",
     "tier": "hard",
     "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
     "verb": "낙서했어",
     "victim": {
      "id": "reia",
      "name": "하스미 레이아",
+     "no": 662,
      "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
      "written": false
     },
@@ -2314,6 +2459,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "안안 말은 맞음 ㅇㅈ"
      },
@@ -2321,6 +2467,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "아저씨 아니면 안안쨩이 낙서했어."
      },
@@ -2328,6 +2475,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "메루루 아니면 미리아가 낙서했어."
      },
@@ -2335,6 +2483,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "이 몸은 미리아와 영혼이 바뀌어 있노라."
      },
@@ -2342,6 +2491,7 @@ window.PUZZLES = {
       "id": "meruru",
       "name": "메루루",
       "full": "히카미 메루루",
+      "no": 670,
       "written": false,
       "says": "코, 코코 씨 아니면 미리아 씨가 낙서했어요…"
      }
@@ -2406,12 +2556,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-5",
+    "key": "51ff6c28d072",
     "tier": "hard",
     "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
     "verb": "엎었어",
     "victim": {
      "id": "sherry",
      "name": "타치바나 셰리",
+     "no": 667,
      "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
      "written": false
     },
@@ -2432,6 +2584,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "미리아쨩의 말은 맞아~"
      },
@@ -2439,6 +2592,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "안안 씨가 엎었사와요!"
      },
@@ -2446,6 +2600,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "한나의 말은 그릇되었도다."
      },
@@ -2453,6 +2608,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "아저씨는 나노카쨩과 영혼이 바뀌어 있어."
      },
@@ -2460,6 +2616,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "미리아는 안 엎었어."
      }
@@ -2519,12 +2676,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-6",
+    "key": "7152cc4a4c41",
     "tier": "hard",
     "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
     "verb": "엎었어",
     "victim": {
      "id": "sherry",
      "name": "타치바나 셰리",
+     "no": 667,
      "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
      "written": false
     },
@@ -2545,6 +2704,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "미리아 말은 맞아."
      },
@@ -2552,6 +2712,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "안안쨩 아니면 아리사쨩이 엎었어."
      },
@@ -2559,6 +2720,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "아아, 미리아의 말은 틀렸다!"
      },
@@ -2566,6 +2728,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "이 몸 아니면 한나가 엎었노라."
      },
@@ -2573,13 +2736,15 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
-      "says": "나는 미리아 씨와 영혼이 바뀌어 있사와요!"
+      "says": "저는 미리아 씨와 영혼이 바뀌어 있사와요!"
      },
      {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "사에키 새끼가 엎었어."
      }
@@ -2647,12 +2812,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-7",
+    "key": "5e00f891f1b1",
     "tier": "hard",
     "incident": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
     "verb": "거꾸로 꽂았어",
     "victim": {
      "id": "margo",
      "name": "호쇼 마고",
+     "no": 664,
      "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡",
      "written": false
     },
@@ -2673,6 +2840,7 @@ window.PUZZLES = {
       "id": "nanoka",
       "name": "나노카",
       "full": "쿠로베 나노카",
+      "no": 665,
       "written": false,
       "says": "난 미리아와 영혼이 바뀌어 있어."
      },
@@ -2680,6 +2848,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "미리아쨩의 말은 틀렸어~"
      },
@@ -2687,6 +2856,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "아저씨는 에마쨩과 영혼이 바뀌어 있어."
      },
@@ -2694,6 +2864,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "이 몸 아니면 노아가 거꾸로 꽂았노라."
      },
@@ -2701,6 +2872,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "미리아쨩이 거꾸로 꽂았어!"
      },
@@ -2708,6 +2880,7 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
       "says": "범인은 안안 씨이와요!"
      }
@@ -2774,12 +2947,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-8",
+    "key": "223cc3c5ae0b",
     "tier": "hard",
     "incident": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
     "verb": "거꾸로 꽂았어",
     "victim": {
      "id": "margo",
      "name": "호쇼 마고",
+     "no": 664,
      "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡",
      "written": false
     },
@@ -2805,13 +2980,15 @@ window.PUZZLES = {
       "id": "hanna",
       "name": "한나",
       "full": "토노 한나",
+      "no": 668,
       "written": false,
-      "says": "나는 미리아 씨와 영혼이 바뀌어 있사와요!"
+      "says": "저는 미리아 씨와 영혼이 바뀌어 있사와요!"
      },
      {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "범인은 코코로다."
      },
@@ -2819,6 +2996,7 @@ window.PUZZLES = {
       "id": "sherry",
       "name": "셰리",
       "full": "타치바나 셰리",
+      "no": 667,
       "written": false,
       "says": "저는 안 그랬어요!"
      },
@@ -2826,6 +3004,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "안안쨩이 거꾸로 꽂았어."
      },
@@ -2833,6 +3012,7 @@ window.PUZZLES = {
       "id": "coco",
       "name": "코코",
       "full": "사와타리 코코",
+      "no": 669,
       "written": false,
       "says": "범인은 안안임 빼박"
      },
@@ -2840,6 +3020,7 @@ window.PUZZLES = {
       "id": "meruru",
       "name": "메루루",
       "full": "히카미 메루루",
+      "no": 670,
       "written": false,
       "says": "코, 코코 씨의 말은 맞아요…"
      }
@@ -2907,12 +3088,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-9",
+    "key": "1adfaa7b7c6b",
     "tier": "hard",
     "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
     "verb": "엎었어",
     "victim": {
      "id": "sherry",
      "name": "타치바나 셰리",
+     "no": 667,
      "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
      "written": false
     },
@@ -2933,6 +3116,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "안안쨩의 말은 틀렸어!"
      },
@@ -2940,6 +3124,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "난 안 엎었어. 꺼져."
      },
@@ -2947,6 +3132,7 @@ window.PUZZLES = {
       "id": "miria",
       "name": "미리아",
       "full": "사에키 미리아",
+      "no": 663,
       "written": false,
       "says": "아리사쨩이 엎었어."
      },
@@ -2954,6 +3140,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "이 몸 아니면 아리사가 엎었노라."
      },
@@ -2961,6 +3148,7 @@ window.PUZZLES = {
       "id": "reia",
       "name": "레이아",
       "full": "하스미 레이아",
+      "no": 662,
       "written": false,
       "says": "미리아와 아리사는 영혼이 바뀌어 있다!"
      },
@@ -2968,6 +3156,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "에마쨩이 엎었어♡"
      }
@@ -3032,12 +3221,14 @@ window.PUZZLES = {
    },
    {
     "id": "hard-10",
+    "key": "d1e8a8c2729e",
     "tier": "hard",
     "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
     "verb": "바꿔 놨어",
     "victim": {
      "id": "miria",
      "name": "사에키 미리아",
+     "no": 663,
      "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
      "written": false
     },
@@ -3063,6 +3254,7 @@ window.PUZZLES = {
       "id": "margo",
       "name": "마고",
       "full": "호쇼 마고",
+      "no": 664,
       "written": false,
       "says": "후후, 노아쨩의 말은 틀렸어."
      },
@@ -3070,6 +3262,7 @@ window.PUZZLES = {
       "id": "meruru",
       "name": "메루루",
       "full": "히카미 메루루",
+      "no": 670,
       "written": false,
       "says": "안, 안안 씨의 말은 맞아요…"
      },
@@ -3077,6 +3270,7 @@ window.PUZZLES = {
       "id": "noah",
       "name": "노아",
       "full": "죠가사키 노아",
+      "no": 661,
       "written": false,
       "says": "마고쨩 아니면 메루루쨩이 바꿔 놨어~"
      },
@@ -3084,6 +3278,7 @@ window.PUZZLES = {
       "id": "arisa",
       "name": "아리사",
       "full": "시토 아리사",
+      "no": 666,
       "written": false,
       "says": "히카미는 안 바꿨어."
      },
@@ -3091,6 +3286,7 @@ window.PUZZLES = {
       "id": "anan",
       "name": "안안",
       "full": "나츠메 안안",
+      "no": 660,
       "written": true,
       "says": "이 몸 아니면 메루루가 바꿔 놨노라."
      },
@@ -3098,6 +3294,7 @@ window.PUZZLES = {
       "id": "ema",
       "name": "에마",
       "full": "사쿠라바 에마",
+      "no": 658,
       "written": false,
       "says": "메루루쨩이 바꿔 놨어!"
      }
@@ -3172,12 +3369,14 @@ window.PUZZLES = {
  "daily": [
   {
    "id": "daily-1",
+   "key": "1e6cfcf79d8a",
    "tier": "normal",
    "incident": "노아의 스케치북에 누가 낙서를 했다.",
    "verb": "낙서했어",
    "victim": {
     "id": "noah",
     "name": "죠가사키 노아",
+    "no": 661,
     "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
     "written": false
    },
@@ -3198,6 +3397,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "한나쨩이 낙서했어!"
     },
@@ -3205,6 +3405,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "에마 씨의 말은 맞아요!"
     },
@@ -3212,6 +3413,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "사쿠라바는 낙서 안 했어."
     },
@@ -3219,6 +3421,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "아리사 씨 아니면 셰리 씨가 낙서했사와요!"
     },
@@ -3226,6 +3429,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨는 셰리쨩과 영혼이 바뀌어 있어."
     }
@@ -3285,12 +3489,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-2",
+   "key": "b70496436538",
    "tier": "hard",
    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
    "verb": "먹었어",
    "victim": {
     "id": "nanoka",
     "name": "쿠로베 나노카",
+    "no": 665,
     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
     "written": false
    },
@@ -3311,6 +3517,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "코코쨩 아니면 에마쨩이 먹었어."
     },
@@ -3318,6 +3525,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 에마가 먹었다!"
     },
@@ -3325,6 +3533,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "마고 말은 틀렸음 ㅋㅋ"
     },
@@ -3332,6 +3541,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "에마쨩의 말은 틀렸어."
     },
@@ -3339,6 +3549,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "나 아니면 셰리쨩이 먹었어!"
     },
@@ -3346,6 +3557,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "코코 씨 아니면 미리아 씨가 먹었어요!"
     }
@@ -3415,12 +3627,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-3",
+   "key": "19cc5f7f9fa8",
    "tier": "normal",
    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
    "verb": "펼쳐 봤어",
    "victim": {
     "id": "ema",
     "name": "사쿠라바 에마",
+    "no": 658,
     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
     "written": false
    },
@@ -3441,6 +3655,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나 아니면 나노카쨩이 펼쳐 봤어."
     },
@@ -3448,6 +3663,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "코코쨩이 펼쳐 봤어~"
     },
@@ -3455,6 +3671,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "노아는 안 봤노라."
     },
@@ -3462,6 +3679,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "범인은 코코야."
     },
@@ -3469,6 +3687,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "나노카 아니면 노아가 펼쳐 봤음 ㅇㅇ"
     }
@@ -3529,12 +3748,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-4",
+   "key": "71104382a2e9",
    "tier": "hard",
    "incident": "아리사의 성냥갑이 텅 비어 있었다.",
    "verb": "가져갔어",
    "victim": {
     "id": "arisa",
     "name": "시토 아리사",
+    "no": 666,
     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
     "written": false
    },
@@ -3560,6 +3781,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "마고쨩 아니면 미리아쨩이 가져갔어!"
     },
@@ -3567,6 +3789,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "안안 씨 아니면 메루루 씨가 가져갔어요!"
     },
@@ -3574,6 +3797,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "미, 미리아 씨가 가져갔어요…"
     },
@@ -3581,6 +3805,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "메루루쨩의 말은 맞아."
     },
@@ -3588,6 +3813,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 에마쨩의 말은 맞아."
     },
@@ -3595,6 +3821,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 메루루로다."
     }
@@ -3667,12 +3894,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-5",
+   "key": "3c5c8f64f67f",
    "tier": "normal",
    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
    "verb": "먹었어",
    "victim": {
     "id": "nanoka",
     "name": "쿠로베 나노카",
+    "no": 665,
     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
     "written": false
    },
@@ -3693,6 +3922,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "셰리쨩의 말은 맞아."
     },
@@ -3700,6 +3930,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "아리사 씨 아니면 마고 씨가 먹었어요!"
     },
@@ -3707,6 +3938,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "사에키와 타치바나는 영혼이 바뀌어 있어."
     },
@@ -3714,6 +3946,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 셰리가 먹었다!"
     },
@@ -3721,6 +3954,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나 아니면 레이아쨩이 먹었어."
     }
@@ -3780,12 +4014,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-6",
+   "key": "f58d234f582c",
    "tier": "hard",
    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
    "verb": "펼쳐 봤어",
    "victim": {
     "id": "ema",
     "name": "사쿠라바 에마",
+    "no": 658,
     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
     "written": false
    },
@@ -3806,6 +4042,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "셰리쨩은 안 봤어~"
     },
@@ -3813,6 +4050,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 레이아쨩의 말은 틀렸어."
     },
@@ -3820,6 +4058,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "안안 말은 맞음 ㅇㅈ"
     },
@@ -3827,6 +4066,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "코코 씨 아니면 마고 씨가 펼쳐 봤어요!"
     },
@@ -3834,6 +4074,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 범인은 노아다!"
     },
@@ -3841,6 +4082,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "이 몸은 안 봤노라."
     }
@@ -3907,12 +4149,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-7",
+   "key": "42a88c9f256e",
    "tier": "normal",
    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
    "verb": "껐어",
    "victim": {
     "id": "coco",
     "name": "사와타리 코코",
+    "no": 669,
     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
     "written": false
    },
@@ -3933,6 +4177,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "미, 미리아 씨는 안 껐어요…"
     },
@@ -3940,6 +4185,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "에마쨩은 안 껐어."
     },
@@ -3947,6 +4193,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "노아의 말은 옳도다."
     },
@@ -3954,6 +4201,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "노아 아니면 메루루쨩이 껐어~"
     },
@@ -3961,6 +4209,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "범인은 노아쨩이야!"
     }
@@ -4021,12 +4270,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-8",
+   "key": "dd07b0e374a9",
    "tier": "hard",
    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
    "verb": "먹었어",
    "victim": {
     "id": "nanoka",
     "name": "쿠로베 나노카",
+    "no": 665,
     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
     "written": false
    },
@@ -4047,6 +4298,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "한나쨩 아니면 레이아쨩이 먹었어."
     },
@@ -4054,6 +4306,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나 아니면 한나쨩이 먹었어."
     },
@@ -4061,6 +4314,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "마고가 먹었음 ㅋㅋ"
     },
@@ -4068,6 +4322,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 범인은 마고다!"
     },
@@ -4075,8 +4330,9 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
-     "says": "나는 안 먹었사와요!"
+     "says": "저는 안 먹었사와요!"
     }
    ],
    "answer": "reia",
@@ -4134,12 +4390,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-9",
+   "key": "ee90295f34b7",
    "tier": "normal",
    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
    "verb": "껐어",
    "victim": {
     "id": "coco",
     "name": "사와타리 코코",
+    "no": 669,
     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
     "written": false
    },
@@ -4160,6 +4418,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "범인은 메루루쨩이야."
     },
@@ -4167,6 +4426,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "미리아와 노아는 영혼이 바뀌어 있어."
     },
@@ -4174,6 +4434,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "범인은 미리아쨩이야~"
     },
@@ -4181,6 +4442,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "미, 미리아 씨의 말은 맞아요…"
     }
@@ -4232,12 +4494,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-10",
+   "key": "8ace8b40b649",
    "tier": "hard",
    "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
    "verb": "바꿔 놨어",
    "victim": {
     "id": "miria",
     "name": "사에키 미리아",
+    "no": 663,
     "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
     "written": false
    },
@@ -4258,6 +4522,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "노아 씨는 안 바꿨사와요!"
     },
@@ -4265,6 +4530,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "아, 아리사 씨는 안 바꿨어요…"
     },
@@ -4272,6 +4538,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "나츠메 말은 틀렸어. 닥쳐."
     },
@@ -4279,6 +4546,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "이 몸 아니면 아리사가 바꿔 놨노라."
     },
@@ -4286,6 +4554,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "안안쨩의 말은 맞아~"
     }
@@ -4346,12 +4615,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-11",
+   "key": "316e0c39016f",
    "tier": "normal",
    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
    "verb": "펼쳐 봤어",
    "victim": {
     "id": "ema",
     "name": "사쿠라바 에마",
+    "no": 658,
     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
     "written": false
    },
@@ -4372,6 +4643,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "코코는 안 봤어."
     },
@@ -4379,6 +4651,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "레이아 말은 틀렸음 ㅋㅋ"
     },
@@ -4386,6 +4659,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 나노카가 펼쳐 봤다!"
     },
@@ -4393,6 +4667,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "이 몸 아니면 코코가 펼쳐 봤노라."
     },
@@ -4400,6 +4675,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나 아니면 나노카쨩이 펼쳐 봤어."
     }
@@ -4459,12 +4735,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-12",
+   "key": "947d9ae5201f",
    "tier": "hard",
    "incident": "노아의 스케치북에 누가 낙서를 했다.",
    "verb": "낙서했어",
    "victim": {
     "id": "noah",
     "name": "죠가사키 노아",
+    "no": 661,
     "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
     "written": false
    },
@@ -4490,6 +4768,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "한, 한나 씨 아니면 레이아 씨가 낙서했어요…"
     },
@@ -4497,6 +4776,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "범인은 레이아쨩이야."
     },
@@ -4504,6 +4784,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "미리아 씨와 레이아 씨는 영혼이 바뀌어 있사와요!"
     },
@@ -4511,6 +4792,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "레이아가 낙서했노라."
     },
@@ -4518,6 +4800,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "아아, 안안의 말은 맞다!"
     }
@@ -4581,12 +4864,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-13",
+   "key": "cdffa8710bf6",
    "tier": "normal",
    "incident": "한나의 리본 하나가 없어졌다.",
    "verb": "가져갔어",
    "victim": {
     "id": "hanna",
     "name": "토노 한나",
+    "no": 668,
     "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!",
     "written": false
    },
@@ -4607,6 +4892,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "난 안 가져갔어."
     },
@@ -4614,6 +4900,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "마고의 말은 그릇되었도다."
     },
@@ -4621,6 +4908,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "레이아쨩이 가져갔어~"
     },
@@ -4628,6 +4916,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "범인은 노아쨩이야♡"
     },
@@ -4635,6 +4924,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 노아가 가져갔다!"
     }
@@ -4692,12 +4982,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-14",
+   "key": "3a676307f231",
    "tier": "hard",
    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
    "verb": "낙서했어",
    "victim": {
     "id": "reia",
     "name": "하스미 레이아",
+    "no": 662,
     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
     "written": false
    },
@@ -4718,6 +5010,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 미리아쨩의 말은 맞아."
     },
@@ -4725,6 +5018,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "미리아와 코코는 영혼이 바뀌어 있노라."
     },
@@ -4732,6 +5026,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "에마 씨 아니면 미리아 씨가 낙서했사와요!"
     },
@@ -4739,6 +5034,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "미리아쨩이 낙서했어!"
     },
@@ -4746,6 +5042,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "한나 아니면 미리아가 낙서했음 ㅇㅇ"
     },
@@ -4753,6 +5050,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨 아니면 한나쨩이 낙서했어."
     }
@@ -4821,12 +5119,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-15",
+   "key": "2cd17ec0491c",
    "tier": "normal",
    "incident": "한나의 리본 하나가 없어졌다.",
    "verb": "가져갔어",
    "victim": {
     "id": "hanna",
     "name": "토노 한나",
+    "no": 668,
     "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!",
     "written": false
    },
@@ -4847,6 +5147,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨 아니면 아리사쨩이 가져갔어."
     },
@@ -4854,6 +5155,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "마고의 말은 옳도다."
     },
@@ -4861,6 +5163,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나는 안 가져갔어."
     },
@@ -4868,6 +5171,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "범, 범인은 마고 씨예요…"
     },
@@ -4875,6 +5179,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "나츠메 새끼가 가져갔어."
     }
@@ -4933,12 +5238,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-16",
+   "key": "6740508e9f14",
    "tier": "hard",
    "incident": "안안이 아껴 마시던 홍차가 한 방울도 남지 않았다.",
    "verb": "다 마셨어",
    "victim": {
     "id": "anan",
     "name": "나츠메 안안",
+    "no": 660,
     "line": "이 몸이 아껴 두었던 홍차가 사라졌노라. 범인은 이 몸 앞에 나와 고하라.",
     "written": true
    },
@@ -4959,6 +5266,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "범인은 에마 씨이와요!"
     },
@@ -4966,6 +5274,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나 아니면 한나쨩이 다 마셨어."
     },
@@ -4973,6 +5282,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "마고쨩 아니면 메루루쨩이 다 마셨어~"
     },
@@ -4980,6 +5290,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "마고쨩 아니면 노아쨩이 다 마셨어!"
     },
@@ -4987,6 +5298,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "아아, 메루루의 말은 맞다!"
     },
@@ -4994,6 +5306,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "노, 노아 씨의 말은 맞아요…"
     }
@@ -5063,12 +5376,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-17",
+   "key": "3dbecb4bd945",
    "tier": "normal",
    "incident": "아리사의 성냥갑이 텅 비어 있었다.",
    "verb": "가져갔어",
    "victim": {
     "id": "arisa",
     "name": "시토 아리사",
+    "no": 666,
     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
     "written": false
    },
@@ -5089,6 +5404,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "나 아니면 마고가 가져갔다!"
     },
@@ -5096,6 +5412,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "범인은 마고임 빼박"
     },
@@ -5103,6 +5420,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "범인은 코코쨩이야~"
     },
@@ -5110,6 +5428,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "범인은 노아쨩이야♡"
     },
@@ -5117,6 +5436,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "오호호, 노아 씨의 말은 틀렸사와요!"
     }
@@ -5176,12 +5496,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-18",
+   "key": "0592f04b78ab",
    "tier": "hard",
    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
    "verb": "엎었어",
    "victim": {
     "id": "sherry",
     "name": "타치바나 셰리",
+    "no": 667,
     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
     "written": false
    },
@@ -5202,6 +5524,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "이 몸은 안 엎었노라."
     },
@@ -5209,6 +5532,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨 아니면 마고쨩이 엎었어."
     },
@@ -5216,6 +5540,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "마, 마고 씨 아니면 미리아 씨가 엎었어요…"
     },
@@ -5223,6 +5548,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 범인은 메루루다!"
     },
@@ -5230,6 +5556,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "범인은 미리아쨩이야♡"
     }
@@ -5289,12 +5616,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-19",
+   "key": "3d745591fc12",
    "tier": "normal",
    "incident": "안안이 아껴 마시던 홍차가 한 방울도 남지 않았다.",
    "verb": "다 마셨어",
    "victim": {
     "id": "anan",
     "name": "나츠메 안안",
+    "no": 660,
     "line": "이 몸이 아껴 두었던 홍차가 사라졌노라. 범인은 이 몸 앞에 나와 고하라.",
     "written": true
    },
@@ -5315,6 +5644,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 셰리쨩의 말은 맞아."
     },
@@ -5322,6 +5652,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "미리아 씨와 에마 씨는 영혼이 바뀌어 있어요!"
     },
@@ -5329,6 +5660,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "에마 아니면 셰리가 다 마셨어."
     },
@@ -5336,6 +5668,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "범인은 셰리쨩이야."
     },
@@ -5343,6 +5676,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "미리아쨩과 나노카쨩은 영혼이 바뀌어 있어!"
     }
@@ -5402,12 +5736,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-20",
+   "key": "44c3b9cfeb95",
    "tier": "hard",
    "incident": "노아의 스케치북에 누가 낙서를 했다.",
    "verb": "낙서했어",
    "victim": {
     "id": "noah",
     "name": "죠가사키 노아",
+    "no": 661,
     "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
     "written": false
    },
@@ -5428,6 +5764,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "호쇼는 낙서 안 했어."
     },
@@ -5435,6 +5772,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 코코쨩의 말은 틀렸어."
     },
@@ -5442,6 +5780,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "범인은 아리사임 빼박"
     },
@@ -5449,6 +5788,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 코코로다."
     },
@@ -5456,6 +5796,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "오호호, 안안 씨의 말은 맞사와요!"
     }
@@ -5516,12 +5857,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-21",
+   "key": "61122c0c4ff9",
    "tier": "normal",
    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
    "verb": "엎었어",
    "victim": {
     "id": "sherry",
     "name": "타치바나 셰리",
+    "no": 667,
     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
     "written": false
    },
@@ -5542,6 +5885,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "한나쨩이 엎었어♡"
     },
@@ -5549,6 +5893,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "코코 아니면 마고가 엎었노라."
     },
@@ -5556,6 +5901,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "범인은 안안 씨이와요!"
     },
@@ -5563,6 +5909,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "마고는 안 엎었음"
     }
@@ -5616,12 +5963,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-22",
+   "key": "dd4748d850ae",
    "tier": "hard",
    "incident": "노아의 스케치북에 누가 낙서를 했다.",
    "verb": "낙서했어",
    "victim": {
     "id": "noah",
     "name": "죠가사키 노아",
+    "no": 661,
     "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
     "written": false
    },
@@ -5647,6 +5996,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "코코의 말은 옳도다."
     },
@@ -5654,6 +6004,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "한나 말은 맞음 ㅇㅈ"
     },
@@ -5661,6 +6012,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "코코 씨가 낙서했사와요!"
     },
@@ -5668,6 +6020,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨는 코코쨩과 영혼이 바뀌어 있어."
     },
@@ -5675,6 +6028,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 범인은 미리아다!"
     },
@@ -5682,6 +6036,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나는 낙서 안 했어."
     }
@@ -5749,12 +6104,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-23",
+   "key": "257f16d9a6e0",
    "tier": "normal",
    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
    "verb": "낙서했어",
    "victim": {
     "id": "reia",
     "name": "하스미 레이아",
+    "no": 662,
     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
     "written": false
    },
@@ -5775,6 +6132,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 메루루로다."
     },
@@ -5782,6 +6140,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "에, 에마 씨는 안 그랬어요…"
     },
@@ -5789,6 +6148,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "저 아니면 메루루 씨가 낙서했어요!"
     },
@@ -5796,6 +6156,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "메루루쨩은 안 그랬어!"
     }
@@ -5848,12 +6209,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-24",
+   "key": "412e4b03e846",
    "tier": "hard",
    "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
    "verb": "다 썼어",
    "victim": {
     "id": "meruru",
     "name": "히카미 메루루",
+    "no": 670,
     "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
     "written": false
    },
@@ -5879,6 +6242,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "미리아와 코코는 영혼이 바뀌어 있노라."
     },
@@ -5886,6 +6250,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "에마 말은 맞음 ㅇㅈ"
     },
@@ -5893,6 +6258,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "나노카쨩은 안 썼어."
     },
@@ -5900,6 +6266,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "나노카쨩의 말은 맞아!"
     },
@@ -5907,6 +6274,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "에마는 안 썼어."
     }
@@ -5969,12 +6337,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-25",
+   "key": "35dc74449863",
    "tier": "normal",
    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
    "verb": "먹었어",
    "victim": {
     "id": "nanoka",
     "name": "쿠로베 나노카",
+    "no": 665,
     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
     "written": false
    },
@@ -5995,6 +6365,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "나는 미리아와 영혼이 바뀌어 있다!"
     },
@@ -6002,6 +6373,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "미리아 씨가 먹었사와요!"
     },
@@ -6009,6 +6381,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "나 아니면 한나쨩이 먹었어!"
     },
@@ -6016,6 +6389,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "레, 레이아 씨의 말은 맞아요…"
     },
@@ -6023,6 +6397,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "레이아쨩은 안 먹었어."
     }
@@ -6082,12 +6457,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-26",
+   "key": "637d7dd6479f",
    "tier": "hard",
    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
    "verb": "펼쳐 봤어",
    "victim": {
     "id": "ema",
     "name": "사쿠라바 에마",
+    "no": 658,
     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
     "written": false
    },
@@ -6108,6 +6485,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "안안 말은 맞음 ㅇㅈ"
     },
@@ -6115,6 +6493,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "안안쨩 아니면 메루루쨩이 펼쳐 봤어."
     },
@@ -6122,6 +6501,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 한나로다."
     },
@@ -6129,6 +6509,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "저, 저 아니면 안안 씨가 펼쳐 봤어요…"
     },
@@ -6136,6 +6517,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "범인은 마고 씨이와요!"
     }
@@ -6197,12 +6579,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-27",
+   "key": "7f74be30806f",
    "tier": "normal",
    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
    "verb": "낙서했어",
    "victim": {
     "id": "reia",
     "name": "하스미 레이아",
+    "no": 662,
     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
     "written": false
    },
@@ -6223,6 +6607,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "한나는 안 그랬노라."
     },
@@ -6230,6 +6615,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "코코 씨가 낙서했사와요!"
     },
@@ -6237,6 +6623,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "미리아는 안 그랬음"
     },
@@ -6244,6 +6631,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨는 안 그랬어."
     }
@@ -6294,12 +6682,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-28",
+   "key": "913a8fca0a22",
    "tier": "hard",
    "incident": "노아의 스케치북에 누가 낙서를 했다.",
    "verb": "낙서했어",
    "victim": {
     "id": "noah",
     "name": "죠가사키 노아",
+    "no": 661,
     "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
     "written": false
    },
@@ -6320,6 +6710,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 한나쨩의 말은 틀렸어."
     },
@@ -6327,6 +6718,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 에마로다."
     },
@@ -6334,6 +6726,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "범인은 한나쨩이야!"
     },
@@ -6341,6 +6734,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "에마 씨가 낙서했사와요!"
     },
@@ -6348,6 +6742,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "나 아니면 마고가 낙서했다!"
     }
@@ -6408,12 +6803,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-29",
+   "key": "6a4f5d9cdcd5",
    "tier": "normal",
    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
    "verb": "엎었어",
    "victim": {
     "id": "sherry",
     "name": "타치바나 셰리",
+    "no": 667,
     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
     "written": false
    },
@@ -6434,6 +6831,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "마고 말은 틀렸어."
     },
@@ -6441,6 +6839,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "마, 마고 씨 아니면 레이아 씨가 엎었어요…"
     },
@@ -6448,6 +6847,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "히카미 아니면 쿠로베가 엎었어."
     },
@@ -6455,6 +6855,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나 아니면 아리사쨩이 엎었어."
     },
@@ -6462,6 +6863,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "아리사 아니면 나노카가 엎었다!"
     }
@@ -6524,12 +6926,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-30",
+   "key": "681346ca3e7b",
    "tier": "hard",
    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
    "verb": "낙서했어",
    "victim": {
     "id": "reia",
     "name": "하스미 레이아",
+    "no": 662,
     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
     "written": false
    },
@@ -6550,6 +6954,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "안안 씨가 낙서했어요!"
     },
@@ -6557,6 +6962,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨는 안 그랬어."
     },
@@ -6564,6 +6970,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "메루루 씨 아니면 셰리 씨가 낙서했사와요!"
     },
@@ -6571,6 +6978,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "메루루의 말은 옳도다."
     },
@@ -6578,6 +6986,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "저, 저 아니면 안안 씨가 낙서했어요…"
     },
@@ -6585,6 +6994,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "셰리쨩의 말은 틀렸어!"
     }
@@ -6651,12 +7061,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-31",
+   "key": "e2facb7c0a63",
    "tier": "normal",
    "incident": "아리사의 성냥갑이 텅 비어 있었다.",
    "verb": "가져갔어",
    "victim": {
     "id": "arisa",
     "name": "시토 아리사",
+    "no": 666,
     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
     "written": false
    },
@@ -6677,6 +7089,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "에, 에마 씨 아니면 노아 씨가 가져갔어요…"
     },
@@ -6684,6 +7097,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "에마쨩 아니면 한나쨩이 가져갔어~"
     },
@@ -6691,6 +7105,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "미리아쨩과 한나쨩은 영혼이 바뀌어 있어!"
     },
@@ -6698,13 +7113,15 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
-     "says": "나 아니면 미리아 씨가 가져갔사와요!"
+     "says": "저 아니면 미리아 씨가 가져갔사와요!"
     },
     {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨 아니면 에마쨩이 가져갔어."
     }
@@ -6765,12 +7182,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-32",
+   "key": "945cc5824760",
    "tier": "hard",
    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
    "verb": "먹었어",
    "victim": {
     "id": "nanoka",
     "name": "쿠로베 나노카",
+    "no": 665,
     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
     "written": false
    },
@@ -6796,6 +7215,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "한, 한나 씨의 말은 맞아요…"
     },
@@ -6803,6 +7223,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "한나쨩이 먹었어."
     },
@@ -6810,6 +7231,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "미리아 씨와 메루루 씨는 영혼이 바뀌어 있사와요!"
     },
@@ -6817,6 +7239,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 한나로다."
     },
@@ -6824,6 +7247,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "저는 안 먹었어요!"
     }
@@ -6884,12 +7308,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-33",
+   "key": "6853a73acfd0",
    "tier": "normal",
    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
    "verb": "엎었어",
    "victim": {
     "id": "sherry",
     "name": "타치바나 셰리",
+    "no": 667,
     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
     "written": false
    },
@@ -6910,6 +7336,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "이 몸 아니면 아리사가 엎었노라."
     },
@@ -6917,6 +7344,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "나는 안 엎었음 억까 ㄴㄴ"
     },
@@ -6924,6 +7352,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "나츠메 새끼가 엎었어."
     },
@@ -6931,6 +7360,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "코코쨩의 말은 틀렸어."
     }
@@ -6981,12 +7411,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-34",
+   "key": "5147bc6c45ee",
    "tier": "hard",
    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
    "verb": "껐어",
    "victim": {
     "id": "coco",
     "name": "사와타리 코코",
+    "no": 669,
     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
     "written": false
    },
@@ -7012,6 +7444,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "오호호, 셰리 씨의 말은 맞사와요!"
     },
@@ -7019,6 +7452,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아리사쨩의 말은 맞아."
     },
@@ -7026,6 +7460,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "미리아 씨와 아리사 씨는 영혼이 바뀌어 있어요!"
     },
@@ -7033,6 +7468,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "이 몸 아니면 아리사가 껐노라."
     },
@@ -7040,6 +7476,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 안안이 껐다!"
     },
@@ -7047,6 +7484,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "토노 새끼가 껐어."
     }
@@ -7116,12 +7554,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-35",
+   "key": "8895cec44d94",
    "tier": "normal",
    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
    "verb": "엎었어",
    "victim": {
     "id": "sherry",
     "name": "타치바나 셰리",
+    "no": 667,
     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
     "written": false
    },
@@ -7142,6 +7582,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "레이아가 엎었어."
     },
@@ -7149,6 +7590,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "미리아 아니면 나노카가 엎었다!"
     },
@@ -7156,6 +7598,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "나는 미리아쨩과 영혼이 바뀌어 있어!"
     },
@@ -7163,6 +7606,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "에마쨩 아니면 나노카쨩이 엎었어."
     }
@@ -7216,12 +7660,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-36",
+   "key": "a68b6ede1f1f",
    "tier": "hard",
    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
    "verb": "펼쳐 봤어",
    "victim": {
     "id": "ema",
     "name": "사쿠라바 에마",
+    "no": 658,
     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
     "written": false
    },
@@ -7242,6 +7688,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "나 아니면 나츠메가 펼쳐 봤어."
     },
@@ -7249,6 +7696,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "아리사가 펼쳐 봤노라."
     },
@@ -7256,6 +7704,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "안안은 안 봤어."
     },
@@ -7263,6 +7712,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 범인은 메루루다!"
     },
@@ -7270,6 +7720,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "저, 저 아니면 나노카 씨가 펼쳐 봤어요…"
     }
@@ -7330,12 +7781,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-37",
+   "key": "ef1fea828e12",
    "tier": "normal",
    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
    "verb": "먹었어",
    "victim": {
     "id": "nanoka",
     "name": "쿠로베 나노카",
+    "no": 665,
     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
     "written": false
    },
@@ -7356,6 +7809,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "사와타리 말은 맞아."
     },
@@ -7363,6 +7817,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "나 아니면 안안이 먹었음"
     },
@@ -7370,6 +7825,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "아리사쨩 아니면 셰리쨩이 먹었어."
     },
@@ -7377,6 +7833,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "코코는 안 먹었노라."
     },
@@ -7384,6 +7841,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "저 아니면 코코 씨가 먹었어요!"
     }
@@ -7444,12 +7902,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-38",
+   "key": "70bc73b06e38",
    "tier": "hard",
    "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
    "verb": "바꿔 놨어",
    "victim": {
     "id": "miria",
     "name": "사에키 미리아",
+    "no": 663,
     "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
     "written": false
    },
@@ -7470,6 +7930,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 에마로다."
     },
@@ -7477,6 +7938,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "안안 씨 아니면 메루루 씨가 바꿔 놨사와요!"
     },
@@ -7484,6 +7946,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "안, 안안 씨가 바꿔 놨어요…"
     },
@@ -7491,6 +7954,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "나는 안 바꿨어!"
     },
@@ -7498,6 +7962,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "안안쨩 아니면 한나쨩이 바꿔 놨어."
     }
@@ -7558,12 +8023,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-39",
+   "key": "c41f141360fc",
    "tier": "normal",
    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
    "verb": "펼쳐 봤어",
    "victim": {
     "id": "ema",
     "name": "사쿠라바 에마",
+    "no": 658,
     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
     "written": false
    },
@@ -7584,6 +8051,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨는 안 봤어."
     },
@@ -7591,6 +8059,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "나 아니면 노아가 펼쳐 봤음"
     },
@@ -7598,6 +8067,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "코코쨩 아니면 미리아쨩이 펼쳐 봤어~"
     },
@@ -7605,6 +8075,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "미리아의 말은 그릇되었도다."
     }
@@ -7657,12 +8128,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-40",
+   "key": "85e6e006c861",
    "tier": "hard",
    "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
    "verb": "다 썼어",
    "victim": {
     "id": "meruru",
     "name": "히카미 메루루",
+    "no": 670,
     "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
     "written": false
    },
@@ -7683,6 +8156,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "안안 씨가 다 썼어요!"
     },
@@ -7690,6 +8164,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "미리아 말은 맞아."
     },
@@ -7697,6 +8172,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "쿠로베 말은 맞아."
     },
@@ -7704,6 +8180,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "셰리가 다 썼노라."
     },
@@ -7711,6 +8188,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "범인은 레이아쨩이야."
     },
@@ -7718,6 +8196,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "미리아와 나노카는 영혼이 바뀌어 있다!"
     }
@@ -7784,12 +8263,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-41",
+   "key": "78a1f4bc823b",
    "tier": "normal",
    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
    "verb": "엎었어",
    "victim": {
     "id": "sherry",
     "name": "타치바나 셰리",
+    "no": 667,
     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
     "written": false
    },
@@ -7810,6 +8291,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 범인은 나노카다!"
     },
@@ -7817,6 +8299,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "메루루쨩 아니면 노아쨩이 엎었어."
     },
@@ -7824,6 +8307,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "노아는 안 엎었어~"
     },
@@ -7831,6 +8315,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "레이아 말은 틀렸어."
     },
@@ -7838,6 +8323,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "미, 미리아 씨와 노아 씨는 영혼이 바뀌어 있어요…"
     }
@@ -7895,12 +8381,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-42",
+   "key": "37703101a393",
    "tier": "hard",
    "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
    "verb": "다 썼어",
    "victim": {
     "id": "meruru",
     "name": "히카미 메루루",
+    "no": 670,
     "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
     "written": false
    },
@@ -7926,6 +8414,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "마고쨩이 다 썼어~"
     },
@@ -7933,6 +8422,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨는 노아쨩과 영혼이 바뀌어 있어."
     },
@@ -7940,6 +8430,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "나츠메 말은 맞아."
     },
@@ -7947,6 +8438,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "노아의 말은 옳도다."
     },
@@ -7954,6 +8446,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나 아니면 안안쨩이 다 썼어."
     }
@@ -8016,12 +8509,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-43",
+   "key": "cd0bd20ee0c2",
    "tier": "normal",
    "incident": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
    "verb": "거꾸로 꽂았어",
    "victim": {
     "id": "margo",
     "name": "호쇼 마고",
+    "no": 664,
     "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡",
     "written": false
    },
@@ -8042,6 +8537,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아저씨는 안 그랬어."
     },
@@ -8049,6 +8545,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "명탐정의 추리로는, 범인은 안안 씨예요!"
     },
@@ -8056,6 +8553,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "저, 저는 미리아 씨와 영혼이 바뀌어 있어요…"
     },
@@ -8063,6 +8561,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "셰리쨩의 말은 맞아!"
     },
@@ -8070,6 +8569,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "메루루가 거꾸로 꽂았노라."
     }
@@ -8126,12 +8626,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-44",
+   "key": "8f3508b672c0",
    "tier": "hard",
    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
    "verb": "낙서했어",
    "victim": {
     "id": "reia",
     "name": "하스미 레이아",
+    "no": 662,
     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
     "written": false
    },
@@ -8157,6 +8659,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "명탐정의 추리로는, 범인은 안안 씨예요!"
     },
@@ -8164,6 +8667,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "에마쨩의 말은 틀렸어~"
     },
@@ -8171,6 +8675,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "마고의 말은 옳도다."
     },
@@ -8178,6 +8683,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "나 아니면 마고쨩이 낙서했어!"
     },
@@ -8185,6 +8691,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나는 안 그랬어."
     }
@@ -8246,12 +8753,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-45",
+   "key": "6a53704833c8",
    "tier": "normal",
    "incident": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
    "verb": "거꾸로 꽂았어",
    "victim": {
     "id": "margo",
     "name": "호쇼 마고",
+    "no": 664,
     "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡",
     "written": false
    },
@@ -8272,6 +8781,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "명탐정의 추리로는, 범인은 안안 씨예요!"
     },
@@ -8279,6 +8789,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "사쿠라바 말은 맞아."
     },
@@ -8286,6 +8797,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "나는 안 그랬어!"
     },
@@ -8293,6 +8805,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "셰리는 안 그랬노라."
     }
@@ -8344,12 +8857,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-46",
+   "key": "c5707d0c6935",
    "tier": "hard",
    "incident": "노아의 스케치북에 누가 낙서를 했다.",
    "verb": "낙서했어",
    "victim": {
     "id": "noah",
     "name": "죠가사키 노아",
+    "no": 661,
     "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
     "written": false
    },
@@ -8375,6 +8890,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "에마 말은 맞아."
     },
@@ -8382,6 +8898,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "마고의 말은 그릇되었도다."
     },
@@ -8389,6 +8906,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "코코 씨가 낙서했어요!"
     },
@@ -8396,6 +8914,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "마고 아니면 나노카가 낙서했음 ㅇㅇ"
     },
@@ -8403,6 +8922,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "범인은 셰리쨩이야♡"
     },
@@ -8410,6 +8930,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "코코쨩 아니면 마고쨩이 낙서했어!"
     }
@@ -8482,12 +9003,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-47",
+   "key": "8f833a584425",
    "tier": "normal",
    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
    "verb": "엎었어",
    "victim": {
     "id": "sherry",
     "name": "타치바나 셰리",
+    "no": 667,
     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
     "written": false
    },
@@ -8508,6 +9031,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "코코쨩 아니면 마고쨩이 엎었어!"
     },
@@ -8515,6 +9039,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "범인은 마고임 빼박"
     },
@@ -8522,6 +9047,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "에마 말은 맞아."
     },
@@ -8529,13 +9055,15 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
-     "says": "나 아니면 마고 씨가 엎었사와요!"
+     "says": "저 아니면 마고 씨가 엎었사와요!"
     },
     {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나 아니면 에마쨩이 엎었어."
     }
@@ -8597,12 +9125,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-48",
+   "key": "08653c5155e1",
    "tier": "hard",
    "incident": "노아의 스케치북에 누가 낙서를 했다.",
    "verb": "낙서했어",
    "victim": {
     "id": "noah",
     "name": "죠가사키 노아",
+    "no": 661,
     "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
     "written": false
    },
@@ -8628,6 +9158,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "토노 말은 맞아."
     },
@@ -8635,6 +9166,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "범인은 미리아 씨이와요!"
     },
@@ -8642,6 +9174,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "안안쨩의 말은 맞아."
     },
@@ -8649,6 +9182,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "나는 낙서 안 했음 억까 ㄴㄴ"
     },
@@ -8656,6 +9190,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "미리아와 아리사는 영혼이 바뀌어 있노라."
     }
@@ -8716,12 +9251,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-49",
+   "key": "e10294f54090",
    "tier": "normal",
    "incident": "아리사의 성냥갑이 텅 비어 있었다.",
    "verb": "가져갔어",
    "victim": {
     "id": "arisa",
     "name": "시토 아리사",
+    "no": 666,
     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
     "written": false
    },
@@ -8742,6 +9279,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "코코쨩의 말은 맞아~"
     },
@@ -8749,6 +9287,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 노아로다."
     },
@@ -8756,6 +9295,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "한나 아니면 노아가 가져갔음 ㅇㅇ"
     },
@@ -8763,8 +9303,9 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
-     "says": "나는 안 가져갔사와요!"
+     "says": "저는 안 가져갔사와요!"
     }
    ],
    "answer": "hanna",
@@ -8814,12 +9355,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-50",
+   "key": "5fb1bd00ab58",
    "tier": "hard",
    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
    "verb": "껐어",
    "victim": {
     "id": "coco",
     "name": "사와타리 코코",
+    "no": 669,
     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
     "written": false
    },
@@ -8845,6 +9388,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "안안쨩 아니면 아리사쨩이 껐어~"
     },
@@ -8852,6 +9396,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "이 몸은 안 껐노라."
     },
@@ -8859,6 +9404,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "사에키는 안 껐어."
     },
@@ -8866,6 +9412,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "아리사쨩의 말은 맞아."
     },
@@ -8873,6 +9420,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "나는 미리아쨩과 영혼이 바뀌어 있어."
     }
@@ -8934,12 +9482,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-51",
+   "key": "b6afb9d8b9f4",
    "tier": "normal",
    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
    "verb": "껐어",
    "victim": {
     "id": "coco",
     "name": "사와타리 코코",
+    "no": 669,
     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
     "written": false
    },
@@ -8960,6 +9510,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "미리아와 노아는 영혼이 바뀌어 있노라."
     },
@@ -8967,6 +9518,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "미리아 씨의 말은 맞아요!"
     },
@@ -8974,6 +9526,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "노아는 안 껐어~"
     },
@@ -8981,6 +9534,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "단언하지! 범인은 미리아다!"
     },
@@ -8988,6 +9542,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "범인은 셰리쨩이야."
     }
@@ -9044,12 +9599,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-52",
+   "key": "8767223c6a4a",
    "tier": "hard",
    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
    "verb": "펼쳐 봤어",
    "victim": {
     "id": "ema",
     "name": "사쿠라바 에마",
+    "no": 658,
     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
     "written": false
    },
@@ -9075,6 +9632,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "미리아 아니면 레이아가 펼쳐 봤음 ㅇㅇ"
     },
@@ -9082,6 +9640,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "아리사 아니면 미리아가 펼쳐 봤다!"
     },
@@ -9089,6 +9648,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "마고가 펼쳐 봤노라."
     },
@@ -9096,6 +9656,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나는 안 봤어."
     },
@@ -9103,6 +9664,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "나츠메 아니면 사에키가 펼쳐 봤어."
     },
@@ -9110,6 +9672,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "마고쨩의 말은 틀렸어."
     }
@@ -9181,12 +9744,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-53",
+   "key": "0f6604591b5a",
    "tier": "normal",
    "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
    "verb": "다 썼어",
    "victim": {
     "id": "meruru",
     "name": "히카미 메루루",
+    "no": 670,
     "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
     "written": false
    },
@@ -9207,6 +9772,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "아아, 코코의 말은 맞다!"
     },
@@ -9214,6 +9780,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "레이아는 안 썼음"
     },
@@ -9221,6 +9788,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "이 몸은 안 썼노라."
     },
@@ -9228,6 +9796,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "범인은 코코 씨이와요!"
     }
@@ -9278,12 +9847,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-54",
+   "key": "780f7291d890",
    "tier": "hard",
    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
    "verb": "먹었어",
    "victim": {
     "id": "nanoka",
     "name": "쿠로베 나노카",
+    "no": 665,
     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
     "written": false
    },
@@ -9304,6 +9875,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "안안 아니면 노아가 먹었다!"
     },
@@ -9311,6 +9883,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "레이아쨩의 말은 맞아~"
     },
@@ -9318,6 +9891,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "하스미 새끼가 먹었어."
     },
@@ -9325,6 +9899,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "레, 레이아 씨의 말은 틀렸어요… 죄, 죄송해요…"
     },
@@ -9332,6 +9907,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "아리사는 안 먹었노라."
     }
@@ -9393,12 +9969,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-55",
+   "key": "547e0d2af464",
    "tier": "normal",
    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
    "verb": "펼쳐 봤어",
    "victim": {
     "id": "ema",
     "name": "사쿠라바 에마",
+    "no": 658,
     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
     "written": false
    },
@@ -9419,6 +9997,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "아아, 안안의 말은 맞다!"
     },
@@ -9426,6 +10005,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "나노카는 안 봤노라."
     },
@@ -9433,6 +10013,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "나노카 씨 아니면 레이아 씨가 펼쳐 봤어요!"
     },
@@ -9440,6 +10021,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "난 안 봤어."
     }
@@ -9492,12 +10074,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-56",
+   "key": "4ec7e609ef5b",
    "tier": "hard",
    "incident": "아리사의 성냥갑이 텅 비어 있었다.",
    "verb": "가져갔어",
    "victim": {
     "id": "arisa",
     "name": "시토 아리사",
+    "no": 666,
     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
     "written": false
    },
@@ -9518,6 +10102,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "한나 말은 틀렸음 ㅋㅋ"
     },
@@ -9525,6 +10110,7 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
      "says": "노아 씨는 안 가져갔사와요!"
     },
@@ -9532,6 +10118,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "범인은 노아로다."
     },
@@ -9539,6 +10126,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "메루루쨩의 말은 맞아~"
     },
@@ -9546,6 +10134,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "안, 안안 씨는 안 가져갔어요…"
     },
@@ -9553,6 +10142,7 @@ window.PUZZLES = {
      "id": "nanoka",
      "name": "나노카",
      "full": "쿠로베 나노카",
+     "no": 665,
      "written": false,
      "says": "난 안 가져갔어."
     }
@@ -9618,12 +10208,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-57",
+   "key": "01234b314e74",
    "tier": "normal",
    "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
    "verb": "다 썼어",
    "victim": {
     "id": "meruru",
     "name": "히카미 메루루",
+    "no": 670,
     "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
     "written": false
    },
@@ -9644,6 +10236,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "미리아쨩과 셰리쨩은 영혼이 바뀌어 있어!"
     },
@@ -9651,6 +10244,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "미리아 아니면 셰리가 다 썼다!"
     },
@@ -9658,6 +10252,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "셰리쨩이 다 썼어."
     },
@@ -9665,6 +10260,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "에마 씨의 말은 맞아요!"
     }
@@ -9717,12 +10313,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-58",
+   "key": "273be75334e8",
    "tier": "hard",
    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
    "verb": "먹었어",
    "victim": {
     "id": "nanoka",
     "name": "쿠로베 나노카",
+    "no": 665,
     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
     "written": false
    },
@@ -9743,6 +10341,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "노아쨩의 말은 틀렸어."
     },
@@ -9750,6 +10349,7 @@ window.PUZZLES = {
      "id": "ema",
      "name": "에마",
      "full": "사쿠라바 에마",
+     "no": 658,
      "written": false,
      "says": "나는 미리아쨩과 영혼이 바뀌어 있어!"
     },
@@ -9757,6 +10357,7 @@ window.PUZZLES = {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "노아 아니면 셰리쨩이 먹었어~"
     },
@@ -9764,6 +10365,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "명탐정의 추리로는, 범인은 에마 씨예요!"
     },
@@ -9771,6 +10373,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "후후, 나는 안 먹었어."
     },
@@ -9778,6 +10381,7 @@ window.PUZZLES = {
      "id": "meruru",
      "name": "메루루",
      "full": "히카미 메루루",
+     "no": 670,
      "written": false,
      "says": "마, 마고 씨가 먹었어요…"
     }
@@ -9842,12 +10446,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-59",
+   "key": "3b4b1392c5a2",
    "tier": "normal",
    "incident": "안안이 아껴 마시던 홍차가 한 방울도 남지 않았다.",
    "verb": "다 마셨어",
    "victim": {
     "id": "anan",
     "name": "나츠메 안안",
+    "no": 660,
     "line": "이 몸이 아껴 두었던 홍차가 사라졌노라. 범인은 이 몸 앞에 나와 고하라.",
     "written": true
    },
@@ -9868,6 +10474,7 @@ window.PUZZLES = {
      "id": "sherry",
      "name": "셰리",
      "full": "타치바나 셰리",
+     "no": 667,
      "written": false,
      "says": "미리아 씨와 마고 씨는 영혼이 바뀌어 있어요!"
     },
@@ -9875,6 +10482,7 @@ window.PUZZLES = {
      "id": "miria",
      "name": "미리아",
      "full": "사에키 미리아",
+     "no": 663,
      "written": false,
      "says": "마고쨩 아니면 셰리쨩이 다 마셨어."
     },
@@ -9882,6 +10490,7 @@ window.PUZZLES = {
      "id": "coco",
      "name": "코코",
      "full": "사와타리 코코",
+     "no": 669,
      "written": false,
      "says": "미리아가 다 마셨음 ㅋㅋ"
     },
@@ -9889,6 +10498,7 @@ window.PUZZLES = {
      "id": "margo",
      "name": "마고",
      "full": "호쇼 마고",
+     "no": 664,
      "written": false,
      "says": "코코쨩 아니면 셰리쨩이 다 마셨어."
     }
@@ -9942,12 +10552,14 @@ window.PUZZLES = {
   },
   {
    "id": "daily-60",
+   "key": "d944c73d1e16",
    "tier": "hard",
    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
    "verb": "엎었어",
    "victim": {
     "id": "sherry",
     "name": "타치바나 셰리",
+    "no": 667,
     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
     "written": false
    },
@@ -9968,6 +10580,7 @@ window.PUZZLES = {
      "id": "anan",
      "name": "안안",
      "full": "나츠메 안안",
+     "no": 660,
      "written": true,
      "says": "아리사가 엎었노라."
     },
@@ -9975,6 +10588,7 @@ window.PUZZLES = {
      "id": "reia",
      "name": "레이아",
      "full": "하스미 레이아",
+     "no": 662,
      "written": false,
      "says": "아아, 안안의 말은 맞다!"
     },
@@ -9982,13 +10596,15 @@ window.PUZZLES = {
      "id": "hanna",
      "name": "한나",
      "full": "토노 한나",
+     "no": 668,
      "written": false,
-     "says": "나 아니면 레이아 씨가 엎었사와요!"
+     "says": "저 아니면 레이아 씨가 엎었사와요!"
     },
     {
      "id": "noah",
      "name": "노아",
      "full": "죠가사키 노아",
+     "no": 661,
      "written": false,
      "says": "안안쨩은 안 엎었어~"
     },
@@ -9996,6 +10612,7 @@ window.PUZZLES = {
      "id": "arisa",
      "name": "아리사",
      "full": "시토 아리사",
+     "no": 666,
      "written": false,
      "says": "난 안 엎었어. 꺼져."
     }
@@ -10081,6 +10698,20 @@ window.PUZZLES = {
    "anan": "나츠메 안안",
    "arisa": "시토 아리사",
    "meruru": "히카미 메루루"
+  },
+  "prisoner_no": {
+   "ema": 658,
+   "anan": 660,
+   "noah": 661,
+   "reia": 662,
+   "miria": 663,
+   "margo": 664,
+   "nanoka": 665,
+   "arisa": 666,
+   "sherry": 667,
+   "hanna": 668,
+   "coco": 669,
+   "meruru": 670
   },
   "voices": {
    "ema": {
@@ -10173,7 +10804,7 @@ window.PUZZLES = {
     }
    },
    "hanna": {
-    "self": "나",
+    "self": "저",
     "call": "씨",
     "style": "sawayo",
     "end": "!",
