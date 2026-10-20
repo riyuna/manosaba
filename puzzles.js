@@ -4,13 +4,13 @@ window.PUZZLES = {
   "easy": [
    {
     "id": "easy-1",
-    "key": "cc10fe95e821",
+    "key": "cebac79edc8c",
     "tier": "easy",
-    "incident": "matches",
+    "incident": "bookmarks",
     "n": 1,
     "speakers": [
      "reia",
-     "anan",
+     "arisa",
      "ema"
     ],
     "logic": {
@@ -20,7 +20,7 @@ window.PUZZLES = {
        "ema"
       ]
      ],
-     "anan": [
+     "arisa": [
       "either",
       [
        "ema",
@@ -30,7 +30,7 @@ window.PUZZLES = {
      "ema": [
       "deny",
       [
-       "anan"
+       "arisa"
       ]
      ]
     },
@@ -43,13 +43,13 @@ window.PUZZLES = {
    },
    {
     "id": "easy-2",
-    "key": "fd4835a8f693",
+    "key": "2f285f6aba11",
     "tier": "easy",
-    "incident": "diary",
+    "incident": "magnifier",
     "n": 1,
     "speakers": [
      "arisa",
-     "coco",
+     "nanoka",
      "hanna"
     ],
     "logic": {
@@ -59,7 +59,7 @@ window.PUZZLES = {
        "hanna"
       ]
      ],
-     "coco": [
+     "nanoka": [
       "either",
       [
        "arisa",
@@ -70,67 +70,67 @@ window.PUZZLES = {
       "either",
       [
        "arisa",
-       "coco"
+       "nanoka"
       ]
      ]
     },
     "magic_ids": [],
-    "answer": "coco",
+    "answer": "nanoka",
     "false_cards": [
-     "coco"
+     "nanoka"
     ],
     "worlds": 1
    },
    {
     "id": "easy-3",
-    "key": "f1e6291d5059",
+    "key": "3501a7efdd5f",
     "tier": "easy",
-    "incident": "stream",
+    "incident": "matches",
     "n": 1,
     "speakers": [
+     "coco",
      "sherry",
-     "hanna",
-     "noah"
+     "hanna"
     ],
     "logic": {
-     "sherry": [
+     "coco": [
       "self_or",
-      [
-       "hanna"
-      ]
-     ],
-     "hanna": [
-      "culprit_is",
       [
        "sherry"
       ]
      ],
-     "noah": [
+     "sherry": [
+      "culprit_is",
+      [
+       "coco"
+      ]
+     ],
+     "hanna": [
       "deny_self",
       []
      ]
     },
     "magic_ids": [],
-    "answer": "hanna",
+    "answer": "sherry",
     "false_cards": [
-     "hanna"
+     "sherry"
     ],
     "worlds": 1
    },
    {
     "id": "easy-4",
-    "key": "9b0bd484e364",
+    "key": "b8b9fce6c574",
     "tier": "easy",
-    "incident": "hairpin",
+    "incident": "handkerchief",
     "n": 1,
     "speakers": [
-     "meruru",
+     "arisa",
      "reia",
      "noah",
-     "margo"
+     "miria"
     ],
     "logic": {
-     "meruru": [
+     "arisa": [
       "deny",
       [
        "noah"
@@ -139,16 +139,16 @@ window.PUZZLES = {
      "reia": [
       "accuse",
       [
-       "meruru"
+       "arisa"
       ]
      ],
      "noah": [
       "self_or",
       [
-       "meruru"
+       "arisa"
       ]
      ],
-     "margo": [
+     "miria": [
       "accuse",
       [
        "reia"
@@ -156,17 +156,17 @@ window.PUZZLES = {
      ]
     },
     "magic_ids": [],
-    "answer": "meruru",
+    "answer": "arisa",
     "false_cards": [
-     "margo"
+     "miria"
     ],
     "worlds": 1
    },
    {
     "id": "easy-5",
-    "key": "b6fdc37241f6",
+    "key": "f3a53cb1d844",
     "tier": "easy",
-    "incident": "mirror",
+    "incident": "paints",
     "n": 1,
     "speakers": [
      "arisa",
@@ -257,38 +257,38 @@ window.PUZZLES = {
    },
    {
     "id": "easy-7",
-    "key": "72cea2a92b97",
+    "key": "d633c3a5fc54",
     "tier": "easy",
-    "incident": "ribbon",
+    "incident": "goggles",
     "n": 1,
     "speakers": [
      "anan",
-     "nanoka",
+     "coco",
      "margo",
-     "coco"
+     "sherry"
     ],
     "logic": {
      "anan": [
       "either",
       [
        "coco",
-       "nanoka"
+       "sherry"
       ]
      ],
-     "nanoka": [
+     "coco": [
       "either",
       [
-       "coco",
-       "margo"
+       "margo",
+       "sherry"
       ]
      ],
      "margo": [
       "deny",
       [
-       "coco"
+       "sherry"
       ]
      ],
-     "coco": [
+     "sherry": [
       "culprit_is",
       [
        "margo"
@@ -304,17 +304,17 @@ window.PUZZLES = {
    },
    {
     "id": "easy-8",
-    "key": "3370885691f8",
+    "key": "e1dc89868dd8",
     "tier": "easy",
-    "incident": "hairpin",
+    "incident": "hoodie",
     "n": 1,
     "speakers": [
-     "arisa",
+     "anan",
      "reia",
-     "anan"
+     "margo"
     ],
     "logic": {
-     "arisa": [
+     "anan": [
       "culprit_is",
       [
        "reia"
@@ -323,28 +323,28 @@ window.PUZZLES = {
      "reia": [
       "self_or",
       [
-       "anan"
+       "margo"
       ]
      ],
-     "anan": [
+     "margo": [
       "deny",
       [
-       "arisa"
+       "anan"
       ]
      ]
     },
     "magic_ids": [],
-    "answer": "anan",
+    "answer": "margo",
     "false_cards": [
-     "arisa"
+     "anan"
     ],
     "worlds": 1
    },
    {
     "id": "easy-9",
-    "key": "9cefb6fd302c",
+    "key": "8014cf85cbd1",
     "tier": "easy",
-    "incident": "matches",
+    "incident": "bookmarks",
     "n": 1,
     "speakers": [
      "coco",
@@ -387,9 +387,9 @@ window.PUZZLES = {
    },
    {
     "id": "easy-10",
-    "key": "dfc90344a413",
+    "key": "97626362166e",
     "tier": "easy",
-    "incident": "sweets",
+    "incident": "pot",
     "n": 1,
     "speakers": [
      "hanna",
@@ -426,520 +426,502 @@ window.PUZZLES = {
   "normal": [
    {
     "id": "normal-1",
-    "key": "3df2047012d0",
+    "key": "9b745cd8f2d2",
     "tier": "normal",
-    "incident": "mirror",
-    "n": 1,
+    "incident": "ribbon",
+    "n": 2,
     "speakers": [
+     "noah",
      "anan",
-     "arisa",
-     "coco",
-     "ema"
+     "ema",
+     "meruru",
+     "sherry"
     ],
     "logic": {
+     "noah": [
+      "meta_false",
+      [
+       "meruru"
+      ]
+     ],
      "anan": [
-      "deny",
+      "accuse",
       [
-       "coco"
-      ]
-     ],
-     "arisa": [
-      "either",
-      [
-       "anan",
-       "coco"
-      ]
-     ],
-     "coco": [
-      "culprit_is",
-      [
-       "ema"
+       "sherry"
       ]
      ],
      "ema": [
-      "accuse",
+      "deny",
+      [
+       "sherry"
+      ]
+     ],
+     "meruru": [
+      "self_or",
       [
        "anan"
       ]
+     ],
+     "sherry": [
+      "deny_self",
+      []
      ]
     },
     "magic_ids": [
      "anan"
     ],
-    "answer": "ema",
+    "answer": "sherry",
     "false_cards": [
-     "arisa",
-     "ema"
+     "ema",
+     "meruru",
+     "sherry"
     ],
-    "worlds": 2
+    "worlds": 3
    },
    {
     "id": "normal-2",
-    "key": "91b6e6417fd6",
+    "key": "e3ab1d7b9252",
     "tier": "normal",
-    "incident": "pot",
+    "incident": "goggles",
     "n": 1,
     "speakers": [
-     "meruru",
-     "reia",
-     "miria",
-     "anan"
+     "ema",
+     "anan",
+     "hanna",
+     "margo",
+     "miria"
     ],
     "logic": {
-     "meruru": [
+     "ema": [
+      "either",
+      [
+       "hanna",
+       "miria"
+      ]
+     ],
+     "anan": [
+      "swap_claim",
+      [
+       "anan"
+      ]
+     ],
+     "hanna": [
       "deny",
       [
        "miria"
       ]
      ],
-     "reia": [
+     "margo": [
       "meta_true",
       [
-       "meruru"
+       "ema"
       ]
      ],
      "miria": [
-      "accuse",
+      "culprit_is",
       [
-       "meruru"
-      ]
-     ],
-     "anan": [
-      "deny",
-      [
-       "reia"
+       "margo"
       ]
      ]
     },
     "magic_ids": [
-     "anan"
+     "miria"
     ],
-    "answer": "reia",
+    "answer": "hanna",
     "false_cards": [
-     "miria",
-     "anan"
+     "miria"
     ],
     "worlds": 1
    },
    {
     "id": "normal-3",
-    "key": "2981b999006b",
+    "key": "f32dfe49ce0f",
     "tier": "normal",
-    "incident": "stream",
+    "incident": "pot",
     "n": 1,
     "speakers": [
-     "margo",
-     "nanoka",
      "noah",
-     "hanna",
-     "ema"
+     "miria",
+     "nanoka",
+     "ema",
+     "hanna"
     ],
     "logic": {
-     "margo": [
-      "either",
-      [
-       "ema",
-       "hanna"
-      ]
-     ],
-     "nanoka": [
-      "deny",
-      [
-       "ema"
-      ]
-     ],
      "noah": [
-      "culprit_is",
+      "meta_false",
       [
        "nanoka"
       ]
      ],
-     "hanna": [
-      "meta_false",
+     "miria": [
+      "self_or",
       [
-       "margo"
+       "nanoka"
       ]
      ],
+     "nanoka": [
+      "deny_self",
+      []
+     ],
      "ema": [
+      "swap_claim",
+      [
+       "noah"
+      ]
+     ],
+     "hanna": [
       "culprit_is",
       [
-       "hanna"
+       "miria"
       ]
      ]
     },
     "magic_ids": [
-     "margo"
+     "miria"
     ],
-    "answer": "nanoka",
+    "answer": "miria",
     "false_cards": [
-     "margo",
-     "ema"
+     "noah"
     ],
     "worlds": 1
    },
    {
     "id": "normal-4",
-    "key": "b4886e0d7474",
-    "tier": "normal",
-    "incident": "sweets",
-    "n": 2,
-    "speakers": [
-     "hanna",
-     "anan",
-     "sherry",
-     "miria"
-    ],
-    "logic": {
-     "hanna": [
-      "deny_self",
-      []
-     ],
-     "anan": [
-      "meta_false",
-      [
-       "miria"
-      ]
-     ],
-     "sherry": [
-      "culprit_is",
-      [
-       "anan"
-      ]
-     ],
-     "miria": [
-      "either",
-      [
-       "anan",
-       "hanna"
-      ]
-     ]
-    },
-    "magic_ids": [
-     "anan"
-    ],
-    "answer": "hanna",
-    "false_cards": [
-     "hanna",
-     "anan",
-     "sherry"
-    ],
-    "worlds": 2
-   },
-   {
-    "id": "normal-5",
-    "key": "ea5abb19c25b",
-    "tier": "normal",
-    "incident": "stream",
-    "n": 1,
-    "speakers": [
-     "hanna",
-     "reia",
-     "anan",
-     "margo"
-    ],
-    "logic": {
-     "hanna": [
-      "accuse",
-      [
-       "reia"
-      ]
-     ],
-     "reia": [
-      "meta_false",
-      [
-       "margo"
-      ]
-     ],
-     "anan": [
-      "either",
-      [
-       "hanna",
-       "reia"
-      ]
-     ],
-     "margo": [
-      "culprit_is",
-      [
-       "anan"
-      ]
-     ]
-    },
-    "magic_ids": [
-     "anan"
-    ],
-    "answer": "hanna",
-    "false_cards": [
-     "hanna",
-     "margo"
-    ],
-    "worlds": 2
-   },
-   {
-    "id": "normal-6",
-    "key": "579818967712",
-    "tier": "normal",
-    "incident": "mirror",
-    "n": 1,
-    "speakers": [
-     "margo",
-     "nanoka",
-     "ema",
-     "arisa",
-     "anan"
-    ],
-    "logic": {
-     "margo": [
-      "either",
-      [
-       "anan",
-       "arisa"
-      ]
-     ],
-     "nanoka": [
-      "accuse",
-      [
-       "ema"
-      ]
-     ],
-     "ema": [
-      "deny_self",
-      []
-     ],
-     "arisa": [
-      "accuse",
-      [
-       "margo"
-      ]
-     ],
-     "anan": [
-      "either",
-      [
-       "arisa",
-       "margo"
-      ]
-     ]
-    },
-    "magic_ids": [
-     "margo"
-    ],
-    "answer": "margo",
-    "false_cards": [
-     "margo",
-     "nanoka"
-    ],
-    "worlds": 1
-   },
-   {
-    "id": "normal-7",
-    "key": "955267d93174",
-    "tier": "normal",
-    "incident": "matches",
-    "n": 1,
-    "speakers": [
-     "reia",
-     "sherry",
-     "margo",
-     "coco",
-     "meruru"
-    ],
-    "logic": {
-     "reia": [
-      "accuse",
-      [
-       "meruru"
-      ]
-     ],
-     "sherry": [
-      "deny_self",
-      []
-     ],
-     "margo": [
-      "meta_false",
-      [
-       "coco"
-      ]
-     ],
-     "coco": [
-      "deny",
-      [
-       "meruru"
-      ]
-     ],
-     "meruru": [
-      "accuse",
-      [
-       "coco"
-      ]
-     ]
-    },
-    "magic_ids": [
-     "margo"
-    ],
-    "answer": "coco",
-    "false_cards": [
-     "reia",
-     "margo"
-    ],
-    "worlds": 1
-   },
-   {
-    "id": "normal-8",
-    "key": "b341f38b901f",
+    "key": "30bf802a3246",
     "tier": "normal",
     "incident": "ribbon",
     "n": 1,
     "speakers": [
-     "anan",
+     "reia",
+     "arisa",
+     "miria",
+     "noah"
+    ],
+    "logic": {
+     "reia": [
+      "self_or",
+      [
+       "noah"
+      ]
+     ],
+     "arisa": [
+      "swap_claim",
+      [
+       "noah"
+      ]
+     ],
+     "miria": [
+      "meta_true",
+      [
+       "arisa"
+      ]
+     ],
+     "noah": [
+      "deny",
+      [
+       "arisa"
+      ]
+     ]
+    },
+    "magic_ids": [
+     "miria"
+    ],
+    "answer": "miria",
+    "false_cards": [
+     "reia"
+    ],
+    "worlds": 1
+   },
+   {
+    "id": "normal-5",
+    "key": "5190877d1d9a",
+    "tier": "normal",
+    "incident": "hoodie",
+    "n": 1,
+    "speakers": [
      "reia",
      "nanoka",
-     "arisa",
+     "sherry",
+     "ema",
      "miria"
     ],
     "logic": {
-     "anan": [
-      "accuse",
+     "reia": [
+      "deny_self",
+      []
+     ],
+     "nanoka": [
+      "swap_claim",
+      [
+       "reia"
+      ]
+     ],
+     "sherry": [
+      "culprit_is",
       [
        "nanoka"
       ]
      ],
-     "reia": [
+     "ema": [
       "accuse",
       [
-       "anan"
-      ]
-     ],
-     "nanoka": [
-      "meta_false",
-      [
-       "miria"
-      ]
-     ],
-     "arisa": [
-      "culprit_is",
-      [
-       "anan"
+       "sherry"
       ]
      ],
      "miria": [
       "either",
       [
-       "anan",
+       "ema",
        "nanoka"
       ]
      ]
     },
     "magic_ids": [
-     "anan"
+     "miria"
     ],
-    "answer": "anan",
+    "answer": "nanoka",
     "false_cards": [
-     "anan",
-     "nanoka"
+     "ema"
     ],
     "worlds": 1
    },
    {
-    "id": "normal-9",
-    "key": "09360e941450",
+    "id": "normal-6",
+    "key": "91b2f71856e4",
     "tier": "normal",
-    "incident": "sweets",
+    "incident": "paints",
     "n": 1,
     "speakers": [
+     "meruru",
      "ema",
-     "anan",
-     "margo",
-     "reia",
-     "hanna"
+     "sherry",
+     "margo"
     ],
     "logic": {
-     "ema": [
+     "meruru": [
       "meta_false",
       [
-       "hanna"
+       "sherry"
       ]
      ],
-     "anan": [
+     "ema": [
+      "culprit_is",
+      [
+       "meruru"
+      ]
+     ],
+     "sherry": [
       "self_or",
       [
        "ema"
       ]
      ],
      "margo": [
-      "either",
+      "self_or",
       [
-       "anan",
-       "reia"
-      ]
-     ],
-     "reia": [
-      "either",
-      [
-       "ema",
-       "hanna"
-      ]
-     ],
-     "hanna": [
-      "deny",
-      [
-       "ema"
+       "sherry"
       ]
      ]
     },
     "magic_ids": [
      "margo"
     ],
-    "answer": "ema",
+    "answer": "meruru",
     "false_cards": [
-     "margo",
-     "hanna"
+     "sherry",
+     "margo"
     ],
     "worlds": 1
    },
    {
-    "id": "normal-10",
-    "key": "a075c262a3af",
+    "id": "normal-7",
+    "key": "604cf81d868d",
     "tier": "normal",
-    "incident": "pot",
+    "incident": "letter",
     "n": 1,
     "speakers": [
-     "ema",
+     "nanoka",
      "arisa",
-     "margo",
+     "meruru",
+     "anan",
      "miria"
     ],
     "logic": {
-     "ema": [
-      "meta_false",
+     "nanoka": [
+      "swap_claim",
       [
-       "arisa"
+       "anan"
       ]
      ],
      "arisa": [
-      "either",
+      "meta_false",
       [
-       "ema",
-       "margo"
+       "anan"
       ]
      ],
-     "margo": [
+     "meruru": [
+      "self_or",
+      [
+       "nanoka"
+      ]
+     ],
+     "anan": [
       "accuse",
       [
-       "ema"
+       "arisa"
       ]
      ],
      "miria": [
-      "swap_claim",
+      "accuse",
       [
-       "arisa"
+       "meruru"
       ]
      ]
     },
     "magic_ids": [
      "miria"
     ],
-    "answer": "ema",
+    "answer": "meruru",
     "false_cards": [
-     "ema"
+     "anan"
+    ],
+    "worlds": 1
+   },
+   {
+    "id": "normal-8",
+    "key": "ee5651cfdbd0",
+    "tier": "normal",
+    "incident": "letter",
+    "n": 1,
+    "speakers": [
+     "miria",
+     "margo",
+     "noah",
+     "reia"
+    ],
+    "logic": {
+     "miria": [
+      "accuse",
+      [
+       "reia"
+      ]
+     ],
+     "margo": [
+      "swap_claim",
+      [
+       "margo"
+      ]
+     ],
+     "noah": [
+      "meta_false",
+      [
+       "reia"
+      ]
+     ],
+     "reia": [
+      "deny_self",
+      []
+     ]
+    },
+    "magic_ids": [
+     "miria"
+    ],
+    "answer": "reia",
+    "false_cards": [
+     "reia"
+    ],
+    "worlds": 1
+   },
+   {
+    "id": "normal-9",
+    "key": "bcc9cb5c0243",
+    "tier": "normal",
+    "incident": "pot",
+    "n": 2,
+    "speakers": [
+     "reia",
+     "anan",
+     "miria",
+     "noah"
+    ],
+    "logic": {
+     "reia": [
+      "swap_claim",
+      [
+       "noah"
+      ]
+     ],
+     "anan": [
+      "self_or",
+      [
+       "noah"
+      ]
+     ],
+     "miria": [
+      "deny_self",
+      []
+     ],
+     "noah": [
+      "meta_true",
+      [
+       "anan"
+      ]
+     ]
+    },
+    "magic_ids": [
+     "miria"
+    ],
+    "answer": "reia",
+    "false_cards": [
+     "anan",
+     "noah"
+    ],
+    "worlds": 1
+   },
+   {
+    "id": "normal-10",
+    "key": "1fa9c9cf72a1",
+    "tier": "normal",
+    "incident": "paints",
+    "n": 1,
+    "speakers": [
+     "miria",
+     "ema",
+     "hanna",
+     "nanoka"
+    ],
+    "logic": {
+     "miria": [
+      "culprit_is",
+      [
+       "hanna"
+      ]
+     ],
+     "ema": [
+      "culprit_is",
+      [
+       "miria"
+      ]
+     ],
+     "hanna": [
+      "swap_claim",
+      [
+       "ema"
+      ]
+     ],
+     "nanoka": [
+      "accuse",
+      [
+       "miria"
+      ]
+     ]
+    },
+    "magic_ids": [
+     "miria"
+    ],
+    "answer": "miria",
+    "false_cards": [
+     "miria"
     ],
     "worlds": 1
    }
@@ -947,52 +929,52 @@ window.PUZZLES = {
   "hard": [
    {
     "id": "hard-1",
-    "key": "649191d11574",
+    "key": "c46d4e03d25d",
     "tier": "hard",
-    "incident": "bandage",
+    "incident": "handkerchief",
     "n": 2,
     "speakers": [
+     "anan",
+     "sherry",
      "noah",
-     "coco",
+     "ema",
      "arisa",
-     "nanoka",
-     "margo",
-     "anan"
+     "margo"
     ],
     "logic": {
-     "noah": [
-      "self_or",
-      [
-       "nanoka"
-      ]
-     ],
-     "coco": [
+     "anan": [
       "meta_false",
       [
-       "margo"
+       "arisa"
+      ]
+     ],
+     "sherry": [
+      "meta_true",
+      [
+       "ema"
+      ]
+     ],
+     "noah": [
+      "either",
+      [
+       "anan",
+       "arisa"
+      ]
+     ],
+     "ema": [
+      "culprit_is",
+      [
+       "anan"
       ]
      ],
      "arisa": [
       "self_or",
       [
-       "coco"
-      ]
-     ],
-     "nanoka": [
-      "either",
-      [
-       "margo",
-       "noah"
+       "sherry"
       ]
      ],
      "margo": [
-      "deny",
-      [
-       "arisa"
-      ]
-     ],
-     "anan": [
-      "culprit_is",
+      "self_or",
       [
        "noah"
       ]
@@ -1004,62 +986,55 @@ window.PUZZLES = {
     ],
     "answer": "arisa",
     "false_cards": [
-     "noah",
-     "nanoka",
-     "margo",
-     "anan"
+     "anan",
+     "sherry",
+     "ema",
+     "margo"
     ],
     "worlds": 4
    },
    {
     "id": "hard-2",
-    "key": "f2571a0b87ca",
+    "key": "dce43f804bfb",
     "tier": "hard",
-    "incident": "sweets",
+    "incident": "books",
     "n": 2,
     "speakers": [
-     "hanna",
+     "arisa",
      "miria",
-     "noah",
-     "anan",
-     "meruru",
-     "margo"
+     "reia",
+     "nanoka",
+     "anan"
     ],
     "logic": {
-     "hanna": [
-      "self_or",
+     "arisa": [
+      "deny",
       [
-       "miria"
+       "anan"
       ]
      ],
      "miria": [
-      "culprit_is",
+      "swap_claim",
       [
-       "noah"
+       "arisa"
       ]
      ],
-     "noah": [
-      "culprit_is",
+     "reia": [
+      "meta_true",
       [
-       "margo"
+       "arisa"
+      ]
+     ],
+     "nanoka": [
+      "self_or",
+      [
+       "reia"
       ]
      ],
      "anan": [
-      "culprit_is",
+      "deny",
       [
-       "hanna"
-      ]
-     ],
-     "meruru": [
-      "swap_claim",
-      [
-       "margo"
-      ]
-     ],
-     "margo": [
-      "accuse",
-      [
-       "meruru"
+       "reia"
       ]
      ]
     },
@@ -1067,294 +1042,361 @@ window.PUZZLES = {
      "anan",
      "miria"
     ],
-    "answer": "hanna",
+    "answer": "anan",
     "false_cards": [
-     "miria",
-     "noah",
-     "margo"
+     "arisa",
+     "reia",
+     "nanoka"
     ],
     "worlds": 3
    },
    {
     "id": "hard-3",
-    "key": "59af8df9ec38",
+    "key": "7f5ec94f4222",
     "tier": "hard",
-    "incident": "stream",
+    "incident": "handkerchief",
     "n": 2,
     "speakers": [
+     "nanoka",
+     "sherry",
      "hanna",
-     "anan",
-     "miria",
-     "meruru",
-     "noah"
+     "coco",
+     "miria"
     ],
     "logic": {
-     "hanna": [
-      "either",
-      [
-       "anan",
-       "miria"
-      ]
-     ],
-     "anan": [
-      "either",
-      [
-       "hanna",
-       "noah"
-      ]
-     ],
-     "miria": [
-      "deny",
+     "nanoka": [
+      "meta_true",
       [
        "hanna"
       ]
      ],
-     "meruru": [
-      "deny",
+     "sherry": [
+      "meta_true",
       [
-       "noah"
+       "coco"
       ]
      ],
-     "noah": [
-      "deny_self",
-      []
+     "hanna": [
+      "swap_claim",
+      [
+       "hanna"
+      ]
+     ],
+     "coco": [
+      "either",
+      [
+       "miria",
+       "sherry"
+      ]
+     ],
+     "miria": [
+      "culprit_is",
+      [
+       "nanoka"
+      ]
      ]
     },
     "magic_ids": [
-     "anan"
+     "miria"
     ],
-    "answer": "noah",
+    "answer": "nanoka",
     "false_cards": [
-     "hanna",
-     "meruru",
-     "noah"
+     "sherry",
+     "coco"
     ],
-    "worlds": 3
+    "worlds": 1
    },
    {
     "id": "hard-4",
-    "key": "7e4b1a1fe5cf",
+    "key": "3734d2cee831",
     "tier": "hard",
-    "incident": "mirror",
+    "incident": "fan",
     "n": 2,
     "speakers": [
-     "coco",
+     "meruru",
+     "margo",
      "miria",
-     "nanoka",
-     "anan",
-     "meruru"
+     "sherry",
+     "arisa"
     ],
     "logic": {
-     "coco": [
+     "meruru": [
+      "culprit_is",
+      [
+       "arisa"
+      ]
+     ],
+     "margo": [
       "meta_true",
       [
-       "anan"
+       "arisa"
       ]
      ],
      "miria": [
       "self_or",
       [
-       "anan"
+       "sherry"
       ]
      ],
-     "nanoka": [
-      "either",
+     "sherry": [
+      "accuse",
       [
-       "meruru",
-       "miria"
+       "arisa"
       ]
      ],
-     "anan": [
-      "swap_claim",
+     "arisa": [
+      "accuse",
       [
-       "anan"
-      ]
-     ],
-     "meruru": [
-      "either",
-      [
-       "coco",
-       "miria"
+       "margo"
       ]
      ]
     },
     "magic_ids": [
-     "anan",
-     "miria"
+     "margo"
     ],
-    "answer": "nanoka",
+    "answer": "arisa",
     "false_cards": [
+     "margo",
      "miria",
-     "nanoka",
-     "meruru"
+     "arisa"
     ],
     "worlds": 2
    },
    {
     "id": "hard-5",
-    "key": "51ff6c28d072",
+    "key": "ca186b5e715a",
     "tier": "hard",
-    "incident": "pot",
+    "incident": "mirror",
     "n": 2,
     "speakers": [
-     "noah",
-     "hanna",
      "anan",
+     "ema",
      "miria",
-     "nanoka"
-    ],
-    "logic": {
-     "noah": [
-      "meta_true",
-      [
-       "miria"
-      ]
-     ],
-     "hanna": [
-      "accuse",
-      [
-       "anan"
-      ]
-     ],
-     "anan": [
-      "meta_false",
-      [
-       "hanna"
-      ]
-     ],
-     "miria": [
-      "swap_claim",
-      [
-       "nanoka"
-      ]
-     ],
-     "nanoka": [
-      "deny",
-      [
-       "miria"
-      ]
-     ]
-    },
-    "magic_ids": [
-     "miria"
-    ],
-    "answer": "miria",
-    "false_cards": [
-     "hanna",
-     "nanoka"
-    ],
-    "worlds": 1
-   },
-   {
-    "id": "hard-6",
-    "key": "7152cc4a4c41",
-    "tier": "hard",
-    "incident": "pot",
-    "n": 2,
-    "speakers": [
+     "margo",
      "nanoka",
-     "miria",
-     "reia",
-     "anan",
-     "hanna",
      "arisa"
     ],
     "logic": {
-     "nanoka": [
+     "anan": [
       "meta_true",
       [
        "miria"
+      ]
+     ],
+     "ema": [
+      "swap_claim",
+      [
+       "anan"
       ]
      ],
      "miria": [
       "either",
       [
        "anan",
-       "arisa"
+       "ema"
       ]
      ],
-     "reia": [
-      "meta_false",
-      [
-       "miria"
-      ]
+     "margo": [
+      "deny_self",
+      []
      ],
-     "anan": [
-      "self_or",
+     "nanoka": [
+      "either",
       [
-       "hanna"
-      ]
-     ],
-     "hanna": [
-      "swap_claim",
-      [
-       "hanna"
+       "ema",
+       "margo"
       ]
      ],
      "arisa": [
-      "accuse",
+      "self_or",
       [
-       "miria"
+       "anan"
       ]
      ]
     },
     "magic_ids": [
+     "anan",
      "miria"
     ],
-    "answer": "anan",
+    "answer": "arisa",
     "false_cards": [
-     "reia",
-     "arisa"
+     "anan",
+     "miria",
+     "nanoka"
     ],
-    "worlds": 1
+    "worlds": 2
    },
    {
-    "id": "hard-7",
-    "key": "5e00f891f1b1",
+    "id": "hard-6",
+    "key": "264a5aa2f03e",
     "tier": "hard",
     "incident": "books",
     "n": 2,
     "speakers": [
-     "nanoka",
-     "noah",
      "miria",
      "anan",
+     "meruru",
      "ema",
-     "hanna"
+     "sherry",
+     "nanoka"
     ],
     "logic": {
-     "nanoka": [
+     "miria": [
+      "either",
+      [
+       "ema",
+       "sherry"
+      ]
+     ],
+     "anan": [
+      "accuse",
+      [
+       "nanoka"
+      ]
+     ],
+     "meruru": [
       "swap_claim",
       [
        "nanoka"
       ]
      ],
-     "noah": [
-      "meta_false",
+     "ema": [
+      "meta_true",
       [
-       "miria"
+       "nanoka"
+      ]
+     ],
+     "sherry": [
+      "either",
+      [
+       "anan",
+       "nanoka"
+      ]
+     ],
+     "nanoka": [
+      "self_or",
+      [
+       "meruru"
+      ]
+     ]
+    },
+    "magic_ids": [
+     "anan",
+     "miria"
+    ],
+    "answer": "meruru",
+    "false_cards": [
+     "miria",
+     "anan",
+     "sherry"
+    ],
+    "worlds": 2
+   },
+   {
+    "id": "hard-7",
+    "key": "049431f98904",
+    "tier": "hard",
+    "incident": "stream",
+    "n": 2,
+    "speakers": [
+     "meruru",
+     "miria",
+     "noah",
+     "anan",
+     "reia"
+    ],
+    "logic": {
+     "meruru": [
+      "either",
+      [
+       "noah",
+       "reia"
       ]
      ],
      "miria": [
+      "culprit_is",
+      [
+       "reia"
+      ]
+     ],
+     "noah": [
       "swap_claim",
       [
-       "ema"
+       "reia"
       ]
      ],
      "anan": [
-      "self_or",
-      [
-       "noah"
-      ]
-     ],
-     "ema": [
       "accuse",
       [
-       "miria"
+       "reia"
       ]
      ],
-     "hanna": [
+     "reia": [
+      "meta_true",
+      [
+       "anan"
+      ]
+     ]
+    },
+    "magic_ids": [
+     "anan",
+     "miria"
+    ],
+    "answer": "noah",
+    "false_cards": [
+     "miria",
+     "anan",
+     "reia"
+    ],
+    "worlds": 2
+   },
+   {
+    "id": "hard-8",
+    "key": "2772eca3e9f0",
+    "tier": "hard",
+    "incident": "ribbon",
+    "n": 2,
+    "speakers": [
+     "nanoka",
+     "miria",
+     "arisa",
+     "reia",
+     "anan",
+     "coco"
+    ],
+    "logic": {
+     "nanoka": [
+      "meta_true",
+      [
+       "arisa"
+      ]
+     ],
+     "miria": [
+      "meta_false",
+      [
+       "coco"
+      ]
+     ],
+     "arisa": [
+      "accuse",
+      [
+       "anan"
+      ]
+     ],
+     "reia": [
+      "swap_claim",
+      [
+       "arisa"
+      ]
+     ],
+     "anan": [
       "culprit_is",
+      [
+       "coco"
+      ]
+     ],
+     "coco": [
+      "swap_claim",
       [
        "anan"
       ]
@@ -1365,183 +1407,51 @@ window.PUZZLES = {
     ],
     "answer": "anan",
     "false_cards": [
-     "miria",
-     "ema"
+     "anan",
+     "coco"
     ],
     "worlds": 1
-   },
-   {
-    "id": "hard-8",
-    "key": "223cc3c5ae0b",
-    "tier": "hard",
-    "incident": "books",
-    "n": 2,
-    "speakers": [
-     "hanna",
-     "anan",
-     "sherry",
-     "miria",
-     "coco",
-     "meruru"
-    ],
-    "logic": {
-     "hanna": [
-      "swap_claim",
-      [
-       "hanna"
-      ]
-     ],
-     "anan": [
-      "culprit_is",
-      [
-       "coco"
-      ]
-     ],
-     "sherry": [
-      "deny_self",
-      []
-     ],
-     "miria": [
-      "accuse",
-      [
-       "anan"
-      ]
-     ],
-     "coco": [
-      "culprit_is",
-      [
-       "anan"
-      ]
-     ],
-     "meruru": [
-      "meta_true",
-      [
-       "coco"
-      ]
-     ]
-    },
-    "magic_ids": [
-     "anan",
-     "miria"
-    ],
-    "answer": "coco",
-    "false_cards": [
-     "miria",
-     "coco",
-     "meruru"
-    ],
-    "worlds": 3
    },
    {
     "id": "hard-9",
-    "key": "1adfaa7b7c6b",
+    "key": "8e77014a72cb",
     "tier": "hard",
-    "incident": "pot",
+    "incident": "bookmarks",
     "n": 2,
     "speakers": [
-     "ema",
+     "hanna",
      "arisa",
-     "miria",
-     "anan",
-     "reia",
-     "margo"
-    ],
-    "logic": {
-     "ema": [
-      "meta_false",
-      [
-       "anan"
-      ]
-     ],
-     "arisa": [
-      "deny_self",
-      []
-     ],
-     "miria": [
-      "accuse",
-      [
-       "arisa"
-      ]
-     ],
-     "anan": [
-      "self_or",
-      [
-       "arisa"
-      ]
-     ],
-     "reia": [
-      "swap_claim",
-      [
-       "arisa"
-      ]
-     ],
-     "margo": [
-      "accuse",
-      [
-       "ema"
-      ]
-     ]
-    },
-    "magic_ids": [
-     "miria"
-    ],
-    "answer": "ema",
-    "false_cards": [
-     "miria",
-     "anan"
-    ],
-    "worlds": 1
-   },
-   {
-    "id": "hard-10",
-    "key": "d1e8a8c2729e",
-    "tier": "hard",
-    "incident": "hairpin",
-    "n": 2,
-    "speakers": [
      "margo",
-     "meruru",
-     "noah",
-     "arisa",
      "anan",
-     "ema"
+     "nanoka"
     ],
     "logic": {
-     "margo": [
-      "meta_false",
+     "hanna": [
+      "deny",
       [
-       "noah"
-      ]
-     ],
-     "meruru": [
-      "meta_true",
-      [
-       "anan"
-      ]
-     ],
-     "noah": [
-      "either",
-      [
-       "margo",
-       "meruru"
+       "nanoka"
       ]
      ],
      "arisa": [
       "deny",
       [
-       "meruru"
+       "anan"
+      ]
+     ],
+     "margo": [
+      "culprit_is",
+      [
+       "nanoka"
       ]
      ],
      "anan": [
-      "self_or",
-      [
-       "meruru"
-      ]
+      "deny_self",
+      []
      ],
-     "ema": [
-      "accuse",
+     "nanoka": [
+      "meta_true",
       [
-       "meruru"
+       "margo"
       ]
      ]
     },
@@ -1549,45 +1459,210 @@ window.PUZZLES = {
      "anan",
      "margo"
     ],
-    "answer": "margo",
+    "answer": "anan",
     "false_cards": [
+     "arisa",
      "margo",
-     "meruru",
      "anan",
-     "ema"
+     "nanoka"
     ],
     "worlds": 4
+   },
+   {
+    "id": "hard-10",
+    "key": "22a62081b94b",
+    "tier": "hard",
+    "incident": "diary",
+    "n": 2,
+    "speakers": [
+     "arisa",
+     "sherry",
+     "anan",
+     "meruru",
+     "hanna"
+    ],
+    "logic": {
+     "arisa": [
+      "deny",
+      [
+       "anan"
+      ]
+     ],
+     "sherry": [
+      "self_or",
+      [
+       "hanna"
+      ]
+     ],
+     "anan": [
+      "accuse",
+      [
+       "meruru"
+      ]
+     ],
+     "meruru": [
+      "meta_false",
+      [
+       "hanna"
+      ]
+     ],
+     "hanna": [
+      "deny_self",
+      []
+     ]
+    },
+    "magic_ids": [
+     "anan"
+    ],
+    "answer": "arisa",
+    "false_cards": [
+     "sherry",
+     "anan",
+     "meruru"
+    ],
+    "worlds": 2
    }
   ]
  },
  "daily": [
   {
    "id": "daily-1",
-   "key": "1e6cfcf79d8a",
+   "key": "d02f05fe0eed",
    "tier": "normal",
-   "incident": "sketch",
+   "incident": "stream",
    "n": 1,
    "speakers": [
-    "ema",
-    "sherry",
-    "arisa",
     "hanna",
-    "miria"
+    "miria",
+    "anan",
+    "meruru",
+    "noah"
    ],
    "logic": {
-    "ema": [
+    "hanna": [
+     "culprit_is",
+     [
+      "miria"
+     ]
+    ],
+    "miria": [
+     "deny",
+     [
+      "anan"
+     ]
+    ],
+    "anan": [
+     "swap_claim",
+     [
+      "meruru"
+     ]
+    ],
+    "meruru": [
+     "self_or",
+     [
+      "hanna"
+     ]
+    ],
+    "noah": [
+     "meta_false",
+     [
+      "meruru"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "meruru"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-2",
+   "key": "03de35ed457e",
+   "tier": "hard",
+   "incident": "stream",
+   "n": 2,
+   "speakers": [
+    "nanoka",
+    "noah",
+    "miria",
+    "reia",
+    "hanna",
+    "ema"
+   ],
+   "logic": {
+    "nanoka": [
+     "either",
+     [
+      "ema",
+      "noah"
+     ]
+    ],
+    "noah": [
      "accuse",
      [
       "hanna"
      ]
     ],
-    "sherry": [
-     "meta_true",
+    "miria": [
+     "culprit_is",
      [
-      "ema"
+      "hanna"
      ]
     ],
-    "arisa": [
+    "reia": [
+     "meta_true",
+     [
+      "nanoka"
+     ]
+    ],
+    "hanna": [
+     "swap_claim",
+     [
+      "nanoka"
+     ]
+    ],
+    "ema": [
+     "culprit_is",
+     [
+      "noah"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "noah",
+   "false_cards": [
+    "noah",
+    "miria"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-3",
+   "key": "584e4d7d804b",
+   "tier": "normal",
+   "incident": "handkerchief",
+   "n": 2,
+   "speakers": [
+    "anan",
+    "miria",
+    "hanna",
+    "ema"
+   ],
+   "logic": {
+    "anan": [
+     "either",
+     [
+      "ema",
+      "hanna"
+     ]
+    ],
+    "miria": [
      "deny",
      [
       "ema"
@@ -1596,373 +1671,14 @@ window.PUZZLES = {
     "hanna": [
      "either",
      [
-      "arisa",
-      "sherry"
-     ]
-    ],
-    "miria": [
-     "swap_claim",
-     [
-      "sherry"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "hanna",
-   "false_cards": [
-    "hanna"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-2",
-   "key": "b70496436538",
-   "tier": "hard",
-   "incident": "sweets",
-   "n": 2,
-   "speakers": [
-    "margo",
-    "reia",
-    "coco",
-    "miria",
-    "ema",
-    "sherry"
-   ],
-   "logic": {
-    "margo": [
-     "either",
-     [
-      "coco",
-      "ema"
-     ]
-    ],
-    "reia": [
-     "accuse",
-     [
-      "ema"
-     ]
-    ],
-    "coco": [
-     "meta_false",
-     [
-      "margo"
-     ]
-    ],
-    "miria": [
-     "meta_false",
-     [
-      "ema"
-     ]
-    ],
-    "ema": [
-     "self_or",
-     [
-      "sherry"
-     ]
-    ],
-    "sherry": [
-     "either",
-     [
-      "coco",
+      "ema",
       "miria"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "miria",
-   "false_cards": [
-    "margo",
-    "reia",
-    "ema"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-3",
-   "key": "19cc5f7f9fa8",
-   "tier": "normal",
-   "incident": "diary",
-   "n": 1,
-   "speakers": [
-    "margo",
-    "noah",
-    "anan",
-    "nanoka",
-    "coco"
-   ],
-   "logic": {
-    "margo": [
-     "self_or",
-     [
-      "nanoka"
-     ]
-    ],
-    "noah": [
-     "accuse",
-     [
-      "coco"
-     ]
-    ],
-    "anan": [
-     "deny",
-     [
-      "noah"
-     ]
-    ],
-    "nanoka": [
-     "culprit_is",
-     [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "either",
-     [
-      "nanoka",
-      "noah"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "coco",
-   "false_cards": [
-    "margo",
-    "coco"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-4",
-   "key": "71104382a2e9",
-   "tier": "hard",
-   "incident": "matches",
-   "n": 2,
-   "speakers": [
-    "ema",
-    "sherry",
-    "meruru",
-    "miria",
-    "margo",
-    "anan"
-   ],
-   "logic": {
-    "ema": [
-     "either",
-     [
-      "margo",
-      "miria"
-     ]
-    ],
-    "sherry": [
-     "either",
-     [
-      "anan",
-      "meruru"
-     ]
-    ],
-    "meruru": [
-     "accuse",
-     [
-      "miria"
-     ]
-    ],
-    "miria": [
-     "meta_true",
-     [
-      "meruru"
-     ]
-    ],
-    "margo": [
-     "meta_true",
-     [
-      "ema"
-     ]
-    ],
-    "anan": [
-     "culprit_is",
-     [
-      "meruru"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "margo"
-   ],
-   "answer": "meruru",
-   "false_cards": [
-    "ema",
-    "meruru",
-    "miria",
-    "margo"
-   ],
-   "worlds": 9
-  },
-  {
-   "id": "daily-5",
-   "key": "3c5c8f64f67f",
-   "tier": "normal",
-   "incident": "sweets",
-   "n": 1,
-   "speakers": [
-    "miria",
-    "sherry",
-    "arisa",
-    "reia",
-    "margo"
-   ],
-   "logic": {
-    "miria": [
-     "meta_true",
-     [
-      "sherry"
-     ]
-    ],
-    "sherry": [
-     "either",
-     [
-      "arisa",
-      "margo"
-     ]
-    ],
-    "arisa": [
-     "swap_claim",
-     [
-      "sherry"
-     ]
-    ],
-    "reia": [
-     "accuse",
-     [
-      "sherry"
-     ]
-    ],
-    "margo": [
-     "self_or",
-     [
-      "reia"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "margo",
-   "false_cards": [
-    "reia"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-6",
-   "key": "f58d234f582c",
-   "tier": "hard",
-   "incident": "diary",
-   "n": 2,
-   "speakers": [
-    "noah",
-    "margo",
-    "coco",
-    "sherry",
-    "reia",
-    "anan"
-   ],
-   "logic": {
-    "noah": [
-     "deny",
-     [
-      "sherry"
-     ]
-    ],
-    "margo": [
-     "meta_false",
-     [
-      "reia"
-     ]
-    ],
-    "coco": [
-     "meta_true",
-     [
-      "anan"
-     ]
-    ],
-    "sherry": [
-     "either",
-     [
-      "coco",
-      "margo"
-     ]
-    ],
-    "reia": [
-     "culprit_is",
-     [
-      "noah"
-     ]
-    ],
-    "anan": [
-     "deny_self",
-     []
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "sherry",
-   "false_cards": [
-    "noah",
-    "sherry",
-    "reia"
-   ],
-   "worlds": 3
-  },
-  {
-   "id": "daily-7",
-   "key": "42a88c9f256e",
-   "tier": "normal",
-   "incident": "stream",
-   "n": 2,
-   "speakers": [
-    "meruru",
-    "miria",
-    "anan",
-    "noah",
-    "ema"
-   ],
-   "logic": {
-    "meruru": [
-     "deny",
-     [
-      "miria"
-     ]
-    ],
-    "miria": [
-     "deny",
-     [
-      "ema"
-     ]
-    ],
-    "anan": [
-     "meta_true",
-     [
-      "noah"
-     ]
-    ],
-    "noah": [
-     "self_or",
-     [
-      "meruru"
      ]
     ],
     "ema": [
      "culprit_is",
      [
-      "noah"
+      "hanna"
      ]
     ]
    },
@@ -1972,153 +1688,1327 @@ window.PUZZLES = {
    "answer": "anan",
    "false_cards": [
     "anan",
-    "noah",
+    "hanna",
     "ema"
    ],
    "worlds": 2
   },
   {
-   "id": "daily-8",
-   "key": "dd07b0e374a9",
+   "id": "daily-4",
+   "key": "1a29121a4fc0",
    "tier": "hard",
-   "incident": "sweets",
+   "incident": "costume",
    "n": 2,
    "speakers": [
-    "miria",
-    "margo",
-    "coco",
-    "reia",
-    "hanna"
+    "anan",
+    "arisa",
+    "sherry",
+    "nanoka",
+    "meruru",
+    "miria"
    ],
    "logic": {
-    "miria": [
+    "anan": [
+     "meta_true",
+     [
+      "miria"
+     ]
+    ],
+    "arisa": [
+     "accuse",
+     [
+      "anan"
+     ]
+    ],
+    "sherry": [
      "either",
      [
-      "hanna",
-      "reia"
+      "meruru",
+      "nanoka"
+     ]
+    ],
+    "nanoka": [
+     "swap_claim",
+     [
+      "sherry"
+     ]
+    ],
+    "meruru": [
+     "culprit_is",
+     [
+      "nanoka"
+     ]
+    ],
+    "miria": [
+     "self_or",
+     [
+      "meruru"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "arisa",
+    "meruru"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-5",
+   "key": "891f94801f8d",
+   "tier": "normal",
+   "incident": "diary",
+   "n": 1,
+   "speakers": [
+    "nanoka",
+    "margo",
+    "coco",
+    "anan"
+   ],
+   "logic": {
+    "nanoka": [
+     "self_or",
+     [
+      "anan"
      ]
     ],
     "margo": [
-     "self_or",
+     "meta_true",
      [
-      "hanna"
+      "anan"
      ]
     ],
     "coco": [
-     "accuse",
+     "deny",
+     [
+      "nanoka"
+     ]
+    ],
+    "anan": [
+     "either",
+     [
+      "coco",
+      "nanoka"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "margo",
+    "anan"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-6",
+   "key": "82d64acad037",
+   "tier": "hard",
+   "incident": "ribbon",
+   "n": 2,
+   "speakers": [
+    "miria",
+    "meruru",
+    "margo",
+    "anan",
+    "sherry"
+   ],
+   "logic": {
+    "miria": [
+     "deny_self",
+     []
+    ],
+    "meruru": [
+     "deny",
      [
       "margo"
      ]
     ],
-    "reia": [
+    "margo": [
+     "meta_true",
+     [
+      "miria"
+     ]
+    ],
+    "anan": [
+     "meta_true",
+     [
+      "margo"
+     ]
+    ],
+    "sherry": [
+     "self_or",
+     [
+      "meruru"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "margo"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "miria",
+    "margo",
+    "anan",
+    "sherry"
+   ],
+   "worlds": 4
+  },
+  {
+   "id": "daily-7",
+   "key": "24e119371890",
+   "tier": "normal",
+   "incident": "headphones",
+   "n": 1,
+   "speakers": [
+    "hanna",
+    "noah",
+    "meruru",
+    "ema",
+    "miria"
+   ],
+   "logic": {
+    "hanna": [
+     "deny_self",
+     []
+    ],
+    "noah": [
+     "accuse",
+     [
+      "meruru"
+     ]
+    ],
+    "meruru": [
+     "meta_true",
+     [
+      "miria"
+     ]
+    ],
+    "ema": [
+     "culprit_is",
+     [
+      "hanna"
+     ]
+    ],
+    "miria": [
+     "swap_claim",
+     [
+      "ema"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "ema"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-8",
+   "key": "74836aefb757",
+   "tier": "hard",
+   "incident": "fan",
+   "n": 2,
+   "speakers": [
+    "anan",
+    "nanoka",
+    "miria",
+    "reia",
+    "margo"
+   ],
+   "logic": {
+    "anan": [
      "culprit_is",
      [
       "margo"
      ]
     ],
-    "hanna": [
-     "deny_self",
-     []
+    "nanoka": [
+     "culprit_is",
+     [
+      "reia"
+     ]
+    ],
+    "miria": [
+     "meta_true",
+     [
+      "margo"
+     ]
+    ],
+    "reia": [
+     "either",
+     [
+      "anan",
+      "nanoka"
+     ]
+    ],
+    "margo": [
+     "swap_claim",
+     [
+      "margo"
+     ]
     ]
    },
    "magic_ids": [
-    "margo"
+    "anan",
+    "miria"
    ],
-   "answer": "reia",
+   "answer": "miria",
    "false_cards": [
-    "margo",
-    "coco",
+    "anan",
+    "nanoka",
     "reia"
    ],
    "worlds": 2
   },
   {
    "id": "daily-9",
-   "key": "ee90295f34b7",
+   "key": "e014d4121f3a",
    "tier": "normal",
-   "incident": "stream",
+   "incident": "costume",
    "n": 1,
    "speakers": [
+    "sherry",
+    "anan",
+    "meruru",
+    "arisa"
+   ],
+   "logic": {
+    "sherry": [
+     "culprit_is",
+     [
+      "anan"
+     ]
+    ],
+    "anan": [
+     "deny",
+     [
+      "arisa"
+     ]
+    ],
+    "meruru": [
+     "either",
+     [
+      "arisa",
+      "sherry"
+     ]
+    ],
+    "arisa": [
+     "culprit_is",
+     [
+      "sherry"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "meruru",
+    "arisa"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-10",
+   "key": "a99e0bfbcf4c",
+   "tier": "hard",
+   "incident": "sweets",
+   "n": 2,
+   "speakers": [
+    "coco",
+    "hanna",
+    "anan",
+    "margo",
+    "arisa"
+   ],
+   "logic": {
+    "coco": [
+     "deny_self",
+     []
+    ],
+    "hanna": [
+     "meta_true",
+     [
+      "anan"
+     ]
+    ],
+    "anan": [
+     "accuse",
+     [
+      "arisa"
+     ]
+    ],
+    "margo": [
+     "self_or",
+     [
+      "hanna"
+     ]
+    ],
+    "arisa": [
+     "culprit_is",
+     [
+      "margo"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "hanna",
+    "anan",
+    "arisa"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-11",
+   "key": "67dd6d7b3b49",
+   "tier": "normal",
+   "incident": "sweets",
+   "n": 2,
+   "speakers": [
+    "coco",
+    "anan",
     "miria",
-    "nanoka",
-    "noah",
     "meruru"
    ],
    "logic": {
-    "miria": [
-     "culprit_is",
+    "coco": [
+     "meta_false",
      [
       "meruru"
      ]
     ],
-    "nanoka": [
-     "swap_claim",
+    "anan": [
+     "self_or",
      [
-      "noah"
+      "meruru"
      ]
     ],
-    "noah": [
-     "culprit_is",
+    "miria": [
+     "either",
      [
-      "miria"
+      "anan",
+      "coco"
      ]
     ],
     "meruru": [
-     "meta_true",
+     "culprit_is",
      [
+      "coco"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "anan",
+    "miria",
+    "meruru"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-12",
+   "key": "b2d6c22d0ead",
+   "tier": "hard",
+   "incident": "stream",
+   "n": 2,
+   "speakers": [
+    "sherry",
+    "hanna",
+    "noah",
+    "anan",
+    "reia",
+    "miria"
+   ],
+   "logic": {
+    "sherry": [
+     "self_or",
+     [
+      "anan"
+     ]
+    ],
+    "hanna": [
+     "meta_false",
+     [
+      "sherry"
+     ]
+    ],
+    "noah": [
+     "either",
+     [
+      "reia",
+      "sherry"
+     ]
+    ],
+    "anan": [
+     "self_or",
+     [
+      "sherry"
+     ]
+    ],
+    "reia": [
+     "deny",
+     [
+      "sherry"
+     ]
+    ],
+    "miria": [
+     "meta_false",
+     [
+      "hanna"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "reia",
+   "false_cards": [
+    "sherry",
+    "anan",
+    "miria"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-13",
+   "key": "3c46624786f3",
+   "tier": "normal",
+   "incident": "matches",
+   "n": 1,
+   "speakers": [
+    "noah",
+    "anan",
+    "sherry",
+    "miria"
+   ],
+   "logic": {
+    "noah": [
+     "culprit_is",
+     [
+      "anan"
+     ]
+    ],
+    "anan": [
+     "meta_false",
+     [
+      "sherry"
+     ]
+    ],
+    "sherry": [
+     "either",
+     [
+      "anan",
       "miria"
+     ]
+    ],
+    "miria": [
+     "swap_claim",
+     [
+      "anan"
      ]
     ]
    },
    "magic_ids": [
     "miria"
    ],
-   "answer": "meruru",
+   "answer": "anan",
    "false_cards": [
-    "noah"
+    "anan"
    ],
    "worlds": 1
   },
   {
-   "id": "daily-10",
-   "key": "8ace8b40b649",
+   "id": "daily-14",
+   "key": "9b6e935f6466",
    "tier": "hard",
-   "incident": "hairpin",
+   "incident": "sketch",
    "n": 2,
    "speakers": [
+    "coco",
+    "margo",
     "hanna",
-    "meruru",
-    "arisa",
     "anan",
-    "noah"
+    "arisa"
    ],
    "logic": {
-    "hanna": [
-     "deny",
+    "coco": [
+     "meta_true",
      [
-      "noah"
+      "anan"
      ]
     ],
-    "meruru": [
-     "deny",
+    "margo": [
+     "accuse",
+     [
+      "coco"
+     ]
+    ],
+    "hanna": [
+     "accuse",
      [
       "arisa"
+     ]
+    ],
+    "anan": [
+     "deny",
+     [
+      "margo"
      ]
     ],
     "arisa": [
      "meta_false",
      [
+      "margo"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "margo"
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "coco",
+    "margo",
+    "hanna",
+    "anan"
+   ],
+   "worlds": 4
+  },
+  {
+   "id": "daily-15",
+   "key": "b422ca248b08",
+   "tier": "normal",
+   "incident": "bandage",
+   "n": 1,
+   "speakers": [
+    "reia",
+    "noah",
+    "margo",
+    "miria"
+   ],
+   "logic": {
+    "reia": [
+     "culprit_is",
+     [
+      "miria"
+     ]
+    ],
+    "noah": [
+     "either",
+     [
+      "miria",
+      "reia"
+     ]
+    ],
+    "margo": [
+     "swap_claim",
+     [
+      "margo"
+     ]
+    ],
+    "miria": [
+     "meta_true",
+     [
+      "margo"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "reia",
+   "false_cards": [
+    "reia"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-16",
+   "key": "58a4a98444d0",
+   "tier": "hard",
+   "incident": "ribbon",
+   "n": 2,
+   "speakers": [
+    "coco",
+    "anan",
+    "miria",
+    "noah",
+    "nanoka",
+    "margo"
+   ],
+   "logic": {
+    "coco": [
+     "accuse",
+     [
+      "miria"
+     ]
+    ],
+    "anan": [
+     "meta_true",
+     [
+      "coco"
+     ]
+    ],
+    "miria": [
+     "swap_claim",
+     [
+      "anan"
+     ]
+    ],
+    "noah": [
+     "deny",
+     [
+      "coco"
+     ]
+    ],
+    "nanoka": [
+     "meta_false",
+     [
+      "noah"
+     ]
+    ],
+    "margo": [
+     "accuse",
+     [
+      "coco"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "nanoka",
+    "margo"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-17",
+   "key": "523467ee37b4",
+   "tier": "normal",
+   "incident": "handkerchief",
+   "n": 1,
+   "speakers": [
+    "ema",
+    "hanna",
+    "sherry",
+    "nanoka",
+    "anan"
+   ],
+   "logic": {
+    "ema": [
+     "culprit_is",
+     [
+      "hanna"
+     ]
+    ],
+    "hanna": [
+     "deny",
+     [
+      "ema"
+     ]
+    ],
+    "sherry": [
+     "culprit_is",
+     [
+      "anan"
+     ]
+    ],
+    "nanoka": [
+     "accuse",
+     [
       "anan"
      ]
     ],
     "anan": [
-     "self_or",
+     "accuse",
+     [
+      "ema"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "ema",
+    "anan"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-18",
+   "key": "f537b75db40a",
+   "tier": "hard",
+   "incident": "mirror",
+   "n": 2,
+   "speakers": [
+    "meruru",
+    "sherry",
+    "miria",
+    "arisa",
+    "margo",
+    "noah"
+   ],
+   "logic": {
+    "meruru": [
+     "meta_false",
+     [
+      "margo"
+     ]
+    ],
+    "sherry": [
+     "deny_self",
+     []
+    ],
+    "miria": [
+     "culprit_is",
+     [
+      "noah"
+     ]
+    ],
+    "arisa": [
+     "accuse",
+     [
+      "miria"
+     ]
+    ],
+    "margo": [
+     "meta_false",
      [
       "arisa"
      ]
     ],
     "noah": [
+     "either",
+     [
+      "arisa",
+      "sherry"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "miria",
+    "margo",
+    "noah"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-19",
+   "key": "87f424c92d66",
+   "tier": "normal",
+   "incident": "tea",
+   "n": 1,
+   "speakers": [
+    "miria",
+    "arisa",
+    "sherry",
+    "margo",
+    "reia"
+   ],
+   "logic": {
+    "miria": [
+     "deny_self",
+     []
+    ],
+    "arisa": [
+     "culprit_is",
+     [
+      "margo"
+     ]
+    ],
+    "sherry": [
      "meta_true",
+     [
+      "reia"
+     ]
+    ],
+    "margo": [
+     "accuse",
+     [
+      "miria"
+     ]
+    ],
+    "reia": [
+     "culprit_is",
+     [
+      "sherry"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "sherry",
+   "false_cards": [
+    "arisa",
+    "margo"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-20",
+   "key": "40eb7e964bd8",
+   "tier": "hard",
+   "incident": "letter",
+   "n": 2,
+   "speakers": [
+    "coco",
+    "miria",
+    "reia",
+    "anan",
+    "hanna"
+   ],
+   "logic": {
+    "coco": [
+     "accuse",
+     [
+      "reia"
+     ]
+    ],
+    "miria": [
+     "meta_true",
+     [
+      "hanna"
+     ]
+    ],
+    "reia": [
+     "meta_false",
+     [
+      "hanna"
+     ]
+    ],
+    "anan": [
+     "either",
+     [
+      "coco",
+      "hanna"
+     ]
+    ],
+    "hanna": [
+     "either",
+     [
+      "coco",
+      "reia"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "coco",
+    "miria",
+    "hanna"
+   ],
+   "worlds": 3
+  },
+  {
+   "id": "daily-21",
+   "key": "6953fca865c8",
+   "tier": "normal",
+   "incident": "diary",
+   "n": 1,
+   "speakers": [
+    "nanoka",
+    "reia",
+    "coco",
+    "sherry",
+    "margo"
+   ],
+   "logic": {
+    "nanoka": [
+     "either",
+     [
+      "coco",
+      "reia"
+     ]
+    ],
+    "reia": [
+     "meta_false",
+     [
+      "nanoka"
+     ]
+    ],
+    "coco": [
+     "either",
+     [
+      "margo",
+      "nanoka"
+     ]
+    ],
+    "sherry": [
+     "self_or",
+     [
+      "margo"
+     ]
+    ],
+    "margo": [
+     "either",
+     [
+      "nanoka",
+      "reia"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "nanoka",
+    "margo"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-22",
+   "key": "d7ab7520d626",
+   "tier": "hard",
+   "incident": "ribbon",
+   "n": 2,
+   "speakers": [
+    "miria",
+    "arisa",
+    "anan",
+    "reia",
+    "meruru"
+   ],
+   "logic": {
+    "miria": [
+     "accuse",
+     [
+      "reia"
+     ]
+    ],
+    "arisa": [
+     "meta_true",
+     [
+      "meruru"
+     ]
+    ],
+    "anan": [
+     "swap_claim",
+     [
+      "reia"
+     ]
+    ],
+    "reia": [
+     "either",
+     [
+      "meruru",
+      "miria"
+     ]
+    ],
+    "meruru": [
+     "self_or",
+     [
+      "reia"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "miria"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "miria",
+    "arisa",
+    "meruru"
+   ],
+   "worlds": 3
+  },
+  {
+   "id": "daily-23",
+   "key": "03c1e9f6ac24",
+   "tier": "normal",
+   "incident": "bookmarks",
+   "n": 1,
+   "speakers": [
+    "noah",
+    "reia",
+    "margo",
+    "meruru",
+    "sherry"
+   ],
+   "logic": {
+    "noah": [
+     "accuse",
+     [
+      "margo"
+     ]
+    ],
+    "reia": [
+     "culprit_is",
+     [
+      "noah"
+     ]
+    ],
+    "margo": [
+     "self_or",
+     [
+      "meruru"
+     ]
+    ],
+    "meruru": [
+     "deny_self",
+     []
+    ],
+    "sherry": [
+     "either",
+     [
+      "noah",
+      "reia"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "noah",
+   "false_cards": [
+    "noah",
+    "margo"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-24",
+   "key": "dff1952865af",
+   "tier": "hard",
+   "incident": "paints",
+   "n": 2,
+   "speakers": [
+    "nanoka",
+    "reia",
+    "arisa",
+    "miria",
+    "anan"
+   ],
+   "logic": {
+    "nanoka": [
+     "meta_true",
+     [
+      "anan"
+     ]
+    ],
+    "reia": [
+     "self_or",
+     [
+      "miria"
+     ]
+    ],
+    "arisa": [
+     "self_or",
+     [
+      "nanoka"
+     ]
+    ],
+    "miria": [
+     "self_or",
+     [
+      "anan"
+     ]
+    ],
+    "anan": [
+     "accuse",
+     [
+      "reia"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "nanoka",
+    "arisa",
+    "anan"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-25",
+   "key": "ba221a429417",
+   "tier": "normal",
+   "incident": "ribbon",
+   "n": 1,
+   "speakers": [
+    "meruru",
+    "anan",
+    "coco",
+    "miria"
+   ],
+   "logic": {
+    "meruru": [
+     "deny",
+     [
+      "miria"
+     ]
+    ],
+    "anan": [
+     "meta_true",
+     [
+      "coco"
+     ]
+    ],
+    "coco": [
+     "deny_self",
+     []
+    ],
+    "miria": [
+     "accuse",
+     [
+      "meruru"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "meruru",
+    "miria"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-26",
+   "key": "0cfc9649e0a9",
+   "tier": "hard",
+   "incident": "mirror",
+   "n": 2,
+   "speakers": [
+    "anan",
+    "noah",
+    "sherry",
+    "margo",
+    "ema",
+    "nanoka"
+   ],
+   "logic": {
+    "anan": [
+     "culprit_is",
+     [
+      "nanoka"
+     ]
+    ],
+    "noah": [
+     "deny",
+     [
+      "margo"
+     ]
+    ],
+    "sherry": [
+     "meta_true",
+     [
+      "nanoka"
+     ]
+    ],
+    "margo": [
+     "either",
+     [
+      "ema",
+      "nanoka"
+     ]
+    ],
+    "ema": [
+     "meta_true",
+     [
+      "noah"
+     ]
+    ],
+    "nanoka": [
+     "deny_self",
+     []
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "margo"
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "anan",
+    "noah",
+    "margo",
+    "ema"
+   ],
+   "worlds": 4
+  },
+  {
+   "id": "daily-27",
+   "key": "1db9afc55af3",
+   "tier": "normal",
+   "incident": "ribbon",
+   "n": 2,
+   "speakers": [
+    "nanoka",
+    "noah",
+    "sherry",
+    "anan",
+    "meruru"
+   ],
+   "logic": {
+    "nanoka": [
+     "self_or",
+     [
+      "anan"
+     ]
+    ],
+    "noah": [
+     "either",
+     [
+      "meruru",
+      "nanoka"
+     ]
+    ],
+    "sherry": [
+     "deny",
+     [
+      "noah"
+     ]
+    ],
+    "anan": [
+     "deny",
+     [
+      "nanoka"
+     ]
+    ],
+    "meruru": [
+     "deny",
      [
       "anan"
      ]
@@ -2129,984 +3019,96 @@ window.PUZZLES = {
    ],
    "answer": "noah",
    "false_cards": [
-    "hanna",
-    "anan",
-    "noah"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-11",
-   "key": "316e0c39016f",
-   "tier": "normal",
-   "incident": "diary",
-   "n": 1,
-   "speakers": [
     "nanoka",
-    "coco",
-    "reia",
-    "anan",
-    "margo"
-   ],
-   "logic": {
-    "nanoka": [
-     "deny",
-     [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "meta_false",
-     [
-      "reia"
-     ]
-    ],
-    "reia": [
-     "accuse",
-     [
-      "nanoka"
-     ]
-    ],
-    "anan": [
-     "self_or",
-     [
-      "coco"
-     ]
-    ],
-    "margo": [
-     "self_or",
-     [
-      "nanoka"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "anan",
-   "false_cards": [
-    "reia",
-    "margo"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-12",
-   "key": "947d9ae5201f",
-   "tier": "hard",
-   "incident": "sketch",
-   "n": 2,
-   "speakers": [
-    "meruru",
-    "miria",
-    "hanna",
-    "anan",
-    "reia"
-   ],
-   "logic": {
-    "meruru": [
-     "either",
-     [
-      "hanna",
-      "reia"
-     ]
-    ],
-    "miria": [
-     "culprit_is",
-     [
-      "reia"
-     ]
-    ],
-    "hanna": [
-     "swap_claim",
-     [
-      "reia"
-     ]
-    ],
-    "anan": [
-     "accuse",
-     [
-      "reia"
-     ]
-    ],
-    "reia": [
-     "meta_true",
-     [
-      "anan"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "miria"
-   ],
-   "answer": "hanna",
-   "false_cards": [
-    "miria",
-    "anan",
-    "reia"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-13",
-   "key": "cdffa8710bf6",
-   "tier": "normal",
-   "incident": "ribbon",
-   "n": 1,
-   "speakers": [
-    "nanoka",
-    "anan",
     "noah",
-    "margo",
-    "reia"
-   ],
-   "logic": {
-    "nanoka": [
-     "deny_self",
-     []
-    ],
-    "anan": [
-     "meta_false",
-     [
-      "margo"
-     ]
-    ],
-    "noah": [
-     "accuse",
-     [
-      "reia"
-     ]
-    ],
-    "margo": [
-     "culprit_is",
-     [
-      "noah"
-     ]
-    ],
-    "reia": [
-     "accuse",
-     [
-      "noah"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "reia",
-   "false_cards": [
-    "margo",
-    "reia"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-14",
-   "key": "3a676307f231",
-   "tier": "hard",
-   "incident": "mirror",
-   "n": 2,
-   "speakers": [
-    "margo",
-    "anan",
-    "hanna",
-    "ema",
-    "coco",
-    "miria"
-   ],
-   "logic": {
-    "margo": [
-     "meta_true",
-     [
-      "miria"
-     ]
-    ],
-    "anan": [
-     "swap_claim",
-     [
-      "coco"
-     ]
-    ],
-    "hanna": [
-     "either",
-     [
-      "ema",
-      "miria"
-     ]
-    ],
-    "ema": [
-     "accuse",
-     [
-      "miria"
-     ]
-    ],
-    "coco": [
-     "either",
-     [
-      "hanna",
-      "miria"
-     ]
-    ],
-    "miria": [
-     "self_or",
-     [
-      "hanna"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "hanna",
-   "false_cards": [
-    "hanna",
-    "ema"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-15",
-   "key": "2cd17ec0491c",
-   "tier": "normal",
-   "incident": "ribbon",
-   "n": 2,
-   "speakers": [
-    "miria",
-    "anan",
-    "margo",
-    "meruru",
-    "arisa"
-   ],
-   "logic": {
-    "miria": [
-     "self_or",
-     [
-      "arisa"
-     ]
-    ],
-    "anan": [
-     "meta_true",
-     [
-      "margo"
-     ]
-    ],
-    "margo": [
-     "deny_self",
-     []
-    ],
-    "meruru": [
-     "culprit_is",
-     [
-      "margo"
-     ]
-    ],
-    "arisa": [
-     "accuse",
-     [
-      "anan"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "meruru",
-   "false_cards": [
-    "miria",
-    "meruru",
-    "arisa"
-   ],
-   "worlds": 3
-  },
-  {
-   "id": "daily-16",
-   "key": "6740508e9f14",
-   "tier": "hard",
-   "incident": "tea",
-   "n": 2,
-   "speakers": [
-    "hanna",
-    "margo",
-    "noah",
-    "ema",
-    "reia",
-    "meruru"
-   ],
-   "logic": {
-    "hanna": [
-     "culprit_is",
-     [
-      "ema"
-     ]
-    ],
-    "margo": [
-     "self_or",
-     [
-      "hanna"
-     ]
-    ],
-    "noah": [
-     "either",
-     [
-      "margo",
-      "meruru"
-     ]
-    ],
-    "ema": [
-     "either",
-     [
-      "margo",
-      "noah"
-     ]
-    ],
-    "reia": [
-     "meta_true",
-     [
-      "meruru"
-     ]
-    ],
-    "meruru": [
-     "meta_true",
-     [
-      "noah"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "meruru",
-   "false_cards": [
-    "hanna",
-    "margo",
-    "ema"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-17",
-   "key": "3dbecb4bd945",
-   "tier": "normal",
-   "incident": "matches",
-   "n": 1,
-   "speakers": [
-    "reia",
-    "coco",
-    "noah",
-    "margo",
-    "hanna"
-   ],
-   "logic": {
-    "reia": [
-     "self_or",
-     [
-      "margo"
-     ]
-    ],
-    "coco": [
-     "culprit_is",
-     [
-      "margo"
-     ]
-    ],
-    "noah": [
-     "culprit_is",
-     [
-      "coco"
-     ]
-    ],
-    "margo": [
-     "culprit_is",
-     [
-      "noah"
-     ]
-    ],
-    "hanna": [
-     "meta_false",
-     [
-      "noah"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "margo",
-   "false_cards": [
-    "noah",
-    "margo"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-18",
-   "key": "0592f04b78ab",
-   "tier": "hard",
-   "incident": "pot",
-   "n": 2,
-   "speakers": [
-    "anan",
-    "miria",
-    "meruru",
-    "reia",
-    "margo"
-   ],
-   "logic": {
-    "anan": [
-     "deny_self",
-     []
-    ],
-    "miria": [
-     "self_or",
-     [
-      "margo"
-     ]
-    ],
-    "meruru": [
-     "either",
-     [
-      "margo",
-      "miria"
-     ]
-    ],
-    "reia": [
-     "culprit_is",
-     [
-      "meruru"
-     ]
-    ],
-    "margo": [
-     "culprit_is",
-     [
-      "miria"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "meruru",
-   "false_cards": [
-    "miria",
-    "meruru",
-    "margo"
-   ],
-   "worlds": 3
-  },
-  {
-   "id": "daily-19",
-   "key": "3d745591fc12",
-   "tier": "normal",
-   "incident": "tea",
-   "n": 1,
-   "speakers": [
-    "margo",
-    "sherry",
-    "nanoka",
-    "miria",
-    "ema"
-   ],
-   "logic": {
-    "margo": [
-     "meta_true",
-     [
-      "sherry"
-     ]
-    ],
-    "sherry": [
-     "swap_claim",
-     [
-      "ema"
-     ]
-    ],
-    "nanoka": [
-     "either",
-     [
-      "ema",
-      "sherry"
-     ]
-    ],
-    "miria": [
-     "culprit_is",
-     [
-      "sherry"
-     ]
-    ],
-    "ema": [
-     "swap_claim",
-     [
-      "nanoka"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "sherry",
-   "false_cards": [
-    "ema"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-20",
-   "key": "44c3b9cfeb95",
-   "tier": "hard",
-   "incident": "sketch",
-   "n": 2,
-   "speakers": [
-    "arisa",
-    "margo",
-    "coco",
-    "anan",
-    "hanna"
-   ],
-   "logic": {
-    "arisa": [
-     "deny",
-     [
-      "margo"
-     ]
-    ],
-    "margo": [
-     "meta_false",
-     [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "culprit_is",
-     [
-      "arisa"
-     ]
-    ],
-    "anan": [
-     "culprit_is",
-     [
-      "coco"
-     ]
-    ],
-    "hanna": [
-     "meta_true",
-     [
-      "anan"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "arisa",
-   "false_cards": [
-    "margo",
-    "anan",
-    "hanna"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-21",
-   "key": "61122c0c4ff9",
-   "tier": "normal",
-   "incident": "pot",
-   "n": 1,
-   "speakers": [
-    "margo",
-    "anan",
-    "hanna",
-    "coco"
-   ],
-   "logic": {
-    "margo": [
-     "accuse",
-     [
-      "hanna"
-     ]
-    ],
-    "anan": [
-     "either",
-     [
-      "coco",
-      "margo"
-     ]
-    ],
-    "hanna": [
-     "culprit_is",
-     [
-      "anan"
-     ]
-    ],
-    "coco": [
-     "deny",
-     [
-      "margo"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "coco",
-   "false_cards": [
-    "margo",
-    "hanna"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-22",
-   "key": "dd4748d850ae",
-   "tier": "hard",
-   "incident": "sketch",
-   "n": 2,
-   "speakers": [
-    "anan",
-    "coco",
-    "hanna",
-    "miria",
-    "reia",
-    "margo"
-   ],
-   "logic": {
-    "anan": [
-     "meta_true",
-     [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "meta_true",
-     [
-      "hanna"
-     ]
-    ],
-    "hanna": [
-     "accuse",
-     [
-      "coco"
-     ]
-    ],
-    "miria": [
-     "swap_claim",
-     [
-      "coco"
-     ]
-    ],
-    "reia": [
-     "culprit_is",
-     [
-      "miria"
-     ]
-    ],
-    "margo": [
-     "deny_self",
-     []
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "miria"
-   ],
-   "answer": "miria",
-   "false_cards": [
-    "anan",
-    "coco",
-    "hanna"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-23",
-   "key": "257f16d9a6e0",
-   "tier": "normal",
-   "incident": "mirror",
-   "n": 1,
-   "speakers": [
-    "anan",
-    "meruru",
-    "sherry",
-    "ema"
-   ],
-   "logic": {
-    "anan": [
-     "culprit_is",
-     [
-      "meruru"
-     ]
-    ],
-    "meruru": [
-     "deny",
-     [
-      "ema"
-     ]
-    ],
-    "sherry": [
-     "self_or",
-     [
-      "meruru"
-     ]
-    ],
-    "ema": [
-     "deny",
-     [
-      "meruru"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "anan",
-   "false_cards": [
-    "anan",
     "sherry"
    ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-24",
-   "key": "412e4b03e846",
-   "tier": "hard",
-   "incident": "bandage",
-   "n": 2,
-   "speakers": [
-    "anan",
-    "coco",
-    "miria",
-    "ema",
-    "nanoka"
-   ],
-   "logic": {
-    "anan": [
-     "swap_claim",
-     [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "meta_true",
-     [
-      "ema"
-     ]
-    ],
-    "miria": [
-     "deny",
-     [
-      "nanoka"
-     ]
-    ],
-    "ema": [
-     "meta_true",
-     [
-      "nanoka"
-     ]
-    ],
-    "nanoka": [
-     "deny",
-     [
-      "ema"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "miria"
-   ],
-   "answer": "ema",
-   "false_cards": [
-    "coco",
-    "ema",
-    "nanoka"
-   ],
    "worlds": 3
-  },
-  {
-   "id": "daily-25",
-   "key": "35dc74449863",
-   "tier": "normal",
-   "incident": "sweets",
-   "n": 2,
-   "speakers": [
-    "reia",
-    "hanna",
-    "ema",
-    "meruru",
-    "miria"
-   ],
-   "logic": {
-    "reia": [
-     "swap_claim",
-     [
-      "reia"
-     ]
-    ],
-    "hanna": [
-     "accuse",
-     [
-      "miria"
-     ]
-    ],
-    "ema": [
-     "self_or",
-     [
-      "hanna"
-     ]
-    ],
-    "meruru": [
-     "meta_true",
-     [
-      "reia"
-     ]
-    ],
-    "miria": [
-     "deny",
-     [
-      "reia"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "meruru",
-   "false_cards": [
-    "hanna",
-    "ema"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-26",
-   "key": "637d7dd6479f",
-   "tier": "hard",
-   "incident": "diary",
-   "n": 2,
-   "speakers": [
-    "coco",
-    "margo",
-    "anan",
-    "meruru",
-    "hanna"
-   ],
-   "logic": {
-    "coco": [
-     "meta_true",
-     [
-      "anan"
-     ]
-    ],
-    "margo": [
-     "either",
-     [
-      "anan",
-      "meruru"
-     ]
-    ],
-    "anan": [
-     "culprit_is",
-     [
-      "hanna"
-     ]
-    ],
-    "meruru": [
-     "self_or",
-     [
-      "anan"
-     ]
-    ],
-    "hanna": [
-     "culprit_is",
-     [
-      "margo"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "hanna",
-   "false_cards": [
-    "margo",
-    "meruru",
-    "hanna"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-27",
-   "key": "7f74be30806f",
-   "tier": "normal",
-   "incident": "mirror",
-   "n": 1,
-   "speakers": [
-    "anan",
-    "hanna",
-    "coco",
-    "miria"
-   ],
-   "logic": {
-    "anan": [
-     "deny",
-     [
-      "hanna"
-     ]
-    ],
-    "hanna": [
-     "accuse",
-     [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "deny",
-     [
-      "miria"
-     ]
-    ],
-    "miria": [
-     "deny_self",
-     []
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "hanna",
-   "false_cards": [
-    "anan",
-    "hanna"
-   ],
-   "worlds": 1
   },
   {
    "id": "daily-28",
-   "key": "913a8fca0a22",
+   "key": "0125767d0130",
    "tier": "hard",
-   "incident": "sketch",
+   "incident": "headphones",
    "n": 2,
    "speakers": [
-    "margo",
-    "anan",
-    "ema",
+    "reia",
     "hanna",
-    "reia"
+    "anan",
+    "nanoka",
+    "noah",
+    "miria"
    ],
    "logic": {
-    "margo": [
+    "reia": [
      "meta_false",
      [
-      "hanna"
+      "miria"
+     ]
+    ],
+    "hanna": [
+     "culprit_is",
+     [
+      "nanoka"
      ]
     ],
     "anan": [
      "culprit_is",
      [
-      "ema"
+      "hanna"
      ]
     ],
-    "ema": [
-     "culprit_is",
+    "nanoka": [
+     "accuse",
+     [
+      "miria"
+     ]
+    ],
+    "noah": [
+     "meta_true",
+     [
+      "anan"
+     ]
+    ],
+    "miria": [
+     "self_or",
+     [
+      "reia"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "hanna",
+    "nanoka",
+    "miria"
+   ],
+   "worlds": 3
+  },
+  {
+   "id": "daily-29",
+   "key": "c4f6c53b44f8",
+   "tier": "normal",
+   "incident": "sweets",
+   "n": 1,
+   "speakers": [
+    "meruru",
+    "arisa",
+    "hanna",
+    "miria"
+   ],
+   "logic": {
+    "meruru": [
+     "meta_true",
+     [
+      "miria"
+     ]
+    ],
+    "arisa": [
+     "swap_claim",
      [
       "hanna"
      ]
@@ -3114,353 +3116,74 @@ window.PUZZLES = {
     "hanna": [
      "accuse",
      [
-      "ema"
-     ]
-    ],
-    "reia": [
-     "self_or",
-     [
-      "margo"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "ema",
-   "false_cards": [
-    "margo",
-    "ema",
-    "reia"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-29",
-   "key": "6a4f5d9cdcd5",
-   "tier": "normal",
-   "incident": "pot",
-   "n": 1,
-   "speakers": [
-    "nanoka",
-    "meruru",
-    "arisa",
-    "margo",
-    "reia"
-   ],
-   "logic": {
-    "nanoka": [
-     "meta_false",
-     [
-      "margo"
-     ]
-    ],
-    "meruru": [
-     "either",
-     [
-      "margo",
-      "reia"
-     ]
-    ],
-    "arisa": [
-     "either",
-     [
-      "meruru",
-      "nanoka"
-     ]
-    ],
-    "margo": [
-     "self_or",
-     [
       "arisa"
      ]
     ],
-    "reia": [
-     "either",
+    "miria": [
+     "accuse",
      [
-      "arisa",
-      "nanoka"
+      "meruru"
      ]
     ]
    },
    "magic_ids": [
-    "margo"
+    "miria"
    ],
-   "answer": "nanoka",
+   "answer": "meruru",
    "false_cards": [
-    "meruru",
-    "margo"
+    "hanna"
    ],
    "worlds": 1
   },
   {
    "id": "daily-30",
-   "key": "681346ca3e7b",
+   "key": "a3a8ecc894b1",
    "tier": "hard",
-   "incident": "mirror",
+   "incident": "ribbon",
    "n": 2,
    "speakers": [
-    "sherry",
-    "miria",
-    "hanna",
     "anan",
+    "sherry",
+    "arisa",
     "meruru",
-    "ema"
+    "reia",
+    "miria"
    ],
    "logic": {
-    "sherry": [
-     "accuse",
-     [
-      "anan"
-     ]
-    ],
-    "miria": [
-     "deny_self",
-     []
-    ],
-    "hanna": [
-     "either",
-     [
-      "meruru",
-      "sherry"
-     ]
-    ],
     "anan": [
-     "meta_true",
+     "swap_claim",
      [
       "meruru"
      ]
     ],
-    "meruru": [
-     "self_or",
-     [
-      "anan"
-     ]
-    ],
-    "ema": [
-     "meta_false",
-     [
-      "sherry"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "sherry",
-   "false_cards": [
-    "sherry",
-    "anan",
-    "meruru"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-31",
-   "key": "e2facb7c0a63",
-   "tier": "normal",
-   "incident": "matches",
-   "n": 1,
-   "speakers": [
-    "meruru",
-    "noah",
-    "ema",
-    "hanna",
-    "miria"
-   ],
-   "logic": {
-    "meruru": [
-     "either",
-     [
-      "ema",
-      "noah"
-     ]
-    ],
-    "noah": [
-     "either",
-     [
-      "ema",
-      "hanna"
-     ]
-    ],
-    "ema": [
-     "swap_claim",
-     [
-      "hanna"
-     ]
-    ],
-    "hanna": [
-     "self_or",
+    "sherry": [
+     "accuse",
      [
       "miria"
      ]
     ],
-    "miria": [
-     "self_or",
-     [
-      "ema"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "ema",
-   "false_cards": [
-    "hanna"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-32",
-   "key": "945cc5824760",
-   "tier": "hard",
-   "incident": "sweets",
-   "n": 2,
-   "speakers": [
-    "meruru",
-    "miria",
-    "hanna",
-    "anan",
-    "sherry"
-   ],
-   "logic": {
-    "meruru": [
-     "meta_true",
-     [
-      "hanna"
-     ]
-    ],
-    "miria": [
-     "accuse",
-     [
-      "hanna"
-     ]
-    ],
-    "hanna": [
-     "swap_claim",
-     [
-      "meruru"
-     ]
-    ],
-    "anan": [
-     "culprit_is",
-     [
-      "hanna"
-     ]
-    ],
-    "sherry": [
-     "deny_self",
-     []
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "miria"
-   ],
-   "answer": "sherry",
-   "false_cards": [
-    "miria",
-    "anan",
-    "sherry"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-33",
-   "key": "6853a73acfd0",
-   "tier": "normal",
-   "incident": "pot",
-   "n": 1,
-   "speakers": [
-    "anan",
-    "coco",
-    "arisa",
-    "miria"
-   ],
-   "logic": {
-    "anan": [
-     "self_or",
-     [
-      "arisa"
-     ]
-    ],
-    "coco": [
-     "deny_self",
-     []
-    ],
     "arisa": [
-     "accuse",
+     "culprit_is",
      [
       "anan"
      ]
     ],
-    "miria": [
-     "meta_false",
-     [
-      "coco"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "arisa",
-   "false_cards": [
-    "arisa",
-    "miria"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-34",
-   "key": "5147bc6c45ee",
-   "tier": "hard",
-   "incident": "stream",
-   "n": 2,
-   "speakers": [
-    "hanna",
-    "miria",
-    "sherry",
-    "anan",
-    "reia",
-    "arisa"
-   ],
-   "logic": {
-    "hanna": [
-     "meta_true",
-     [
-      "sherry"
-     ]
-    ],
-    "miria": [
-     "meta_true",
-     [
-      "arisa"
-     ]
-    ],
-    "sherry": [
-     "swap_claim",
-     [
-      "arisa"
-     ]
-    ],
-    "anan": [
-     "self_or",
+    "meruru": [
+     "culprit_is",
      [
       "arisa"
      ]
     ],
     "reia": [
-     "accuse",
+     "self_or",
      [
-      "anan"
+      "sherry"
      ]
     ],
-    "arisa": [
+    "miria": [
      "accuse",
      [
-      "hanna"
+      "arisa"
      ]
     ]
    },
@@ -3470,100 +3193,45 @@ window.PUZZLES = {
    ],
    "answer": "arisa",
    "false_cards": [
-    "miria",
-    "reia",
-    "arisa"
+    "sherry",
+    "arisa",
+    "reia"
    ],
    "worlds": 3
   },
   {
-   "id": "daily-35",
-   "key": "8895cec44d94",
+   "id": "daily-31",
+   "key": "8e0be7083657",
    "tier": "normal",
-   "incident": "pot",
-   "n": 1,
-   "speakers": [
-    "nanoka",
-    "reia",
-    "ema",
-    "miria"
-   ],
-   "logic": {
-    "nanoka": [
-     "accuse",
-     [
-      "reia"
-     ]
-    ],
-    "reia": [
-     "either",
-     [
-      "miria",
-      "nanoka"
-     ]
-    ],
-    "ema": [
-     "swap_claim",
-     [
-      "ema"
-     ]
-    ],
-    "miria": [
-     "either",
-     [
-      "ema",
-      "nanoka"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "nanoka",
-   "false_cards": [
-    "nanoka"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-36",
-   "key": "a68b6ede1f1f",
-   "tier": "hard",
-   "incident": "diary",
+   "incident": "paints",
    "n": 2,
    "speakers": [
-    "arisa",
-    "anan",
+    "sherry",
     "nanoka",
-    "reia",
-    "meruru"
+    "coco",
+    "anan"
    ],
    "logic": {
-    "arisa": [
+    "sherry": [
+     "culprit_is",
+     [
+      "nanoka"
+     ]
+    ],
+    "nanoka": [
      "self_or",
      [
       "anan"
      ]
     ],
+    "coco": [
+     "either",
+     [
+      "anan",
+      "sherry"
+     ]
+    ],
     "anan": [
-     "accuse",
-     [
-      "arisa"
-     ]
-    ],
-    "nanoka": [
-     "deny",
-     [
-      "anan"
-     ]
-    ],
-    "reia": [
-     "culprit_is",
-     [
-      "meruru"
-     ]
-    ],
-    "meruru": [
      "self_or",
      [
       "nanoka"
@@ -3573,112 +3241,397 @@ window.PUZZLES = {
    "magic_ids": [
     "anan"
    ],
-   "answer": "nanoka",
+   "answer": "sherry",
    "false_cards": [
-    "arisa",
-    "anan",
-    "reia"
+    "sherry",
+    "nanoka",
+    "anan"
    ],
    "worlds": 2
   },
   {
-   "id": "daily-37",
-   "key": "ef1fea828e12",
-   "tier": "normal",
-   "incident": "sweets",
-   "n": 1,
+   "id": "daily-32",
+   "key": "b7902950c8be",
+   "tier": "hard",
+   "incident": "diary",
+   "n": 2,
    "speakers": [
+    "meruru",
     "arisa",
-    "coco",
     "margo",
-    "anan",
-    "sherry"
+    "hanna",
+    "coco"
    ],
    "logic": {
+    "meruru": [
+     "deny",
+     [
+      "hanna"
+     ]
+    ],
     "arisa": [
      "meta_true",
      [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "self_or",
-     [
-      "anan"
+      "hanna"
      ]
     ],
     "margo": [
-     "either",
-     [
-      "arisa",
-      "sherry"
-     ]
-    ],
-    "anan": [
-     "deny",
+     "meta_false",
      [
       "coco"
      ]
     ],
-    "sherry": [
-     "self_or",
+    "hanna": [
+     "accuse",
      [
-      "coco"
+      "margo"
+     ]
+    ],
+    "coco": [
+     "culprit_is",
+     [
+      "arisa"
      ]
     ]
    },
    "magic_ids": [
     "margo"
    ],
-   "answer": "anan",
+   "answer": "arisa",
+   "false_cards": [
+    "arisa",
+    "margo",
+    "hanna"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-33",
+   "key": "0ee71632f92a",
+   "tier": "normal",
+   "incident": "ribbon",
+   "n": 2,
+   "speakers": [
+    "noah",
+    "coco",
+    "anan",
+    "reia"
+   ],
+   "logic": {
+    "noah": [
+     "self_or",
+     [
+      "anan"
+     ]
+    ],
+    "coco": [
+     "deny_self",
+     []
+    ],
+    "anan": [
+     "meta_false",
+     [
+      "coco"
+     ]
+    ],
+    "reia": [
+     "self_or",
+     [
+      "noah"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "coco",
+   "false_cards": [
+    "noah",
+    "coco",
+    "reia"
+   ],
+   "worlds": 3
+  },
+  {
+   "id": "daily-34",
+   "key": "6fe96eda1e2b",
+   "tier": "hard",
+   "incident": "paints",
+   "n": 2,
+   "speakers": [
+    "margo",
+    "hanna",
+    "reia",
+    "anan",
+    "ema",
+    "arisa"
+   ],
+   "logic": {
+    "margo": [
+     "meta_true",
+     [
+      "hanna"
+     ]
+    ],
+    "hanna": [
+     "meta_false",
+     [
+      "anan"
+     ]
+    ],
+    "reia": [
+     "accuse",
+     [
+      "hanna"
+     ]
+    ],
+    "anan": [
+     "either",
+     [
+      "ema",
+      "reia"
+     ]
+    ],
+    "ema": [
+     "self_or",
+     [
+      "anan"
+     ]
+    ],
+    "arisa": [
+     "either",
+     [
+      "anan",
+      "hanna"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "margo"
+   ],
+   "answer": "ema",
    "false_cards": [
     "margo",
+    "hanna",
+    "reia",
+    "arisa"
+   ],
+   "worlds": 9
+  },
+  {
+   "id": "daily-35",
+   "key": "5651b66acb61",
+   "tier": "normal",
+   "incident": "bandage",
+   "n": 1,
+   "speakers": [
+    "margo",
+    "miria",
+    "reia",
+    "coco",
+    "hanna"
+   ],
+   "logic": {
+    "margo": [
+     "either",
+     [
+      "miria",
+      "reia"
+     ]
+    ],
+    "miria": [
+     "swap_claim",
+     [
+      "hanna"
+     ]
+    ],
+    "reia": [
+     "culprit_is",
+     [
+      "hanna"
+     ]
+    ],
+    "coco": [
+     "self_or",
+     [
+      "hanna"
+     ]
+    ],
+    "hanna": [
+     "meta_true",
+     [
+      "reia"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "margo"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-36",
+   "key": "6bae097e59c2",
+   "tier": "hard",
+   "incident": "matches",
+   "n": 2,
+   "speakers": [
+    "margo",
+    "anan",
+    "ema",
+    "reia",
+    "miria"
+   ],
+   "logic": {
+    "margo": [
+     "deny_self",
+     []
+    ],
+    "anan": [
+     "culprit_is",
+     [
+      "reia"
+     ]
+    ],
+    "ema": [
+     "meta_true",
+     [
+      "margo"
+     ]
+    ],
+    "reia": [
+     "deny",
+     [
+      "margo"
+     ]
+    ],
+    "miria": [
+     "deny",
+     [
+      "reia"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "margo"
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "margo",
+    "anan",
+    "ema",
+    "reia"
+   ],
+   "worlds": 4
+  },
+  {
+   "id": "daily-37",
+   "key": "199a109c0fc9",
+   "tier": "normal",
+   "incident": "tea",
+   "n": 1,
+   "speakers": [
+    "meruru",
+    "reia",
+    "sherry",
+    "miria",
+    "coco"
+   ],
+   "logic": {
+    "meruru": [
+     "deny",
+     [
+      "miria"
+     ]
+    ],
+    "reia": [
+     "deny",
+     [
+      "coco"
+     ]
+    ],
+    "sherry": [
+     "meta_false",
+     [
+      "meruru"
+     ]
+    ],
+    "miria": [
+     "accuse",
+     [
+      "sherry"
+     ]
+    ],
+    "coco": [
+     "swap_claim",
+     [
+      "sherry"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "sherry",
+   "false_cards": [
     "sherry"
    ],
    "worlds": 1
   },
   {
    "id": "daily-38",
-   "key": "70bc73b06e38",
+   "key": "1cad653c911f",
    "tier": "hard",
-   "incident": "hairpin",
+   "incident": "paints",
    "n": 2,
    "speakers": [
     "anan",
-    "hanna",
+    "sherry",
     "meruru",
-    "ema",
+    "miria",
+    "coco",
     "margo"
    ],
    "logic": {
     "anan": [
-     "culprit_is",
-     [
-      "ema"
-     ]
-    ],
-    "hanna": [
      "either",
      [
-      "anan",
+      "margo",
       "meruru"
      ]
     ],
+    "sherry": [
+     "meta_false",
+     [
+      "coco"
+     ]
+    ],
     "meruru": [
-     "accuse",
+     "deny_self",
+     []
+    ],
+    "miria": [
+     "meta_true",
      [
       "anan"
      ]
     ],
-    "ema": [
-     "deny_self",
-     []
+    "coco": [
+     "culprit_is",
+     [
+      "anan"
+     ]
     ],
     "margo": [
-     "either",
+     "self_or",
      [
-      "anan",
-      "hanna"
+      "anan"
      ]
     ]
    },
@@ -3687,143 +3640,33 @@ window.PUZZLES = {
    ],
    "answer": "meruru",
    "false_cards": [
-    "anan",
     "meruru",
+    "coco",
     "margo"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-39",
-   "key": "c41f141360fc",
-   "tier": "normal",
-   "incident": "diary",
-   "n": 2,
-   "speakers": [
-    "miria",
-    "coco",
-    "noah",
-    "anan"
-   ],
-   "logic": {
-    "miria": [
-     "deny_self",
-     []
-    ],
-    "coco": [
-     "self_or",
-     [
-      "noah"
-     ]
-    ],
-    "noah": [
-     "either",
-     [
-      "coco",
-      "miria"
-     ]
-    ],
-    "anan": [
-     "meta_false",
-     [
-      "miria"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "anan",
-   "false_cards": [
-    "coco",
-    "noah",
-    "anan"
    ],
    "worlds": 2
   },
   {
-   "id": "daily-40",
-   "key": "85e6e006c861",
-   "tier": "hard",
-   "incident": "bandage",
-   "n": 2,
-   "speakers": [
-    "sherry",
-    "nanoka",
-    "arisa",
-    "anan",
-    "miria",
-    "reia"
-   ],
-   "logic": {
-    "sherry": [
-     "accuse",
-     [
-      "anan"
-     ]
-    ],
-    "nanoka": [
-     "meta_true",
-     [
-      "miria"
-     ]
-    ],
-    "arisa": [
-     "meta_true",
-     [
-      "nanoka"
-     ]
-    ],
-    "anan": [
-     "accuse",
-     [
-      "sherry"
-     ]
-    ],
-    "miria": [
-     "culprit_is",
-     [
-      "reia"
-     ]
-    ],
-    "reia": [
-     "swap_claim",
-     [
-      "nanoka"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "reia",
-   "false_cards": [
-    "sherry",
-    "anan"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-41",
-   "key": "78a1f4bc823b",
+   "id": "daily-39",
+   "key": "ce6be52d1e43",
    "tier": "normal",
-   "incident": "pot",
+   "incident": "sketchpage",
    "n": 1,
    "speakers": [
-    "reia",
     "miria",
+    "arisa",
     "noah",
-    "nanoka",
+    "coco",
     "meruru"
    ],
    "logic": {
-    "reia": [
-     "culprit_is",
+    "miria": [
+     "meta_false",
      [
-      "nanoka"
+      "meruru"
      ]
     ],
-    "miria": [
+    "arisa": [
      "either",
      [
       "meruru",
@@ -3831,73 +3674,186 @@ window.PUZZLES = {
      ]
     ],
     "noah": [
-     "deny_self",
-     []
-    ],
-    "nanoka": [
-     "meta_false",
+     "swap_claim",
      [
-      "reia"
+      "arisa"
+     ]
+    ],
+    "coco": [
+     "self_or",
+     [
+      "noah"
      ]
     ],
     "meruru": [
-     "swap_claim",
+     "accuse",
      [
-      "noah"
+      "coco"
      ]
     ]
    },
    "magic_ids": [
     "miria"
    ],
-   "answer": "meruru",
+   "answer": "noah",
    "false_cards": [
-    "reia"
+    "meruru"
    ],
    "worlds": 1
   },
   {
-   "id": "daily-42",
-   "key": "37703101a393",
+   "id": "daily-40",
+   "key": "df9fb0e4a8ee",
    "tier": "hard",
-   "incident": "bandage",
+   "incident": "magnifier",
    "n": 2,
    "speakers": [
-    "noah",
-    "miria",
     "arisa",
     "anan",
-    "margo"
+    "miria",
+    "margo",
+    "hanna",
+    "ema"
    ],
    "logic": {
-    "noah": [
-     "accuse",
-     [
-      "margo"
-     ]
-    ],
-    "miria": [
-     "swap_claim",
-     [
-      "noah"
-     ]
-    ],
     "arisa": [
-     "meta_true",
+     "culprit_is",
      [
-      "anan"
+      "miria"
      ]
     ],
     "anan": [
-     "meta_true",
+     "accuse",
      [
-      "noah"
+      "arisa"
+     ]
+    ],
+    "miria": [
+     "culprit_is",
+     [
+      "margo"
      ]
     ],
     "margo": [
      "self_or",
      [
       "anan"
+     ]
+    ],
+    "hanna": [
+     "either",
+     [
+      "arisa",
+      "margo"
+     ]
+    ],
+    "ema": [
+     "meta_true",
+     [
+      "miria"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "margo"
+   ],
+   "answer": "arisa",
+   "false_cards": [
+    "arisa",
+    "miria",
+    "margo",
+    "ema"
+   ],
+   "worlds": 9
+  },
+  {
+   "id": "daily-41",
+   "key": "ed6c7101b583",
+   "tier": "normal",
+   "incident": "hairpin",
+   "n": 2,
+   "speakers": [
+    "noah",
+    "nanoka",
+    "anan",
+    "ema"
+   ],
+   "logic": {
+    "noah": [
+     "meta_false",
+     [
+      "nanoka"
+     ]
+    ],
+    "nanoka": [
+     "accuse",
+     [
+      "anan"
+     ]
+    ],
+    "anan": [
+     "deny_self",
+     []
+    ],
+    "ema": [
+     "self_or",
+     [
+      "nanoka"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "noah",
+    "anan",
+    "ema"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-42",
+   "key": "7c778a03e3d4",
+   "tier": "hard",
+   "incident": "costume",
+   "n": 2,
+   "speakers": [
+    "hanna",
+    "miria",
+    "anan",
+    "meruru",
+    "arisa"
+   ],
+   "logic": {
+    "hanna": [
+     "culprit_is",
+     [
+      "miria"
+     ]
+    ],
+    "miria": [
+     "deny",
+     [
+      "anan"
+     ]
+    ],
+    "anan": [
+     "deny_self",
+     []
+    ],
+    "meruru": [
+     "deny",
+     [
+      "miria"
+     ]
+    ],
+    "arisa": [
+     "swap_claim",
+     [
+      "meruru"
      ]
     ]
    },
@@ -3907,51 +3863,47 @@ window.PUZZLES = {
    ],
    "answer": "anan",
    "false_cards": [
-    "noah",
-    "arisa",
+    "hanna",
+    "miria",
     "anan"
    ],
    "worlds": 2
   },
   {
    "id": "daily-43",
-   "key": "cd0bd20ee0c2",
+   "key": "74ecc67ea68b",
    "tier": "normal",
-   "incident": "books",
-   "n": 1,
+   "incident": "costume",
+   "n": 2,
    "speakers": [
-    "miria",
-    "sherry",
     "meruru",
-    "ema",
-    "anan"
+    "nanoka",
+    "coco",
+    "miria"
    ],
    "logic": {
-    "miria": [
-     "deny_self",
-     []
-    ],
-    "sherry": [
+    "meruru": [
      "culprit_is",
      [
-      "anan"
+      "nanoka"
      ]
     ],
-    "meruru": [
+    "nanoka": [
+     "meta_true",
+     [
+      "coco"
+     ]
+    ],
+    "coco": [
      "swap_claim",
      [
       "meruru"
      ]
     ],
-    "ema": [
-     "meta_true",
+    "miria": [
+     "either",
      [
-      "sherry"
-     ]
-    ],
-    "anan": [
-     "accuse",
-     [
+      "coco",
       "meruru"
      ]
     ]
@@ -3959,279 +3911,172 @@ window.PUZZLES = {
    "magic_ids": [
     "miria"
    ],
-   "answer": "anan",
+   "answer": "miria",
    "false_cards": [
-    "anan"
+    "meruru",
+    "miria"
    ],
    "worlds": 1
   },
   {
    "id": "daily-44",
-   "key": "8f3508b672c0",
+   "key": "7be68380529d",
    "tier": "hard",
-   "incident": "mirror",
+   "incident": "costume",
    "n": 2,
    "speakers": [
     "sherry",
-    "noah",
-    "anan",
-    "ema",
-    "margo"
-   ],
-   "logic": {
-    "sherry": [
-     "culprit_is",
-     [
-      "anan"
-     ]
-    ],
-    "noah": [
-     "meta_false",
-     [
-      "ema"
-     ]
-    ],
-    "anan": [
-     "meta_true",
-     [
-      "margo"
-     ]
-    ],
-    "ema": [
-     "self_or",
-     [
-      "margo"
-     ]
-    ],
-    "margo": [
-     "deny_self",
-     []
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "margo"
-   ],
-   "answer": "margo",
-   "false_cards": [
-    "sherry",
-    "noah",
-    "anan",
-    "margo"
-   ],
-   "worlds": 4
-  },
-  {
-   "id": "daily-45",
-   "key": "6a53704833c8",
-   "tier": "normal",
-   "incident": "books",
-   "n": 2,
-   "speakers": [
-    "sherry",
-    "arisa",
-    "ema",
-    "anan"
-   ],
-   "logic": {
-    "sherry": [
-     "culprit_is",
-     [
-      "anan"
-     ]
-    ],
-    "arisa": [
-     "meta_true",
-     [
-      "ema"
-     ]
-    ],
-    "ema": [
-     "deny_self",
-     []
-    ],
-    "anan": [
-     "deny",
-     [
-      "sherry"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "ema",
-   "false_cards": [
-    "sherry",
-    "arisa",
-    "ema"
-   ],
-   "worlds": 3
-  },
-  {
-   "id": "daily-46",
-   "key": "c5707d0c6935",
-   "tier": "hard",
-   "incident": "sketch",
-   "n": 2,
-   "speakers": [
-    "nanoka",
-    "anan",
-    "sherry",
-    "coco",
-    "margo",
-    "ema"
-   ],
-   "logic": {
-    "nanoka": [
-     "meta_true",
-     [
-      "ema"
-     ]
-    ],
-    "anan": [
-     "meta_false",
-     [
-      "margo"
-     ]
-    ],
-    "sherry": [
-     "accuse",
-     [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "either",
-     [
-      "margo",
-      "nanoka"
-     ]
-    ],
-    "margo": [
-     "culprit_is",
-     [
-      "sherry"
-     ]
-    ],
-    "ema": [
-     "either",
-     [
-      "coco",
-      "margo"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "margo"
-   ],
-   "answer": "nanoka",
-   "false_cards": [
-    "nanoka",
-    "sherry",
-    "margo",
-    "ema"
-   ],
-   "worlds": 9
-  },
-  {
-   "id": "daily-47",
-   "key": "8f833a584425",
-   "tier": "normal",
-   "incident": "pot",
-   "n": 2,
-   "speakers": [
-    "ema",
-    "coco",
-    "nanoka",
-    "hanna",
-    "margo"
-   ],
-   "logic": {
-    "ema": [
-     "either",
-     [
-      "coco",
-      "margo"
-     ]
-    ],
-    "coco": [
-     "culprit_is",
-     [
-      "margo"
-     ]
-    ],
-    "nanoka": [
-     "meta_true",
-     [
-      "ema"
-     ]
-    ],
-    "hanna": [
-     "self_or",
-     [
-      "margo"
-     ]
-    ],
-    "margo": [
-     "self_or",
-     [
-      "ema"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "margo"
-   ],
-   "answer": "coco",
-   "false_cards": [
-    "coco",
-    "hanna",
-    "margo"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-48",
-   "key": "08653c5155e1",
-   "tier": "hard",
-   "incident": "sketch",
-   "n": 2,
-   "speakers": [
-    "arisa",
-    "hanna",
     "miria",
     "coco",
-    "anan"
+    "ema",
+    "hanna",
+    "arisa"
    ],
    "logic": {
-    "arisa": [
-     "meta_true",
+    "sherry": [
+     "meta_false",
+     [
+      "ema"
+     ]
+    ],
+    "miria": [
+     "meta_false",
      [
       "hanna"
      ]
     ],
+    "coco": [
+     "swap_claim",
+     [
+      "ema"
+     ]
+    ],
+    "ema": [
+     "deny",
+     [
+      "miria"
+     ]
+    ],
     "hanna": [
+     "deny_self",
+     []
+    ],
+    "arisa": [
      "culprit_is",
+     [
+      "miria"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "miria"
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "miria",
+    "ema"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-45",
+   "key": "8fd1fd828c2d",
+   "tier": "normal",
+   "incident": "bandage",
+   "n": 2,
+   "speakers": [
+    "anan",
+    "miria",
+    "ema",
+    "arisa",
+    "hanna"
+   ],
+   "logic": {
+    "anan": [
+     "accuse",
      [
       "miria"
      ]
     ],
     "miria": [
-     "meta_true",
+     "either",
+     [
+      "ema",
+      "hanna"
+     ]
+    ],
+    "ema": [
+     "accuse",
      [
       "anan"
      ]
     ],
-    "coco": [
-     "deny_self",
-     []
+    "arisa": [
+     "meta_true",
+     [
+      "ema"
+     ]
     ],
-    "anan": [
-     "swap_claim",
+    "hanna": [
+     "culprit_is",
      [
       "arisa"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "anan",
+    "miria",
+    "hanna"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-46",
+   "key": "32721971f8e5",
+   "tier": "hard",
+   "incident": "books",
+   "n": 2,
+   "speakers": [
+    "anan",
+    "coco",
+    "nanoka",
+    "miria",
+    "meruru"
+   ],
+   "logic": {
+    "anan": [
+     "culprit_is",
+     [
+      "nanoka"
+     ]
+    ],
+    "coco": [
+     "meta_true",
+     [
+      "meruru"
+     ]
+    ],
+    "nanoka": [
+     "swap_claim",
+     [
+      "meruru"
+     ]
+    ],
+    "miria": [
+     "meta_true",
+     [
+      "coco"
+     ]
+    ],
+    "meruru": [
+     "self_or",
+     [
+      "miria"
      ]
     ]
    },
@@ -4239,216 +4084,449 @@ window.PUZZLES = {
     "anan",
     "miria"
    ],
-   "answer": "coco",
+   "answer": "nanoka",
    "false_cards": [
-    "arisa",
-    "hanna",
-    "coco"
+    "coco",
+    "miria",
+    "meruru"
    ],
    "worlds": 3
   },
   {
-   "id": "daily-49",
-   "key": "e10294f54090",
+   "id": "daily-47",
+   "key": "0a3860e4c6c3",
    "tier": "normal",
-   "incident": "matches",
+   "incident": "magnifier",
    "n": 1,
    "speakers": [
-    "noah",
-    "anan",
-    "coco",
+    "margo",
+    "ema",
+    "reia",
     "hanna"
    ],
    "logic": {
-    "noah": [
-     "meta_true",
+    "margo": [
+     "culprit_is",
      [
-      "coco"
+      "hanna"
+     ]
+    ],
+    "ema": [
+     "deny",
+     [
+      "margo"
+     ]
+    ],
+    "reia": [
+     "meta_false",
+     [
+      "ema"
+     ]
+    ],
+    "hanna": [
+     "accuse",
+     [
+      "margo"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "margo",
+    "ema"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-48",
+   "key": "3cd39032fc0e",
+   "tier": "hard",
+   "incident": "mirror",
+   "n": 2,
+   "speakers": [
+    "arisa",
+    "anan",
+    "meruru",
+    "ema",
+    "hanna",
+    "noah"
+   ],
+   "logic": {
+    "arisa": [
+     "meta_false",
+     [
+      "noah"
      ]
     ],
     "anan": [
      "culprit_is",
      [
-      "noah"
+      "hanna"
      ]
     ],
-    "coco": [
-     "either",
+    "meruru": [
+     "self_or",
      [
-      "hanna",
-      "noah"
+      "arisa"
+     ]
+    ],
+    "ema": [
+     "culprit_is",
+     [
+      "anan"
      ]
     ],
     "hanna": [
-     "deny_self",
-     []
+     "culprit_is",
+     [
+      "arisa"
+     ]
+    ],
+    "noah": [
+     "deny",
+     [
+      "arisa"
+     ]
     ]
    },
    "magic_ids": [
     "anan"
    ],
-   "answer": "hanna",
+   "answer": "arisa",
    "false_cards": [
     "anan",
-    "hanna"
+    "ema",
+    "noah"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-49",
+   "key": "76a462571ca3",
+   "tier": "normal",
+   "incident": "diary",
+   "n": 1,
+   "speakers": [
+    "reia",
+    "margo",
+    "sherry",
+    "anan",
+    "meruru"
+   ],
+   "logic": {
+    "reia": [
+     "deny",
+     [
+      "anan"
+     ]
+    ],
+    "margo": [
+     "culprit_is",
+     [
+      "reia"
+     ]
+    ],
+    "sherry": [
+     "deny",
+     [
+      "meruru"
+     ]
+    ],
+    "anan": [
+     "either",
+     [
+      "margo",
+      "sherry"
+     ]
+    ],
+    "meruru": [
+     "meta_false",
+     [
+      "margo"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "reia",
+   "false_cards": [
+    "anan",
+    "meruru"
    ],
    "worlds": 1
   },
   {
    "id": "daily-50",
-   "key": "5fb1bd00ab58",
+   "key": "b3c7ed899be4",
+   "tier": "hard",
+   "incident": "matches",
+   "n": 2,
+   "speakers": [
+    "sherry",
+    "reia",
+    "miria",
+    "margo",
+    "nanoka"
+   ],
+   "logic": {
+    "sherry": [
+     "self_or",
+     [
+      "margo"
+     ]
+    ],
+    "reia": [
+     "self_or",
+     [
+      "sherry"
+     ]
+    ],
+    "miria": [
+     "meta_true",
+     [
+      "sherry"
+     ]
+    ],
+    "margo": [
+     "self_or",
+     [
+      "nanoka"
+     ]
+    ],
+    "nanoka": [
+     "deny",
+     [
+      "miria"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "reia",
+   "false_cards": [
+    "sherry",
+    "miria",
+    "margo"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-51",
+   "key": "df33e922d606",
+   "tier": "normal",
+   "incident": "handkerchief",
+   "n": 2,
+   "speakers": [
+    "anan",
+    "ema",
+    "coco",
+    "nanoka"
+   ],
+   "logic": {
+    "anan": [
+     "culprit_is",
+     [
+      "coco"
+     ]
+    ],
+    "ema": [
+     "either",
+     [
+      "anan",
+      "nanoka"
+     ]
+    ],
+    "coco": [
+     "culprit_is",
+     [
+      "ema"
+     ]
+    ],
+    "nanoka": [
+     "meta_false",
+     [
+      "anan"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "coco",
+   "false_cards": [
+    "ema",
+    "coco",
+    "nanoka"
+   ],
+   "worlds": 3
+  },
+  {
+   "id": "daily-52",
+   "key": "8c2fe0e4fd6d",
+   "tier": "hard",
+   "incident": "costume",
+   "n": 2,
+   "speakers": [
+    "miria",
+    "anan",
+    "nanoka",
+    "ema",
+    "meruru",
+    "margo"
+   ],
+   "logic": {
+    "miria": [
+     "meta_false",
+     [
+      "ema"
+     ]
+    ],
+    "anan": [
+     "swap_claim",
+     [
+      "margo"
+     ]
+    ],
+    "nanoka": [
+     "meta_true",
+     [
+      "meruru"
+     ]
+    ],
+    "ema": [
+     "swap_claim",
+     [
+      "nanoka"
+     ]
+    ],
+    "meruru": [
+     "accuse",
+     [
+      "anan"
+     ]
+    ],
+    "margo": [
+     "self_or",
+     [
+      "anan"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "miria"
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "nanoka",
+    "ema",
+    "meruru"
+   ],
+   "worlds": 3
+  },
+  {
+   "id": "daily-53",
+   "key": "c801ed52277f",
+   "tier": "normal",
+   "incident": "sketch",
+   "n": 1,
+   "speakers": [
+    "coco",
+    "meruru",
+    "hanna",
+    "margo",
+    "ema"
+   ],
+   "logic": {
+    "coco": [
+     "culprit_is",
+     [
+      "ema"
+     ]
+    ],
+    "meruru": [
+     "accuse",
+     [
+      "coco"
+     ]
+    ],
+    "hanna": [
+     "deny_self",
+     []
+    ],
+    "margo": [
+     "culprit_is",
+     [
+      "hanna"
+     ]
+    ],
+    "ema": [
+     "either",
+     [
+      "coco",
+      "margo"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "coco",
+   "false_cards": [
+    "coco",
+    "margo"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-54",
+   "key": "0305901d7bf1",
    "tier": "hard",
    "incident": "stream",
    "n": 2,
    "speakers": [
-    "noah",
-    "anan",
-    "arisa",
     "miria",
-    "margo"
+    "margo",
+    "hanna",
+    "sherry",
+    "anan",
+    "nanoka"
    ],
    "logic": {
-    "noah": [
-     "either",
+    "miria": [
+     "culprit_is",
      [
-      "anan",
-      "arisa"
+      "margo"
      ]
     ],
-    "anan": [
+    "margo": [
      "deny_self",
      []
     ],
-    "arisa": [
+    "hanna": [
+     "self_or",
+     [
+      "sherry"
+     ]
+    ],
+    "sherry": [
+     "meta_false",
+     [
+      "anan"
+     ]
+    ],
+    "anan": [
      "deny",
      [
       "miria"
      ]
     ],
-    "miria": [
-     "meta_true",
-     [
-      "arisa"
-     ]
-    ],
-    "margo": [
-     "swap_claim",
-     [
-      "margo"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "miria"
-   ],
-   "answer": "miria",
-   "false_cards": [
-    "noah",
-    "arisa",
-    "miria"
-   ],
-   "worlds": 3
-  },
-  {
-   "id": "daily-51",
-   "key": "b6afb9d8b9f4",
-   "tier": "normal",
-   "incident": "stream",
-   "n": 1,
-   "speakers": [
-    "anan",
-    "sherry",
-    "noah",
-    "reia",
-    "miria"
-   ],
-   "logic": {
-    "anan": [
-     "swap_claim",
-     [
-      "noah"
-     ]
-    ],
-    "sherry": [
-     "meta_true",
-     [
-      "miria"
-     ]
-    ],
-    "noah": [
-     "deny_self",
-     []
-    ],
-    "reia": [
-     "culprit_is",
-     [
-      "miria"
-     ]
-    ],
-    "miria": [
-     "culprit_is",
-     [
-      "sherry"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "sherry",
-   "false_cards": [
-    "reia"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-52",
-   "key": "8767223c6a4a",
-   "tier": "hard",
-   "incident": "diary",
-   "n": 2,
-   "speakers": [
-    "coco",
-    "reia",
-    "anan",
-    "margo",
-    "arisa",
-    "miria"
-   ],
-   "logic": {
-    "coco": [
-     "either",
-     [
-      "miria",
-      "reia"
-     ]
-    ],
-    "reia": [
-     "either",
-     [
-      "arisa",
-      "miria"
-     ]
-    ],
-    "anan": [
-     "accuse",
-     [
-      "margo"
-     ]
-    ],
-    "margo": [
-     "deny_self",
-     []
-    ],
-    "arisa": [
-     "either",
-     [
-      "anan",
-      "miria"
-     ]
-    ],
-    "miria": [
+    "nanoka": [
      "meta_false",
      [
       "margo"
@@ -4456,49 +4534,47 @@ window.PUZZLES = {
     ]
    },
    "magic_ids": [
-    "anan",
     "margo"
    ],
    "answer": "margo",
    "false_cards": [
-    "coco",
-    "reia",
     "margo",
-    "arisa"
+    "hanna",
+    "sherry"
    ],
-   "worlds": 9
+   "worlds": 2
   },
   {
-   "id": "daily-53",
-   "key": "0f6604591b5a",
+   "id": "daily-55",
+   "key": "0eb1c669f1cc",
    "tier": "normal",
-   "incident": "bandage",
+   "incident": "pot",
    "n": 1,
    "speakers": [
-    "reia",
     "coco",
+    "miria",
     "anan",
-    "hanna"
+    "nanoka"
    ],
    "logic": {
-    "reia": [
-     "meta_true",
-     [
-      "coco"
-     ]
-    ],
     "coco": [
-     "deny",
+     "self_or",
      [
-      "reia"
+      "nanoka"
      ]
     ],
-    "anan": [
+    "miria": [
      "deny_self",
      []
     ],
-    "hanna": [
-     "culprit_is",
+    "anan": [
+     "meta_false",
+     [
+      "nanoka"
+     ]
+    ],
+    "nanoka": [
+     "deny",
      [
       "coco"
      ]
@@ -4509,315 +4585,262 @@ window.PUZZLES = {
    ],
    "answer": "anan",
    "false_cards": [
-    "anan",
-    "hanna"
+    "coco",
+    "anan"
    ],
    "worlds": 1
-  },
-  {
-   "id": "daily-54",
-   "key": "780f7291d890",
-   "tier": "hard",
-   "incident": "sweets",
-   "n": 2,
-   "speakers": [
-    "reia",
-    "noah",
-    "arisa",
-    "meruru",
-    "anan"
-   ],
-   "logic": {
-    "reia": [
-     "either",
-     [
-      "anan",
-      "noah"
-     ]
-    ],
-    "noah": [
-     "meta_true",
-     [
-      "reia"
-     ]
-    ],
-    "arisa": [
-     "accuse",
-     [
-      "reia"
-     ]
-    ],
-    "meruru": [
-     "meta_false",
-     [
-      "reia"
-     ]
-    ],
-    "anan": [
-     "deny",
-     [
-      "arisa"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "meruru",
-   "false_cards": [
-    "reia",
-    "noah",
-    "arisa"
-   ],
-   "worlds": 3
-  },
-  {
-   "id": "daily-55",
-   "key": "547e0d2af464",
-   "tier": "normal",
-   "incident": "diary",
-   "n": 2,
-   "speakers": [
-    "reia",
-    "anan",
-    "sherry",
-    "nanoka"
-   ],
-   "logic": {
-    "reia": [
-     "meta_true",
-     [
-      "anan"
-     ]
-    ],
-    "anan": [
-     "deny",
-     [
-      "nanoka"
-     ]
-    ],
-    "sherry": [
-     "either",
-     [
-      "nanoka",
-      "reia"
-     ]
-    ],
-    "nanoka": [
-     "deny_self",
-     []
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "nanoka",
-   "false_cards": [
-    "reia",
-    "anan",
-    "nanoka"
-   ],
-   "worlds": 2
   },
   {
    "id": "daily-56",
-   "key": "4ec7e609ef5b",
+   "key": "5398d5cddff0",
    "tier": "hard",
-   "incident": "matches",
+   "incident": "hairpin",
    "n": 2,
    "speakers": [
-    "coco",
     "hanna",
-    "anan",
-    "noah",
-    "meruru",
-    "nanoka"
+    "sherry",
+    "coco",
+    "margo",
+    "anan"
    ],
    "logic": {
-    "coco": [
-     "meta_false",
-     [
-      "hanna"
-     ]
-    ],
     "hanna": [
-     "deny",
-     [
-      "noah"
-     ]
-    ],
-    "anan": [
-     "culprit_is",
-     [
-      "noah"
-     ]
-    ],
-    "noah": [
-     "meta_true",
-     [
-      "meruru"
-     ]
-    ],
-    "meruru": [
-     "deny",
+     "meta_false",
      [
       "anan"
      ]
     ],
-    "nanoka": [
-     "deny_self",
-     []
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ],
-   "answer": "nanoka",
-   "false_cards": [
-    "coco",
-    "anan",
-    "nanoka"
-   ],
-   "worlds": 2
-  },
-  {
-   "id": "daily-57",
-   "key": "01234b314e74",
-   "tier": "normal",
-   "incident": "bandage",
-   "n": 1,
-   "speakers": [
-    "ema",
-    "reia",
-    "miria",
-    "sherry"
-   ],
-   "logic": {
-    "ema": [
-     "swap_claim",
-     [
-      "sherry"
-     ]
-    ],
-    "reia": [
-     "either",
-     [
-      "miria",
-      "sherry"
-     ]
-    ],
-    "miria": [
+    "sherry": [
      "accuse",
      [
-      "sherry"
+      "coco"
      ]
     ],
-    "sherry": [
-     "meta_true",
-     [
-      "ema"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "miria",
-   "false_cards": [
-    "miria"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-58",
-   "key": "273be75334e8",
-   "tier": "hard",
-   "incident": "sweets",
-   "n": 2,
-   "speakers": [
-    "miria",
-    "ema",
-    "noah",
-    "sherry",
-    "margo",
-    "meruru"
-   ],
-   "logic": {
-    "miria": [
-     "meta_false",
-     [
-      "noah"
-     ]
-    ],
-    "ema": [
-     "swap_claim",
-     [
-      "ema"
-     ]
-    ],
-    "noah": [
+    "coco": [
      "self_or",
      [
-      "sherry"
-     ]
-    ],
-    "sherry": [
-     "culprit_is",
-     [
-      "ema"
+      "margo"
      ]
     ],
     "margo": [
      "deny_self",
      []
     ],
-    "meruru": [
-     "accuse",
+    "anan": [
+     "either",
      [
-      "margo"
+      "coco",
+      "hanna"
      ]
     ]
    },
    "magic_ids": [
-    "miria"
+    "margo"
    ],
-   "answer": "ema",
+   "answer": "margo",
    "false_cards": [
-    "noah",
-    "meruru"
+    "sherry",
+    "margo",
+    "anan"
    ],
    "worlds": 1
   },
   {
-   "id": "daily-59",
-   "key": "3b4b1392c5a2",
+   "id": "daily-57",
+   "key": "6c20b46828d9",
    "tier": "normal",
-   "incident": "tea",
-   "n": 1,
+   "incident": "stream",
+   "n": 2,
    "speakers": [
-    "sherry",
-    "miria",
-    "coco",
+    "arisa",
+    "anan",
+    "nanoka",
+    "ema",
     "margo"
    ],
    "logic": {
-    "sherry": [
-     "swap_claim",
+    "arisa": [
+     "culprit_is",
      [
       "margo"
      ]
     ],
-    "miria": [
-     "either",
+    "anan": [
+     "deny",
      [
-      "margo",
+      "margo"
+     ]
+    ],
+    "nanoka": [
+     "accuse",
+     [
+      "margo"
+     ]
+    ],
+    "ema": [
+     "deny",
+     [
+      "nanoka"
+     ]
+    ],
+    "margo": [
+     "deny_self",
+     []
+    ]
+   },
+   "magic_ids": [
+    "anan"
+   ],
+   "answer": "nanoka",
+   "false_cards": [
+    "arisa",
+    "nanoka",
+    "ema"
+   ],
+   "worlds": 3
+  },
+  {
+   "id": "daily-58",
+   "key": "abf3c53297c6",
+   "tier": "hard",
+   "incident": "bookmarks",
+   "n": 2,
+   "speakers": [
+    "margo",
+    "arisa",
+    "hanna",
+    "sherry",
+    "noah"
+   ],
+   "logic": {
+    "margo": [
+     "self_or",
+     [
+      "noah"
+     ]
+    ],
+    "arisa": [
+     "accuse",
+     [
+      "hanna"
+     ]
+    ],
+    "hanna": [
+     "self_or",
+     [
       "sherry"
      ]
     ],
-    "coco": [
+    "sherry": [
+     "either",
+     [
+      "arisa",
+      "hanna"
+     ]
+    ],
+    "noah": [
+     "meta_true",
+     [
+      "hanna"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "sherry",
+   "false_cards": [
+    "margo",
+    "arisa",
+    "sherry"
+   ],
+   "worlds": 2
+  },
+  {
+   "id": "daily-59",
+   "key": "1643a43fe0ad",
+   "tier": "normal",
+   "incident": "fan",
+   "n": 1,
+   "speakers": [
+    "anan",
+    "noah",
+    "ema",
+    "meruru",
+    "margo"
+   ],
+   "logic": {
+    "anan": [
      "accuse",
      [
-      "miria"
+      "meruru"
+     ]
+    ],
+    "noah": [
+     "meta_true",
+     [
+      "anan"
+     ]
+    ],
+    "ema": [
+     "deny",
+     [
+      "meruru"
+     ]
+    ],
+    "meruru": [
+     "self_or",
+     [
+      "ema"
+     ]
+    ],
+    "margo": [
+     "culprit_is",
+     [
+      "noah"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "margo"
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "ema",
+    "margo"
+   ],
+   "worlds": 1
+  },
+  {
+   "id": "daily-60",
+   "key": "f235bca69fc3",
+   "tier": "hard",
+   "incident": "goggles",
+   "n": 2,
+   "speakers": [
+    "coco",
+    "ema",
+    "sherry",
+    "margo",
+    "anan"
+   ],
+   "logic": {
+    "coco": [
+     "culprit_is",
+     [
+      "sherry"
+     ]
+    ],
+    "ema": [
+     "meta_true",
+     [
+      "sherry"
+     ]
+    ],
+    "sherry": [
+     "accuse",
+     [
+      "anan"
      ]
     ],
     "margo": [
@@ -4826,70 +4849,24 @@ window.PUZZLES = {
       "coco",
       "sherry"
      ]
-    ]
-   },
-   "magic_ids": [
-    "miria"
-   ],
-   "answer": "sherry",
-   "false_cards": [
-    "coco"
-   ],
-   "worlds": 1
-  },
-  {
-   "id": "daily-60",
-   "key": "d944c73d1e16",
-   "tier": "hard",
-   "incident": "pot",
-   "n": 2,
-   "speakers": [
-    "anan",
-    "reia",
-    "hanna",
-    "noah",
-    "arisa"
-   ],
-   "logic": {
+    ],
     "anan": [
-     "accuse",
+     "culprit_is",
      [
-      "arisa"
+      "coco"
      ]
-    ],
-    "reia": [
-     "meta_true",
-     [
-      "anan"
-     ]
-    ],
-    "hanna": [
-     "self_or",
-     [
-      "reia"
-     ]
-    ],
-    "noah": [
-     "deny",
-     [
-      "anan"
-     ]
-    ],
-    "arisa": [
-     "deny_self",
-     []
     ]
    },
    "magic_ids": [
+    "margo"
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "coco",
+    "margo",
     "anan"
    ],
-   "answer": "noah",
-   "false_cards": [
-    "anan",
-    "reia",
-    "hanna"
-   ],
-   "worlds": 2
+   "worlds": 1
   }
  ],
  "tutorial": {
@@ -4993,6 +4970,54 @@ window.PUZZLES = {
    {
     "id": "hairpin",
     "owner": "miria"
+   },
+   {
+    "id": "letter",
+    "owner": "ema"
+   },
+   {
+    "id": "goggles",
+    "owner": "nanoka"
+   },
+   {
+    "id": "headphones",
+    "owner": "coco"
+   },
+   {
+    "id": "magnifier",
+    "owner": "sherry"
+   },
+   {
+    "id": "fan",
+    "owner": "hanna"
+   },
+   {
+    "id": "paints",
+    "owner": "noah"
+   },
+   {
+    "id": "costume",
+    "owner": "reia"
+   },
+   {
+    "id": "bookmarks",
+    "owner": "miria"
+   },
+   {
+    "id": "candles",
+    "owner": "margo"
+   },
+   {
+    "id": "sketchpage",
+    "owner": "anan"
+   },
+   {
+    "id": "hoodie",
+    "owner": "arisa"
+   },
+   {
+    "id": "handkerchief",
+    "owner": "meruru"
    }
   ],
   "tiers": {
@@ -5291,6 +5316,78 @@ window.PUZZLES = {
      "did": "바꿔 놨어",
      "didnt": "안 바꿨어",
      "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지..."
+    },
+    "letter": {
+     "text": "에마가 모두에게 주려고 쓴 편지가 구겨져 있었다.",
+     "did": "구겼어",
+     "didnt": "안 구겼어",
+     "line": "으앗, 모두한테 줄 편지였는데… 누가 구겼어!? 나, 미움받을 짓 했어…?"
+    },
+    "goggles": {
+     "text": "나노카의 고글에 손자국이 잔뜩 묻어 있었다.",
+     "did": "만졌어",
+     "didnt": "안 만졌어",
+     "line": "...고글에 손자국. 함부로 만지지 말라고 했을 텐데. 만진 범인이 흑막일 거야."
+    },
+    "headphones": {
+     "text": "코코의 헤드폰 줄이 엉망으로 꼬여 있었다.",
+     "did": "꼬아 놨어",
+     "didnt": "안 꼬았어",
+     "line": "누구야? 내 헤드폰 줄 꼬아 놓은게?! 당장 자수해!"
+    },
+    "magnifier": {
+     "text": "셰리의 돋보기가 사라졌다.",
+     "did": "가져갔어",
+     "didnt": "안 가져갔어",
+     "line": "어라라?! 명탐정의 돋보기가 사라졌어요!~ 하지만 괜찮아요, 돋보기 없이도 범인은 찾을 수 있으니까요!"
+    },
+    "fan": {
+     "text": "한나의 깃털 부채가 망가져 있었다.",
+     "did": "망가뜨렸어",
+     "didnt": "안 망가뜨렸어",
+     "line": "제 부채가 쳐 망가져 있사와요! 이건 저에 대한 모욕이라와... 인 것이와요...?!"
+    },
+    "paints": {
+     "text": "노아의 물감이 전부 한데 섞여 있었다.",
+     "did": "섞었어",
+     "didnt": "안 섞었어",
+     "line": "노아 물감이 전부 한 색이 됐어~ 누가 그랬을까~? 다시 나누는 건 힘든데~"
+    },
+    "costume": {
+     "text": "레이아가 준비해 둔 무대 의상이 전부 사라졌다.",
+     "did": "가져갔어",
+     "didnt": "안 가져갔어",
+     "line": "내가 준비한 무대 의상이 모두 사라지다니! 이러면 연극을 보여줄 수가 없다! 그러나 안심하도록. 내가 범인으로부터 모두를 지킬 테니까!"
+    },
+    "bookmarks": {
+     "text": "미리아의 법률책에서 책갈피가 전부 빠져 있었다.",
+     "did": "뺐어",
+     "didnt": "안 뺐어",
+     "line": "으왓! 아저씨 책갈피가 다 빠졌어! 어디까지 읽었더라… 어쩌지..."
+    },
+    "candles": {
+     "text": "마고의 촛대에서 초가 전부 사라졌다.",
+     "did": "가져갔어",
+     "didnt": "안 가져갔어",
+     "line": "어머, 내 초가 다 없어졌네. 후후, 어두운 데서 무슨 짓을 하려던 걸까? 나중에 천천히 깊은 이야기를 해보지 않을래?♡"
+    },
+    "sketchpage": {
+     "text": "안안의 스케치북 마지막 장이 찢겨 있었다.",
+     "did": "찢었어",
+     "didnt": "안 찢었어",
+     "line": "이 몸의 스케치북을 찢은 자가 있도다. 그 죄, 이 몸이 똑똑히 기억해 두겠노라."
+    },
+    "hoodie": {
+     "text": "아리사의 후드티에 커피가 엎질러져 있었다.",
+     "did": "엎질렀어",
+     "didnt": "안 엎질렀어",
+     "line": "내 후드에 커피 쏟은 건 어떤 새끼야! 닥치고 나와! 죽여버린다!"
+    },
+    "handkerchief": {
+     "text": "메루루가 늘 들고 다니던 손수건이 사라졌다.",
+     "did": "가져갔어",
+     "didnt": "안 가져갔어",
+     "line": "흑흑... 손수건이 없어졌어요... 이제 눈물은 어디에 닦죠...? 그래도 누가 필요해서 가져간 거라면 괜찮아요..."
     }
    },
    "magic": {
