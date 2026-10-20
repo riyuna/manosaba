@@ -79,18 +79,29 @@ a { color: var(--blood-ink); }
 .notice { padding: 14px 18px; font-size: 14px; color: var(--muted); display: grid; gap: 2px; }
 .notice b { color: var(--ink); font-weight: 700; }
 
+/* 튜토리얼 안내: 튜토리얼 판에서만 각 구역 앞에 붙는다 */
+.guide { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; color: var(--brass); font-size: 15px; }
+.guide .step {
+  font-family: var(--font-latin); font-weight: 600; font-size: 17px; width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--brass); display: grid; place-items: center; font-variant-numeric: lining-nums;
+}
+.guide p { margin: 0; color: var(--ink); }
+
 /* 홈 */
 .section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .section-title h2 { font-size: 28px; }
 .section-title span { color: var(--muted); font-size: 14px; }
-.daily, .random {
+.daily, .random, .tutorial {
   display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
   border: 1px solid var(--line); background: var(--panel); border-radius: var(--r); padding: 18px 20px;
 }
 .daily { border-color: var(--blood); background: linear-gradient(180deg, var(--wine), var(--panel)); }
-.daily .what, .random .what { min-width: 0; display: grid; gap: 2px; }
+.daily .what, .random .what, .tutorial .what { min-width: 0; display: grid; gap: 2px; }
+.tutorial { border-color: rgba(201, 171, 112, .45); }
+.tutorial .what div { color: var(--muted); font-size: 14px; }
+.tutorial .mark-done { color: var(--blood-ink); font-size: 15px; }
 .daily .date { font-family: var(--font-latin); font-size: 16px; color: var(--brass); font-variant-numeric: tabular-nums; }
-.daily h3, .random h3 { font-size: 24px; }
+.daily h3, .random h3, .tutorial h3 { font-size: 24px; }
 .random .what div { color: var(--muted); font-size: 14px; }
 .tiers { display: grid; gap: 22px; }
 .tier { display: grid; gap: 10px; }
@@ -134,7 +145,6 @@ a { color: var(--blood-ink); }
   background: var(--night); border: 1px solid var(--blood); border-radius: 4px; padding: 1px 10px;
   font-family: var(--font-display); font-size: 15px;
 }
-.no { font-family: var(--font-latin); font-style: italic; font-size: 15px; color: var(--brass); font-variant-numeric: lining-nums; }
 .dialog blockquote { margin: 0; font-size: 17px; }
 .say::before { content: "「"; color: var(--muted); }
 .say::after { content: "」"; color: var(--muted); }
@@ -237,30 +247,22 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 <div class="wrap" id="app"></div>
 
 <script src="puzzles.js"></script>
-<script src="generator.js"></script>
+<script src="core.js"></script>
+<script src="lang/ko.js"></script>
 <script>
 (function () {
   "use strict";
   const DATA = window.PUZZLES;
-  const GEN = window.SmallTrialGen;
-  const TIER = { easy: "쉬움", normal: "보통", hard: "어려움", daily: "오늘의 재판" };
-  const TIER_NOTE = {
-    easy: "용의자 3~4명, 거짓말쟁이 1명. 마법 없음",
-    normal: "마법 규칙이 하나 붙는다",
-    hard: "용의자가 늘고, 말에 대한 말과 마법이 섞인다",
-  };
-  const HIRO_NO = 659;
+  const CORE = window.TrialCore;
+  const L = window.TrialLang.ko;      // 언어 팩. 다른 언어는 같은 모양으로 lang/<언어>.js 에 더한다
+  const T = L.ui;
   // 브라우저에만 남는 기록. 퍼즐 내용으로 만든 key 로 저장해서, 퍼즐을 다시 만들어도 엉뚱한 문제에 붙지 않는다.
   const DONE = "small-trial:done";        // { key: 최소 회귀 횟수 }
   const NOTE = "small-trial:note:";      // + key → { g: {"범인|카드": "o"|"x"}, t: 메모 }
   const UI = "small-trial:ui";           // { nb: 수첩 열림 }
   const app = document.getElementById("app");
+  document.documentElement.lang = T.lang;
 
-  // 받침에 따라 조사를 고른다: josa("셰리", "을", "를") -> "셰리를"
-  const josa = (w, a, b) => {
-    const c = w.charCodeAt(w.length - 1);
-    return w + (c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 ? a : b);
-  };
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function load(k, fallback) {
@@ -275,49 +277,53 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   let done = load(DONE, {});
   let ui = load(UI, { nb: false });
   const notesMem = {};
-  const keyOf = (p) => p.key || p.id;
   function noteOf(p) {
-    const k = keyOf(p);
-    if (!notesMem[k]) notesMem[k] = load(NOTE + k, null) || { g: {}, t: "" };
-    return notesMem[k];
+    if (!notesMem[p.key]) notesMem[p.key] = load(NOTE + p.key, null) || { g: {}, t: "" };
+    return notesMem[p.key];
   }
-  function saveNote(p) { save(NOTE + keyOf(p), noteOf(p)); }
+  function saveNote(p) { save(NOTE + p.key, noteOf(p)); }
 
   function today() {
     const d = new Date();
     const days = Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(2026, 0, 1)) / 86400000);
     const n = DATA.daily.length;
-    return { label: `${d.getFullYear()}. ${d.getMonth() + 1}. ${d.getDate()}`, puzzle: DATA.daily[((days % n) + n) % n] };
+    return { label: T.dateLabel(d), puzzle: DATA.daily[((days % n) + n) % n] };
   }
 
   let state = { view: "home" };
 
-  function findPuzzle(id) {
+  function findLogic(id) {
+    if (id === "tutorial") return DATA.tutorial;
     for (const t of Object.values(DATA.tiers)) for (const p of t) if (p.id === id) return p;
     return DATA.daily.find((p) => p.id === id);
   }
 
-  // 무작위 재판은 (난이도, 번호)로 다시 만든다. 같은 번호면 같은 문제.
-  let made = null;
-  function randomPuzzle(r) {
-    if (!made || made.tier !== r.tier || made.seed !== r.seed) made = GEN.make(r.tier, r.seed);
-    return made;
+  // 화면용 퍼즐(글 붙음)은 한 번만 만든다. 무작위 재판은 (난이도, 번호)로 다시 만든다.
+  const views = {};
+  function current() {
+    const k = state.random ? `random-${state.random.tier}-${state.random.seed}` : state.id;
+    if (!views[k]) {
+      const q = state.random ? CORE.make(state.random.tier, state.random.seed) : findLogic(state.id);
+      views[k] = q && { q, p: L.decorate(q) };
+    }
+    return views[k];
   }
-  const current = () => (state.random ? randomPuzzle(state.random) : findPuzzle(state.id));
 
   const fresh = () => ({ marks: [], culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false });
 
-  function openPuzzle(p, fromDaily) {
-    state = { view: "puzzle", id: p.id, daily: !!fromDaily, ...fresh() };
+  function openPuzzle(id, fromDaily) {
+    state = { view: "puzzle", id, daily: !!fromDaily, ...fresh() };
+    if (id === "tutorial") ui.nb = true;     // 튜토리얼은 수첩을 펼쳐 둔다
     render();
     window.scrollTo({ top: 0 });
   }
 
   function openRandom(tier) {
-    let seed, p;
-    for (let i = 0; i < 5 && !p; i++) { seed = 1 + Math.floor(Math.random() * 999999); p = randomPuzzle({ tier, seed }); }
-    if (!p) return;     // 측정상 일어나지 않는다(난이도별 200개 표본에서 실패 0)
-    state = { view: "puzzle", random: { tier, seed }, ...fresh() };
+    for (let i = 0; i < 5; i++) {
+      const seed = 1 + Math.floor(Math.random() * 999999);
+      state = { view: "puzzle", random: { tier, seed }, ...fresh() };
+      if (current()) break;     // 측정상 첫 번에 된다(난이도별 200개 표본에서 실패 0)
+    }
     render();
     window.scrollTo({ top: 0 });
   }
@@ -327,84 +333,85 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   function header() {
     return `
       <header class="masthead">
-        <div class="eyebrow">마녀재판 비공식 팬메이드 · 논리 퍼즐</div>
-        <h1>감옥저택의 <span class="mark">번외재판</span></h1>
+        <div class="eyebrow">${esc(T.eyebrow)}</div>
+        <h1>${esc(T.titleParts[0])}<span class="mark">${esc(T.titleParts[1])}</span></h1>
         <div class="fleuron" aria-hidden="true">❦ ❦ ❦</div>
-        <p>감옥 저택에서 '올바르지 않은' 일들이 일어나고 있다. 이를 바로잡는 건 바로 나, 니카이도 히로. 소녀들의 말 중 몇 개는 거짓이다. 말들이 모두 맞아떨어지는 경우는 하나뿐이니, 그 경우의 범인을 찾아 판결하자.</p>
+        <p>${esc(T.intro)}</p>
       </header>
       <div class="notice frame" role="note">
-        <span><b>비공식 팬메이드</b> 작품입니다. 공식 이미지·음성·텍스트는 쓰지 않았고, 사건과 대사는 원작 대사를 옮기지 않고 새로 썼습니다.</span>
-        <span><b>AI 이용</b>: 프로그래밍(퍼즐 생성기, 정답 검산, 화면)은 AI(Claude)의 도움을 받아 만들었습니다. 일부 대사와 문구도 AI의 도움을 받아 썼습니다.</span>
-        <span>원작의 줄거리는 다루지 않지만, 캐릭터와 마법(히로의 마법 포함) 등 원작 설정이 나오므로 <b>스포일러에 주의</b>해 주세요.</span>
-        <span lang="ja">非公式のファンメイド作品・ネタバレあり・AI利用</span>
+        ${T.noticeHtml.map((h) => `<span>${h}</span>`).join("")}
+        <span lang="ja">${esc(T.noticeJa)}</span>
       </div>`;
+  }
+
+  function tile(p, i) {
+    const has = p.key in done;
+    return `<button class="tile ${has ? "done" : ""} ${done[p.key] === 0 ? "perfect" : ""}" data-open="${p.id}"
+      aria-label="${esc(T.tileLabel(p.tier, i, done[p.key]))}">${i}</button>`;
   }
 
   function home() {
     const d = today();
+    const tut = DATA.tutorial;
     const tiers = ["easy", "normal", "hard"].map((t) => `
-      <section class="tier" aria-label="${TIER[t]}">
-        <header><h3>${TIER[t]}</h3><small>${TIER_NOTE[t]}</small></header>
-        <div class="tiles">
-          ${DATA.tiers[t].map((p, i) => {
-            const k = keyOf(p);
-            const has = k in done;
-            return `<button class="tile ${has ? "done" : ""} ${done[k] === 0 ? "perfect" : ""}" data-open="${p.id}"
-              aria-label="${TIER[t]} ${i + 1}번${has ? `, 판결 끝, 최소 회귀 ${done[k]}번` : ""}">${i + 1}</button>`;
-          }).join("")}
-        </div>
+      <section class="tier" aria-label="${esc(T.tier[t])}">
+        <header><h3>${esc(T.tier[t])}</h3><small>${esc(T.tierNote[t])}</small></header>
+        <div class="tiles">${DATA.tiers[t].map((p, i) => tile(p, i + 1)).join("")}</div>
       </section>`).join("");
     app.innerHTML = header() + `
-      <section class="daily" aria-label="오늘의 재판">
+      <section class="daily" aria-label="${esc(T.dailyTitle)}">
         <div class="what">
-          <div class="date">${d.label} · ${TIER[d.puzzle.tier]}</div>
-          <h3>오늘의 재판</h3>
-          <div>${esc(d.puzzle.incident)}</div>
+          <div class="date">${esc(d.label)} · ${esc(T.tier[d.puzzle.tier])}</div>
+          <h3>${esc(T.dailyTitle)}</h3>
+          <div>${esc(L.decorate(d.puzzle).incident)}</div>
         </div>
-        <button class="btn" data-daily="1">재판을 연다</button>
+        <button class="btn" data-daily="1">${esc(T.dailyOpen)}</button>
       </section>
-      <section class="random" aria-label="무작위 재판">
+      <section class="random" aria-label="${esc(T.randomTitle)}">
         <div class="what">
-          <h3>무작위 재판</h3>
-          <div>누를 때마다 새 사건을 그 자리에서 만든다. 답이 하나뿐인지는 확인하지만, 재미와 난이도는 운에 맡긴다.</div>
+          <h3>${esc(T.randomTitle)}</h3>
+          <div>${esc(T.randomDesc)}</div>
         </div>
         <div class="bar">
-          ${["easy", "normal", "hard"].map((t) => `<button class="btn ghost" data-random="${t}">${TIER[t]}</button>`).join("")}
+          ${["easy", "normal", "hard"].map((t) => `<button class="btn ghost" data-random="${t}">${esc(T.tier[t])}</button>`).join("")}
         </div>
       </section>
-      <div class="section-title"><h2>사건 기록</h2><span>판결을 끝낸 사건에는 도장이, 한 번도 돌아오지 않고 끝냈다면 붉게 찬 도장이 찍힌다</span></div>
+      <div class="section-title"><h2>${esc(T.records)}</h2><span>${esc(T.recordsNote)}</span></div>
+      <section class="tutorial" aria-label="${esc(T.tutorialTitle)}">
+        <div class="what">
+          <h3>${esc(T.tutorialTitle)}${tut.key in done ? ` <span class="mark-done">${esc(T.tutorialDone)}</span>` : ""}</h3>
+          <div>${esc(T.tutorialDesc)}</div>
+        </div>
+        <button class="btn ghost" data-open="tutorial">${esc(T.tutorialOpen)}</button>
+      </section>
       <div class="tiers">${tiers}</div>` + footer();
   }
 
-  // 자기를 "나·저" 말고 다르게 부르는 사람이 있으면 알려 둔다(미리아 「아저씨」, 안안 「이 몸」, 노아 「노아」).
-  function selfWords(p) {
-    const V = (DATA.gen && DATA.gen.voices) || {};
-    const items = p.suspects.filter((s) => V[s.id] && !["나", "저"].includes(V[s.id].self))
-      .map((s) => `「${esc(V[s.id].self)}」(${esc(s.name)})`);
-    return items.length ? `<p class="rule">자기를 부르는 말: ${items.join(" · ")}. 카드에 적힌 사람 자신을 가리킨다.</p>` : "";
-  }
-
-  // 히로가 범인을 제시하는 말: 「셰리, 네가 엎었어.」
-  const accusation = (name, p) => `「${name}, 네가 ${p.verb}.」`;
-  const nameOf = (p, id) => p.suspects.find((s) => s.id === id).name;
-
-  function dialog(speaker, no, line, written) {
+  function dialog(speaker, line, written) {
     return `
       <figure class="dialog">
-        <figcaption class="speaker">${esc(speaker)}${no ? ` <span class="no">No.${no}</span>` : ""}${written ? " · 필담" : ""}</figcaption>
+        <figcaption class="speaker">${esc(speaker)}${written ? ` · ${esc(T.written)}` : ""}</figcaption>
         <blockquote class="say ${written ? "written" : ""}">${esc(line)}</blockquote>
       </figure>`;
   }
+
+  // 튜토리얼 판에서만 나오는 순서 안내
+  function guide(q, step, key) {
+    if (q.tier !== "tutorial") return "";
+    return `<div class="guide"><span class="step" aria-hidden="true">${step}</span><p>${esc(T.guide[key])}</p></div>`;
+  }
+
+  const nameOf = (p, id) => p.suspects.find((s) => s.id === id).name;
 
   function notebook(p) {
     const note = noteOf(p);
     const ids = p.suspects.map((s) => s.id);
     const head = ids.map((c) => `<th scope="col">${esc(nameOf(p, c))}</th>`).join("");
     const rows = ids.map((r) => `
-      <tr><th scope="row">${esc(nameOf(p, r))}의 말</th>${ids.map((c) => {
+      <tr><th scope="row">${esc(T.nbRow(nameOf(p, r)))}</th>${ids.map((c) => {
         const v = note.g[`${c}|${r}`] || "";
-        const label = `${nameOf(p, c)}${josa(nameOf(p, c), "이", "가").slice(nameOf(p, c).length)} 범인이라면 ${nameOf(p, r)}의 말: ${v === "o" ? "맞음" : v === "x" ? "틀림" : "비어 있음"}`;
-        return `<td><button class="cell ${v}" data-cell="${c}|${r}" data-k="cell:${c}|${r}" aria-label="${esc(label)}">${v === "o" ? "○" : v === "x" ? "×" : ""}</button></td>`;
+        return `<td><button class="cell ${v}" data-cell="${c}|${r}" data-k="cell:${c}|${r}"
+          aria-label="${esc(T.nbCell(nameOf(p, c), nameOf(p, r), v))}">${v === "o" ? "○" : v === "x" ? "×" : ""}</button></td>`;
       }).join("")}</tr>`).join("");
     const counts = ids.map((c) => {
       const x = ids.filter((r) => note.g[`${c}|${r}`] === "x").length;
@@ -412,30 +419,29 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     }).join("");
     return `
       <details class="notebook frame" id="notebook" ${ui.nb ? "open" : ""}>
-        <summary><span class="nb-title">히로의 수첩</span><span class="nb-sub">가정 표와 메모. 이 브라우저에만 남는다</span></summary>
+        <summary><span class="nb-title">${esc(T.nbTitle)}</span><span class="nb-sub">${esc(T.nbSub)}</span></summary>
         <div class="nb-body">
-          <p class="nb-help">열마다 "이 사람이 범인이라면"을 가정하고, 칸을 눌러 그때 각 카드의 말이 맞는지(○) 틀린지(×) 적는다. 맨 아래 줄에 × 수가 나온다.</p>
+          <p class="nb-help">${esc(T.nbHelp)}</p>
           <div class="grid-wrap">
             <table class="hyp">
-              <thead><tr><th scope="col">범인이라면 →</th>${head}</tr></thead>
+              <thead><tr><th scope="col">${esc(T.nbCorner)}</th>${head}</tr></thead>
               <tbody>${rows}</tbody>
-              <tfoot><tr><th scope="row">× 수</th>${counts}</tr></tfoot>
+              <tfoot><tr><th scope="row">${esc(T.nbFoot)}</th>${counts}</tr></tfoot>
             </table>
           </div>
-          <label class="nb-label" for="memo-text">메모</label>
-          <textarea id="memo-text" rows="5" placeholder="예: 셰리가 범인이면 코코의 말은 틀린다. 그러면 거짓말쟁이는…"></textarea>
+          <label class="nb-label" for="memo-text">${esc(T.nbMemo)}</label>
+          <textarea id="memo-text" rows="5" placeholder="${esc(T.nbPlaceholder)}"></textarea>
           <div class="nb-actions">
-            <button class="btn ghost" data-clear-note="1" data-k="clear">${state.confirmClear ? "한 번 더 누르면 지운다" : "수첩 비우기"}</button>
-            ${state.confirmClear ? `<span class="warn">이 문제의 가정 표와 메모가 지워진다.</span>` : ""}
+            <button class="btn ghost" data-clear-note="1" data-k="clear">${esc(state.confirmClear ? T.nbClearConfirm : T.nbClear)}</button>
+            ${state.confirmClear ? `<span class="warn">${esc(T.nbClearWarn)}</span>` : ""}
           </div>
         </div>
       </details>`;
   }
 
   function puzzleView() {
-    const p = current();
-    const where = state.random ? `무작위 재판 · ${TIER[p.tier]} · 문제 번호 ${p.seed}`
-      : state.daily ? `오늘의 재판 · ${TIER[p.tier]}` : `${TIER[p.tier]} ${DATA.tiers[p.tier].indexOf(p) + 1}번`;
+    const { q, p } = current();
+    const index = state.random || state.daily || q.tier === "tutorial" ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
     const cards = p.suspects.map((s) => {
       const marked = state.marks.includes(s.id);
       const accused = state.culprit === s.id;
@@ -443,46 +449,52 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       return `
         <article class="card ${marked ? "marked" : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}">
           <header class="plate">
-            <span class="who">${esc(s.full || s.name)}${s.written ? `<span class="via">필담</span>` : ""}</span>
-            ${s.no ? `<span class="no">No.${s.no}</span>` : ""}
+            <span class="who">${esc(s.full)}${s.written ? `<span class="via">${esc(T.written)}</span>` : ""}</span>
           </header>
           <blockquote class="say ${s.written ? "written" : ""}">${esc(s.says)}</blockquote>
           <div class="acts">
-            <button class="chip" data-mark="${s.id}" data-k="mark:${s.id}" aria-pressed="${marked}">틀린 말</button>
-            <button class="chip" data-accuse="${s.id}" data-k="accuse:${s.id}" aria-pressed="${accused}" ${state.solved || known ? "disabled" : ""}>${known ? "범인 아님" : "범인으로 지목"}</button>
+            <button class="chip" data-mark="${s.id}" data-k="mark:${s.id}" aria-pressed="${marked}">${esc(T.markFalse)}</button>
+            <button class="chip" data-accuse="${s.id}" data-k="accuse:${s.id}" aria-pressed="${accused}" ${state.solved || known ? "disabled" : ""}>${esc(known ? T.notCulprit : T.accuse)}</button>
           </div>
-          ${known ? `<div class="hint">회귀의 기억: ${esc(p.why_not[s.id])}</div>` : ""}
+          ${known ? `<div class="hint">${esc(T.memory(p.why_not[s.id]))}</div>` : ""}
         </article>`;
     }).join("");
     const magic = p.magic.map((m) => `
-      <div class="magic"><span class="tag">마법 규칙 · ${esc(m.who)}의 ${esc(m.name)}</span><span>${esc(m.text)}</span></div>`).join("");
+      <div class="magic"><span class="tag">${esc(T.magicTag(m))}</span><span>${esc(m.text)}</span></div>`).join("");
+    const self = T.selfWords(q);
     const culpritName = state.culprit ? nameOf(p, state.culprit) : null;
     const unknown = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id)).length;
+    const nextLabel = state.random ? T.next.random : state.daily ? T.next.daily : q.tier === "tutorial" ? T.next.tutorial
+      : DATA.tiers[q.tier][index] ? T.next.fixed : T.next.last;
     app.innerHTML = `
       <div class="case-top">
-        <button class="btn ghost" data-home="1">사건 기록으로</button>
-        <span class="where">${where}</span>
+        <button class="btn ghost" data-home="1">${esc(T.back)}</button>
+        <span class="where">${esc(T.where(q, index))}</span>
       </div>
+      ${guide(q, 1, "incident")}
       <h2 class="incident">${esc(p.incident)}</h2>
-      ${p.victim ? dialog(p.victim.name, p.victim.no, p.victim.line, p.victim.written) : ""}
+      ${dialog(p.victim.name, p.victim.line, p.victim.written)}
+      ${guide(q, 2, "rules")}
       <div class="rules">
-        <p class="rule">이 중 딱 <strong>${p.n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.</p>
-        <p class="rule">범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다.</p>
-        ${selfWords(p)}
-        <div class="magic hiro"><span class="tag">판결하는 사람 · 니카이도 히로의 사망 회귀</span>
-          <span>판결이 틀리면 히로는 그날 아침으로 돌아간다. 돌아와도 기억은 남는다. 스스로 되감아서 범인이 아닌 사람 하나를 알아 올 수도 있다. 돌아온 횟수는 판결 기록에 남는다.</span></div>
+        <p class="rule">${T.ruleLiarsHtml(p.n)}</p>
+        <p class="rule">${esc(T.ruleCulprit)}</p>
+        ${self ? `<p class="rule">${esc(self)}</p>` : ""}
+        <div class="magic hiro"><span class="tag">${esc(T.hiroTag)}</span><span>${esc(T.hiroRule)}</span></div>
         ${magic}
       </div>
+      ${guide(q, 3, "cards")}
       <div class="cards">${cards}</div>
+      ${guide(q, 4, "notebook")}
       ${notebook(p)}
+      ${guide(q, 5, "bar")}
       <div class="bar">
         <button class="btn" data-judge="1" data-k="judge" ${!state.culprit || state.solved ? "disabled" : ""}>
-          ${culpritName ? esc(accusation(culpritName, p)) : "범인을 고르면 판결할 수 있다"}</button>
-        <button class="btn rewind" data-rewind="1" data-k="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>되감는다: 범인이 아닌 사람 하나를 알아 온다</button>
-        <span class="tally">회귀 ${state.rewinds}번 · 틀린 말 표시 ${state.marks.length}개</span>
+          ${esc(culpritName ? T.accusation(culpritName, p) : T.judgeIdle)}</button>
+        <button class="btn rewind" data-rewind="1" data-k="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>${esc(T.rewind)}</button>
+        <span class="tally">${esc(T.tally(state.rewinds, state.marks.length))}</span>
       </div>
       ${verdictView(p)}
-      ${state.solved ? `<div class="bar"><button class="btn" data-next="1">${state.random ? "같은 난이도로 하나 더" : state.daily ? "사건 기록으로" : "다음 사건"}</button></div>` : ""}
+      ${state.solved ? `<div class="bar"><button class="btn" data-next="1">${esc(nextLabel)}</button></div>` : ""}
       ` + footer();
     const memo = document.getElementById("memo-text");
     if (memo) memo.value = noteOf(p).t;
@@ -495,38 +507,33 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       const n = state.rewinds;
       return `
         <section class="verdict frame right" aria-live="polite">
-          <div class="stamp" aria-hidden="true">판결</div>
-          <h3>${esc(accusation(nameOf(p, p.answer), p))}</h3>
+          <div class="stamp" aria-hidden="true">${esc(T.stamp)}</div>
+          <h3>${esc(T.accusation(nameOf(p, p.answer), p))}</h3>
           <ul>${p.solution.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
-          <div class="record">${n === 0 ? "한 번도 돌아오지 않고 판결했다." : `회귀 ${n}번 끝에 판결했다.`}</div>
-          ${dialog("니카이도 히로", HIRO_NO, n === 0 ? "…올바른 판결이야. 틀린 건 틀렸다고 말해야지." : "몇 번을 돌아오든 상관없어. 올바른 판결에 닿았으면 그걸로 돼.")}
+          <div class="record">${esc(T.recordRight(n))}</div>
+          ${dialog(T.hiro, T.hiroRight(n))}
         </section>`;
     }
     if (v.rewind) {
       return `
         <section class="verdict frame rewind" aria-live="polite">
-          <div class="morning">…눈을 뜨니 그날 아침이었다.</div>
-          <div>회귀 ${state.rewinds}번째. ${esc(josa(nameOf(p, v.who), "은", "는"))} 범인이 아니다. 그건 기억하고 있다.</div>
-          ${dialog("니카이도 히로", HIRO_NO, "알아낸 건 버리지 않아. 이번엔 틀리지 않아.")}
+          <div class="morning">${esc(T.morning)}</div>
+          <div>${esc(T.rewindInfo(state.rewinds, nameOf(p, v.who)))}</div>
+          ${dialog(T.hiro, T.hiroRewind)}
         </section>`;
     }
     return `
       <section class="verdict frame wrong shake" aria-live="polite">
-        <h3>옳지 않은 판결이었다.</h3>
+        <h3>${esc(T.wrongTitle)}</h3>
         <div>${esc(p.why_not[v.culprit])}</div>
-        <div class="morning">…눈을 뜨니 그날 아침이었다.</div>
-        <div class="record">회귀 ${state.rewinds}번째. 틀린 판결의 기억은 남아 있다.</div>
-        ${dialog("니카이도 히로", HIRO_NO, "옳지 않은 건… 나였어. 다시 해.")}
+        <div class="morning">${esc(T.morning)}</div>
+        <div class="record">${esc(T.wrongRecord(state.rewinds))}</div>
+        ${dialog(T.hiro, T.hiroWrong)}
       </section>`;
   }
 
   function footer() {
-    return `
-      <footer>
-        <span>『魔法少女ノ魔女裁判』의 비공식 2차창작 팬게임 데모입니다. 원작의 권리는 원작자에게 있습니다.</span>
-        <span>퍼즐은 프로그램이 만듭니다. 사건 기록의 퍼즐은 답(범인)이 하나뿐인지 두 가지 방법으로 검산했고, 무작위 재판은 만들 때마다 전수 조사로 확인합니다.</span>
-        <span>프로그래밍은 AI(Claude)의 도움을 받아 진행했습니다.</span>
-      </footer>`;
+    return `<footer>${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}</footer>`;
   }
 
   // 다시 그려도 누르던 버튼에 초점을 돌려 둔다(키보드로 표를 채울 때 끊기지 않게)
@@ -545,12 +552,13 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     const b = e.target.closest("button");
     if (!b) return;
     const ds = b.dataset;
-    if (ds.open) return openPuzzle(findPuzzle(ds.open), false);
-    if (ds.daily) return openPuzzle(today().puzzle, true);
+    if (ds.open) return openPuzzle(ds.open, false);
+    if (ds.daily) return openPuzzle(today().puzzle.id, true);
     if (ds.random) return openRandom(ds.random);
     if (ds.home) { state = { view: "home" }; render(); return; }
-    const p = state.view === "puzzle" ? current() : null;
-    if (!p) return;
+    const cur = state.view === "puzzle" ? current() : null;
+    if (!cur) return;
+    const { q, p } = cur;
     if (!ds.clearNote) state.confirmClear = false;
     if (ds.mark) {
       const i = state.marks.indexOf(ds.mark);
@@ -565,15 +573,12 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       saveNote(p);
     } else if (ds.clearNote) {
       if (!state.confirmClear) { state.confirmClear = true; }
-      else { notesMem[keyOf(p)] = { g: {}, t: "" }; saveNote(p); state.confirmClear = false; }
+      else { notesMem[p.key] = { g: {}, t: "" }; saveNote(p); state.confirmClear = false; }
     } else if (ds.judge && state.culprit && !state.solved) {
       if (state.culprit === p.answer) {
         state.solved = true;
         state.verdict = { right: true };
-        if (!state.random) {
-          const k = keyOf(p);
-          if (!(k in done) || state.rewinds < done[k]) { done[k] = state.rewinds; save(DONE, done); }
-        }
+        if (!state.random && (!(p.key in done) || state.rewinds < done[p.key])) { done[p.key] = state.rewinds; save(DONE, done); }
       } else {
         // 틀린 판결 = 사망 회귀. 지목한 사람이 범인이 아니라는 기억은 남는다
         state.rewinds += 1;
@@ -591,11 +596,12 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         state.verdict = { rewind: true, who };
       }
     } else if (ds.next) {
-      if (state.random) return openRandom(p.tier);
+      if (state.random) return openRandom(q.tier);
       if (state.daily) { state = { view: "home" }; render(); return; }
-      const list = DATA.tiers[p.tier];
-      const next = list[list.indexOf(p) + 1];
-      if (next) return openPuzzle(next, false);
+      if (q.tier === "tutorial") return openPuzzle(DATA.tiers.easy[0].id, false);
+      const list = DATA.tiers[q.tier];
+      const next = list[list.indexOf(q) + 1];
+      if (next) return openPuzzle(next.id, false);
       state = { view: "home" }; render(); return;
     }
     render(ds.k);
@@ -604,7 +610,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   // 메모는 쓰는 대로 저장한다(다시 그리지 않는다)
   app.addEventListener("input", (e) => {
     if (e.target.id !== "memo-text" || state.view !== "puzzle") return;
-    const p = current();
+    const { p } = current();
     noteOf(p).t = e.target.value;
     saveNote(p);
   });
@@ -619,7 +625,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   try { window.claude?.hot?.snapshot?.(() => ({ state })); } catch (e) { /* 없음 */ }
   const start = (data) => {
     const s = data && data.state;
-    if (s && s.view && (s.view === "home" || Array.isArray(s.memory))) state = { ...fresh(), ...s };
+    if (s && s.view === "home") state = s;
+    else if (s && s.view === "puzzle" && Array.isArray(s.memory) && (s.random || findLogic(s.id))) state = { ...fresh(), ...s };
     render();
   };
   if (window.claude?.hot?.ready) window.claude.hot.ready(start); else start(window.claude?.hot?.data ?? {});

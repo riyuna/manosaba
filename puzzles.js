@@ -6,60 +6,13 @@ window.PUZZLES = {
     "id": "easy-1",
     "key": "cc10fe95e821",
     "tier": "easy",
-    "incident": "아리사의 성냥갑이 텅 비어 있었다.",
-    "verb": "가져갔어",
-    "victim": {
-     "id": "arisa",
-     "name": "시토 아리사",
-     "no": 666,
-     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
-     "written": false
-    },
+    "incident": "matches",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "reia",
+     "anan",
+     "ema"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "에마는 안 가져갔다!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "에마 아니면 레이아가 가져갔노라."
-     },
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "안안쨩은 안 가져갔어!"
-     }
-    ],
-    "answer": "ema",
-    "why_not": {
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 0명이 되어 버린다. 1명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 레이아",
-     "범인: 에마"
-    ],
-    "false_cards": [
-     "reia"
-    ],
-    "worlds": 1,
     "logic": {
      "reia": [
       "deny",
@@ -81,66 +34,24 @@ window.PUZZLES = {
       ]
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "ema",
+    "false_cards": [
+     "reia"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-2",
     "key": "fd4835a8f693",
     "tier": "easy",
-    "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-    "verb": "펼쳐 봤어",
-    "victim": {
-     "id": "ema",
-     "name": "사쿠라바 에마",
-     "no": 658,
-     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-     "written": false
-    },
+    "incident": "diary",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "arisa",
+     "coco",
+     "hanna"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "토노는 안 봤어."
-     },
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "아리사 아니면 한나가 펼쳐 봤음 ㅇㅇ"
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "아리사 씨 아니면 코코 씨가 펼쳐 봤사와요!"
-     }
-    ],
-    "answer": "coco",
-    "why_not": {
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 0명이 되어 버린다. 1명이어야 해.",
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 코코",
-     "범인: 코코"
-    ],
-    "false_cards": [
-     "coco"
-    ],
-    "worlds": 1,
     "logic": {
      "arisa": [
       "deny",
@@ -163,66 +74,24 @@ window.PUZZLES = {
       ]
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "coco",
+    "false_cards": [
+     "coco"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-3",
     "key": "f1e6291d5059",
     "tier": "easy",
-    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-    "verb": "껐어",
-    "victim": {
-     "id": "coco",
-     "name": "사와타리 코코",
-     "no": 669,
-     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-     "written": false
-    },
+    "incident": "stream",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "sherry",
+     "hanna",
+     "noah"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "sherry",
-      "name": "셰리",
-      "full": "타치바나 셰리",
-      "no": 667,
-      "written": false,
-      "says": "저 아니면 한나 씨가 껐어요!"
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "범인은 셰리 씨이와요!"
-     },
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "노아는 안 껐어~"
-     }
-    ],
-    "answer": "hanna",
-    "why_not": {
-     "sherry": "셰리가 범인이라면 거짓말하는 사람이 0명이 되어 버린다. 1명이어야 해.",
-     "noah": "노아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 한나",
-     "범인: 한나"
-    ],
-    "false_cards": [
-     "hanna"
-    ],
-    "worlds": 1,
     "logic": {
      "sherry": [
       "self_or",
@@ -241,75 +110,25 @@ window.PUZZLES = {
       []
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "hanna",
+    "false_cards": [
+     "hanna"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-4",
     "key": "9b0bd484e364",
     "tier": "easy",
-    "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
-    "verb": "바꿔 놨어",
-    "victim": {
-     "id": "miria",
-     "name": "사에키 미리아",
-     "no": 663,
-     "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
-     "written": false
-    },
+    "incident": "hairpin",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "meruru",
-      "name": "메루루",
-      "full": "히카미 메루루",
-      "no": 670,
-      "written": false,
-      "says": "노, 노아 씨는 안 바꿨어요…"
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "단언하지! 메루루가 바꿔 놨다!"
-     },
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "노아 아니면 메루루쨩이 바꿔 놨어~"
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "레이아쨩이 바꿔 놨어♡"
-     }
-    ],
-    "answer": "meruru",
-    "why_not": {
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해.",
-     "noah": "노아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다. 1명이어야 해.",
-     "margo": "마고가 범인이라면 거짓말하는 사람이 3명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 마고",
-     "범인: 메루루"
-    ],
-    "false_cards": [
+    "speakers": [
+     "meruru",
+     "reia",
+     "noah",
      "margo"
     ],
-    "worlds": 1,
     "logic": {
      "meruru": [
       "deny",
@@ -336,75 +155,25 @@ window.PUZZLES = {
       ]
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "meruru",
+    "false_cards": [
+     "margo"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-5",
     "key": "b6fdc37241f6",
     "tier": "easy",
-    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-    "verb": "낙서했어",
-    "victim": {
-     "id": "reia",
-     "name": "하스미 레이아",
-     "no": 662,
-     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-     "written": false
-    },
+    "incident": "mirror",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "arisa",
+     "hanna",
+     "nanoka",
+     "coco"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "사와타리 아니면 쿠로베가 낙서했어."
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "아리사 씨 아니면 코코 씨가 낙서했사와요!"
-     },
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "나 아니면 한나가 낙서했어."
-     },
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "나노카는 안 그랬음"
-     }
-    ],
-    "answer": "coco",
-    "why_not": {
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해.",
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해.",
-     "nanoka": "나노카가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 나노카",
-     "범인: 코코"
-    ],
-    "false_cards": [
-     "nanoka"
-    ],
-    "worlds": 1,
     "logic": {
      "arisa": [
       "either",
@@ -433,75 +202,25 @@ window.PUZZLES = {
       ]
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "coco",
+    "false_cards": [
+     "nanoka"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-6",
     "key": "37a4fcdf1fc8",
     "tier": "easy",
-    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-    "verb": "먹었어",
-    "victim": {
-     "id": "nanoka",
-     "name": "쿠로베 나노카",
-     "no": 665,
-     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-     "written": false
-    },
+    "incident": "sweets",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "noah",
+     "hanna",
+     "reia",
+     "miria"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "노아 아니면 한나쨩이 먹었어~"
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "저 아니면 레이아 씨가 먹었사와요!"
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "미리아 아니면 노아가 먹었다!"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "아저씨 아니면 노아쨩이 먹었어."
-     }
-    ],
-    "answer": "noah",
-    "why_not": {
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해.",
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다. 1명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 한나",
-     "범인: 노아"
-    ],
-    "false_cards": [
-     "hanna"
-    ],
-    "worlds": 1,
     "logic": {
      "noah": [
       "self_or",
@@ -529,75 +248,25 @@ window.PUZZLES = {
       ]
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "noah",
+    "false_cards": [
+     "hanna"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-7",
     "key": "72cea2a92b97",
     "tier": "easy",
-    "incident": "한나의 리본 하나가 없어졌다.",
-    "verb": "가져갔어",
-    "victim": {
-     "id": "hanna",
-     "name": "토노 한나",
-     "no": 668,
-     "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!",
-     "written": false
-    },
+    "incident": "ribbon",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "anan",
+     "nanoka",
+     "margo",
+     "coco"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "코코 아니면 나노카가 가져갔노라."
-     },
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "코코 아니면 마고가 가져갔어."
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "코코쨩은 안 가져갔어."
-     },
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "범인은 마고임 빼박"
-     }
-    ],
-    "answer": "margo",
-    "why_not": {
-     "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다. 1명이어야 해.",
-     "nanoka": "나노카가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해.",
-     "coco": "코코가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 안안",
-     "범인: 마고"
-    ],
-    "false_cards": [
-     "anan"
-    ],
-    "worlds": 1,
     "logic": {
      "anan": [
       "either",
@@ -626,66 +295,24 @@ window.PUZZLES = {
       ]
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "margo",
+    "false_cards": [
+     "anan"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-8",
     "key": "3370885691f8",
     "tier": "easy",
-    "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
-    "verb": "바꿔 놨어",
-    "victim": {
-     "id": "miria",
-     "name": "사에키 미리아",
-     "no": 663,
-     "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
-     "written": false
-    },
+    "incident": "hairpin",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "arisa",
+     "reia",
+     "anan"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "범인은 하스미야. 됐냐?"
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "나 아니면 안안이 바꿔 놨다!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "아리사는 안 바꿨노라."
-     }
-    ],
-    "answer": "anan",
-    "why_not": {
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명이 되어 버린다. 1명이어야 해.",
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 0명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 아리사",
-     "범인: 안안"
-    ],
-    "false_cards": [
-     "arisa"
-    ],
-    "worlds": 1,
     "logic": {
      "arisa": [
       "culprit_is",
@@ -706,75 +333,25 @@ window.PUZZLES = {
       ]
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "anan",
+    "false_cards": [
+     "arisa"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-9",
     "key": "9cefb6fd302c",
     "tier": "easy",
-    "incident": "아리사의 성냥갑이 텅 비어 있었다.",
-    "verb": "가져갔어",
-    "victim": {
-     "id": "arisa",
-     "name": "시토 아리사",
-     "no": 666,
-     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
-     "written": false
-    },
+    "incident": "matches",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "coco",
+     "ema",
+     "noah",
+     "sherry"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "나 아니면 에마가 가져갔음"
-     },
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "코코쨩은 안 가져갔어!"
-     },
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "노아 아니면 셰리쨩이 가져갔어~"
-     },
-     {
-      "id": "sherry",
-      "name": "셰리",
-      "full": "타치바나 셰리",
-      "no": 667,
-      "written": false,
-      "says": "명탐정의 추리로는, 범인은 에마 씨예요!"
-     }
-    ],
-    "answer": "ema",
-    "why_not": {
-     "coco": "코코가 범인이라면 거짓말하는 사람이 3명이 되어 버린다. 1명이어야 해.",
-     "noah": "노아가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해.",
-     "sherry": "셰리가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 노아",
-     "범인: 에마"
-    ],
-    "false_cards": [
-     "noah"
-    ],
-    "worlds": 1,
     "logic": {
      "coco": [
       "self_or",
@@ -801,66 +378,24 @@ window.PUZZLES = {
       ]
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "ema",
+    "false_cards": [
+     "noah"
+    ],
+    "worlds": 1
    },
    {
     "id": "easy-10",
     "key": "dfc90344a413",
     "tier": "easy",
-    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-    "verb": "먹었어",
-    "victim": {
-     "id": "nanoka",
-     "name": "쿠로베 나노카",
-     "no": 665,
-     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-     "written": false
-    },
+    "incident": "sweets",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "hanna",
+     "miria",
+     "arisa"
     ],
-    "magic": [],
-    "suspects": [
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "아리사 씨 아니면 미리아 씨가 먹었사와요!"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "아리사쨩은 안 먹었어."
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "난 안 먹었어. 꺼져."
-     }
-    ],
-    "answer": "hanna",
-    "why_not": {
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 0명이 되어 버린다. 1명이어야 해.",
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 2명이 되어 버린다. 1명이어야 해."
-    },
-    "solution": [
-     "거짓말을 한 사람: 한나",
-     "범인: 한나"
-    ],
-    "false_cards": [
-     "hanna"
-    ],
-    "worlds": 1,
     "logic": {
      "hanna": [
       "either",
@@ -880,7 +415,12 @@ window.PUZZLES = {
       []
      ]
     },
-    "magic_ids": []
+    "magic_ids": [],
+    "answer": "hanna",
+    "false_cards": [
+     "hanna"
+    ],
+    "worlds": 1
    }
   ],
   "normal": [
@@ -888,77 +428,14 @@ window.PUZZLES = {
     "id": "normal-1",
     "key": "3df2047012d0",
     "tier": "normal",
-    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-    "verb": "낙서했어",
-    "victim": {
-     "id": "reia",
-     "name": "하스미 레이아",
-     "no": 662,
-     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-     "written": false
-    },
+    "incident": "mirror",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "코코는 안 그랬노라."
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "나츠메 아니면 사와타리가 낙서했어."
-     },
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "범인은 에마임 빼박"
-     },
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "안안쨩이 낙서했어!"
-     }
-    ],
-    "answer": "ema",
-    "why_not": {
-     "anan": "안안이 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-     "coco": "코코가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 아리사, 에마",
-     "아리사, 에마 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "범인: 에마"
-    ],
-    "false_cards": [
+    "speakers": [
+     "anan",
      "arisa",
+     "coco",
      "ema"
     ],
-    "worlds": 2,
     "logic": {
      "anan": [
       "deny",
@@ -988,83 +465,26 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "anan"
-    ]
+    ],
+    "answer": "ema",
+    "false_cards": [
+     "arisa",
+     "ema"
+    ],
+    "worlds": 2
    },
    {
     "id": "normal-2",
     "key": "91b6e6417fd6",
     "tier": "normal",
-    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-    "verb": "엎었어",
-    "victim": {
-     "id": "sherry",
-     "name": "타치바나 셰리",
-     "no": 667,
-     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-     "written": false
-    },
+    "incident": "pot",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "meruru",
-      "name": "메루루",
-      "full": "히카미 메루루",
-      "no": 670,
-      "written": false,
-      "says": "미, 미리아 씨는 안 엎었어요…"
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "아아, 메루루의 말은 맞다!"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "메루루쨩이 엎었어."
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "레이아는 안 엎었노라."
-     }
-    ],
-    "answer": "reia",
-    "why_not": {
-     "meruru": "메루루가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 미리아, 안안",
-     "미리아는 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다.",
-     "범인: 레이아"
-    ],
-    "false_cards": [
+    "speakers": [
+     "meruru",
+     "reia",
      "miria",
      "anan"
     ],
-    "worlds": 1,
     "logic": {
      "meruru": [
       "deny",
@@ -1093,92 +513,27 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "anan"
-    ]
+    ],
+    "answer": "reia",
+    "false_cards": [
+     "miria",
+     "anan"
+    ],
+    "worlds": 1
    },
    {
     "id": "normal-3",
     "key": "2981b999006b",
     "tier": "normal",
-    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-    "verb": "껐어",
-    "victim": {
-     "id": "coco",
-     "name": "사와타리 코코",
-     "no": 669,
-     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-     "written": false
-    },
+    "incident": "stream",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "마고",
-      "name": "흉내내기",
-      "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-     }
-    ],
-    "suspects": [
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "에마쨩 아니면 한나쨩이 껐어."
-     },
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "에마는 안 껐어."
-     },
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "범인은 나노카쨩이야~"
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "오호호, 마고 씨의 말은 틀렸사와요!"
-     },
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "범인은 한나쨩이야!"
-     }
-    ],
-    "answer": "nanoka",
-    "why_not": {
-     "margo": "마고가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "noah": "노아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "ema": "에마가 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 마고, 에마",
-     "에마 이름으로 나온 말은 사실 마고의 흉내였다.",
-     "범인: 나노카"
-    ],
-    "false_cards": [
+    "speakers": [
      "margo",
+     "nanoka",
+     "noah",
+     "hanna",
      "ema"
     ],
-    "worlds": 1,
     "logic": {
      "margo": [
       "either",
@@ -1214,84 +569,26 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "margo"
-    ]
+    ],
+    "answer": "nanoka",
+    "false_cards": [
+     "margo",
+     "ema"
+    ],
+    "worlds": 1
    },
    {
     "id": "normal-4",
     "key": "b4886e0d7474",
     "tier": "normal",
-    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-    "verb": "먹었어",
-    "victim": {
-     "id": "nanoka",
-     "name": "쿠로베 나노카",
-     "no": 665,
-     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-     "written": false
-    },
+    "incident": "sweets",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "저는 안 먹었사와요!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "미리아의 말은 그릇되었도다."
-     },
-     {
-      "id": "sherry",
-      "name": "셰리",
-      "full": "타치바나 셰리",
-      "no": 667,
-      "written": false,
-      "says": "명탐정의 추리로는, 범인은 안안 씨예요!"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "안안쨩 아니면 한나쨩이 먹었어."
-     }
-    ],
-    "answer": "hanna",
-    "why_not": {
-     "anan": "안안이 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-     "sherry": "셰리가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 한나, 안안, 셰리",
-     "한나, 셰리 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "범인: 한나"
-    ],
-    "false_cards": [
+    "speakers": [
      "hanna",
      "anan",
-     "sherry"
+     "sherry",
+     "miria"
     ],
-    "worlds": 2,
     "logic": {
      "hanna": [
       "deny_self",
@@ -1319,83 +616,27 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "anan"
-    ]
+    ],
+    "answer": "hanna",
+    "false_cards": [
+     "hanna",
+     "anan",
+     "sherry"
+    ],
+    "worlds": 2
    },
    {
     "id": "normal-5",
     "key": "ea5abb19c25b",
     "tier": "normal",
-    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-    "verb": "껐어",
-    "victim": {
-     "id": "coco",
-     "name": "사와타리 코코",
-     "no": 669,
-     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-     "written": false
-    },
+    "incident": "stream",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "레이아 씨가 껐사와요!"
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "아아, 마고의 말은 틀렸다!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "한나 아니면 레이아가 껐노라."
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "범인은 안안쨩이야♡"
-     }
-    ],
-    "answer": "hanna",
-    "why_not": {
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-     "margo": "마고가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 한나, 마고",
-     "한나, 마고 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "범인: 한나"
-    ],
-    "false_cards": [
+    "speakers": [
      "hanna",
+     "reia",
+     "anan",
      "margo"
     ],
-    "worlds": 2,
     "logic": {
      "hanna": [
       "accuse",
@@ -1425,92 +666,27 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "anan"
-    ]
+    ],
+    "answer": "hanna",
+    "false_cards": [
+     "hanna",
+     "margo"
+    ],
+    "worlds": 2
    },
    {
     "id": "normal-6",
     "key": "579818967712",
     "tier": "normal",
-    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-    "verb": "낙서했어",
-    "victim": {
-     "id": "reia",
-     "name": "하스미 레이아",
-     "no": 662,
-     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-     "written": false
-    },
+    "incident": "mirror",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "마고",
-      "name": "흉내내기",
-      "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-     }
-    ],
-    "suspects": [
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "안안쨩 아니면 아리사쨩이 낙서했어."
-     },
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "에마가 낙서했어."
-     },
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "나는 안 그랬어!"
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "호쇼 새끼가 낙서했어."
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "아리사 아니면 마고가 낙서했노라."
-     }
-    ],
-    "answer": "margo",
-    "why_not": {
-     "nanoka": "나노카가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "ema": "에마가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 마고, 나노카",
-     "나노카 이름으로 나온 말은 사실 마고의 흉내였다.",
-     "범인: 마고"
-    ],
-    "false_cards": [
+    "speakers": [
      "margo",
-     "nanoka"
+     "nanoka",
+     "ema",
+     "arisa",
+     "anan"
     ],
-    "worlds": 1,
     "logic": {
      "margo": [
       "either",
@@ -1545,92 +721,27 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "margo"
-    ]
+    ],
+    "answer": "margo",
+    "false_cards": [
+     "margo",
+     "nanoka"
+    ],
+    "worlds": 1
    },
    {
     "id": "normal-7",
     "key": "955267d93174",
     "tier": "normal",
-    "incident": "아리사의 성냥갑이 텅 비어 있었다.",
-    "verb": "가져갔어",
-    "victim": {
-     "id": "arisa",
-     "name": "시토 아리사",
-     "no": 666,
-     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
-     "written": false
-    },
+    "incident": "matches",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "마고",
-      "name": "흉내내기",
-      "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-     }
-    ],
-    "suspects": [
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "단언하지! 메루루가 가져갔다!"
-     },
-     {
-      "id": "sherry",
-      "name": "셰리",
-      "full": "타치바나 셰리",
-      "no": 667,
-      "written": false,
-      "says": "저는 안 가져갔어요!"
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "후후, 코코쨩의 말은 틀렸어."
-     },
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "메루루는 안 가져갔음"
-     },
-     {
-      "id": "meruru",
-      "name": "메루루",
-      "full": "히카미 메루루",
-      "no": 670,
-      "written": false,
-      "says": "코, 코코 씨가 가져갔어요…"
-     }
-    ],
-    "answer": "coco",
-    "why_not": {
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "sherry": "셰리가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "margo": "마고가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "meruru": "메루루가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 레이아, 마고",
-     "레이아 이름으로 나온 말은 사실 마고의 흉내였다.",
-     "범인: 코코"
-    ],
-    "false_cards": [
+    "speakers": [
      "reia",
-     "margo"
+     "sherry",
+     "margo",
+     "coco",
+     "meruru"
     ],
-    "worlds": 1,
     "logic": {
      "reia": [
       "accuse",
@@ -1663,92 +774,27 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "margo"
-    ]
+    ],
+    "answer": "coco",
+    "false_cards": [
+     "reia",
+     "margo"
+    ],
+    "worlds": 1
    },
    {
     "id": "normal-8",
     "key": "b341f38b901f",
     "tier": "normal",
-    "incident": "한나의 리본 하나가 없어졌다.",
-    "verb": "가져갔어",
-    "victim": {
-     "id": "hanna",
-     "name": "토노 한나",
-     "no": 668,
-     "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!",
-     "written": false
-    },
+    "incident": "ribbon",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "나노카가 가져갔노라."
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "단언하지! 안안이 가져갔다!"
-     },
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "미리아 말은 틀렸어."
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "범인은 나츠메야. 됐냐?"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "안안쨩 아니면 나노카쨩이 가져갔어."
-     }
-    ],
-    "answer": "anan",
-    "why_not": {
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-     "nanoka": "나노카가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 안안, 나노카",
-     "나노카는 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다.",
-     "범인: 안안"
-    ],
-    "false_cards": [
+    "speakers": [
      "anan",
-     "nanoka"
+     "reia",
+     "nanoka",
+     "arisa",
+     "miria"
     ],
-    "worlds": 1,
     "logic": {
      "anan": [
       "accuse",
@@ -1784,92 +830,27 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "anan"
-    ]
+    ],
+    "answer": "anan",
+    "false_cards": [
+     "anan",
+     "nanoka"
+    ],
+    "worlds": 1
    },
    {
     "id": "normal-9",
     "key": "09360e941450",
     "tier": "normal",
-    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-    "verb": "먹었어",
-    "victim": {
-     "id": "nanoka",
-     "name": "쿠로베 나노카",
-     "no": 665,
-     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-     "written": false
-    },
+    "incident": "sweets",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "마고",
-      "name": "흉내내기",
-      "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-     }
-    ],
-    "suspects": [
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "한나쨩의 말은 틀렸어!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "이 몸 아니면 에마가 먹었노라."
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "안안쨩 아니면 레이아쨩이 먹었어."
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "에마 아니면 한나가 먹었다!"
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "에마 씨는 안 먹었사와요!"
-     }
-    ],
-    "answer": "ema",
-    "why_not": {
-     "anan": "안안이 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 마고, 한나",
-     "한나 이름으로 나온 말은 사실 마고의 흉내였다.",
-     "범인: 에마"
-    ],
-    "false_cards": [
+    "speakers": [
+     "ema",
+     "anan",
      "margo",
+     "reia",
      "hanna"
     ],
-    "worlds": 1,
     "logic": {
      "ema": [
       "meta_false",
@@ -1906,82 +887,26 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "margo"
-    ]
+    ],
+    "answer": "ema",
+    "false_cards": [
+     "margo",
+     "hanna"
+    ],
+    "worlds": 1
    },
    {
     "id": "normal-10",
     "key": "a075c262a3af",
     "tier": "normal",
-    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-    "verb": "엎었어",
-    "victim": {
-     "id": "sherry",
-     "name": "타치바나 셰리",
-     "no": 667,
-     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-     "written": false
-    },
+    "incident": "pot",
     "n": 1,
-    "rules": [
-     "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+    "speakers": [
+     "ema",
+     "arisa",
+     "margo",
+     "miria"
     ],
-    "magic": [
-     {
-      "who": "미리아",
-      "name": "뒤바뀜",
-      "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "아리사쨩의 말은 틀렸어!"
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "사쿠라바 아니면 호쇼가 엎었어."
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "에마쨩이 엎었어♡"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "아저씨는 아리사쨩과 영혼이 바뀌어 있어."
-     }
-    ],
-    "answer": "ema",
-    "why_not": {
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-     "margo": "마고가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 에마",
-     "미리아와 아리사는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 아리사의 말, 아리사 이름의 말은 미리아의 말이었다.",
-     "범인: 에마"
-    ],
-    "false_cards": [
-     "ema"
-    ],
-    "worlds": 1,
     "logic": {
      "ema": [
       "meta_false",
@@ -2011,7 +936,12 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "miria"
-    ]
+    ],
+    "answer": "ema",
+    "false_cards": [
+     "ema"
+    ],
+    "worlds": 1
    }
   ],
   "hard": [
@@ -2019,103 +949,16 @@ window.PUZZLES = {
     "id": "hard-1",
     "key": "649191d11574",
     "tier": "hard",
-    "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
-    "verb": "다 썼어",
-    "victim": {
-     "id": "meruru",
-     "name": "히카미 메루루",
-     "no": 670,
-     "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
-     "written": false
-    },
+    "incident": "bandage",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     },
-     {
-      "who": "마고",
-      "name": "흉내내기",
-      "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-     }
-    ],
-    "suspects": [
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "노아 아니면 나노카쨩이 다 썼어~"
-     },
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "마고 말은 틀렸음 ㅋㅋ"
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "나 아니면 사와타리가 다 썼어."
-     },
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "마고 아니면 노아가 다 썼어."
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "아리사쨩은 안 썼어."
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "범인은 노아로다."
-     }
-    ],
-    "answer": "arisa",
-    "why_not": {
-     "noah": "노아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-     "coco": "코코가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-     "nanoka": "나노카가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-     "margo": "마고가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 노아, 나노카, 마고, 안안",
-     "노아, 나노카, 마고 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-     "범인: 아리사"
-    ],
-    "false_cards": [
+    "speakers": [
      "noah",
+     "coco",
+     "arisa",
      "nanoka",
      "margo",
      "anan"
     ],
-    "worlds": 4,
     "logic": {
      "noah": [
       "self_or",
@@ -2158,108 +1001,30 @@ window.PUZZLES = {
     "magic_ids": [
      "anan",
      "margo"
-    ]
+    ],
+    "answer": "arisa",
+    "false_cards": [
+     "noah",
+     "nanoka",
+     "margo",
+     "anan"
+    ],
+    "worlds": 4
    },
    {
     "id": "hard-2",
     "key": "f2571a0b87ca",
     "tier": "hard",
-    "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-    "verb": "먹었어",
-    "victim": {
-     "id": "nanoka",
-     "name": "쿠로베 나노카",
-     "no": 665,
-     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-     "written": false
-    },
+    "incident": "sweets",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     },
-     {
-      "who": "미리아",
-      "name": "뒤바뀜",
-      "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "저 아니면 미리아 씨가 먹었사와요!"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "범인은 노아쨩이야."
-     },
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "범인은 마고쨩이야~"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "범인은 한나로다."
-     },
-     {
-      "id": "meruru",
-      "name": "메루루",
-      "full": "히카미 메루루",
-      "no": 670,
-      "written": false,
-      "says": "미, 미리아 씨와 마고 씨는 영혼이 바뀌어 있어요…"
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "메루루쨩이 먹었어♡"
-     }
-    ],
-    "answer": "hanna",
-    "why_not": {
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "noah": "노아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "meruru": "메루루가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 미리아, 노아, 마고",
-     "미리아, 노아, 마고 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "미리아와 마고는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 마고의 말, 마고 이름의 말은 미리아의 말이었다.",
-     "범인: 한나"
-    ],
-    "false_cards": [
+    "speakers": [
+     "hanna",
      "miria",
      "noah",
+     "anan",
+     "meruru",
      "margo"
     ],
-    "worlds": 3,
     "logic": {
      "hanna": [
       "self_or",
@@ -2301,93 +1066,28 @@ window.PUZZLES = {
     "magic_ids": [
      "anan",
      "miria"
-    ]
+    ],
+    "answer": "hanna",
+    "false_cards": [
+     "miria",
+     "noah",
+     "margo"
+    ],
+    "worlds": 3
    },
    {
     "id": "hard-3",
     "key": "59af8df9ec38",
     "tier": "hard",
-    "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-    "verb": "껐어",
-    "victim": {
-     "id": "coco",
-     "name": "사와타리 코코",
-     "no": 669,
-     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-     "written": false
-    },
+    "incident": "stream",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "안안 씨 아니면 미리아 씨가 껐사와요!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "한나 아니면 노아가 껐노라."
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "한나쨩은 안 껐어."
-     },
-     {
-      "id": "meruru",
-      "name": "메루루",
-      "full": "히카미 메루루",
-      "no": 670,
-      "written": false,
-      "says": "노, 노아 씨는 안 껐어요…"
-     },
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "노아는 안 껐어~"
-     }
-    ],
-    "answer": "noah",
-    "why_not": {
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-     "anan": "안안이 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-     "miria": "미리아가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-     "meruru": "메루루가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 한나, 메루루, 노아",
-     "한나, 메루루, 노아 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "범인: 노아"
-    ],
-    "false_cards": [
+    "speakers": [
      "hanna",
+     "anan",
+     "miria",
      "meruru",
      "noah"
     ],
-    "worlds": 3,
     "logic": {
      "hanna": [
       "either",
@@ -2422,99 +1122,28 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "anan"
-    ]
+    ],
+    "answer": "noah",
+    "false_cards": [
+     "hanna",
+     "meruru",
+     "noah"
+    ],
+    "worlds": 3
    },
    {
     "id": "hard-4",
     "key": "7e4b1a1fe5cf",
     "tier": "hard",
-    "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-    "verb": "낙서했어",
-    "victim": {
-     "id": "reia",
-     "name": "하스미 레이아",
-     "no": 662,
-     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-     "written": false
-    },
+    "incident": "mirror",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     },
-     {
-      "who": "미리아",
-      "name": "뒤바뀜",
-      "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "안안 말은 맞음 ㅇㅈ"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "아저씨 아니면 안안쨩이 낙서했어."
-     },
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "메루루 아니면 미리아가 낙서했어."
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "이 몸은 미리아와 영혼이 바뀌어 있노라."
-     },
-     {
-      "id": "meruru",
-      "name": "메루루",
-      "full": "히카미 메루루",
-      "no": 670,
-      "written": false,
-      "says": "코, 코코 씨 아니면 미리아 씨가 낙서했어요…"
-     }
-    ],
-    "answer": "nanoka",
-    "why_not": {
-     "coco": "코코가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "meruru": "메루루가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 미리아, 나노카, 메루루",
-     "나노카, 메루루 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "미리아와 안안은 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 안안의 말, 안안 이름의 말은 미리아의 말이었다.",
-     "범인: 나노카"
-    ],
-    "false_cards": [
+    "speakers": [
+     "coco",
      "miria",
      "nanoka",
+     "anan",
      "meruru"
     ],
-    "worlds": 2,
     "logic": {
      "coco": [
       "meta_true",
@@ -2552,92 +1181,28 @@ window.PUZZLES = {
     "magic_ids": [
      "anan",
      "miria"
-    ]
+    ],
+    "answer": "nanoka",
+    "false_cards": [
+     "miria",
+     "nanoka",
+     "meruru"
+    ],
+    "worlds": 2
    },
    {
     "id": "hard-5",
     "key": "51ff6c28d072",
     "tier": "hard",
-    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-    "verb": "엎었어",
-    "victim": {
-     "id": "sherry",
-     "name": "타치바나 셰리",
-     "no": 667,
-     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-     "written": false
-    },
+    "incident": "pot",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "미리아",
-      "name": "뒤바뀜",
-      "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "미리아쨩의 말은 맞아~"
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "안안 씨가 엎었사와요!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "한나의 말은 그릇되었도다."
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "아저씨는 나노카쨩과 영혼이 바뀌어 있어."
-     },
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "미리아는 안 엎었어."
-     }
-    ],
-    "answer": "miria",
-    "why_not": {
-     "noah": "노아가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "nanoka": "나노카가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 한나, 나노카",
-     "미리아와 나노카는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 나노카의 말, 나노카 이름의 말은 미리아의 말이었다.",
-     "범인: 미리아"
-    ],
-    "false_cards": [
+    "speakers": [
+     "noah",
      "hanna",
+     "anan",
+     "miria",
      "nanoka"
     ],
-    "worlds": 1,
     "logic": {
      "noah": [
       "meta_true",
@@ -2672,101 +1237,28 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "miria"
-    ]
+    ],
+    "answer": "miria",
+    "false_cards": [
+     "hanna",
+     "nanoka"
+    ],
+    "worlds": 1
    },
    {
     "id": "hard-6",
     "key": "7152cc4a4c41",
     "tier": "hard",
-    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-    "verb": "엎었어",
-    "victim": {
-     "id": "sherry",
-     "name": "타치바나 셰리",
-     "no": 667,
-     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-     "written": false
-    },
+    "incident": "pot",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "미리아",
-      "name": "뒤바뀜",
-      "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "미리아 말은 맞아."
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "안안쨩 아니면 아리사쨩이 엎었어."
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "아아, 미리아의 말은 틀렸다!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "이 몸 아니면 한나가 엎었노라."
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "저는 미리아 씨와 영혼이 바뀌어 있사와요!"
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "사에키 새끼가 엎었어."
-     }
-    ],
-    "answer": "anan",
-    "why_not": {
-     "nanoka": "나노카가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 레이아, 아리사",
-     "미리아와 한나는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 한나의 말, 한나 이름의 말은 미리아의 말이었다.",
-     "범인: 안안"
-    ],
-    "false_cards": [
+    "speakers": [
+     "nanoka",
+     "miria",
      "reia",
+     "anan",
+     "hanna",
      "arisa"
     ],
-    "worlds": 1,
     "logic": {
      "nanoka": [
       "meta_true",
@@ -2808,101 +1300,28 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "miria"
-    ]
+    ],
+    "answer": "anan",
+    "false_cards": [
+     "reia",
+     "arisa"
+    ],
+    "worlds": 1
    },
    {
     "id": "hard-7",
     "key": "5e00f891f1b1",
     "tier": "hard",
-    "incident": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
-    "verb": "거꾸로 꽂았어",
-    "victim": {
-     "id": "margo",
-     "name": "호쇼 마고",
-     "no": 664,
-     "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡",
-     "written": false
-    },
+    "incident": "books",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "미리아",
-      "name": "뒤바뀜",
-      "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "nanoka",
-      "name": "나노카",
-      "full": "쿠로베 나노카",
-      "no": 665,
-      "written": false,
-      "says": "난 미리아와 영혼이 바뀌어 있어."
-     },
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "미리아쨩의 말은 틀렸어~"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "아저씨는 에마쨩과 영혼이 바뀌어 있어."
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "이 몸 아니면 노아가 거꾸로 꽂았노라."
-     },
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "미리아쨩이 거꾸로 꽂았어!"
-     },
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "범인은 안안 씨이와요!"
-     }
-    ],
-    "answer": "anan",
-    "why_not": {
-     "nanoka": "나노카가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "noah": "노아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "ema": "에마가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 미리아, 에마",
-     "미리아와 나노카는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 나노카의 말, 나노카 이름의 말은 미리아의 말이었다.",
-     "범인: 안안"
-    ],
-    "false_cards": [
+    "speakers": [
+     "nanoka",
+     "noah",
      "miria",
-     "ema"
+     "anan",
+     "ema",
+     "hanna"
     ],
-    "worlds": 1,
     "logic": {
      "nanoka": [
       "swap_claim",
@@ -2943,108 +1362,28 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "miria"
-    ]
+    ],
+    "answer": "anan",
+    "false_cards": [
+     "miria",
+     "ema"
+    ],
+    "worlds": 1
    },
    {
     "id": "hard-8",
     "key": "223cc3c5ae0b",
     "tier": "hard",
-    "incident": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
-    "verb": "거꾸로 꽂았어",
-    "victim": {
-     "id": "margo",
-     "name": "호쇼 마고",
-     "no": 664,
-     "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡",
-     "written": false
-    },
+    "incident": "books",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     },
-     {
-      "who": "미리아",
-      "name": "뒤바뀜",
-      "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "hanna",
-      "name": "한나",
-      "full": "토노 한나",
-      "no": 668,
-      "written": false,
-      "says": "저는 미리아 씨와 영혼이 바뀌어 있사와요!"
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "범인은 코코로다."
-     },
-     {
-      "id": "sherry",
-      "name": "셰리",
-      "full": "타치바나 셰리",
-      "no": 667,
-      "written": false,
-      "says": "저는 안 그랬어요!"
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "안안쨩이 거꾸로 꽂았어."
-     },
-     {
-      "id": "coco",
-      "name": "코코",
-      "full": "사와타리 코코",
-      "no": 669,
-      "written": false,
-      "says": "범인은 안안임 빼박"
-     },
-     {
-      "id": "meruru",
-      "name": "메루루",
-      "full": "히카미 메루루",
-      "no": 670,
-      "written": false,
-      "says": "코, 코코 씨의 말은 맞아요…"
-     }
-    ],
-    "answer": "coco",
-    "why_not": {
-     "hanna": "한나가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "sherry": "셰리가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "meruru": "메루루가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 미리아, 코코, 메루루",
-     "한나, 코코, 메루루 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "미리아와 한나는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 한나의 말, 한나 이름의 말은 미리아의 말이었다.",
-     "범인: 코코"
-    ],
-    "false_cards": [
+    "speakers": [
+     "hanna",
+     "anan",
+     "sherry",
      "miria",
      "coco",
      "meruru"
     ],
-    "worlds": 3,
     "logic": {
      "hanna": [
       "swap_claim",
@@ -3084,101 +1423,29 @@ window.PUZZLES = {
     "magic_ids": [
      "anan",
      "miria"
-    ]
+    ],
+    "answer": "coco",
+    "false_cards": [
+     "miria",
+     "coco",
+     "meruru"
+    ],
+    "worlds": 3
    },
    {
     "id": "hard-9",
     "key": "1adfaa7b7c6b",
     "tier": "hard",
-    "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-    "verb": "엎었어",
-    "victim": {
-     "id": "sherry",
-     "name": "타치바나 셰리",
-     "no": 667,
-     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-     "written": false
-    },
+    "incident": "pot",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "미리아",
-      "name": "뒤바뀜",
-      "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-     }
-    ],
-    "suspects": [
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "안안쨩의 말은 틀렸어!"
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "난 안 엎었어. 꺼져."
-     },
-     {
-      "id": "miria",
-      "name": "미리아",
-      "full": "사에키 미리아",
-      "no": 663,
-      "written": false,
-      "says": "아리사쨩이 엎었어."
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "이 몸 아니면 아리사가 엎었노라."
-     },
-     {
-      "id": "reia",
-      "name": "레이아",
-      "full": "하스미 레이아",
-      "no": 662,
-      "written": false,
-      "says": "미리아와 아리사는 영혼이 바뀌어 있다!"
-     },
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "에마쨩이 엎었어♡"
-     }
-    ],
-    "answer": "ema",
-    "why_not": {
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "reia": "레이아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-     "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 미리아, 안안",
-     "미리아와 아리사는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 아리사의 말, 아리사 이름의 말은 미리아의 말이었다.",
-     "범인: 에마"
-    ],
-    "false_cards": [
+    "speakers": [
+     "ema",
+     "arisa",
      "miria",
-     "anan"
+     "anan",
+     "reia",
+     "margo"
     ],
-    "worlds": 1,
     "logic": {
      "ema": [
       "meta_false",
@@ -3217,109 +1484,28 @@ window.PUZZLES = {
     },
     "magic_ids": [
      "miria"
-    ]
+    ],
+    "answer": "ema",
+    "false_cards": [
+     "miria",
+     "anan"
+    ],
+    "worlds": 1
    },
    {
     "id": "hard-10",
     "key": "d1e8a8c2729e",
     "tier": "hard",
-    "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
-    "verb": "바꿔 놨어",
-    "victim": {
-     "id": "miria",
-     "name": "사에키 미리아",
-     "no": 663,
-     "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
-     "written": false
-    },
+    "incident": "hairpin",
     "n": 2,
-    "rules": [
-     "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-     "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-    ],
-    "magic": [
-     {
-      "who": "안안",
-      "name": "세뇌",
-      "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-     },
-     {
-      "who": "마고",
-      "name": "흉내내기",
-      "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-     }
-    ],
-    "suspects": [
-     {
-      "id": "margo",
-      "name": "마고",
-      "full": "호쇼 마고",
-      "no": 664,
-      "written": false,
-      "says": "후후, 노아쨩의 말은 틀렸어."
-     },
-     {
-      "id": "meruru",
-      "name": "메루루",
-      "full": "히카미 메루루",
-      "no": 670,
-      "written": false,
-      "says": "안, 안안 씨의 말은 맞아요…"
-     },
-     {
-      "id": "noah",
-      "name": "노아",
-      "full": "죠가사키 노아",
-      "no": 661,
-      "written": false,
-      "says": "마고쨩 아니면 메루루쨩이 바꿔 놨어~"
-     },
-     {
-      "id": "arisa",
-      "name": "아리사",
-      "full": "시토 아리사",
-      "no": 666,
-      "written": false,
-      "says": "히카미는 안 바꿨어."
-     },
-     {
-      "id": "anan",
-      "name": "안안",
-      "full": "나츠메 안안",
-      "no": 660,
-      "written": true,
-      "says": "이 몸 아니면 메루루가 바꿔 놨노라."
-     },
-     {
-      "id": "ema",
-      "name": "에마",
-      "full": "사쿠라바 에마",
-      "no": 658,
-      "written": false,
-      "says": "메루루쨩이 바꿔 놨어!"
-     }
-    ],
-    "answer": "margo",
-    "why_not": {
-     "meruru": "메루루가 범인이라면 거짓말하는 사람이 0명 또는 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-     "noah": "노아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-     "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-     "anan": "안안이 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-     "ema": "에마가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-    },
-    "solution": [
-     "틀린 말을 한 카드: 마고, 메루루, 안안, 에마",
-     "마고, 메루루, 에마 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-     "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-     "범인: 마고"
-    ],
-    "false_cards": [
+    "speakers": [
      "margo",
      "meruru",
+     "noah",
+     "arisa",
      "anan",
      "ema"
     ],
-    "worlds": 4,
     "logic": {
      "margo": [
       "meta_false",
@@ -3362,7 +1548,15 @@ window.PUZZLES = {
     "magic_ids": [
      "anan",
      "margo"
-    ]
+    ],
+    "answer": "margo",
+    "false_cards": [
+     "margo",
+     "meruru",
+     "anan",
+     "ema"
+    ],
+    "worlds": 4
    }
   ]
  },
@@ -3371,85 +1565,15 @@ window.PUZZLES = {
    "id": "daily-1",
    "key": "1e6cfcf79d8a",
    "tier": "normal",
-   "incident": "노아의 스케치북에 누가 낙서를 했다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "noah",
-    "name": "죠가사키 노아",
-    "no": 661,
-    "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
-    "written": false
-   },
+   "incident": "sketch",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "ema",
+    "sherry",
+    "arisa",
+    "hanna",
+    "miria"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "한나쨩이 낙서했어!"
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "에마 씨의 말은 맞아요!"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "사쿠라바는 낙서 안 했어."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "아리사 씨 아니면 셰리 씨가 낙서했사와요!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨는 셰리쨩과 영혼이 바뀌어 있어."
-    }
-   ],
-   "answer": "hanna",
-   "why_not": {
-    "ema": "에마가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 한나",
-    "미리아와 셰리는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 셰리의 말, 셰리 이름의 말은 미리아의 말이었다.",
-    "범인: 한나"
-   ],
-   "false_cards": [
-    "hanna"
-   ],
-   "worlds": 1,
    "logic": {
     "ema": [
      "accuse",
@@ -3485,102 +1609,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "hanna"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-2",
    "key": "b70496436538",
    "tier": "hard",
-   "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-   "verb": "먹었어",
-   "victim": {
-    "id": "nanoka",
-    "name": "쿠로베 나노카",
-    "no": 665,
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-    "written": false
-   },
+   "incident": "sweets",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "코코쨩 아니면 에마쨩이 먹었어."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 에마가 먹었다!"
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "마고 말은 틀렸음 ㅋㅋ"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "에마쨩의 말은 틀렸어."
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "나 아니면 셰리쨩이 먹었어!"
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "코코 씨 아니면 미리아 씨가 먹었어요!"
-    }
-   ],
-   "answer": "miria",
-   "why_not": {
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 레이아, 에마",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 미리아"
-   ],
-   "false_cards": [
+   "speakers": [
     "margo",
     "reia",
-    "ema"
+    "coco",
+    "miria",
+    "ema",
+    "sherry"
    ],
-   "worlds": 2,
    "logic": {
     "margo": [
      "either",
@@ -3623,92 +1672,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "margo",
+    "reia",
+    "ema"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-3",
    "key": "19cc5f7f9fa8",
    "tier": "normal",
-   "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-   "verb": "펼쳐 봤어",
-   "victim": {
-    "id": "ema",
-    "name": "사쿠라바 에마",
-    "no": 658,
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-    "written": false
-   },
+   "incident": "diary",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나 아니면 나노카쨩이 펼쳐 봤어."
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "코코쨩이 펼쳐 봤어~"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "노아는 안 봤노라."
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "범인은 코코야."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "나노카 아니면 노아가 펼쳐 봤음 ㅇㅇ"
-    }
-   ],
-   "answer": "coco",
-   "why_not": {
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 코코",
-    "코코 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 코코"
-   ],
-   "false_cards": [
+   "speakers": [
     "margo",
+    "noah",
+    "anan",
+    "nanoka",
     "coco"
    ],
-   "worlds": 1,
    "logic": {
     "margo": [
      "self_or",
@@ -3744,109 +1729,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "coco",
+   "false_cards": [
+    "margo",
+    "coco"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-4",
    "key": "71104382a2e9",
    "tier": "hard",
-   "incident": "아리사의 성냥갑이 텅 비어 있었다.",
-   "verb": "가져갔어",
-   "victim": {
-    "id": "arisa",
-    "name": "시토 아리사",
-    "no": 666,
-    "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
-    "written": false
-   },
+   "incident": "matches",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "마고쨩 아니면 미리아쨩이 가져갔어!"
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "안안 씨 아니면 메루루 씨가 가져갔어요!"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "미, 미리아 씨가 가져갔어요…"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "메루루쨩의 말은 맞아."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 에마쨩의 말은 맞아."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 메루루로다."
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "ema": "에마가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 에마, 메루루, 미리아, 마고",
-    "에마, 메루루, 미리아, 마고 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
+   "speakers": [
     "ema",
+    "sherry",
     "meruru",
     "miria",
-    "margo"
+    "margo",
+    "anan"
    ],
-   "worlds": 9,
    "logic": {
     "ema": [
      "either",
@@ -3890,91 +1794,29 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "margo"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "ema",
+    "meruru",
+    "miria",
+    "margo"
+   ],
+   "worlds": 9
   },
   {
    "id": "daily-5",
    "key": "3c5c8f64f67f",
    "tier": "normal",
-   "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-   "verb": "먹었어",
-   "victim": {
-    "id": "nanoka",
-    "name": "쿠로베 나노카",
-    "no": 665,
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-    "written": false
-   },
+   "incident": "sweets",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "miria",
+    "sherry",
+    "arisa",
+    "reia",
+    "margo"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "셰리쨩의 말은 맞아."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "아리사 씨 아니면 마고 씨가 먹었어요!"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "사에키와 타치바나는 영혼이 바뀌어 있어."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 셰리가 먹었다!"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나 아니면 레이아쨩이 먹었어."
-    }
-   ],
-   "answer": "margo",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 레이아",
-    "미리아와 셰리는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 셰리의 말, 셰리 이름의 말은 미리아의 말이었다.",
-    "범인: 마고"
-   ],
-   "false_cards": [
-    "reia"
-   ],
-   "worlds": 1,
    "logic": {
     "miria": [
      "meta_true",
@@ -4010,228 +1852,88 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "reia"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-6",
    "key": "f58d234f582c",
    "tier": "hard",
-   "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-   "verb": "펼쳐 봤어",
-   "victim": {
-    "id": "ema",
-    "name": "사쿠라바 에마",
-    "no": 658,
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-    "written": false
-   },
+   "incident": "diary",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "noah",
+    "margo",
+    "coco",
+    "sherry",
+    "reia",
+    "anan"
    ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "셰리쨩은 안 봤어~"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 레이아쨩의 말은 틀렸어."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "안안 말은 맞음 ㅇㅈ"
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "코코 씨 아니면 마고 씨가 펼쳐 봤어요!"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 범인은 노아다!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "이 몸은 안 봤노라."
-    }
+   "logic": {
+    "noah": [
+     "deny",
+     [
+      "sherry"
+     ]
+    ],
+    "margo": [
+     "meta_false",
+     [
+      "reia"
+     ]
+    ],
+    "coco": [
+     "meta_true",
+     [
+      "anan"
+     ]
+    ],
+    "sherry": [
+     "either",
+     [
+      "coco",
+      "margo"
+     ]
+    ],
+    "reia": [
+     "culprit_is",
+     [
+      "noah"
+     ]
+    ],
+    "anan": [
+     "deny_self",
+     []
+    ]
+   },
+   "magic_ids": [
+    "anan"
    ],
    "answer": "sherry",
-   "why_not": {
-    "noah": "노아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 노아, 셰리, 레이아",
-    "노아, 셰리, 레이아 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 셰리"
-   ],
    "false_cards": [
     "noah",
     "sherry",
     "reia"
    ],
-   "worlds": 3,
-   "logic": {
-    "noah": [
-     "deny",
-     [
-      "sherry"
-     ]
-    ],
-    "margo": [
-     "meta_false",
-     [
-      "reia"
-     ]
-    ],
-    "coco": [
-     "meta_true",
-     [
-      "anan"
-     ]
-    ],
-    "sherry": [
-     "either",
-     [
-      "coco",
-      "margo"
-     ]
-    ],
-    "reia": [
-     "culprit_is",
-     [
-      "noah"
-     ]
-    ],
-    "anan": [
-     "deny_self",
-     []
-    ]
-   },
-   "magic_ids": [
-    "anan"
-   ]
+   "worlds": 3
   },
   {
    "id": "daily-7",
    "key": "42a88c9f256e",
    "tier": "normal",
-   "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-   "verb": "껐어",
-   "victim": {
-    "id": "coco",
-    "name": "사와타리 코코",
-    "no": 669,
-    "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-    "written": false
-   },
+   "incident": "stream",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "미, 미리아 씨는 안 껐어요…"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "에마쨩은 안 껐어."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "노아의 말은 옳도다."
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "노아 아니면 메루루쨩이 껐어~"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "범인은 노아쨩이야!"
-    }
-   ],
-   "answer": "anan",
-   "why_not": {
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "noah": "노아가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안, 노아, 에마",
-    "노아, 에마 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 안안"
-   ],
-   "false_cards": [
+   "speakers": [
+    "meruru",
+    "miria",
     "anan",
     "noah",
     "ema"
    ],
-   "worlds": 2,
    "logic": {
     "meruru": [
      "deny",
@@ -4266,93 +1968,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "anan",
+    "noah",
+    "ema"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-8",
    "key": "dd07b0e374a9",
    "tier": "hard",
-   "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-   "verb": "먹었어",
-   "victim": {
-    "id": "nanoka",
-    "name": "쿠로베 나노카",
-    "no": 665,
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-    "written": false
-   },
+   "incident": "sweets",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "한나쨩 아니면 레이아쨩이 먹었어."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나 아니면 한나쨩이 먹었어."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "마고가 먹었음 ㅋㅋ"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 범인은 마고다!"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "저는 안 먹었사와요!"
-    }
-   ],
-   "answer": "reia",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 코코, 레이아",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 레이아"
-   ],
-   "false_cards": [
+   "speakers": [
+    "miria",
     "margo",
     "coco",
-    "reia"
+    "reia",
+    "hanna"
    ],
-   "worlds": 2,
    "logic": {
     "miria": [
      "either",
@@ -4386,82 +2023,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "reia",
+   "false_cards": [
+    "margo",
+    "coco",
+    "reia"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-9",
    "key": "ee90295f34b7",
    "tier": "normal",
-   "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-   "verb": "껐어",
-   "victim": {
-    "id": "coco",
-    "name": "사와타리 코코",
-    "no": 669,
-    "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-    "written": false
-   },
+   "incident": "stream",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "miria",
+    "nanoka",
+    "noah",
+    "meruru"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "범인은 메루루쨩이야."
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "미리아와 노아는 영혼이 바뀌어 있어."
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "범인은 미리아쨩이야~"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "미, 미리아 씨의 말은 맞아요…"
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 노아",
-    "미리아와 노아는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 노아의 말, 노아 이름의 말은 미리아의 말이었다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
-    "noah"
-   ],
-   "worlds": 1,
    "logic": {
     "miria": [
      "culprit_is",
@@ -4490,93 +2072,26 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "noah"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-10",
    "key": "8ace8b40b649",
    "tier": "hard",
-   "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
-   "verb": "바꿔 놨어",
-   "victim": {
-    "id": "miria",
-    "name": "사에키 미리아",
-    "no": 663,
-    "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
-    "written": false
-   },
+   "incident": "hairpin",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "노아 씨는 안 바꿨사와요!"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "아, 아리사 씨는 안 바꿨어요…"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "나츠메 말은 틀렸어. 닥쳐."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "이 몸 아니면 아리사가 바꿔 놨노라."
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "안안쨩의 말은 맞아~"
-    }
-   ],
-   "answer": "noah",
-   "why_not": {
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 한나, 안안, 노아",
-    "한나, 노아 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 노아"
-   ],
-   "false_cards": [
+   "speakers": [
     "hanna",
+    "meruru",
+    "arisa",
     "anan",
     "noah"
    ],
-   "worlds": 2,
    "logic": {
     "hanna": [
      "deny",
@@ -4611,92 +2126,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "noah",
+   "false_cards": [
+    "hanna",
+    "anan",
+    "noah"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-11",
    "key": "316e0c39016f",
    "tier": "normal",
-   "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-   "verb": "펼쳐 봤어",
-   "victim": {
-    "id": "ema",
-    "name": "사쿠라바 에마",
-    "no": 658,
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-    "written": false
-   },
+   "incident": "diary",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "코코는 안 봤어."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "레이아 말은 틀렸음 ㅋㅋ"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 나노카가 펼쳐 봤다!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "이 몸 아니면 코코가 펼쳐 봤노라."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나 아니면 나노카쨩이 펼쳐 봤어."
-    }
-   ],
-   "answer": "anan",
-   "why_not": {
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 레이아, 마고",
-    "레이아 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 안안"
-   ],
-   "false_cards": [
+   "speakers": [
+    "nanoka",
+    "coco",
     "reia",
+    "anan",
     "margo"
    ],
-   "worlds": 1,
    "logic": {
     "nanoka": [
      "deny",
@@ -4731,99 +2182,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "reia",
+    "margo"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-12",
    "key": "947d9ae5201f",
    "tier": "hard",
-   "incident": "노아의 스케치북에 누가 낙서를 했다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "noah",
-    "name": "죠가사키 노아",
-    "no": 661,
-    "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
-    "written": false
-   },
+   "incident": "sketch",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "한, 한나 씨 아니면 레이아 씨가 낙서했어요…"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "범인은 레이아쨩이야."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "미리아 씨와 레이아 씨는 영혼이 바뀌어 있사와요!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "레이아가 낙서했노라."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "아아, 안안의 말은 맞다!"
-    }
-   ],
-   "answer": "hanna",
-   "why_not": {
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 미리아, 안안, 레이아",
-    "미리아, 레이아 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "미리아와 레이아는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 레이아의 말, 레이아 이름의 말은 미리아의 말이었다.",
-    "범인: 한나"
-   ],
-   "false_cards": [
+   "speakers": [
+    "meruru",
     "miria",
+    "hanna",
     "anan",
     "reia"
    ],
-   "worlds": 2,
    "logic": {
     "meruru": [
      "either",
@@ -4860,92 +2239,28 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "miria"
-   ]
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "miria",
+    "anan",
+    "reia"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-13",
    "key": "cdffa8710bf6",
    "tier": "normal",
-   "incident": "한나의 리본 하나가 없어졌다.",
-   "verb": "가져갔어",
-   "victim": {
-    "id": "hanna",
-    "name": "토노 한나",
-    "no": 668,
-    "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!",
-    "written": false
-   },
+   "incident": "ribbon",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "난 안 가져갔어."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "마고의 말은 그릇되었도다."
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "레이아쨩이 가져갔어~"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "범인은 노아쨩이야♡"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 노아가 가져갔다!"
-    }
-   ],
-   "answer": "reia",
-   "why_not": {
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 레이아",
-    "레이아 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 레이아"
-   ],
-   "false_cards": [
+   "speakers": [
+    "nanoka",
+    "anan",
+    "noah",
     "margo",
     "reia"
    ],
-   "worlds": 1,
    "logic": {
     "nanoka": [
      "deny_self",
@@ -4978,101 +2293,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "reia",
+   "false_cards": [
+    "margo",
+    "reia"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-14",
    "key": "3a676307f231",
    "tier": "hard",
-   "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "reia",
-    "name": "하스미 레이아",
-    "no": 662,
-    "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-    "written": false
-   },
+   "incident": "mirror",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 미리아쨩의 말은 맞아."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "미리아와 코코는 영혼이 바뀌어 있노라."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "에마 씨 아니면 미리아 씨가 낙서했사와요!"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "미리아쨩이 낙서했어!"
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "한나 아니면 미리아가 낙서했음 ㅇㅇ"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨 아니면 한나쨩이 낙서했어."
-    }
-   ],
-   "answer": "hanna",
-   "why_not": {
-    "margo": "마고가 범인이라면 거짓말하는 사람이 5명 또는 6명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 5명 또는 6명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 5명 또는 6명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 0명 또는 1명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 한나, 에마",
-    "미리아와 코코는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 코코의 말, 코코 이름의 말은 미리아의 말이었다.",
-    "범인: 한나"
-   ],
-   "false_cards": [
+   "speakers": [
+    "margo",
+    "anan",
     "hanna",
-    "ema"
+    "ema",
+    "coco",
+    "miria"
    ],
-   "worlds": 1,
    "logic": {
     "margo": [
      "meta_true",
@@ -5115,93 +2357,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "hanna",
+    "ema"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-15",
    "key": "2cd17ec0491c",
    "tier": "normal",
-   "incident": "한나의 리본 하나가 없어졌다.",
-   "verb": "가져갔어",
-   "victim": {
-    "id": "hanna",
-    "name": "토노 한나",
-    "no": 668,
-    "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!",
-    "written": false
-   },
+   "incident": "ribbon",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨 아니면 아리사쨩이 가져갔어."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "마고의 말은 옳도다."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나는 안 가져갔어."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "범, 범인은 마고 씨예요…"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "나츠메 새끼가 가져갔어."
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 미리아, 메루루, 아리사",
-    "미리아, 메루루, 아리사 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
+   "speakers": [
     "miria",
+    "anan",
+    "margo",
     "meruru",
     "arisa"
    ],
-   "worlds": 3,
    "logic": {
     "miria": [
      "self_or",
@@ -5234,102 +2410,29 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "miria",
+    "meruru",
+    "arisa"
+   ],
+   "worlds": 3
   },
   {
    "id": "daily-16",
    "key": "6740508e9f14",
    "tier": "hard",
-   "incident": "안안이 아껴 마시던 홍차가 한 방울도 남지 않았다.",
-   "verb": "다 마셨어",
-   "victim": {
-    "id": "anan",
-    "name": "나츠메 안안",
-    "no": 660,
-    "line": "이 몸이 아껴 두었던 홍차가 사라졌노라. 범인은 이 몸 앞에 나와 고하라.",
-    "written": true
-   },
+   "incident": "tea",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "범인은 에마 씨이와요!"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나 아니면 한나쨩이 다 마셨어."
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "마고쨩 아니면 메루루쨩이 다 마셨어~"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "마고쨩 아니면 노아쨩이 다 마셨어!"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "아아, 메루루의 말은 맞다!"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "노, 노아 씨의 말은 맞아요…"
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 5명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 5명 또는 6명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 한나, 마고, 에마",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
+   "speakers": [
     "hanna",
     "margo",
-    "ema"
+    "noah",
+    "ema",
+    "reia",
+    "meruru"
    ],
-   "worlds": 2,
    "logic": {
     "hanna": [
      "culprit_is",
@@ -5372,92 +2475,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "hanna",
+    "margo",
+    "ema"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-17",
    "key": "3dbecb4bd945",
    "tier": "normal",
-   "incident": "아리사의 성냥갑이 텅 비어 있었다.",
-   "verb": "가져갔어",
-   "victim": {
-    "id": "arisa",
-    "name": "시토 아리사",
-    "no": 666,
-    "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
-    "written": false
-   },
+   "incident": "matches",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "나 아니면 마고가 가져갔다!"
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "범인은 마고임 빼박"
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "범인은 코코쨩이야~"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "범인은 노아쨩이야♡"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "오호호, 노아 씨의 말은 틀렸사와요!"
-    }
-   ],
-   "answer": "margo",
-   "why_not": {
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 노아, 마고",
-    "노아 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 마고"
-   ],
-   "false_cards": [
+   "speakers": [
+    "reia",
+    "coco",
     "noah",
-    "margo"
+    "margo",
+    "hanna"
    ],
-   "worlds": 1,
    "logic": {
     "reia": [
      "self_or",
@@ -5492,93 +2531,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "noah",
+    "margo"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-18",
    "key": "0592f04b78ab",
    "tier": "hard",
-   "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-   "verb": "엎었어",
-   "victim": {
-    "id": "sherry",
-    "name": "타치바나 셰리",
-    "no": 667,
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-    "written": false
-   },
+   "incident": "pot",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "이 몸은 안 엎었노라."
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨 아니면 마고쨩이 엎었어."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "마, 마고 씨 아니면 미리아 씨가 엎었어요…"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 범인은 메루루다!"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "범인은 미리아쨩이야♡"
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 미리아, 메루루, 마고",
-    "미리아, 메루루, 마고 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
+   "speakers": [
+    "anan",
     "miria",
     "meruru",
+    "reia",
     "margo"
    ],
-   "worlds": 3,
    "logic": {
     "anan": [
      "deny_self",
@@ -5612,91 +2585,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "miria",
+    "meruru",
+    "margo"
+   ],
+   "worlds": 3
   },
   {
    "id": "daily-19",
    "key": "3d745591fc12",
    "tier": "normal",
-   "incident": "안안이 아껴 마시던 홍차가 한 방울도 남지 않았다.",
-   "verb": "다 마셨어",
-   "victim": {
-    "id": "anan",
-    "name": "나츠메 안안",
-    "no": 660,
-    "line": "이 몸이 아껴 두었던 홍차가 사라졌노라. 범인은 이 몸 앞에 나와 고하라.",
-    "written": true
-   },
+   "incident": "tea",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 셰리쨩의 말은 맞아."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "미리아 씨와 에마 씨는 영혼이 바뀌어 있어요!"
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "에마 아니면 셰리가 다 마셨어."
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "범인은 셰리쨩이야."
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "미리아쨩과 나노카쨩은 영혼이 바뀌어 있어!"
-    }
-   ],
-   "answer": "sherry",
-   "why_not": {
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 3명 또는 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 2명 또는 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 에마",
-    "미리아와 에마는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 에마의 말, 에마 이름의 말은 미리아의 말이었다.",
-    "범인: 셰리"
-   ],
-   "false_cards": [
+   "speakers": [
+    "margo",
+    "sherry",
+    "nanoka",
+    "miria",
     "ema"
    ],
-   "worlds": 1,
    "logic": {
     "margo": [
      "meta_true",
@@ -5732,93 +2642,26 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "sherry",
+   "false_cards": [
+    "ema"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-20",
    "key": "44c3b9cfeb95",
    "tier": "hard",
-   "incident": "노아의 스케치북에 누가 낙서를 했다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "noah",
-    "name": "죠가사키 노아",
-    "no": 661,
-    "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
-    "written": false
-   },
+   "incident": "sketch",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "호쇼는 낙서 안 했어."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 코코쨩의 말은 틀렸어."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "범인은 아리사임 빼박"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 코코로다."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "오호호, 안안 씨의 말은 맞사와요!"
-    }
-   ],
-   "answer": "arisa",
-   "why_not": {
-    "margo": "마고가 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 안안, 한나",
-    "한나 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 아리사"
-   ],
-   "false_cards": [
+   "speakers": [
+    "arisa",
     "margo",
+    "coco",
     "anan",
     "hanna"
    ],
-   "worlds": 1,
    "logic": {
     "arisa": [
      "deny",
@@ -5853,83 +2696,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "arisa",
+   "false_cards": [
+    "margo",
+    "anan",
+    "hanna"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-21",
    "key": "61122c0c4ff9",
    "tier": "normal",
-   "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-   "verb": "엎었어",
-   "victim": {
-    "id": "sherry",
-    "name": "타치바나 셰리",
-    "no": 667,
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-    "written": false
-   },
+   "incident": "pot",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "한나쨩이 엎었어♡"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "코코 아니면 마고가 엎었노라."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "범인은 안안 씨이와요!"
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "마고는 안 엎었음"
-    }
-   ],
-   "answer": "coco",
-   "why_not": {
-    "margo": "마고가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 한나",
-    "한나 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 코코"
-   ],
-   "false_cards": [
+   "speakers": [
     "margo",
-    "hanna"
+    "anan",
+    "hanna",
+    "coco"
    ],
-   "worlds": 1,
    "logic": {
     "margo": [
      "accuse",
@@ -5959,108 +2746,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "coco",
+   "false_cards": [
+    "margo",
+    "hanna"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-22",
    "key": "dd4748d850ae",
    "tier": "hard",
-   "incident": "노아의 스케치북에 누가 낙서를 했다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "noah",
-    "name": "죠가사키 노아",
-    "no": 661,
-    "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
-    "written": false
-   },
+   "incident": "sketch",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "코코의 말은 옳도다."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "한나 말은 맞음 ㅇㅈ"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "코코 씨가 낙서했사와요!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨는 코코쨩과 영혼이 바뀌어 있어."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 범인은 미리아다!"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나는 낙서 안 했어."
-    }
-   ],
-   "answer": "miria",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 0명 또는 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안, 코코, 한나",
-    "한나, 미리아 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "미리아와 코코는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 코코의 말, 코코 이름의 말은 미리아의 말이었다.",
-    "범인: 미리아"
-   ],
-   "false_cards": [
+   "speakers": [
     "anan",
     "coco",
-    "hanna"
+    "hanna",
+    "miria",
+    "reia",
+    "margo"
    ],
-   "worlds": 2,
    "logic": {
     "anan": [
      "meta_true",
@@ -6100,83 +2807,27 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "miria"
-   ]
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "anan",
+    "coco",
+    "hanna"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-23",
    "key": "257f16d9a6e0",
    "tier": "normal",
-   "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "reia",
-    "name": "하스미 레이아",
-    "no": 662,
-    "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-    "written": false
-   },
+   "incident": "mirror",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 메루루로다."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "에, 에마 씨는 안 그랬어요…"
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "저 아니면 메루루 씨가 낙서했어요!"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "메루루쨩은 안 그랬어!"
-    }
-   ],
-   "answer": "anan",
-   "why_not": {
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-    "sherry": "셰리가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안, 셰리",
-    "셰리는 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다.",
-    "범인: 안안"
-   ],
-   "false_cards": [
+   "speakers": [
     "anan",
-    "sherry"
+    "meruru",
+    "sherry",
+    "ema"
    ],
-   "worlds": 1,
    "logic": {
     "anan": [
      "culprit_is",
@@ -6205,99 +2856,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "anan",
+    "sherry"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-24",
    "key": "412e4b03e846",
    "tier": "hard",
-   "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
-   "verb": "다 썼어",
-   "victim": {
-    "id": "meruru",
-    "name": "히카미 메루루",
-    "no": 670,
-    "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
-    "written": false
-   },
+   "incident": "bandage",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "미리아와 코코는 영혼이 바뀌어 있노라."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "에마 말은 맞음 ㅇㅈ"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "나노카쨩은 안 썼어."
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "나노카쨩의 말은 맞아!"
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "에마는 안 썼어."
-    }
-   ],
-   "answer": "ema",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 0명 또는 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 코코, 에마, 나노카",
-    "미리아, 에마, 나노카 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "미리아와 코코는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 코코의 말, 코코 이름의 말은 미리아의 말이었다.",
-    "범인: 에마"
-   ],
-   "false_cards": [
+   "speakers": [
+    "anan",
     "coco",
+    "miria",
     "ema",
     "nanoka"
    ],
-   "worlds": 3,
    "logic": {
     "anan": [
      "swap_claim",
@@ -6333,92 +2912,28 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "miria"
-   ]
+   ],
+   "answer": "ema",
+   "false_cards": [
+    "coco",
+    "ema",
+    "nanoka"
+   ],
+   "worlds": 3
   },
   {
    "id": "daily-25",
    "key": "35dc74449863",
    "tier": "normal",
-   "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-   "verb": "먹었어",
-   "victim": {
-    "id": "nanoka",
-    "name": "쿠로베 나노카",
-    "no": 665,
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-    "written": false
-   },
+   "incident": "sweets",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "나는 미리아와 영혼이 바뀌어 있다!"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "미리아 씨가 먹었사와요!"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "나 아니면 한나쨩이 먹었어!"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "레, 레이아 씨의 말은 맞아요…"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "레이아쨩은 안 먹었어."
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 한나, 에마",
-    "미리아와 레이아는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 레이아의 말, 레이아 이름의 말은 미리아의 말이었다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
+   "speakers": [
+    "reia",
     "hanna",
-    "ema"
+    "ema",
+    "meruru",
+    "miria"
    ],
-   "worlds": 1,
    "logic": {
     "reia": [
      "swap_claim",
@@ -6453,93 +2968,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "hanna",
+    "ema"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-26",
    "key": "637d7dd6479f",
    "tier": "hard",
-   "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-   "verb": "펼쳐 봤어",
-   "victim": {
-    "id": "ema",
-    "name": "사쿠라바 에마",
-    "no": 658,
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-    "written": false
-   },
+   "incident": "diary",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "안안 말은 맞음 ㅇㅈ"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "안안쨩 아니면 메루루쨩이 펼쳐 봤어."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 한나로다."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "저, 저 아니면 안안 씨가 펼쳐 봤어요…"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "범인은 마고 씨이와요!"
-    }
-   ],
-   "answer": "hanna",
-   "why_not": {
-    "coco": "코코가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 메루루, 한나",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 한나"
-   ],
-   "false_cards": [
+   "speakers": [
+    "coco",
     "margo",
+    "anan",
     "meruru",
     "hanna"
    ],
-   "worlds": 2,
    "logic": {
     "coco": [
      "meta_true",
@@ -6575,83 +3024,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "margo",
+    "meruru",
+    "hanna"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-27",
    "key": "7f74be30806f",
    "tier": "normal",
-   "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "reia",
-    "name": "하스미 레이아",
-    "no": 662,
-    "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-    "written": false
-   },
+   "incident": "mirror",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "한나는 안 그랬노라."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "코코 씨가 낙서했사와요!"
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "미리아는 안 그랬음"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨는 안 그랬어."
-    }
-   ],
-   "answer": "hanna",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-    "coco": "코코가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안, 한나",
-    "한나는 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다.",
-    "범인: 한나"
-   ],
-   "false_cards": [
+   "speakers": [
     "anan",
-    "hanna"
+    "hanna",
+    "coco",
+    "miria"
    ],
-   "worlds": 1,
    "logic": {
     "anan": [
      "deny",
@@ -6678,93 +3071,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "anan",
+    "hanna"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-28",
    "key": "913a8fca0a22",
    "tier": "hard",
-   "incident": "노아의 스케치북에 누가 낙서를 했다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "noah",
-    "name": "죠가사키 노아",
-    "no": 661,
-    "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
-    "written": false
-   },
+   "incident": "sketch",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 한나쨩의 말은 틀렸어."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 에마로다."
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "범인은 한나쨩이야!"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "에마 씨가 낙서했사와요!"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "나 아니면 마고가 낙서했다!"
-    }
-   ],
-   "answer": "ema",
-   "why_not": {
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 에마, 레이아",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 에마"
-   ],
-   "false_cards": [
+   "speakers": [
     "margo",
+    "anan",
     "ema",
+    "hanna",
     "reia"
    ],
-   "worlds": 2,
    "logic": {
     "margo": [
      "meta_false",
@@ -6799,92 +3126,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "ema",
+   "false_cards": [
+    "margo",
+    "ema",
+    "reia"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-29",
    "key": "6a4f5d9cdcd5",
    "tier": "normal",
-   "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-   "verb": "엎었어",
-   "victim": {
-    "id": "sherry",
-    "name": "타치바나 셰리",
-    "no": 667,
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-    "written": false
-   },
+   "incident": "pot",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "마고 말은 틀렸어."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "마, 마고 씨 아니면 레이아 씨가 엎었어요…"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "히카미 아니면 쿠로베가 엎었어."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나 아니면 아리사쨩이 엎었어."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "아리사 아니면 나노카가 엎었다!"
-    }
-   ],
-   "answer": "nanoka",
-   "why_not": {
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 메루루, 마고",
-    "메루루 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 나노카"
-   ],
-   "false_cards": [
+   "speakers": [
+    "nanoka",
     "meruru",
-    "margo"
+    "arisa",
+    "margo",
+    "reia"
    ],
-   "worlds": 1,
    "logic": {
     "nanoka": [
      "meta_false",
@@ -6922,102 +3185,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "nanoka",
+   "false_cards": [
+    "meruru",
+    "margo"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-30",
    "key": "681346ca3e7b",
    "tier": "hard",
-   "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "reia",
-    "name": "하스미 레이아",
-    "no": 662,
-    "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-    "written": false
-   },
+   "incident": "mirror",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "안안 씨가 낙서했어요!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨는 안 그랬어."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "메루루 씨 아니면 셰리 씨가 낙서했사와요!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "메루루의 말은 옳도다."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "저, 저 아니면 안안 씨가 낙서했어요…"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "셰리쨩의 말은 틀렸어!"
-    }
-   ],
-   "answer": "sherry",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 셰리, 안안, 메루루",
-    "셰리, 메루루 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 셰리"
-   ],
-   "false_cards": [
+   "speakers": [
     "sherry",
+    "miria",
+    "hanna",
     "anan",
-    "meruru"
+    "meruru",
+    "ema"
    ],
-   "worlds": 2,
    "logic": {
     "sherry": [
      "accuse",
@@ -7057,91 +3246,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "sherry",
+   "false_cards": [
+    "sherry",
+    "anan",
+    "meruru"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-31",
    "key": "e2facb7c0a63",
    "tier": "normal",
-   "incident": "아리사의 성냥갑이 텅 비어 있었다.",
-   "verb": "가져갔어",
-   "victim": {
-    "id": "arisa",
-    "name": "시토 아리사",
-    "no": 666,
-    "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
-    "written": false
-   },
+   "incident": "matches",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "meruru",
+    "noah",
+    "ema",
+    "hanna",
+    "miria"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "에, 에마 씨 아니면 노아 씨가 가져갔어요…"
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "에마쨩 아니면 한나쨩이 가져갔어~"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "미리아쨩과 한나쨩은 영혼이 바뀌어 있어!"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "저 아니면 미리아 씨가 가져갔사와요!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨 아니면 에마쨩이 가져갔어."
-    }
-   ],
-   "answer": "ema",
-   "why_not": {
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 한나",
-    "미리아와 한나는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 한나의 말, 한나 이름의 말은 미리아의 말이었다.",
-    "범인: 에마"
-   ],
-   "false_cards": [
-    "hanna"
-   ],
-   "worlds": 1,
    "logic": {
     "meruru": [
      "either",
@@ -7178,99 +3304,26 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "ema",
+   "false_cards": [
+    "hanna"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-32",
    "key": "945cc5824760",
    "tier": "hard",
-   "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-   "verb": "먹었어",
-   "victim": {
-    "id": "nanoka",
-    "name": "쿠로베 나노카",
-    "no": 665,
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-    "written": false
-   },
+   "incident": "sweets",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "한, 한나 씨의 말은 맞아요…"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "한나쨩이 먹었어."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "미리아 씨와 메루루 씨는 영혼이 바뀌어 있사와요!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 한나로다."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "저는 안 먹었어요!"
-    }
-   ],
-   "answer": "sherry",
-   "why_not": {
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 미리아, 안안, 셰리",
-    "메루루, 셰리 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "미리아와 메루루는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 메루루의 말, 메루루 이름의 말은 미리아의 말이었다.",
-    "범인: 셰리"
-   ],
-   "false_cards": [
+   "speakers": [
+    "meruru",
     "miria",
+    "hanna",
     "anan",
     "sherry"
    ],
-   "worlds": 2,
    "logic": {
     "meruru": [
      "meta_true",
@@ -7304,83 +3357,27 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "miria"
-   ]
+   ],
+   "answer": "sherry",
+   "false_cards": [
+    "miria",
+    "anan",
+    "sherry"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-33",
    "key": "6853a73acfd0",
    "tier": "normal",
-   "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-   "verb": "엎었어",
-   "victim": {
-    "id": "sherry",
-    "name": "타치바나 셰리",
-    "no": 667,
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-    "written": false
-   },
+   "incident": "pot",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "이 몸 아니면 아리사가 엎었노라."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "나는 안 엎었음 억까 ㄴㄴ"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "나츠메 새끼가 엎었어."
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "코코쨩의 말은 틀렸어."
-    }
-   ],
-   "answer": "arisa",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 아리사, 미리아",
-    "아리사, 미리아 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 아리사"
-   ],
-   "false_cards": [
+   "speakers": [
+    "anan",
+    "coco",
     "arisa",
     "miria"
    ],
-   "worlds": 2,
    "logic": {
     "anan": [
      "self_or",
@@ -7407,108 +3404,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "arisa",
+   "false_cards": [
+    "arisa",
+    "miria"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-34",
    "key": "5147bc6c45ee",
    "tier": "hard",
-   "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-   "verb": "껐어",
-   "victim": {
-    "id": "coco",
-    "name": "사와타리 코코",
-    "no": 669,
-    "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-    "written": false
-   },
+   "incident": "stream",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "오호호, 셰리 씨의 말은 맞사와요!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아리사쨩의 말은 맞아."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "미리아 씨와 아리사 씨는 영혼이 바뀌어 있어요!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "이 몸 아니면 아리사가 껐노라."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 안안이 껐다!"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "토노 새끼가 껐어."
-    }
-   ],
-   "answer": "arisa",
-   "why_not": {
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 5명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 3명 또는 5명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명 또는 5명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 미리아, 레이아, 아리사",
-    "미리아, 레이아, 아리사 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "미리아와 아리사는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 아리사의 말, 아리사 이름의 말은 미리아의 말이었다.",
-    "범인: 아리사"
-   ],
-   "false_cards": [
+   "speakers": [
+    "hanna",
     "miria",
+    "sherry",
+    "anan",
     "reia",
     "arisa"
    ],
-   "worlds": 3,
    "logic": {
     "hanna": [
      "meta_true",
@@ -7550,82 +3467,27 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "miria"
-   ]
+   ],
+   "answer": "arisa",
+   "false_cards": [
+    "miria",
+    "reia",
+    "arisa"
+   ],
+   "worlds": 3
   },
   {
    "id": "daily-35",
    "key": "8895cec44d94",
    "tier": "normal",
-   "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-   "verb": "엎었어",
-   "victim": {
-    "id": "sherry",
-    "name": "타치바나 셰리",
-    "no": 667,
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-    "written": false
-   },
+   "incident": "pot",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "nanoka",
+    "reia",
+    "ema",
+    "miria"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "레이아가 엎었어."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "미리아 아니면 나노카가 엎었다!"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "나는 미리아쨩과 영혼이 바뀌어 있어!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "에마쨩 아니면 나노카쨩이 엎었어."
-    }
-   ],
-   "answer": "nanoka",
-   "why_not": {
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 나노카",
-    "미리아와 에마는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 에마의 말, 에마 이름의 말은 미리아의 말이었다.",
-    "범인: 나노카"
-   ],
-   "false_cards": [
-    "nanoka"
-   ],
-   "worlds": 1,
    "logic": {
     "nanoka": [
      "accuse",
@@ -7656,93 +3518,26 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "nanoka",
+   "false_cards": [
+    "nanoka"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-36",
    "key": "a68b6ede1f1f",
    "tier": "hard",
-   "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-   "verb": "펼쳐 봤어",
-   "victim": {
-    "id": "ema",
-    "name": "사쿠라바 에마",
-    "no": 658,
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-    "written": false
-   },
+   "incident": "diary",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "나 아니면 나츠메가 펼쳐 봤어."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "아리사가 펼쳐 봤노라."
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "안안은 안 봤어."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 범인은 메루루다!"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "저, 저 아니면 나노카 씨가 펼쳐 봤어요…"
-    }
-   ],
-   "answer": "nanoka",
-   "why_not": {
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 아리사, 안안, 레이아",
-    "아리사, 레이아 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 나노카"
-   ],
-   "false_cards": [
+   "speakers": [
     "arisa",
     "anan",
-    "reia"
+    "nanoka",
+    "reia",
+    "meruru"
    ],
-   "worlds": 2,
    "logic": {
     "arisa": [
      "self_or",
@@ -7777,92 +3572,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "nanoka",
+   "false_cards": [
+    "arisa",
+    "anan",
+    "reia"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-37",
    "key": "ef1fea828e12",
    "tier": "normal",
-   "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-   "verb": "먹었어",
-   "victim": {
-    "id": "nanoka",
-    "name": "쿠로베 나노카",
-    "no": 665,
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-    "written": false
-   },
+   "incident": "sweets",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "사와타리 말은 맞아."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "나 아니면 안안이 먹었음"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "아리사쨩 아니면 셰리쨩이 먹었어."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "코코는 안 먹었노라."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "저 아니면 코코 씨가 먹었어요!"
-    }
-   ],
-   "answer": "anan",
-   "why_not": {
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 마고, 셰리",
-    "셰리 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 안안"
-   ],
-   "false_cards": [
+   "speakers": [
+    "arisa",
+    "coco",
     "margo",
+    "anan",
     "sherry"
    ],
-   "worlds": 1,
    "logic": {
     "arisa": [
      "meta_true",
@@ -7898,93 +3629,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "margo",
+    "sherry"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-38",
    "key": "70bc73b06e38",
    "tier": "hard",
-   "incident": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
-   "verb": "바꿔 놨어",
-   "victim": {
-    "id": "miria",
-    "name": "사에키 미리아",
-    "no": 663,
-    "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지...",
-    "written": false
-   },
+   "incident": "hairpin",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 에마로다."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "안안 씨 아니면 메루루 씨가 바꿔 놨사와요!"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "안, 안안 씨가 바꿔 놨어요…"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "나는 안 바꿨어!"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "안안쨩 아니면 한나쨩이 바꿔 놨어."
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안, 메루루, 마고",
-    "메루루 이름으로 나온 말은 사실 마고의 흉내였다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
+   "speakers": [
     "anan",
+    "hanna",
     "meruru",
+    "ema",
     "margo"
    ],
-   "worlds": 1,
    "logic": {
     "anan": [
      "culprit_is",
@@ -8019,84 +3684,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "anan",
+    "meruru",
+    "margo"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-39",
    "key": "c41f141360fc",
    "tier": "normal",
-   "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-   "verb": "펼쳐 봤어",
-   "victim": {
-    "id": "ema",
-    "name": "사쿠라바 에마",
-    "no": 658,
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-    "written": false
-   },
+   "incident": "diary",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨는 안 봤어."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "나 아니면 노아가 펼쳐 봤음"
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "코코쨩 아니면 미리아쨩이 펼쳐 봤어~"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "미리아의 말은 그릇되었도다."
-    }
-   ],
-   "answer": "anan",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 코코, 노아, 안안",
-    "코코, 노아 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 안안"
-   ],
-   "false_cards": [
+   "speakers": [
+    "miria",
     "coco",
     "noah",
     "anan"
    ],
-   "worlds": 2,
    "logic": {
     "miria": [
      "deny_self",
@@ -8124,101 +3732,29 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "coco",
+    "noah",
+    "anan"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-40",
    "key": "85e6e006c861",
    "tier": "hard",
-   "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
-   "verb": "다 썼어",
-   "victim": {
-    "id": "meruru",
-    "name": "히카미 메루루",
-    "no": 670,
-    "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
-    "written": false
-   },
+   "incident": "bandage",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "안안 씨가 다 썼어요!"
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "미리아 말은 맞아."
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "쿠로베 말은 맞아."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "셰리가 다 썼노라."
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "범인은 레이아쨩이야."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "미리아와 나노카는 영혼이 바뀌어 있다!"
-    }
-   ],
-   "answer": "reia",
-   "why_not": {
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 5명 또는 6명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 5명 또는 6명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 5명 또는 6명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 셰리, 안안",
-    "미리아와 나노카는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 나노카의 말, 나노카 이름의 말은 미리아의 말이었다.",
-    "범인: 레이아"
-   ],
-   "false_cards": [
+   "speakers": [
     "sherry",
-    "anan"
+    "nanoka",
+    "arisa",
+    "anan",
+    "miria",
+    "reia"
    ],
-   "worlds": 1,
    "logic": {
     "sherry": [
      "accuse",
@@ -8259,91 +3795,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "reia",
+   "false_cards": [
+    "sherry",
+    "anan"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-41",
    "key": "78a1f4bc823b",
    "tier": "normal",
-   "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-   "verb": "엎었어",
-   "victim": {
-    "id": "sherry",
-    "name": "타치바나 셰리",
-    "no": 667,
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-    "written": false
-   },
+   "incident": "pot",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "reia",
+    "miria",
+    "noah",
+    "nanoka",
+    "meruru"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 범인은 나노카다!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "메루루쨩 아니면 노아쨩이 엎었어."
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "노아는 안 엎었어~"
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "레이아 말은 틀렸어."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "미, 미리아 씨와 노아 씨는 영혼이 바뀌어 있어요…"
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 레이아",
-    "미리아와 노아는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 노아의 말, 노아 이름의 말은 미리아의 말이었다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
-    "reia"
-   ],
-   "worlds": 1,
    "logic": {
     "reia": [
      "culprit_is",
@@ -8377,99 +3849,26 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "reia"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-42",
    "key": "37703101a393",
    "tier": "hard",
-   "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
-   "verb": "다 썼어",
-   "victim": {
-    "id": "meruru",
-    "name": "히카미 메루루",
-    "no": 670,
-    "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
-    "written": false
-   },
+   "incident": "bandage",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "마고쨩이 다 썼어~"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨는 노아쨩과 영혼이 바뀌어 있어."
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "나츠메 말은 맞아."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "노아의 말은 옳도다."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나 아니면 안안쨩이 다 썼어."
-    }
-   ],
-   "answer": "anan",
-   "why_not": {
-    "noah": "노아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 노아, 아리사, 안안",
-    "미리아, 아리사 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "미리아와 노아는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 노아의 말, 노아 이름의 말은 미리아의 말이었다.",
-    "범인: 안안"
-   ],
-   "false_cards": [
+   "speakers": [
     "noah",
+    "miria",
     "arisa",
-    "anan"
+    "anan",
+    "margo"
    ],
-   "worlds": 2,
    "logic": {
     "noah": [
      "accuse",
@@ -8505,91 +3904,28 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "miria"
-   ]
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "noah",
+    "arisa",
+    "anan"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-43",
    "key": "cd0bd20ee0c2",
    "tier": "normal",
-   "incident": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
-   "verb": "거꾸로 꽂았어",
-   "victim": {
-    "id": "margo",
-    "name": "호쇼 마고",
-    "no": 664,
-    "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡",
-    "written": false
-   },
+   "incident": "books",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아저씨는 안 그랬어."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "명탐정의 추리로는, 범인은 안안 씨예요!"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "저, 저는 미리아 씨와 영혼이 바뀌어 있어요…"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "셰리쨩의 말은 맞아!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "메루루가 거꾸로 꽂았노라."
-    }
-   ],
-   "answer": "anan",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안",
-    "미리아와 메루루는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 메루루의 말, 메루루 이름의 말은 미리아의 말이었다.",
-    "범인: 안안"
-   ],
-   "false_cards": [
+   "speakers": [
+    "miria",
+    "sherry",
+    "meruru",
+    "ema",
     "anan"
    ],
-   "worlds": 1,
    "logic": {
     "miria": [
      "deny_self",
@@ -8622,100 +3958,26 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "anan"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-44",
    "key": "8f3508b672c0",
    "tier": "hard",
-   "incident": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "reia",
-    "name": "하스미 레이아",
-    "no": 662,
-    "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!",
-    "written": false
-   },
+   "incident": "mirror",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "명탐정의 추리로는, 범인은 안안 씨예요!"
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "에마쨩의 말은 틀렸어~"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "마고의 말은 옳도다."
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "나 아니면 마고쨩이 낙서했어!"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나는 안 그랬어."
-    }
-   ],
-   "answer": "margo",
-   "why_not": {
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 셰리, 노아, 안안, 마고",
-    "셰리, 노아, 마고 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 마고"
-   ],
-   "false_cards": [
+   "speakers": [
     "sherry",
     "noah",
     "anan",
+    "ema",
     "margo"
    ],
-   "worlds": 4,
    "logic": {
     "sherry": [
      "culprit_is",
@@ -8749,84 +4011,28 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "margo"
-   ]
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "sherry",
+    "noah",
+    "anan",
+    "margo"
+   ],
+   "worlds": 4
   },
   {
    "id": "daily-45",
    "key": "6a53704833c8",
    "tier": "normal",
-   "incident": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
-   "verb": "거꾸로 꽂았어",
-   "victim": {
-    "id": "margo",
-    "name": "호쇼 마고",
-    "no": 664,
-    "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡",
-    "written": false
-   },
+   "incident": "books",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "명탐정의 추리로는, 범인은 안안 씨예요!"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "사쿠라바 말은 맞아."
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "나는 안 그랬어!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "셰리는 안 그랬노라."
-    }
-   ],
-   "answer": "ema",
-   "why_not": {
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도)."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 셰리, 아리사, 에마",
-    "셰리, 아리사, 에마 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 에마"
-   ],
-   "false_cards": [
+   "speakers": [
     "sherry",
     "arisa",
-    "ema"
+    "ema",
+    "anan"
    ],
-   "worlds": 3,
    "logic": {
     "sherry": [
      "culprit_is",
@@ -8853,239 +4059,95 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "ema",
+   "false_cards": [
+    "sherry",
+    "arisa",
+    "ema"
+   ],
+   "worlds": 3
   },
   {
    "id": "daily-46",
    "key": "c5707d0c6935",
    "tier": "hard",
-   "incident": "노아의 스케치북에 누가 낙서를 했다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "noah",
-    "name": "죠가사키 노아",
-    "no": 661,
-    "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
-    "written": false
-   },
+   "incident": "sketch",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "nanoka",
+    "anan",
+    "sherry",
+    "coco",
+    "margo",
+    "ema"
    ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "에마 말은 맞아."
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "마고의 말은 그릇되었도다."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "코코 씨가 낙서했어요!"
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "마고 아니면 나노카가 낙서했음 ㅇㅇ"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "범인은 셰리쨩이야♡"
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "코코쨩 아니면 마고쨩이 낙서했어!"
-    }
+   "logic": {
+    "nanoka": [
+     "meta_true",
+     [
+      "ema"
+     ]
+    ],
+    "anan": [
+     "meta_false",
+     [
+      "margo"
+     ]
+    ],
+    "sherry": [
+     "accuse",
+     [
+      "coco"
+     ]
+    ],
+    "coco": [
+     "either",
+     [
+      "margo",
+      "nanoka"
+     ]
+    ],
+    "margo": [
+     "culprit_is",
+     [
+      "sherry"
+     ]
+    ],
+    "ema": [
+     "either",
+     [
+      "coco",
+      "margo"
+     ]
+    ]
+   },
+   "magic_ids": [
+    "anan",
+    "margo"
    ],
    "answer": "nanoka",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 0명 또는 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 0명 또는 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "ema": "에마가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 나노카, 셰리, 마고, 에마",
-    "나노카, 셰리, 마고, 에마 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 나노카"
-   ],
    "false_cards": [
     "nanoka",
     "sherry",
     "margo",
     "ema"
    ],
-   "worlds": 9,
-   "logic": {
-    "nanoka": [
-     "meta_true",
-     [
-      "ema"
-     ]
-    ],
-    "anan": [
-     "meta_false",
-     [
-      "margo"
-     ]
-    ],
-    "sherry": [
-     "accuse",
-     [
-      "coco"
-     ]
-    ],
-    "coco": [
-     "either",
-     [
-      "margo",
-      "nanoka"
-     ]
-    ],
-    "margo": [
-     "culprit_is",
-     [
-      "sherry"
-     ]
-    ],
-    "ema": [
-     "either",
-     [
-      "coco",
-      "margo"
-     ]
-    ]
-   },
-   "magic_ids": [
-    "anan",
-    "margo"
-   ]
+   "worlds": 9
   },
   {
    "id": "daily-47",
    "key": "8f833a584425",
    "tier": "normal",
-   "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-   "verb": "엎었어",
-   "victim": {
-    "id": "sherry",
-    "name": "타치바나 셰리",
-    "no": 667,
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-    "written": false
-   },
+   "incident": "pot",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "코코쨩 아니면 마고쨩이 엎었어!"
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "범인은 마고임 빼박"
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "에마 말은 맞아."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "저 아니면 마고 씨가 엎었사와요!"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나 아니면 에마쨩이 엎었어."
-    }
-   ],
-   "answer": "coco",
-   "why_not": {
-    "ema": "에마가 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "nanoka": "나노카가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 코코, 한나, 마고",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 코코"
-   ],
-   "false_cards": [
+   "speakers": [
+    "ema",
     "coco",
+    "nanoka",
     "hanna",
     "margo"
    ],
-   "worlds": 2,
    "logic": {
     "ema": [
      "either",
@@ -9121,99 +4183,28 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "margo"
-   ]
+   ],
+   "answer": "coco",
+   "false_cards": [
+    "coco",
+    "hanna",
+    "margo"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-48",
    "key": "08653c5155e1",
    "tier": "hard",
-   "incident": "노아의 스케치북에 누가 낙서를 했다.",
-   "verb": "낙서했어",
-   "victim": {
-    "id": "noah",
-    "name": "죠가사키 노아",
-    "no": 661,
-    "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~",
-    "written": false
-   },
+   "incident": "sketch",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "토노 말은 맞아."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "범인은 미리아 씨이와요!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "안안쨩의 말은 맞아."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "나는 낙서 안 했음 억까 ㄴㄴ"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "미리아와 아리사는 영혼이 바뀌어 있노라."
-    }
-   ],
-   "answer": "coco",
-   "why_not": {
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 1명 또는 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 아리사, 한나, 코코",
-    "한나, 미리아, 코코 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "미리아와 아리사는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 아리사의 말, 아리사 이름의 말은 미리아의 말이었다.",
-    "범인: 코코"
-   ],
-   "false_cards": [
+   "speakers": [
     "arisa",
     "hanna",
-    "coco"
+    "miria",
+    "coco",
+    "anan"
    ],
-   "worlds": 3,
    "logic": {
     "arisa": [
      "meta_true",
@@ -9247,83 +4238,27 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "miria"
-   ]
+   ],
+   "answer": "coco",
+   "false_cards": [
+    "arisa",
+    "hanna",
+    "coco"
+   ],
+   "worlds": 3
   },
   {
    "id": "daily-49",
    "key": "e10294f54090",
    "tier": "normal",
-   "incident": "아리사의 성냥갑이 텅 비어 있었다.",
-   "verb": "가져갔어",
-   "victim": {
-    "id": "arisa",
-    "name": "시토 아리사",
-    "no": 666,
-    "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
-    "written": false
-   },
+   "incident": "matches",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "코코쨩의 말은 맞아~"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 노아로다."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "한나 아니면 노아가 가져갔음 ㅇㅇ"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "저는 안 가져갔사와요!"
-    }
-   ],
-   "answer": "hanna",
-   "why_not": {
-    "noah": "노아가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안, 한나",
-    "한나는 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다.",
-    "범인: 한나"
-   ],
-   "false_cards": [
+   "speakers": [
+    "noah",
     "anan",
+    "coco",
     "hanna"
    ],
-   "worlds": 1,
    "logic": {
     "noah": [
      "meta_true",
@@ -9351,99 +4286,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "hanna",
+   "false_cards": [
+    "anan",
+    "hanna"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-50",
    "key": "5fb1bd00ab58",
    "tier": "hard",
-   "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-   "verb": "껐어",
-   "victim": {
-    "id": "coco",
-    "name": "사와타리 코코",
-    "no": 669,
-    "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-    "written": false
-   },
+   "incident": "stream",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "안안쨩 아니면 아리사쨩이 껐어~"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "이 몸은 안 껐노라."
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "사에키는 안 껐어."
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "아리사쨩의 말은 맞아."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "나는 미리아쨩과 영혼이 바뀌어 있어."
-    }
-   ],
-   "answer": "miria",
-   "why_not": {
-    "noah": "노아가 범인이라면 거짓말하는 사람이 0명 또는 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 0명 또는 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 노아, 아리사, 미리아",
-    "노아, 아리사, 마고 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "미리아와 마고는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 마고의 말, 마고 이름의 말은 미리아의 말이었다.",
-    "범인: 미리아"
-   ],
-   "false_cards": [
+   "speakers": [
     "noah",
+    "anan",
     "arisa",
-    "miria"
+    "miria",
+    "margo"
    ],
-   "worlds": 3,
    "logic": {
     "noah": [
      "either",
@@ -9478,91 +4341,28 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "miria"
-   ]
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "noah",
+    "arisa",
+    "miria"
+   ],
+   "worlds": 3
   },
   {
    "id": "daily-51",
    "key": "b6afb9d8b9f4",
    "tier": "normal",
-   "incident": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-   "verb": "껐어",
-   "victim": {
-    "id": "coco",
-    "name": "사와타리 코코",
-    "no": 669,
-    "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!",
-    "written": false
-   },
+   "incident": "stream",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "anan",
+    "sherry",
+    "noah",
+    "reia",
+    "miria"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "미리아와 노아는 영혼이 바뀌어 있노라."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "미리아 씨의 말은 맞아요!"
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "노아는 안 껐어~"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "단언하지! 범인은 미리아다!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "범인은 셰리쨩이야."
-    }
-   ],
-   "answer": "sherry",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 4명 또는 5명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 레이아",
-    "미리아와 노아는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 노아의 말, 노아 이름의 말은 미리아의 말이었다.",
-    "범인: 셰리"
-   ],
-   "false_cards": [
-    "reia"
-   ],
-   "worlds": 1,
    "logic": {
     "anan": [
      "swap_claim",
@@ -9595,109 +4395,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "sherry",
+   "false_cards": [
+    "reia"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-52",
    "key": "8767223c6a4a",
    "tier": "hard",
-   "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-   "verb": "펼쳐 봤어",
-   "victim": {
-    "id": "ema",
-    "name": "사쿠라바 에마",
-    "no": 658,
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-    "written": false
-   },
+   "incident": "diary",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    },
-    {
-     "who": "마고",
-     "name": "흉내내기",
-     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
-    }
-   ],
-   "suspects": [
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "미리아 아니면 레이아가 펼쳐 봤음 ㅇㅇ"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "아리사 아니면 미리아가 펼쳐 봤다!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "마고가 펼쳐 봤노라."
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나는 안 봤어."
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "나츠메 아니면 사에키가 펼쳐 봤어."
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "마고쨩의 말은 틀렸어."
-    }
-   ],
-   "answer": "margo",
-   "why_not": {
-    "coco": "코코가 범인이라면 거짓말하는 사람이 4명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해.",
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도, 마고가 누구 흉내를 냈다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 코코, 레이아, 마고, 아리사",
-    "코코, 레이아, 마고, 아리사 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.",
-    "범인: 마고"
-   ],
-   "false_cards": [
+   "speakers": [
     "coco",
     "reia",
+    "anan",
     "margo",
-    "arisa"
+    "arisa",
+    "miria"
    ],
-   "worlds": 9,
    "logic": {
     "coco": [
      "either",
@@ -9740,83 +4458,28 @@ window.PUZZLES = {
    "magic_ids": [
     "anan",
     "margo"
-   ]
+   ],
+   "answer": "margo",
+   "false_cards": [
+    "coco",
+    "reia",
+    "margo",
+    "arisa"
+   ],
+   "worlds": 9
   },
   {
    "id": "daily-53",
    "key": "0f6604591b5a",
    "tier": "normal",
-   "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
-   "verb": "다 썼어",
-   "victim": {
-    "id": "meruru",
-    "name": "히카미 메루루",
-    "no": 670,
-    "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
-    "written": false
-   },
+   "incident": "bandage",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "아아, 코코의 말은 맞다!"
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "레이아는 안 썼음"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "이 몸은 안 썼노라."
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "범인은 코코 씨이와요!"
-    }
-   ],
-   "answer": "anan",
-   "why_not": {
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 2명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해.",
-    "coco": "코코가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안, 한나",
-    "한나는 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다.",
-    "범인: 안안"
-   ],
-   "false_cards": [
+   "speakers": [
+    "reia",
+    "coco",
     "anan",
     "hanna"
    ],
-   "worlds": 1,
    "logic": {
     "reia": [
      "meta_true",
@@ -9843,93 +4506,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "anan",
+   "false_cards": [
+    "anan",
+    "hanna"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-54",
    "key": "780f7291d890",
    "tier": "hard",
-   "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-   "verb": "먹었어",
-   "victim": {
-    "id": "nanoka",
-    "name": "쿠로베 나노카",
-    "no": 665,
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-    "written": false
-   },
+   "incident": "sweets",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "안안 아니면 노아가 먹었다!"
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "레이아쨩의 말은 맞아~"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "하스미 새끼가 먹었어."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "레, 레이아 씨의 말은 틀렸어요… 죄, 죄송해요…"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "아리사는 안 먹었노라."
-    }
-   ],
-   "answer": "meruru",
-   "why_not": {
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 레이아, 노아, 아리사",
-    "레이아, 노아, 아리사 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 메루루"
-   ],
-   "false_cards": [
+   "speakers": [
     "reia",
     "noah",
-    "arisa"
+    "arisa",
+    "meruru",
+    "anan"
    ],
-   "worlds": 3,
    "logic": {
     "reia": [
      "either",
@@ -9965,84 +4562,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "meruru",
+   "false_cards": [
+    "reia",
+    "noah",
+    "arisa"
+   ],
+   "worlds": 3
   },
   {
    "id": "daily-55",
    "key": "547e0d2af464",
    "tier": "normal",
-   "incident": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-   "verb": "펼쳐 봤어",
-   "victim": {
-    "id": "ema",
-    "name": "사쿠라바 에마",
-    "no": 658,
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!",
-    "written": false
-   },
+   "incident": "diary",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "아아, 안안의 말은 맞다!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "나노카는 안 봤노라."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "나노카 씨 아니면 레이아 씨가 펼쳐 봤어요!"
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "난 안 봤어."
-    }
-   ],
-   "answer": "nanoka",
-   "why_not": {
-    "reia": "레이아가 범인이라면 말들이 서로 어긋나 버린다 (안안의 세뇌를 누구에게 걸었다고 해도).",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 레이아, 안안, 나노카",
-    "레이아, 나노카 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 나노카"
-   ],
-   "false_cards": [
+   "speakers": [
     "reia",
     "anan",
+    "sherry",
     "nanoka"
    ],
-   "worlds": 2,
    "logic": {
     "reia": [
      "meta_true",
@@ -10070,102 +4610,29 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "nanoka",
+   "false_cards": [
+    "reia",
+    "anan",
+    "nanoka"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-56",
    "key": "4ec7e609ef5b",
    "tier": "hard",
-   "incident": "아리사의 성냥갑이 텅 비어 있었다.",
-   "verb": "가져갔어",
-   "victim": {
-    "id": "arisa",
-    "name": "시토 아리사",
-    "no": 666,
-    "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!",
-    "written": false
-   },
+   "incident": "matches",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "한나 말은 틀렸음 ㅋㅋ"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "노아 씨는 안 가져갔사와요!"
-    },
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "범인은 노아로다."
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "메루루쨩의 말은 맞아~"
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "안, 안안 씨는 안 가져갔어요…"
-    },
-    {
-     "id": "nanoka",
-     "name": "나노카",
-     "full": "쿠로베 나노카",
-     "no": 665,
-     "written": false,
-     "says": "난 안 가져갔어."
-    }
-   ],
-   "answer": "nanoka",
-   "why_not": {
-    "coco": "코코가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 0명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 코코, 안안, 나노카",
-    "코코, 나노카 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 나노카"
-   ],
-   "false_cards": [
+   "speakers": [
     "coco",
+    "hanna",
     "anan",
+    "noah",
+    "meruru",
     "nanoka"
    ],
-   "worlds": 2,
    "logic": {
     "coco": [
      "meta_false",
@@ -10204,82 +4671,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "nanoka",
+   "false_cards": [
+    "coco",
+    "anan",
+    "nanoka"
+   ],
+   "worlds": 2
   },
   {
    "id": "daily-57",
    "key": "01234b314e74",
    "tier": "normal",
-   "incident": "메루루의 반창고 상자가 텅 비어 있었다.",
-   "verb": "다 썼어",
-   "victim": {
-    "id": "meruru",
-    "name": "히카미 메루루",
-    "no": 670,
-    "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?",
-    "written": false
-   },
+   "incident": "bandage",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "ema",
+    "reia",
+    "miria",
+    "sherry"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "미리아쨩과 셰리쨩은 영혼이 바뀌어 있어!"
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "미리아 아니면 셰리가 다 썼다!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "셰리쨩이 다 썼어."
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "에마 씨의 말은 맞아요!"
-    }
-   ],
-   "answer": "miria",
-   "why_not": {
-    "ema": "에마가 범인이라면 거짓말하는 사람이 2명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 2명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 0명 또는 2명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 미리아",
-    "미리아와 셰리는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 셰리의 말, 셰리 이름의 말은 미리아의 말이었다.",
-    "범인: 미리아"
-   ],
-   "false_cards": [
-    "miria"
-   ],
-   "worlds": 1,
    "logic": {
     "ema": [
      "swap_claim",
@@ -10309,101 +4721,27 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "miria",
+   "false_cards": [
+    "miria"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-58",
    "key": "273be75334e8",
    "tier": "hard",
-   "incident": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-   "verb": "먹었어",
-   "victim": {
-    "id": "nanoka",
-    "name": "쿠로베 나노카",
-    "no": 665,
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록.",
-    "written": false
-   },
+   "incident": "sweets",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "노아쨩의 말은 틀렸어."
-    },
-    {
-     "id": "ema",
-     "name": "에마",
-     "full": "사쿠라바 에마",
-     "no": 658,
-     "written": false,
-     "says": "나는 미리아쨩과 영혼이 바뀌어 있어!"
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "노아 아니면 셰리쨩이 먹었어~"
-    },
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "명탐정의 추리로는, 범인은 에마 씨예요!"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "후후, 나는 안 먹었어."
-    },
-    {
-     "id": "meruru",
-     "name": "메루루",
-     "full": "히카미 메루루",
-     "no": 670,
-     "written": false,
-     "says": "마, 마고 씨가 먹었어요…"
-    }
-   ],
-   "answer": "ema",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "noah": "노아가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "sherry": "셰리가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해.",
-    "meruru": "메루루가 범인이라면 거짓말하는 사람이 3명 또는 4명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 노아, 메루루",
-    "미리아와 에마는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 에마의 말, 에마 이름의 말은 미리아의 말이었다.",
-    "범인: 에마"
-   ],
-   "false_cards": [
+   "speakers": [
+    "miria",
+    "ema",
     "noah",
+    "sherry",
+    "margo",
     "meruru"
    ],
-   "worlds": 1,
    "logic": {
     "miria": [
      "meta_false",
@@ -10442,82 +4780,26 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "ema",
+   "false_cards": [
+    "noah",
+    "meruru"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-59",
    "key": "3b4b1392c5a2",
    "tier": "normal",
-   "incident": "안안이 아껴 마시던 홍차가 한 방울도 남지 않았다.",
-   "verb": "다 마셨어",
-   "victim": {
-    "id": "anan",
-    "name": "나츠메 안안",
-    "no": 660,
-    "line": "이 몸이 아껴 두었던 홍차가 사라졌노라. 범인은 이 몸 앞에 나와 고하라.",
-    "written": true
-   },
+   "incident": "tea",
    "n": 1,
-   "rules": [
-    "이 중 딱 1명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
+   "speakers": [
+    "sherry",
+    "miria",
+    "coco",
+    "margo"
    ],
-   "magic": [
-    {
-     "who": "미리아",
-     "name": "뒤바뀜",
-     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "sherry",
-     "name": "셰리",
-     "full": "타치바나 셰리",
-     "no": 667,
-     "written": false,
-     "says": "미리아 씨와 마고 씨는 영혼이 바뀌어 있어요!"
-    },
-    {
-     "id": "miria",
-     "name": "미리아",
-     "full": "사에키 미리아",
-     "no": 663,
-     "written": false,
-     "says": "마고쨩 아니면 셰리쨩이 다 마셨어."
-    },
-    {
-     "id": "coco",
-     "name": "코코",
-     "full": "사와타리 코코",
-     "no": 669,
-     "written": false,
-     "says": "미리아가 다 마셨음 ㅋㅋ"
-    },
-    {
-     "id": "margo",
-     "name": "마고",
-     "full": "호쇼 마고",
-     "no": 664,
-     "written": false,
-     "says": "코코쨩 아니면 셰리쨩이 다 마셨어."
-    }
-   ],
-   "answer": "sherry",
-   "why_not": {
-    "miria": "미리아가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "coco": "코코가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해.",
-    "margo": "마고가 범인이라면 거짓말하는 사람이 2명 또는 3명이 되어 버린다 (미리아가 누구와 뒤바뀌었다고 해도). 1명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 코코",
-    "미리아와 마고는 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 마고의 말, 마고 이름의 말은 미리아의 말이었다.",
-    "범인: 셰리"
-   ],
-   "false_cards": [
-    "coco"
-   ],
-   "worlds": 1,
    "logic": {
     "sherry": [
      "swap_claim",
@@ -10548,93 +4830,26 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "miria"
-   ]
+   ],
+   "answer": "sherry",
+   "false_cards": [
+    "coco"
+   ],
+   "worlds": 1
   },
   {
    "id": "daily-60",
    "key": "d944c73d1e16",
    "tier": "hard",
-   "incident": "셰리가 아끼는 화분이 엎어져 있었다.",
-   "verb": "엎었어",
-   "victim": {
-    "id": "sherry",
-    "name": "타치바나 셰리",
-    "no": 667,
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!",
-    "written": false
-   },
+   "incident": "pot",
    "n": 2,
-   "rules": [
-    "이 중 딱 2명이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.",
-    "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다."
-   ],
-   "magic": [
-    {
-     "who": "안안",
-     "name": "세뇌",
-     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
-    }
-   ],
-   "suspects": [
-    {
-     "id": "anan",
-     "name": "안안",
-     "full": "나츠메 안안",
-     "no": 660,
-     "written": true,
-     "says": "아리사가 엎었노라."
-    },
-    {
-     "id": "reia",
-     "name": "레이아",
-     "full": "하스미 레이아",
-     "no": 662,
-     "written": false,
-     "says": "아아, 안안의 말은 맞다!"
-    },
-    {
-     "id": "hanna",
-     "name": "한나",
-     "full": "토노 한나",
-     "no": 668,
-     "written": false,
-     "says": "저 아니면 레이아 씨가 엎었사와요!"
-    },
-    {
-     "id": "noah",
-     "name": "노아",
-     "full": "죠가사키 노아",
-     "no": 661,
-     "written": false,
-     "says": "안안쨩은 안 엎었어~"
-    },
-    {
-     "id": "arisa",
-     "name": "아리사",
-     "full": "시토 아리사",
-     "no": 666,
-     "written": false,
-     "says": "난 안 엎었어. 꺼져."
-    }
-   ],
-   "answer": "noah",
-   "why_not": {
-    "anan": "안안이 범인이라면 거짓말하는 사람이 3명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "reia": "레이아가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "hanna": "한나가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해.",
-    "arisa": "아리사가 범인이라면 거짓말하는 사람이 1명이 되어 버린다 (안안의 세뇌를 누구에게 걸었다고 해도). 2명이어야 해."
-   },
-   "solution": [
-    "틀린 말을 한 카드: 안안, 레이아, 한나",
-    "레이아, 한나 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.",
-    "범인: 노아"
-   ],
-   "false_cards": [
+   "speakers": [
     "anan",
     "reia",
-    "hanna"
+    "hanna",
+    "noah",
+    "arisa"
    ],
-   "worlds": 2,
    "logic": {
     "anan": [
      "accuse",
@@ -10667,287 +4882,119 @@ window.PUZZLES = {
    },
    "magic_ids": [
     "anan"
-   ]
+   ],
+   "answer": "noah",
+   "false_cards": [
+    "anan",
+    "reia",
+    "hanna"
+   ],
+   "worlds": 2
   }
  ],
+ "tutorial": {
+  "id": "tutorial",
+  "key": "f46eb84af510",
+  "tier": "tutorial",
+  "incident": "sweets",
+  "n": 1,
+  "speakers": [
+   "ema",
+   "sherry",
+   "coco"
+  ],
+  "logic": {
+   "ema": [
+    "accuse",
+    [
+     "sherry"
+    ]
+   ],
+   "sherry": [
+    "deny",
+    [
+     "ema"
+    ]
+   ],
+   "coco": [
+    "culprit_is",
+    [
+     "ema"
+    ]
+   ]
+  },
+  "magic_ids": [],
+  "answer": "sherry",
+  "false_cards": [
+   "coco"
+  ],
+  "worlds": 1
+ },
  "gen": {
-  "names": {
-   "ema": "에마",
-   "nanoka": "나노카",
-   "coco": "코코",
-   "sherry": "셰리",
-   "hanna": "한나",
-   "noah": "노아",
-   "reia": "레이아",
-   "miria": "미리아",
-   "margo": "마고",
-   "anan": "안안",
-   "arisa": "아리사",
-   "meruru": "메루루"
-  },
-  "full_names": {
-   "ema": "사쿠라바 에마",
-   "nanoka": "쿠로베 나노카",
-   "coco": "사와타리 코코",
-   "sherry": "타치바나 셰리",
-   "hanna": "토노 한나",
-   "noah": "죠가사키 노아",
-   "reia": "하스미 레이아",
-   "miria": "사에키 미리아",
-   "margo": "호쇼 마고",
-   "anan": "나츠메 안안",
-   "arisa": "시토 아리사",
-   "meruru": "히카미 메루루"
-  },
-  "prisoner_no": {
-   "ema": 658,
-   "anan": 660,
-   "noah": 661,
-   "reia": 662,
-   "miria": 663,
-   "margo": 664,
-   "nanoka": 665,
-   "arisa": 666,
-   "sherry": 667,
-   "hanna": 668,
-   "coco": 669,
-   "meruru": 670
-  },
-  "voices": {
-   "ema": {
-    "self": "나",
-    "call": "쨩",
-    "style": "ban",
-    "end": "!"
-   },
-   "anan": {
-    "self": "이 몸",
-    "call": "",
-    "style": "nora",
-    "end": ".",
-    "written": true
-   },
-   "noah": {
-    "self": "노아",
-    "call": "쨩",
-    "style": "ban",
-    "end": "~"
-   },
-   "reia": {
-    "self": "나",
-    "call": "",
-    "style": "hada",
-    "end": "!",
-    "pre": {
-     "accuse": "단언하지! ",
-     "culprit_is": "단언하지! ",
-     "meta_false": "아아, ",
-     "meta_true": "아아, "
-    },
-    "post": {
-     "deny_self": " 이 무대에 맹세하지!"
-    }
-   },
-   "miria": {
-    "self": "아저씨",
-    "call": "쨩",
-    "style": "ban",
-    "end": "."
-   },
-   "margo": {
-    "self": "나",
-    "call": "쨩",
-    "style": "ban",
-    "end": ".",
-    "endk": {
-     "accuse": "♡",
-     "culprit_is": "♡"
-    },
-    "pre": {
-     "deny_self": "후후, ",
-     "meta_false": "후후, ",
-     "meta_true": "후후, ",
-     "self_or": "후후, "
-    }
-   },
-   "nanoka": {
-    "self": "나",
-    "topic": "난",
-    "call": "",
-    "style": "ban",
-    "end": ".",
-    "casual": true
-   },
-   "arisa": {
-    "self": "나",
-    "topic": "난",
-    "call": "surname",
-    "style": "ban",
-    "end": ".",
-    "casual": true,
-    "tag": {
-     "accuse": " 새끼"
-    },
-    "post": {
-     "deny_self": " 꺼져.",
-     "meta_false": " 닥쳐.",
-     "culprit_is": " 됐냐?"
-    }
-   },
-   "sherry": {
-    "self": "저",
-    "call": "씨",
-    "style": "haeyo",
-    "end": "!",
-    "pre": {
-     "culprit_is": "명탐정의 추리로는, "
-    }
-   },
-   "hanna": {
-    "self": "저",
-    "call": "씨",
-    "style": "sawayo",
-    "end": "!",
-    "pre": {
-     "meta_false": "오호호, ",
-     "meta_true": "오호호, "
-    }
-   },
-   "coco": {
-    "self": "나",
-    "call": "",
-    "style": "eum",
-    "end": "",
-    "casual": true,
-    "post": {
-     "accuse": " ㅋㅋ",
-     "culprit_is": " 빼박",
-     "deny_self": " 억까 ㄴㄴ",
-     "either": " ㅇㅇ",
-     "meta_false": " ㅋㅋ",
-     "meta_true": " ㅇㅈ",
-     "swap_claim": " ㄹㅇ"
-    }
-   },
-   "meruru": {
-    "self": "저",
-    "call": "씨",
-    "style": "haeyo",
-    "end": "…",
-    "stutter": true,
-    "post": {
-     "meta_false": " 죄, 죄송해요…"
-    }
-   }
-  },
+  "people": [
+   "ema",
+   "nanoka",
+   "coco",
+   "sherry",
+   "hanna",
+   "noah",
+   "reia",
+   "miria",
+   "margo",
+   "anan",
+   "arisa",
+   "meruru"
+  ],
   "incidents": [
    {
     "id": "sweets",
-    "owner": "nanoka",
-    "text": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
-    "did": "먹었어",
-    "didnt": "안 먹었어",
-    "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록."
+    "owner": "nanoka"
    },
    {
     "id": "pot",
-    "owner": "sherry",
-    "text": "셰리가 아끼는 화분이 엎어져 있었다.",
-    "did": "엎었어",
-    "didnt": "안 엎었어",
-    "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!"
+    "owner": "sherry"
    },
    {
     "id": "sketch",
-    "owner": "noah",
-    "text": "노아의 스케치북에 누가 낙서를 했다.",
-    "did": "낙서했어",
-    "didnt": "낙서 안 했어",
-    "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~"
+    "owner": "noah"
    },
    {
     "id": "tea",
-    "owner": "anan",
-    "text": "안안이 아껴 마시던 홍차가 한 방울도 남지 않았다.",
-    "did": "다 마셨어",
-    "didnt": "안 마셨어",
-    "line": "이 몸이 아껴 두었던 홍차가 사라졌노라. 범인은 이 몸 앞에 나와 고하라."
+    "owner": "anan"
    },
    {
     "id": "stream",
-    "owner": "coco",
-    "text": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
-    "did": "껐어",
-    "didnt": "안 껐어",
-    "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!"
+    "owner": "coco"
    },
    {
     "id": "books",
-    "owner": "margo",
-    "text": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
-    "did": "거꾸로 꽂았어",
-    "didnt": "안 그랬어",
-    "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡"
+    "owner": "margo"
    },
    {
     "id": "ribbon",
-    "owner": "hanna",
-    "text": "한나의 리본 하나가 없어졌다.",
-    "did": "가져갔어",
-    "didnt": "안 가져갔어",
-    "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!"
+    "owner": "hanna"
    },
    {
     "id": "diary",
-    "owner": "ema",
-    "text": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
-    "did": "펼쳐 봤어",
-    "didnt": "안 봤어",
-    "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!"
+    "owner": "ema"
    },
    {
     "id": "mirror",
-    "owner": "reia",
-    "text": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
-    "did": "낙서했어",
-    "didnt": "안 그랬어",
-    "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!"
+    "owner": "reia"
    },
    {
     "id": "matches",
-    "owner": "arisa",
-    "text": "아리사의 성냥갑이 텅 비어 있었다.",
-    "did": "가져갔어",
-    "didnt": "안 가져갔어",
-    "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!"
+    "owner": "arisa"
    },
    {
     "id": "bandage",
-    "owner": "meruru",
-    "text": "메루루의 반창고 상자가 텅 비어 있었다.",
-    "did": "다 썼어",
-    "didnt": "안 썼어",
-    "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?"
+    "owner": "meruru"
    },
    {
     "id": "hairpin",
-    "owner": "miria",
-    "text": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
-    "did": "바꿔 놨어",
-    "didnt": "안 바꿨어",
-    "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지..."
+    "owner": "miria"
    }
   ],
-  "magic_name": {
-   "anan": "세뇌",
-   "margo": "흉내내기",
-   "miria": "뒤바뀜"
-  },
-  "magic_text": {
-   "anan": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다.",
-   "margo": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)",
-   "miria": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
-  },
   "tiers": {
    "easy": {
     "sizes": [
@@ -11012,6 +5059,253 @@ window.PUZZLES = {
       "miria"
      ]
     ]
+   }
+  }
+ },
+ "lang": {
+  "ko": {
+   "names": {
+    "ema": "에마",
+    "nanoka": "나노카",
+    "coco": "코코",
+    "sherry": "셰리",
+    "hanna": "한나",
+    "noah": "노아",
+    "reia": "레이아",
+    "miria": "미리아",
+    "margo": "마고",
+    "anan": "안안",
+    "arisa": "아리사",
+    "meruru": "메루루"
+   },
+   "full_names": {
+    "ema": "사쿠라바 에마",
+    "nanoka": "쿠로베 나노카",
+    "coco": "사와타리 코코",
+    "sherry": "타치바나 셰리",
+    "hanna": "토노 한나",
+    "noah": "죠가사키 노아",
+    "reia": "하스미 레이아",
+    "miria": "사에키 미리아",
+    "margo": "호쇼 마고",
+    "anan": "나츠메 안안",
+    "arisa": "시토 아리사",
+    "meruru": "히카미 메루루"
+   },
+   "voices": {
+    "ema": {
+     "self": "나",
+     "call": "쨩",
+     "style": "ban",
+     "end": "!"
+    },
+    "anan": {
+     "self": "이 몸",
+     "call": "",
+     "style": "nora",
+     "end": ".",
+     "written": true
+    },
+    "noah": {
+     "self": "노아",
+     "call": "쨩",
+     "style": "ban",
+     "end": "~"
+    },
+    "reia": {
+     "self": "나",
+     "call": "",
+     "style": "hada",
+     "end": "!",
+     "pre": {
+      "accuse": "단언하지! ",
+      "culprit_is": "단언하지! ",
+      "meta_false": "아아, ",
+      "meta_true": "아아, "
+     },
+     "post": {
+      "deny_self": " 이 무대에 맹세하지!"
+     }
+    },
+    "miria": {
+     "self": "아저씨",
+     "call": "쨩",
+     "style": "ban",
+     "end": "."
+    },
+    "margo": {
+     "self": "나",
+     "call": "쨩",
+     "style": "ban",
+     "end": ".",
+     "endk": {
+      "accuse": "♡",
+      "culprit_is": "♡"
+     },
+     "pre": {
+      "deny_self": "후후, ",
+      "meta_false": "후후, ",
+      "meta_true": "후후, ",
+      "self_or": "후후, "
+     }
+    },
+    "nanoka": {
+     "self": "나",
+     "topic": "난",
+     "call": "",
+     "style": "ban",
+     "end": ".",
+     "casual": true
+    },
+    "arisa": {
+     "self": "나",
+     "topic": "난",
+     "call": "surname",
+     "style": "ban",
+     "end": ".",
+     "casual": true,
+     "tag": {
+      "accuse": " 새끼"
+     },
+     "post": {
+      "deny_self": " 꺼져.",
+      "meta_false": " 닥쳐.",
+      "culprit_is": " 됐냐?"
+     }
+    },
+    "sherry": {
+     "self": "저",
+     "call": "씨",
+     "style": "haeyo",
+     "end": "!",
+     "pre": {
+      "culprit_is": "명탐정의 추리로는, "
+     }
+    },
+    "hanna": {
+     "self": "저",
+     "call": "씨",
+     "style": "sawayo",
+     "end": "!",
+     "pre": {
+      "meta_false": "오호호, ",
+      "meta_true": "오호호, "
+     }
+    },
+    "coco": {
+     "self": "나",
+     "call": "",
+     "style": "eum",
+     "end": "",
+     "casual": true,
+     "post": {
+      "accuse": " ㅋㅋ",
+      "culprit_is": " 빼박",
+      "deny_self": " 억까 ㄴㄴ",
+      "either": " ㅇㅇ",
+      "meta_false": " ㅋㅋ",
+      "meta_true": " ㅇㅈ",
+      "swap_claim": " ㄹㅇ"
+     }
+    },
+    "meruru": {
+     "self": "저",
+     "call": "씨",
+     "style": "haeyo",
+     "end": "…",
+     "stutter": true,
+     "post": {
+      "meta_false": " 죄, 죄송해요…"
+     }
+    }
+   },
+   "incidents": {
+    "sweets": {
+     "text": "나노카가 만들어 둔 과자가 감쪽같이 사라졌다.",
+     "did": "먹었어",
+     "didnt": "안 먹었어",
+     "line": "...내가 만든 과자를 먹은 사람은 누구지? 어서 나오도록."
+    },
+    "pot": {
+     "text": "셰리가 아끼는 화분이 엎어져 있었다.",
+     "did": "엎었어",
+     "didnt": "안 엎었어",
+     "line": "사건이에요! 이건 명탐정 셰리쨩에게 보내는 도전장이에요!"
+    },
+    "sketch": {
+     "text": "노아의 스케치북에 누가 낙서를 했다.",
+     "did": "낙서했어",
+     "didnt": "낙서 안 했어",
+     "line": "노아 스케치북에 누가 그렸어~? 으음~ 근데 이 선, 나쁘지 않은데~"
+    },
+    "tea": {
+     "text": "안안이 아껴 마시던 홍차가 한 방울도 남지 않았다.",
+     "did": "다 마셨어",
+     "didnt": "안 마셨어",
+     "line": "이 몸이 아껴 두었던 홍차가 사라졌노라. 범인은 이 몸 앞에 나와 고하라."
+    },
+    "stream": {
+     "text": "방송 중이던 코코의 장비 전원을 누군가 꺼 버렸다.",
+     "did": "껐어",
+     "didnt": "안 껐어",
+     "line": "여러분 잠깐~ 야 누가 내 방송 껐어? 당장 안 나올래?! 으, 역시 나랑 최애 이외에는 다 죽어버렸으면 좋겠어!"
+    },
+    "books": {
+     "text": "마고가 정리해 둔 도서실 책이 전부 거꾸로 꽂혀 있었다.",
+     "did": "거꾸로 꽂았어",
+     "didnt": "안 그랬어",
+     "line": "어머, 내가 정리해 둔 책이 전부 거꾸로네. 후후, 이런 장난을 친 아이는 나중에 천천히 혼내 줘야겠어♡"
+    },
+    "ribbon": {
+     "text": "한나의 리본 하나가 없어졌다.",
+     "did": "가져갔어",
+     "didnt": "안 가져갔어",
+     "line": "제 리본이 없어졌사와요! 어떻게 저에게 그런 짓을 쳐 할수가 있는 것이와요?!"
+    },
+    "diary": {
+     "text": "에마의 일기장이 누군가에게 몰래 펼쳐져 있었다.",
+     "did": "펼쳐 봤어",
+     "didnt": "안 봤어",
+     "line": "으앗! 내 일기장 펼쳐 본 사람 누구야!? 이, 이상한 건 하나도 안 적었으니까!"
+    },
+    "mirror": {
+     "text": "레이아의 거울에 립스틱으로 낙서가 되어 있었다.",
+     "did": "낙서했어",
+     "didnt": "안 그랬어",
+     "line": "이상한 무대 연출이 되었구나! 이런 짓을 저지를 범인으로부터 나는 모두를 지키겠어!"
+    },
+    "matches": {
+     "text": "아리사의 성냥갑이 텅 비어 있었다.",
+     "did": "가져갔어",
+     "didnt": "안 가져갔어",
+     "line": "어떤 새끼야, 죽을래?! 내 성냥 건드린 놈, 당장 튀어나와!"
+    },
+    "bandage": {
+     "text": "메루루의 반창고 상자가 텅 비어 있었다.",
+     "did": "다 썼어",
+     "didnt": "안 썼어",
+     "line": "흑흑... 반창고가 다 떨어졌어요. 누가 다치면 어떡하죠?"
+    },
+    "hairpin": {
+     "text": "미리아의 머리핀이 짝짝이로 바뀌어 있었다.",
+     "did": "바꿔 놨어",
+     "didnt": "안 바꿨어",
+     "line": "으왓! 아저씨 머리핀이 짝짝이가 됐어! 어쩌지..."
+    }
+   },
+   "magic": {
+    "anan": {
+     "name": "세뇌",
+     "text": "안안은 누군가 한 명(안안 말고)을 세뇌했다. 세뇌당한 사람은 자기도 모르게 틀린 말을 한다. 그 사람은 거짓말쟁이로 세지 않는다."
+    },
+    "margo": {
+     "name": "흉내내기",
+     "text": "마고가 다른 한 사람의 목소리를 흉내 냈을 수도 있다. 그랬다면 그 사람 이름으로 나온 말은 사실 마고의 말이고(맞고 틀림도 마고 몫), 그 사람은 아무 말도 하지 않은 것이다. 흉내니까 말투도, 말 속의 \"나\"도 그 사람 것이다. (안안은 필담이라 흉내 낼 수 없다.)"
+    },
+    "miria": {
+     "name": "뒤바뀜",
+     "text": "미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 그랬다면 두 사람은 서로 상대인 척 말한다. 말투도, 말 속의 \"나\"도 상대 것이지만, 맞고 틀림은 실제로 말한 사람 몫이다. \"영혼이 바뀌어 있다\"는 말 자체가 거짓말일 수도 있다."
+    }
    }
   }
  }
