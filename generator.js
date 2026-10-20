@@ -32,9 +32,36 @@
     return w + (c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 ? a : b);
   };
 
-  // ---- 말(진술): [kind, args]. "나"는 이름이 붙은 사람(shown) ----
+  // ---- 말투 (docs/voices.md). 자료는 gen_puzzles.py 의 VOICES·FULL_NAMES ----
+  // 말은 카드에 적힌 사람의 말투로 쓴다(흉내·뒤바뀜 모두 상대인 척 말한다).
 
-  function content(st, shown, c, honestOfShown) {
+  const V = G.voices;
+  const FULL = G.full_names;
+  const batchim = (w) => { const c = w.charCodeAt(w.length - 1); return c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 !== 0; };
+
+  // 반말 해체 서술어(…어/…아)를 말투에 맞게.
+  function conj(pred, style) {
+    if (style === "ban") return pred;
+    if (style === "haeyo") return pred + "요";
+    if (style === "nora" && (pred === "맞아" || pred === "틀렸어")) return pred === "맞아" ? "옳도다" : "그릇되었도다";
+    return pred.slice(0, -1) + { hada: "다", sawayo: "사와요", eum: "음", nora: "노라" }[style];
+  }
+
+  function copula(noun, style) {
+    const b = batchim(noun);
+    return noun + { ban: b ? "이야" : "야", hada: b ? "이다" : "다", haeyo: b ? "이에요" : "예요",
+                    sawayo: "이와요", eum: "임", nora: b ? "이로다" : "로다" }[style];
+  }
+
+  // 말하는 사람(말투 v)이 x 를 부르는 말.
+  function call(v, x) {
+    if (v.call === "surname") return FULL[x].split(" ")[0];
+    return NAMES[x] + (v.call === "씨" ? " 씨" : v.call);
+  }
+
+  // ---- 말(진술): [kind, args]. "나"는 카드에 적힌 사람(shown) ----
+
+  function content(st, shown, c, honestOfShown, s) {
     const [kind, args] = st;
     switch (kind) {
       case "accuse": case "culprit_is": return c === args[0];
@@ -44,32 +71,54 @@
       case "self_or": return c === shown || c === args[0];
       case "meta_false": return !honestOfShown(args[0]);
       case "meta_true": return honestOfShown(args[0]);
+      case "swap_claim": return s === args[0];    // 미리아와 args[0] 의 영혼이 바뀌어 있다
     }
     throw new Error(kind);
   }
 
   function render(st, shown, inc) {
     const [kind, args] = st;
-    const n = args.map((a) => NAMES[a]);
+    const v = V[shown];
+    const sty = v.style;
+    const tag = (v.tag && v.tag[kind]) || "";
+    const n = args.map((a) => call(v, a));
+    const me = v.topic || j(v.self, "은", "는");
+    const of = (w) => w + (v.casual ? " " : "의 ");
+    let core;
     switch (kind) {
-      case "accuse": return `${j(n[0], "이", "가")} ${inc.did}.`;
-      case "culprit_is": return `범인은 ${j(n[0], "이야", "야")}.`;
-      case "deny": return `${j(n[0], "은", "는")} ${inc.didnt}.`;
-      case "deny_self": return `나는 ${inc.didnt}.`;
-      case "either": return `${n[0]} 아니면 ${j(n[1], "이", "가")} ${inc.did}.`;
-      case "self_or": return `나 아니면 ${j(n[0], "이", "가")} ${inc.did}.`;
-      case "meta_false": return `${n[0]}의 말은 틀렸어.`;
-      case "meta_true": return `${n[0]}의 말은 맞아.`;
+      case "accuse": core = `${j(n[0] + tag, "이", "가")} ${conj(inc.did, sty)}`; break;
+      case "culprit_is": core = `범인은 ${copula(n[0], sty)}`; break;
+      case "deny": core = `${j(n[0], "은", "는")} ${conj(inc.didnt, sty)}`; break;
+      case "deny_self": core = `${me} ${conj(inc.didnt, sty)}`; break;
+      case "either": core = `${n[0]} 아니면 ${j(n[1], "이", "가")} ${conj(inc.did, sty)}`; break;
+      case "self_or": core = `${v.self} 아니면 ${j(n[0], "이", "가")} ${conj(inc.did, sty)}`; break;
+      case "meta_false": core = `${of(n[0])}말은 ${conj("틀렸어", sty)}`; break;
+      case "meta_true": core = `${of(n[0])}말은 ${conj("맞아", sty)}`; break;
+      case "swap_claim": {
+        const swapped = conj("바뀌어 있어", sty);
+        if (shown === "miria" || shown === args[0]) {
+          const other = shown === "miria" ? n[0] : call(v, "miria");
+          core = `${me} ${j(other, "과", "와")} 영혼이 ${swapped}`;
+        } else {
+          core = `${j(call(v, "miria"), "과", "와")} ${j(n[0], "은", "는")} 영혼이 ${swapped}`;
+        }
+        break;
+      }
+      default: throw new Error(kind);
     }
-    throw new Error(kind);
+    if (v.stutter) core = `${core[0]}, ${core}`;
+    const end = (v.endk && kind in v.endk) ? v.endk[kind] : v.end;
+    return ((v.pre && v.pre[kind]) || "") + core + end + ((v.post && v.post[kind]) || "");
   }
 
-  function randomStatement(r, me, speakers, metaOk) {
+  function randomStatement(r, me, speakers, metaOk, swapOk) {
     const others = speakers.filter((s) => s !== me);
-    const kinds = ["accuse", "culprit_is", "deny", "deny_self", "either", "self_or"].concat(metaOk ? ["meta_false", "meta_true"] : []);
+    const kinds = ["accuse", "culprit_is", "deny", "deny_self", "either", "self_or"]
+      .concat(metaOk ? ["meta_false", "meta_true"] : [], swapOk ? ["swap_claim"] : []);
     const kind = r.choice(kinds);
     if (kind === "deny_self") return [kind, []];
     if (kind === "either") return [kind, r.sample(others, 2).sort()];
+    if (kind === "swap_claim") return [kind, [r.choice(speakers.filter((x) => x !== "miria"))]];   // 거짓 주장도 된다
     return [kind, [r.choice(others)]];
   }
 
@@ -77,7 +126,7 @@
 
   function hiddenConfigs(sp, magic) {
     const bs = magic.includes("anan") ? sp.filter((x) => x !== "anan") : [null];
-    const ms = magic.includes("margo") ? [null].concat(sp.filter((x) => x !== "margo")) : [null];
+    const ms = magic.includes("margo") ? [null].concat(sp.filter((x) => x !== "margo" && x !== "anan")) : [null];   // 안안은 필담
     const ss = magic.includes("miria") ? [null].concat(sp.filter((x) => x !== "miria")) : [null];
     const out = [];
     for (const b of bs) for (const m of ms) {
@@ -108,8 +157,8 @@
         const actual = speaker(x, m, s);
         return !(L & (1 << idx(actual))) && actual !== b;
       };
-      // "나": 흉내 낸 말은 이름이 적힌 사람, 그 밖에는 실제로 말한 사람
-      if (sp.every((x) => content(st[x], x === m ? x : speaker(x, m, s), c, honest) === honest(x))) out.push(L);
+      // "나"는 카드에 적힌 사람(흉내·뒤바뀜 모두 상대인 척 말한다). 맞고 틀림은 실제로 말한 사람 몫
+      if (sp.every((x) => content(st[x], x, c, honest, s) === honest(x))) out.push(L);
     }
     return out;
   }
@@ -204,7 +253,7 @@
       const statements = {};
       let metas = 0;
       for (const s of speakers) {
-        const st = randomStatement(r, s, speakers, metas < spec.max_meta);
+        const st = randomStatement(r, s, speakers, metas < spec.max_meta, magic.includes("miria"));
         if (st[0].startsWith("meta")) metas++;
         statements[s] = st;
       }
@@ -235,7 +284,7 @@
       verb: inc.did,
       n: p.n,
       magic: p.magic.map((x) => ({ who: NAMES[x], name: G.magic_name[x], text: G.magic_text[x] })),
-      suspects: sp.map((s) => ({ id: s, name: NAMES[s], says: render(p.statements[s], s, inc) })),
+      suspects: sp.map((s) => ({ id: s, name: NAMES[s], full: FULL[s], written: !!V[s].written, says: render(p.statements[s], s, inc) })),
       answer,
       why_not: whyNot,
       solution: explainRight(p, ws),

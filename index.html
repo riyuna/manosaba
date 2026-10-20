@@ -131,9 +131,15 @@ a { color: var(--seal); }
   transition: border-color .15s, background .15s;
 }
 .card .who { font-family: var(--font-display); font-size: 20px; }
+.card .who .via {
+  font-family: var(--font-body); font-size: 12px; color: var(--muted); margin-left: 8px;
+  border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; vertical-align: middle;
+}
 .card blockquote { margin: 0; font-size: 17px; min-width: 0; }
 .card blockquote::before { content: "「"; color: var(--muted); }
 .card blockquote::after { content: "」"; color: var(--muted); }
+.card.written blockquote::before { content: "『"; }
+.card.written blockquote::after { content: "』"; }
 .card.marked blockquote { text-decoration: line-through; text-decoration-color: var(--seal); text-decoration-thickness: 2px; color: var(--muted); }
 .card.accused { border-color: var(--seal); box-shadow: 0 0 0 1px var(--seal) inset; }
 .card.cleared { opacity: .55; }
@@ -315,8 +321,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       const accused = state.culprit === s.id;
       const known = state.memory.includes(s.id);
       return `
-        <article class="card ${marked ? "marked" : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}">
-          <div class="who">${esc(s.name)}</div>
+        <article class="card ${marked ? "marked" : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""} ${s.written ? "written" : ""}" data-card="${s.id}">
+          <div class="who">${esc(s.full || s.name)}${s.written ? `<span class="via">필담</span>` : ""}</div>
           <blockquote>${esc(s.says)}</blockquote>
           <div class="acts">
             <button class="chip" data-mark="${s.id}" aria-pressed="${marked}">틀린 말</button>
@@ -338,6 +344,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       <div class="rules">
         <p class="rule">이 중 딱 <strong>${p.n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.</p>
         <p class="rule">범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다.</p>
+        ${selfWords(p)}
         <div class="magic hiro"><span class="tag">판결하는 사람 · 니카이도 히로의 사망 회귀</span>
           <span>판결이 틀리면 히로는 그날 아침으로 돌아간다. 돌아와도 기억은 남는다. 스스로 되감아서 범인이 아닌 사람 하나를 알아 올 수도 있다. 돌아온 횟수는 판결 기록에 남는다.</span></div>
         ${magic}
@@ -352,6 +359,14 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       ${verdictView(p)}
       ${state.solved ? `<div class="bar"><button class="btn" data-next="1">${state.random ? "같은 난이도로 하나 더" : state.daily ? "사건 기록으로" : "다음 사건"}</button></div>` : ""}
       ` + footer();
+  }
+
+  // 자기를 "나" 말고 다르게 부르는 사람이 있으면 알려 둔다(미리아 「아저씨」, 안안 「이 몸」, 노아 「노아」).
+  function selfWords(p) {
+    const V = (DATA.gen && DATA.gen.voices) || {};
+    const items = p.suspects.filter((s) => V[s.id] && !["나", "저"].includes(V[s.id].self))
+      .map((s) => `「${esc(V[s.id].self)}」(${esc(s.name)})`);
+    return items.length ? `<p class="rule">자기를 부르는 말: ${items.join(" · ")}. 카드에 적힌 사람 자신을 가리킨다.</p>` : "";
   }
 
   // 히로가 범인을 제시하는 말: 「셰리, 네가 엎었어.」
