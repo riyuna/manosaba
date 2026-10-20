@@ -173,16 +173,26 @@
     tutorialDone: "· 판결 끝",
     dailyTitle: "오늘의 재판",
     dailyOpen: "재판을 연다",
-    dateLabel: (d) => `${d.getFullYear()}. ${d.getMonth() + 1}. ${d.getDate()}`,
+    dateLabel: (iso) => { const [y, m, d] = iso.split("-").map(Number); return `${y}. ${m}. ${d}`; },
+    // 걸린 시간: 12초 / 3분 12초 / 1시간 4분 9초
+    duration: (ms) => {
+      const s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), r = s % 60;
+      return h ? `${h}시간 ${m}분 ${r}초` : m ? `${m}분 ${r}초` : `${r}초`;
+    },
+    archiveOpen: "지난 재판",
+    archiveTitle: "지난 오늘의 재판",
+    archiveNote: "2026년 10월 20일부터 날짜마다 한 문제. 한국 시간 자정에 새 문제가 열린다.",
+    today: "오늘",
+    record: (rec, duration) => rec ? `판결 끝 · 회귀 ${rec.r}번${rec.t == null ? "" : ` · ${duration(rec.t)}`}` : "아직 판결 전",
     randomTitle: "무작위 재판",
     randomDesc: "누를 때마다 새 사건을 그 자리에서 만든다. 답이 하나뿐인지는 확인하지만, 재미와 난이도는 운에 맡긴다.",
     records: "사건 기록",
     recordsNote: "판결을 끝낸 사건에는 도장이, 한 번도 돌아오지 않고 끝냈다면 붉게 찬 도장이 찍힌다",
-    tileLabel: (tier, i, best) => `${TIER[tier]} ${i}번${best === undefined ? "" : `, 판결 끝, 최소 회귀 ${best}번`}`,
+    tileLabel: (tier, i, rec) => `${TIER[tier]} ${i}번${rec ? `, 판결 끝, 최소 회귀 ${rec.r}번` : ""}`,
     back: "사건 기록으로",
-    where: (q, index) => q.tier === "tutorial" ? "튜토리얼"
+    where: (q, index, date) => q.tier === "tutorial" ? "튜토리얼"
       : q.seed !== undefined ? `무작위 재판 · ${TIER[q.tier]} · 문제 번호 ${q.seed}`
-      : index ? `${TIER[q.tier]} ${index}번` : `오늘의 재판 · ${TIER[q.tier]}`,
+      : date ? `오늘의 재판 · ${ui.dateLabel(date)} · ${TIER[q.tier]}` : `${TIER[q.tier]} ${index}번`,
     ruleLiarsHtml: (n) => `이 중 딱 <strong>${n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.`,
     ruleCulprit: "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다.",
     selfWords: (q) => {
@@ -216,9 +226,10 @@
     accusation: (name, q) => `「${name}, 네가 ${q.verb}.」`,
     rewind: "되감는다: 범인이 아닌 사람 하나를 알아 온다",
     tally: (r, m) => `회귀 ${r}번 · 틀린 말 표시 ${m}개`,
+    clockLabel: "걸린 시간",
     stamp: "판결",
     hiro: "니카이도 히로",
-    recordRight: (n) => n === 0 ? "한 번도 돌아오지 않고 판결했다." : `회귀 ${n}번 끝에 판결했다.`,
+    recordRight: (n, time) => n === 0 ? `한 번도 돌아오지 않고 ${time} 만에 판결했다.` : `회귀 ${n}번, ${time} 만에 판결했다.`,
     hiroRight: (n) => n === 0 ? "…올바른 판결이야. 틀린 건 틀렸다고 말해야지." : "몇 번을 돌아오든 상관없어. 올바른 판결에 닿았으면 그걸로 돼.",
     morning: "…눈을 뜨니 그날 아침이었다.",
     rewindInfo: (n, name) => `회귀 ${n}번째. ${j(name, "은", "는")} 범인이 아니다. 그건 기억하고 있다.`,
@@ -226,7 +237,7 @@
     wrongTitle: "옳지 않은 판결이었다.",
     wrongRecord: (n) => `회귀 ${n}번째. 틀린 판결의 기억은 남아 있다.`,
     hiroWrong: "옳지 않은 건… 나였어. 다시 해.",
-    next: { random: "같은 난이도로 하나 더", daily: "사건 기록으로", fixed: "다음 사건", tutorial: "쉬움 1번으로", last: "사건 기록으로" },
+    next: { random: "같은 난이도로 하나 더", daily: "지난 재판 목록으로", fixed: "다음 사건", tutorial: "쉬움 1번으로", last: "사건 기록으로" },
     footer: [
       "『魔法少女ノ魔女裁判』의 비공식 2차창작 팬게임 데모입니다. 원작의 권리는 원작자에게 있습니다.",
       "퍼즐은 프로그램이 만듭니다. 사건 기록의 퍼즐은 답(범인)이 하나뿐인지 두 가지 방법으로 검산했고, 무작위 재판은 만들 때마다 전수 조사로 확인합니다.",
@@ -243,5 +254,8 @@
   };
 
   root.TrialLang = root.TrialLang || {};
-  root.TrialLang.ko = { decorate, ui, josa: j };
+  // 사건 글만(목록용. decorate 처럼 세계를 계산하지 않는다)
+  const incidentText = (q) => K.incidents[q.incident].text;
+
+  root.TrialLang.ko = { decorate, ui, josa: j, incidentText };
 })(typeof window !== "undefined" ? window : globalThis);

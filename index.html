@@ -101,6 +101,20 @@ a { color: var(--blood-ink); }
 .tutorial .what div { color: var(--muted); font-size: 14px; }
 .tutorial .mark-done { color: var(--blood-ink); font-size: 15px; }
 .daily .date { font-family: var(--font-latin); font-size: 16px; color: var(--brass); font-variant-numeric: tabular-nums; }
+.daily .rec { color: var(--muted); font-size: 13px; }
+.days { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.day {
+  width: 100%; text-align: left; cursor: pointer; display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 2px 14px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 16px;
+}
+.day:hover { border-color: var(--brass); }
+.day.done { border-color: var(--blood); }
+.day .d { font-family: var(--font-latin); font-size: 17px; color: var(--brass); font-variant-numeric: tabular-nums; grid-row: span 2; }
+.day .d b { font-family: var(--font-body); font-weight: 700; font-size: 12px; color: var(--blood-ink); display: block; }
+.day .inc { min-width: 0; }
+.day .meta { color: var(--muted); font-size: 13px; }
+@media (max-width: 480px) { .day { grid-template-columns: minmax(0, 1fr); } .day .d { grid-row: auto; } }
+#clock { font-variant-numeric: tabular-nums; }
 .daily h3, .random h3, .tutorial h3 { font-size: 24px; }
 .random .what div { color: var(--muted); font-size: 14px; }
 .tiers { display: grid; gap: 22px; }
@@ -257,7 +271,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   const L = window.TrialLang.ko;      // 언어 팩. 다른 언어는 같은 모양으로 lang/<언어>.js 에 더한다
   const T = L.ui;
   // 브라우저에만 남는 기록. 퍼즐 내용으로 만든 key 로 저장해서, 퍼즐을 다시 만들어도 엉뚱한 문제에 붙지 않는다.
-  const DONE = "small-trial:done";        // { key: 최소 회귀 횟수 }
+  const DONE = "small-trial:done";        // { key: { r: 회귀 수, t: 걸린 시간(ms) } } 가장 좋은 기록(회귀 적은 순, 같으면 빠른 순)
   const NOTE = "small-trial:note:";      // + key → { g: {"범인|카드": "o"|"x"}, t: 메모 }
   const UI = "small-trial:ui";           // { nb: 수첩 열림 }
   const app = document.getElementById("app");
@@ -275,6 +289,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   try { localStorage.removeItem("small-trial:cleared"); localStorage.removeItem("small-trial:best"); } catch (e) { /* 없음 */ }
 
   let done = load(DONE, {});
+  for (const k in done) if (typeof done[k] === "number") done[k] = { r: done[k], t: null };   // 예전 판: 회귀 수만
+  const better = (a, b) => !b || a.r < b.r || (a.r === b.r && (b.t == null || a.t < b.t));
   let ui = load(UI, { nb: false });
   const notesMem = {};
   function noteOf(p) {
@@ -283,11 +299,15 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
   function saveNote(p) { save(NOTE + p.key, noteOf(p)); }
 
+  // 오늘의 재판은 한국 시간(UTC+9) 날짜로 고른다. 날짜마다 한 문제, 2026-10-20부터.
+  const kstToday = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+  const DAY0 = Date.parse(DATA.daily[0].date);
+  const dayIndex = (iso) => Math.round((Date.parse(iso) - DAY0) / 86400000);
+  const isoOf = (i) => new Date(DAY0 + i * 86400000).toISOString().slice(0, 10);
+  const dailyOf = (i) => DATA.daily[((i % DATA.daily.length) + DATA.daily.length) % DATA.daily.length];
   function today() {
-    const d = new Date();
-    const days = Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(2026, 0, 1)) / 86400000);
-    const n = DATA.daily.length;
-    return { label: T.dateLabel(d), puzzle: DATA.daily[((days % n) + n) % n] };
+    const iso = kstToday();
+    return { iso, index: dayIndex(iso), puzzle: dailyOf(dayIndex(iso)) };
   }
 
   let state = { view: "home" };
@@ -309,10 +329,11 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     return views[k];
   }
 
-  const fresh = () => ({ marks: [], culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false });
+  const fresh = () => ({ marks: [], culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false,
+                         startedAt: Date.now(), elapsed: null });
 
-  function openPuzzle(id, fromDaily) {
-    state = { view: "puzzle", id, daily: !!fromDaily, ...fresh() };
+  function openPuzzle(id, date) {
+    state = { view: "puzzle", id, date: date || null, ...fresh() };
     if (id === "tutorial") ui.nb = true;     // 튜토리얼은 수첩을 펼쳐 둔다
     render();
     window.scrollTo({ top: 0 });
@@ -345,8 +366,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
 
   function tile(p, i) {
-    const has = p.key in done;
-    return `<button class="tile ${has ? "done" : ""} ${done[p.key] === 0 ? "perfect" : ""}" data-open="${p.id}"
+    const rec = done[p.key];
+    return `<button class="tile ${rec ? "done" : ""} ${rec && rec.r === 0 ? "perfect" : ""}" data-open="${p.id}"
       aria-label="${esc(T.tileLabel(p.tier, i, done[p.key]))}">${i}</button>`;
   }
 
@@ -361,11 +382,15 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     app.innerHTML = header() + `
       <section class="daily" aria-label="${esc(T.dailyTitle)}">
         <div class="what">
-          <div class="date">${esc(d.label)} · ${esc(T.tier[d.puzzle.tier])}</div>
+          <div class="date">${esc(T.dateLabel(d.iso))} · ${esc(T.tier[d.puzzle.tier])}</div>
           <h3>${esc(T.dailyTitle)}</h3>
-          <div>${esc(L.decorate(d.puzzle).incident)}</div>
+          <div>${esc(L.incidentText(d.puzzle))}</div>
+          <div class="rec">${esc(T.record(done[d.puzzle.key], T.duration))}</div>
         </div>
-        <button class="btn" data-daily="1">${esc(T.dailyOpen)}</button>
+        <div class="bar">
+          <button class="btn" data-day="${d.index}">${esc(T.dailyOpen)}</button>
+          <button class="btn ghost" data-archive="1">${esc(T.archiveOpen)}</button>
+        </div>
       </section>
       <section class="random" aria-label="${esc(T.randomTitle)}">
         <div class="what">
@@ -385,6 +410,26 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         <button class="btn ghost" data-open="tutorial">${esc(T.tutorialOpen)}</button>
       </section>
       <div class="tiers">${tiers}</div>` + footer();
+  }
+
+  // 지난 오늘의 재판: 오늘부터 2026-10-20까지 거슬러 올라간다
+  function archive() {
+    const t = today();
+    const rows = [];
+    for (let i = t.index; i >= 0; i--) {
+      const q = dailyOf(i);
+      const rec = done[q.key];
+      rows.push(`
+        <li><button class="day ${rec ? "done" : ""}" data-day="${i}">
+          <span class="d">${esc(T.dateLabel(isoOf(i)))}${i === t.index ? ` <b>${esc(T.today)}</b>` : ""}</span>
+          <span class="inc">${esc(L.incidentText(q))}</span>
+          <span class="meta">${esc(T.tier[q.tier])} · ${esc(T.record(rec, T.duration))}</span>
+        </button></li>`);
+    }
+    app.innerHTML = `
+      <div class="case-top"><button class="btn ghost" data-home="1">${esc(T.back)}</button></div>
+      <div class="section-title"><h2>${esc(T.archiveTitle)}</h2><span>${esc(T.archiveNote)}</span></div>
+      <ul class="days">${rows.join("")}</ul>` + footer();
   }
 
   function dialog(speaker, line, written) {
@@ -441,7 +486,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
   function puzzleView() {
     const { q, p } = current();
-    const index = state.random || state.daily || q.tier === "tutorial" ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
+    const index = state.random || state.date || q.tier === "tutorial" ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
     const cards = p.suspects.map((s) => {
       const marked = state.marks.includes(s.id);
       const accused = state.culprit === s.id;
@@ -464,12 +509,12 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     const self = T.selfWords(q);
     const culpritName = state.culprit ? nameOf(p, state.culprit) : null;
     const unknown = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id)).length;
-    const nextLabel = state.random ? T.next.random : state.daily ? T.next.daily : q.tier === "tutorial" ? T.next.tutorial
+    const nextLabel = state.random ? T.next.random : state.date ? T.next.daily : q.tier === "tutorial" ? T.next.tutorial
       : DATA.tiers[q.tier][index] ? T.next.fixed : T.next.last;
     app.innerHTML = `
       <div class="case-top">
         <button class="btn ghost" data-home="1">${esc(T.back)}</button>
-        <span class="where">${esc(T.where(q, index))}</span>
+        <span class="where">${esc(T.where(q, index, state.date))}</span>
       </div>
       ${guide(q, 1, "incident")}
       <h2 class="incident">${esc(p.incident)}</h2>
@@ -491,7 +536,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         <button class="btn" data-judge="1" data-k="judge" ${!state.culprit || state.solved ? "disabled" : ""}>
           ${esc(culpritName ? T.accusation(culpritName, p) : T.judgeIdle)}</button>
         <button class="btn rewind" data-rewind="1" data-k="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>${esc(T.rewind)}</button>
-        <span class="tally">${esc(T.tally(state.rewinds, state.marks.length))}</span>
+        <span class="tally">${esc(T.tally(state.rewinds, state.marks.length))} · ${esc(T.clockLabel)} <span id="clock">${esc(T.duration((state.elapsed ?? (Date.now() - state.startedAt))))}</span></span>
       </div>
       ${verdictView(p)}
       ${state.solved ? `<div class="bar"><button class="btn" data-next="1">${esc(nextLabel)}</button></div>` : ""}
@@ -510,7 +555,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           <div class="stamp" aria-hidden="true">${esc(T.stamp)}</div>
           <h3>${esc(T.accusation(nameOf(p, p.answer), p))}</h3>
           <ul>${p.solution.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
-          <div class="record">${esc(T.recordRight(n))}</div>
+          <div class="record">${esc(T.recordRight(n, T.duration(state.elapsed)))}</div>
           ${dialog(T.hiro, T.hiroRight(n))}
         </section>`;
     }
@@ -539,6 +584,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   // 다시 그려도 누르던 버튼에 초점을 돌려 둔다(키보드로 표를 채울 때 끊기지 않게)
   function render(focusKey) {
     if (state.view === "home") home();
+    else if (state.view === "archive") archive();
     else puzzleView();
     if (focusKey) {
       const el = app.querySelector(`[data-k="${CSS.escape(focusKey)}"]`);
@@ -552,8 +598,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     const b = e.target.closest("button");
     if (!b) return;
     const ds = b.dataset;
-    if (ds.open) return openPuzzle(ds.open, false);
-    if (ds.daily) return openPuzzle(today().puzzle.id, true);
+    if (ds.open) return openPuzzle(ds.open);
+    if (ds.day) { const i = Number(ds.day); return openPuzzle(dailyOf(i).id, isoOf(i)); }
+    if (ds.archive) { state = { view: "archive" }; render(); window.scrollTo({ top: 0 }); return; }
     if (ds.random) return openRandom(ds.random);
     if (ds.home) { state = { view: "home" }; render(); return; }
     const cur = state.view === "puzzle" ? current() : null;
@@ -578,7 +625,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       if (state.culprit === p.answer) {
         state.solved = true;
         state.verdict = { right: true };
-        if (!state.random && (!(p.key in done) || state.rewinds < done[p.key])) { done[p.key] = state.rewinds; save(DONE, done); }
+        state.elapsed = Math.round(Date.now() - state.startedAt);
+        const rec = { r: state.rewinds, t: state.elapsed };
+        if (!state.random && better(rec, done[p.key])) { done[p.key] = rec; save(DONE, done); }
       } else {
         // 틀린 판결 = 사망 회귀. 지목한 사람이 범인이 아니라는 기억은 남는다
         state.rewinds += 1;
@@ -597,11 +646,11 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       }
     } else if (ds.next) {
       if (state.random) return openRandom(q.tier);
-      if (state.daily) { state = { view: "home" }; render(); return; }
-      if (q.tier === "tutorial") return openPuzzle(DATA.tiers.easy[0].id, false);
+      if (state.date) { state = { view: "archive" }; render(); window.scrollTo({ top: 0 }); return; }
+      if (q.tier === "tutorial") return openPuzzle(DATA.tiers.easy[0].id);
       const list = DATA.tiers[q.tier];
       const next = list[list.indexOf(q) + 1];
-      if (next) return openPuzzle(next.id, false);
+      if (next) return openPuzzle(next.id);
       state = { view: "home" }; render(); return;
     }
     render(ds.k);
@@ -621,11 +670,17 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     save(UI, ui);
   }, true);
 
+  // 걸린 시간은 1초마다 그 숫자만 고친다(다시 그리지 않는다)
+  setInterval(() => {
+    const el = document.getElementById("clock");
+    if (el && state.view === "puzzle" && !state.solved) el.textContent = T.duration(Date.now() - state.startedAt);
+  }, 1000);
+
   // 열려 있는 화면은 새 버전이 올라와도 이어서 보이게 한다(뷰어 전용 훅, 없으면 무시).
   try { window.claude?.hot?.snapshot?.(() => ({ state })); } catch (e) { /* 없음 */ }
   const start = (data) => {
     const s = data && data.state;
-    if (s && s.view === "home") state = s;
+    if (s && (s.view === "home" || s.view === "archive")) state = s;
     else if (s && s.view === "puzzle" && Array.isArray(s.memory) && (s.random || findLogic(s.id))) state = { ...fresh(), ...s };
     render();
   };
