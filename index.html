@@ -29,6 +29,9 @@
   --brass: #c9ab70;        /* 장식·마법 */
   --brass-dim: #261f15;    /* 마법 칸 바탕 */
   --ok: #86cfa5;           /* 정답 */
+  --paper: #1e1623;        /* 수첩 종이 */
+  --paper-edge: #4b3b53;   /* 수첩 테두리 */
+  --tab-note: #7d97bf;     /* 가정 표·메모 책갈피 */
   --glass-blue: rgba(64, 104, 190, .20);
   --glass-amber: rgba(214, 132, 52, .12);
   --glass-wine: rgba(120, 20, 40, .28);
@@ -99,7 +102,6 @@ a { color: var(--blood-ink); }
 .daily .what, .random .what, .tutorial .what { min-width: 0; display: grid; gap: 2px; }
 .tutorial { border-color: rgba(201, 171, 112, .45); }
 .tutorial .what div { color: var(--muted); font-size: 14px; }
-.tutorial .mark-done { color: var(--blood-ink); font-size: 15px; }
 .daily .date { font-family: var(--font-latin); font-size: 16px; color: var(--brass); font-variant-numeric: tabular-nums; }
 .daily .rec { color: var(--muted); font-size: 13px; }
 .days { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
@@ -165,13 +167,58 @@ a { color: var(--blood-ink); }
 .say.written::before { content: "『"; }
 .say.written::after { content: "』"; }
 
-.rules { display: grid; gap: 10px; }
-.rule { border-left: 2px solid var(--muted); padding: 2px 0 2px 14px; margin: 0; }
-.rule strong { font-weight: 700; color: var(--blood-ink); }
-.magic { background: var(--brass-dim); border: 1px solid rgba(201, 171, 112, .25); border-radius: var(--r); padding: 12px 16px; display: grid; gap: 2px; }
-.magic .tag { font-size: 12px; letter-spacing: .1em; color: var(--brass); }
-.magic.hiro { background: var(--wine); border-color: rgba(181, 45, 67, .45); }
-.magic.hiro .tag { color: var(--blood-ink); }
+/* 히로의 수첩: 위쪽 책갈피(탭)를 누르면 그 장이 펼쳐진다. 줄 그은 종이에 붉은 여백선 */
+.ledger { display: grid; }
+.ledger [role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-end; padding: 0 10px; }
+.tab {
+  --accent: var(--muted);
+  position: relative; top: 1px; border: 1px solid var(--line); border-bottom: 0; border-radius: 7px 7px 0 0;
+  background: #140e18; color: var(--muted); padding: 6px 11px 5px; font-size: 14px; cursor: pointer;
+  box-shadow: inset 0 3px 0 var(--accent);
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper-edge); padding-bottom: 7px; z-index: 1; }
+.tab-hiro { --accent: var(--blood); }
+.tab-magic { --accent: var(--brass); }
+.tab-note { --accent: var(--tab-note); }
+.ledger-page {
+  position: relative; display: grid; gap: 10px; align-content: start; min-height: 9em;
+  border: 1px solid var(--paper-edge); border-radius: 0 var(--r) var(--r) var(--r);
+  padding: 14px 18px 18px 46px; line-height: 1.8;
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(1.8em - 1px), rgba(239, 231, 238, .05) calc(1.8em - 1px), rgba(239, 231, 238, .05) 1.8em);
+}
+.ledger-page::before { content: ""; position: absolute; left: 30px; top: 0; bottom: 0; width: 1px; background: rgba(181, 45, 67, .45); }
+.ledger-page.wide { padding-left: 18px; }
+.ledger-page.wide::before { display: none; }
+.ledger-page p { margin: 0; }
+.ledger-page strong { font-weight: 700; color: var(--blood-ink); }
+.ledger-page h3 { font-size: 21px; }
+.ledger-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.ledger-title { font-size: 12px; letter-spacing: .14em; color: var(--brass); }
+.page-hiro h3 { color: var(--blood-ink); }
+.page-magic h3 { color: var(--brass); }
+.link { background: none; border: 0; padding: 0; color: var(--brass); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.link:hover { color: var(--ink); }
+/* 규칙집 책갈피: 끝이 V자로 갈라진 붉은 리본 */
+.book-btn {
+  border: 0; cursor: pointer; background: var(--blood); color: var(--ink); font-size: 13px; letter-spacing: .06em;
+  padding: 5px 12px 11px; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%); margin-top: -15px;
+}
+.book-btn:hover { filter: brightness(1.15); }
+/* 규칙집 대화상자 */
+.rulebook {
+  padding: 0; width: min(680px, calc(100vw - 32px)); max-height: 86vh; overflow: auto;
+  border: 1px solid var(--brass); border-radius: var(--r); background: var(--panel); color: var(--ink);
+}
+.rulebook::backdrop { background: rgba(8, 5, 10, .74); }
+.rb-inner { padding: 0 20px 22px; display: grid; gap: 16px; }
+.rb-head { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 0 10px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.rb-head h2 { font-size: 26px; }
+.rulebook h3 { font-size: 19px; color: var(--brass); }
+.rulebook ul { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+.rulebook b { color: var(--ink); }
+.tutorial .bar .done-mark { color: var(--blood-ink); font-size: 13px; }
 
 /* 피고석 명패 */
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -210,13 +257,6 @@ a { color: var(--blood-ink); }
 .chip:disabled { cursor: default; opacity: .7; }
 
 /* 히로의 수첩 */
-.notebook > summary { list-style: none; cursor: pointer; padding: 14px 18px; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.notebook > summary::-webkit-details-marker { display: none; }
-.notebook > summary::before { content: "＋"; color: var(--brass); width: 1em; }
-.notebook[open] > summary::before { content: "－"; }
-.nb-title { font-family: var(--font-display); font-size: 21px; }
-.nb-sub { color: var(--muted); font-size: 13px; }
-.nb-body { display: grid; gap: 12px; padding: 0 18px 18px; }
 .nb-help { margin: 0; color: var(--muted); font-size: 14px; }
 .grid-wrap { overflow-x: auto; }
 table.hyp { border-collapse: collapse; font-size: 14px; }
@@ -284,7 +324,6 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   // 브라우저에만 남는 기록. 퍼즐 내용으로 만든 key 로 저장해서, 퍼즐을 다시 만들어도 엉뚱한 문제에 붙지 않는다.
   const DONE = "small-trial:done";        // { key: { r: 회귀 수, t: 걸린 시간(ms) } } 가장 좋은 기록(회귀 적은 순, 같으면 빠른 순)
   const NOTE = "small-trial:note:";      // + key → { g: {"범인|카드": "o"|"x"}, t: 메모 }
-  const UI = "small-trial:ui";           // { nb: 수첩 열림 }
   const app = document.getElementById("app");
   document.documentElement.lang = T.lang;
 
@@ -302,7 +341,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   let done = load(DONE, {});
   for (const k in done) if (typeof done[k] === "number") done[k] = { r: done[k], t: null };   // 예전 판: 회귀 수만
   const better = (a, b) => !b || a.r < b.r || (a.r === b.r && (b.t == null || a.t < b.t));
-  let ui = load(UI, { nb: false });
+  try { localStorage.removeItem("small-trial:ui"); } catch (e) { /* 예전 판: 수첩 열림 상태 */ }
   const notesMem = {};
   function noteOf(p) {
     if (!notesMem[p.key]) notesMem[p.key] = load(NOTE + p.key, null) || { g: {}, t: "" };
@@ -324,8 +363,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   const TIERS = ["easy", "normal", "hard", "veryhard"];
   let state = { view: "home" };
 
+  const isTutorial = (q) => q.id === "tutorial" || q.id === "tutorial-veryhard";
   function findLogic(id) {
     if (id === "tutorial") return DATA.tutorial;
+    if (id === "tutorial-veryhard") return DATA.tutorial_vh;
     for (const t of Object.values(DATA.tiers)) for (const p of t) if (p.id === id) return p;
     return DATA.daily.find((p) => p.id === id);
   }
@@ -341,12 +382,11 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     return views[k];
   }
 
-  const fresh = () => ({ marks: {}, culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false,
+  const fresh = () => ({ tab: "rules", marks: {}, culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false,
                          startedAt: Date.now(), elapsed: null });
 
   function openPuzzle(id, date) {
     state = { view: "puzzle", id, date: date || null, ...fresh() };
-    if (id === "tutorial") ui.nb = true;     // 튜토리얼은 수첩을 펼쳐 둔다
     render();
     window.scrollTo({ top: 0 });
   }
@@ -393,7 +433,6 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
   function home() {
     const d = today();
-    const tut = DATA.tutorial;
     const tiers = TIERS.map((t) => `
       <section class="tier" aria-label="${esc(T.tier[t])}">
         <header><h3>${esc(T.tier[t])}</h3><small>${esc(T.tierNote[t])}</small></header>
@@ -424,10 +463,13 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       <div class="section-title"><h2>${esc(T.records)}</h2><span>${esc(T.recordsNote)}</span></div>
       <section class="tutorial" aria-label="${esc(T.tutorialTitle)}">
         <div class="what">
-          <h3>${esc(T.tutorialTitle)}${tut.key in done ? ` <span class="mark-done">${esc(T.tutorialDone)}</span>` : ""}</h3>
+          <h3>${esc(T.tutorialTitle)}</h3>
           <div>${esc(T.tutorialDesc)}</div>
         </div>
-        <button class="btn ghost" data-open="tutorial">${esc(T.tutorialOpen)}</button>
+        <div class="bar">
+          ${T.tutorials.map((t) => `<button class="btn ghost" data-open="${t.id}">${esc(t.label)}${findLogic(t.id).key in done ? ` <span class="done-mark">· ${esc(T.tutorialDone)}</span>` : ""}</button>`).join("")}
+          <button class="btn ghost" data-book="1">${esc(T.rulebookTitle)}</button>
+        </div>
       </section>
       <div class="tiers">${tiers}</div>` + footer();
   }
@@ -462,13 +504,55 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
   // 튜토리얼 판에서만 나오는 순서 안내
   function guide(q, step, key) {
-    if (q.tier !== "tutorial") return "";
-    return `<div class="guide"><span class="step" aria-hidden="true">${step}</span><p>${esc(T.guide[key])}</p></div>`;
+    if (!isTutorial(q)) return "";
+    return `<div class="guide"><span class="step" aria-hidden="true">${step}</span><p>${esc(T.guide[q.id][key])}</p></div>`;
   }
 
   const nameOf = (p, id) => p.suspects.find((s) => s.id === id).name;
 
-  function notebook(p) {
+  // 히로의 수첩: 책갈피 = 이번 재판(규칙) / 사망 회귀 / 마법들 / 가정 표 / 메모. 오른쪽 위 리본은 규칙집.
+  function ledgerTabs(p) {
+    return [["rules", T.tabs.rules, "rules"], ["hiro", T.tabs.hiro, "hiro"]]
+      .concat(p.magic.map((m, i) => [`magic-${i}`, m.name, "magic"]))
+      .concat([["grid", T.tabs.grid, "note"], ["memo", T.tabs.memo, "note"]]);
+  }
+
+  function ledger(q, p) {
+    const tabs = ledgerTabs(p);
+    const cur = tabs.some(([id]) => id === state.tab) ? state.tab : "rules";
+    const kind = tabs.find(([id]) => id === cur)[2];
+    let page;
+    if (cur === "rules") page = rulesPage(q, p);
+    else if (cur === "hiro") page = `<h3>${esc(T.hiroTitle)}</h3><p>${esc(T.hiroRule)}</p>`;
+    else if (kind === "magic") { const m = p.magic[Number(cur.slice(6))]; page = `<h3>${esc(T.magicTitle(m))}</h3><p>${esc(m.text)}</p>`; }
+    else if (cur === "grid") page = gridPage(p);
+    else page = memoPage();
+    return `
+      <section class="ledger" aria-label="${esc(T.ledgerTitle)}">
+        <div role="tablist" aria-label="${esc(T.ledgerTitle)}">${tabs.map(([id, label, k]) => `
+          <button role="tab" id="tab-${id}" class="tab tab-${k}" data-tab="${id}" data-k="tab:${id}" aria-selected="${id === cur}"
+            aria-controls="ledger-page" tabindex="${id === cur ? 0 : -1}">${esc(label)}</button>`).join("")}</div>
+        <div class="ledger-page page-${kind} ${kind === "note" ? "wide" : ""}" id="ledger-page" role="tabpanel" aria-labelledby="tab-${cur}">
+          <div class="ledger-head"><span class="ledger-title">${esc(T.ledgerTitle)}</span>
+            <button class="book-btn" data-book="1" data-k="book">${esc(T.rulebookTitle)}</button></div>
+          ${page}
+        </div>
+      </section>`;
+  }
+
+  function rulesPage(q, p) {
+    const self = T.selfWords(q);
+    const links = p.magic.map((m, i) => `<button class="link" data-tab="magic-${i}" data-k="link:magic-${i}">${esc(T.magicTitle(m))}</button>`);
+    return `
+      <h3>${esc(T.tabs.rules)}</h3>
+      <p>${q.tier === "veryhard" ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n)}</p>
+      <p>${esc(T.ruleCulprit)}</p>
+      ${CORE.reports(CORE.problem(q)).length ? `<p>${esc(T.ruleHearsay)}</p>` : ""}
+      ${self ? `<p>${esc(self)}</p>` : ""}
+      <p>${links.length ? `${esc(T.magicIntro)} ${links.join(" · ")}` : esc(T.noMagic)}</p>`;
+  }
+
+  function gridPage(p) {
     const note = noteOf(p);
     const ids = p.suspects.map((s) => s.id);
     // 줄 = 말 하나. 말이 둘인 카드는 두 줄(두 번째 말의 칸 이름은 「카드#2」), 안 들린 카드는 줄이 없다
@@ -485,31 +569,32 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       return `<td>${x || ""}</td>`;
     }).join("");
     return `
-      <details class="notebook frame" id="notebook" ${ui.nb ? "open" : ""}>
-        <summary><span class="nb-title">${esc(T.nbTitle)}</span><span class="nb-sub">${esc(T.nbSub)}</span></summary>
-        <div class="nb-body">
-          <p class="nb-help">${esc(T.nbHelp)}</p>
-          <div class="grid-wrap">
-            <table class="hyp">
-              <thead><tr><th scope="col">${esc(T.nbCorner)}</th>${head}</tr></thead>
-              <tbody>${rows}</tbody>
-              <tfoot><tr><th scope="row">${esc(T.nbFoot)}</th>${counts}</tr></tfoot>
-            </table>
-          </div>
-          <label class="nb-label" for="memo-text">${esc(T.nbMemo)}</label>
-          <textarea id="memo-text" rows="5" placeholder="${esc(T.nbPlaceholder)}"></textarea>
-          <div class="nb-actions">
-            <button class="btn ghost" data-clear-note="1" data-k="clear">${esc(state.confirmClear ? T.nbClearConfirm : T.nbClear)}</button>
-            ${state.confirmClear ? `<span class="warn">${esc(T.nbClearWarn)}</span>` : ""}
-          </div>
-        </div>
-      </details>`;
+      <h3>${esc(T.tabs.grid)}</h3>
+      <p class="nb-help">${esc(T.nbHelp)}</p>
+      <div class="grid-wrap">
+        <table class="hyp">
+          <thead><tr><th scope="col">${esc(T.nbCorner)}</th>${head}</tr></thead>
+          <tbody>${rows}</tbody>
+          <tfoot><tr><th scope="row">${esc(T.nbFoot)}</th>${counts}</tr></tfoot>
+        </table>
+      </div>`;
+  }
+
+  function memoPage() {
+    return `
+      <h3>${esc(T.tabs.memo)}</h3>
+      <label class="nb-label" for="memo-text">${esc(T.nbMemo)}</label>
+      <textarea id="memo-text" rows="6" placeholder="${esc(T.nbPlaceholder)}"></textarea>
+      <div class="nb-actions">
+        <button class="btn ghost" data-clear-note="1" data-k="clear">${esc(state.confirmClear ? T.nbClearConfirm : T.nbClear)}</button>
+        ${state.confirmClear ? `<span class="warn">${esc(T.nbClearWarn)}</span>` : ""}
+      </div>`;
   }
 
   function puzzleView() {
     const { q, p } = current();
-    const index = state.random || state.date || q.tier === "tutorial" ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
-    // 카드 표시: 진실(t) / 거짓(f) / 트롤러(r, 트롤러가 나올 수 있는 판에만). 메모용이라 정답과 상관없다
+    const index = state.random || state.date || isTutorial(q) ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
+    // 카드 표시: 진실(t) / 거짓(f) / 변덕쟁이(r, 변덕쟁이가 나올 수 있는 판에만). 메모용이라 정답과 상관없다
     const markKinds = q.tier === "veryhard" || q.magic_ids.includes("anan") ? ["t", "f", "r"] : ["t", "f"];
     const cards = p.suspects.map((s) => {
       const mark = state.marks[s.id] || "";
@@ -531,12 +616,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           ${known ? `<div class="hint">${esc(T.memory(p.why_not[s.id]))}</div>` : ""}
         </article>`;
     }).join("");
-    const magic = p.magic.map((m) => `
-      <div class="magic"><span class="tag">${esc(T.magicTag(m))}</span><span>${esc(m.text)}</span></div>`).join("");
-    const self = T.selfWords(q);
     const culpritName = state.culprit ? nameOf(p, state.culprit) : null;
     const unknown = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id)).length;
-    const nextLabel = state.random ? T.next.random : state.date ? T.next.daily : q.tier === "tutorial" ? T.next.tutorial
+    const nextLabel = state.random ? T.next.random : state.date ? T.next.daily : isTutorial(q) ? T.next[q.id]
       : DATA.tiers[q.tier][index] ? T.next.fixed : T.next.last;
     app.innerHTML = `
       <div class="case-top">
@@ -546,19 +628,11 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       ${guide(q, 1, "incident")}
       <h2 class="incident">${esc(p.incident)}</h2>
       ${dialog(p.victim.name, p.victim.line, p.victim.written)}
-      ${guide(q, 2, "rules")}
-      <div class="rules">
-        <p class="rule">${q.tier === "veryhard" ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n)}</p>
-        <p class="rule">${esc(T.ruleCulprit)}</p>
-        ${CORE.reports(CORE.problem(q)).length ? `<p class="rule">${esc(T.ruleHearsay)}</p>` : ""}
-        ${self ? `<p class="rule">${esc(self)}</p>` : ""}
-        <div class="magic hiro"><span class="tag">${esc(T.hiroTag)}</span><span>${esc(T.hiroRule)}</span></div>
-        ${magic}
-      </div>
+      ${guide(q, 2, "ledger")}
+      ${ledger(q, p)}
       ${guide(q, 3, "cards")}
       <div class="cards">${cards}</div>
-      ${guide(q, 4, "notebook")}
-      ${notebook(p)}
+      ${guide(q, 4, "grid")}
       ${guide(q, 5, "bar")}
       <div class="bar">
         <button class="btn" data-judge="1" data-k="judge" ${!state.culprit || state.solved ? "disabled" : ""}>
@@ -631,12 +705,16 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     if (ds.day) { const i = Number(ds.day); return openPuzzle(dailyOf(i).id, isoOf(i)); }
     if (ds.archive) { state = { view: "archive" }; render(); window.scrollTo({ top: 0 }); return; }
     if (ds.random) return openRandom(ds.random);
+    if (ds.book) return openBook();
     if (ds.home) { state = { view: "home" }; render(); return; }
     const cur = state.view === "puzzle" ? current() : null;
     if (!cur) return;
     const { q, p } = cur;
     if (!ds.clearNote) state.confirmClear = false;
-    if (ds.mark) {
+    if (ds.tab) {
+      state.tab = ds.tab;
+      if (ds.k.startsWith("link:")) return render(`tab:${ds.tab}`);     // 「이번 재판」의 마법 이름을 누르면 그 책갈피로
+    } else if (ds.mark) {
       if (state.marks[ds.mark] === ds.mk) delete state.marks[ds.mark]; else state.marks[ds.mark] = ds.mk;
     } else if (ds.accuse && !state.solved) {
       state.culprit = state.culprit === ds.accuse ? null : ds.accuse;
@@ -675,7 +753,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     } else if (ds.next) {
       if (state.random) return openRandom(q.tier);
       if (state.date) { state = { view: "archive" }; render(); window.scrollTo({ top: 0 }); return; }
-      if (q.tier === "tutorial") return openPuzzle(DATA.tiers.easy[0].id);
+      if (q.id === "tutorial") return openPuzzle(DATA.tiers.easy[0].id);
+      if (q.id === "tutorial-veryhard") return openPuzzle(DATA.tiers.veryhard[0].id);
       const list = DATA.tiers[q.tier];
       const next = list[list.indexOf(q) + 1];
       if (next) return openPuzzle(next.id);
@@ -691,12 +770,30 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     noteOf(p).t = e.target.value;
     saveNote(p);
   });
-  // 수첩을 펼쳐 둔 상태는 기억한다
-  app.addEventListener("toggle", (e) => {
-    if (e.target.id !== "notebook") return;
-    ui.nb = e.target.open;
-    save(UI, ui);
-  }, true);
+  // 책갈피는 왼쪽·오른쪽 화살표로도 넘긴다
+  app.addEventListener("keydown", (e) => {
+    const t = e.target;
+    if (t.getAttribute("role") !== "tab" || (e.key !== "ArrowLeft" && e.key !== "ArrowRight") || state.view !== "puzzle") return;
+    const ids = ledgerTabs(current().p).map(([id]) => id);
+    const i = ids.indexOf(t.dataset.tab) + (e.key === "ArrowRight" ? 1 : -1);
+    state.tab = ids[(i + ids.length) % ids.length];
+    e.preventDefault();
+    render(`tab:${state.tab}`);
+  });
+
+  // 규칙집: 한 번 만들어 두고 연다(화면을 다시 그려도 닫히지 않게 #app 밖에 둔다)
+  const book = document.createElement("dialog");
+  book.className = "rulebook";
+  book.setAttribute("aria-labelledby", "rulebook-title");
+  book.innerHTML = `<div class="rb-inner">
+      <div class="rb-head"><h2 id="rulebook-title">${esc(T.rulebookTitle)}</h2><button class="btn ghost" data-close="1">${esc(T.close)}</button></div>
+      ${T.rulebook().map((sec) => `<section><h3>${esc(sec.h)}</h3><ul>${sec.items.map((i) => `<li>${i}</li>`).join("")}</ul></section>`).join("")}
+    </div>`;
+  document.body.appendChild(book);
+  book.addEventListener("click", (e) => { if (e.target === book || e.target.closest("[data-close]")) book.close(); });
+  function openBook() {
+    if (typeof book.showModal === "function") book.showModal(); else book.setAttribute("open", "");
+  }
 
   // 걸린 시간은 1초마다 그 숫자만 고친다(다시 그리지 않는다)
   setInterval(() => {

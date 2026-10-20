@@ -2,7 +2,7 @@
 // tools/gen_puzzles.py 의 규칙을 그대로 옮긴 것이다. 규칙을 고치면 두 파일을 같이 고칠 것(tests/test_puzzles.py 가 대조한다).
 // 퍼즐(논리) = { id, key, tier, incident(사건 id), n, t, mode, speakers, logic{카드: [[kind, args], …]}, magic_ids,
 //               answer, false_says(틀린 말 칸 이름들, 정해지지 않으면 null), worlds }
-// 난이도는 같은 규칙 위의 설정(gen.tiers) 차이다. 역할: H 정직 / L 거짓말쟁이 / T 트롤러.
+// 난이도는 같은 규칙 위의 설정(gen.tiers) 차이다. 역할: H 정직 / L 거짓말쟁이 / T 변덕쟁이.
 (function (root) {
   "use strict";
   const G = root.PUZZLES.gen;
@@ -116,7 +116,7 @@
     return all.filter((roles) => {
       if (p.mode === "shown") {
         if (p.n !== null && count(roles, "L") !== p.n) return false;
-        if (count(roles, "T") !== p.t + (anan ? 1 : 0)) return false;    // 따로 있는 트롤러 + 세뇌당한 한 명
+        if (count(roles, "T") !== p.t + (anan ? 1 : 0)) return false;    // 따로 있는 변덕쟁이 + 세뇌당한 한 명
       } else if (count(roles, "H") * 2 <= sp.length) return false;     // 수를 숨긴 판: 정직한 사람이 과반
       if (anan && !sp.some((x, i) => roles[i] === "T" && x !== "anan")) return false;   // 안안은 자기를 세뇌하지 않는다
       return true;
@@ -160,7 +160,7 @@
                 for (const [x, i] of slots) {
                   const v = content(st[x][i], x, voice[x], w);
                   const id = slotId(x, i);
-                  if (tv.get(id) === null) tv.set(id, v);      // 트롤러의 말(말에 대한 말이 없는 판): 내용이 곧 맞고 틀림
+                  if (tv.get(id) === null) tv.set(id, v);      // 변덕쟁이의 말(말에 대한 말이 없는 판): 내용이 곧 맞고 틀림
                   else if (v !== tv.get(id)) { ok = false; break; }
                 }
                 if (!ok) continue;
