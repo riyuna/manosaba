@@ -78,19 +78,25 @@
 
   const popcount = (x) => { let k = 0; for (; x; x &= x - 1) k++; return k; };
 
-  // 규칙에 맞는 거짓말쟁이 집합 전부(크기 제한 없이).
-  function liarSets(sp, st, c, b, m, s) {
+  // 규칙에 맞는 (거짓말쟁이 L, 틀린 카드 F) 전부(말한 사람 순서의 비트). 세뇌당한 사람(트롤러)의 카드는
+  // 맞든 틀리든 상관없어서 둘 다 놓아 본다. 어느 쪽이든 카드의 맞고 틀림은 그 내용과 같아야 한다.
+  function consistent(sp, st, c, b, m, s) {
     const idx = (x) => sp.indexOf(x);
+    const troll = b === null ? [] : sp.filter((x) => speaker(x, m, s) === b);
     const out = [];
     for (let L = 0; L < 1 << sp.length; L++) {
-      if (b !== null && L & (1 << idx(b))) continue;
+      if (b !== null && L & (1 << idx(b))) continue;     // 세뇌당한 사람·말하지 않은 사람은 거짓말쟁이가 아니다
       if (m !== null && L & (1 << idx(m))) continue;
-      const honest = (x) => {
-        const actual = speaker(x, m, s);
-        return !(L & (1 << idx(actual))) && actual !== b;
-      };
-      // "나"는 카드에 적힌 사람(흉내·뒤바뀜 모두 상대인 척 말한다). 맞고 틀림은 실제로 말한 사람 몫
-      if (sp.every((x) => content(st[x], x, c, honest, s) === honest(x))) out.push(L);
+      for (let g = 0; g < 1 << troll.length; g++) {
+        const tg = new Map(troll.map((x, i) => [x, !(g & (1 << i))]));
+        const truth = (x) => (tg.has(x) ? tg.get(x) : !(L & (1 << idx(speaker(x, m, s)))));
+        // "나"는 카드에 적힌 사람(흉내·뒤바뀜 모두 상대인 척 말한다). 맞고 틀림은 실제로 말한 사람 몫
+        if (sp.every((x) => content(st[x], x, c, truth, s) === truth(x))) {
+          let F = 0;
+          sp.forEach((x, i) => { if (!truth(x)) F |= 1 << i; });
+          out.push({ L, F });
+        }
+      }
     }
     return out;
   }
@@ -99,8 +105,8 @@
     const out = [];
     for (const c of p.speakers) {
       for (const [b, m, s] of hiddenConfigs(p.speakers, p.magic)) {
-        for (const L of liarSets(p.speakers, p.statements, c, b, m, s)) {
-          if (popcount(L) === p.n) out.push({ c, L, b, m, s });
+        for (const { L, F } of consistent(p.speakers, p.statements, c, b, m, s)) {
+          if (popcount(L) === p.n) out.push({ c, L, b, m, s, F });
         }
       }
     }
@@ -111,17 +117,14 @@
   function liarCounts(p, c) {
     const counts = new Set();
     for (const [b, m, s] of hiddenConfigs(p.speakers, p.magic)) {
-      for (const L of liarSets(p.speakers, p.statements, c, b, m, s)) counts.add(popcount(L));
+      for (const { L } of consistent(p.speakers, p.statements, c, b, m, s)) counts.add(popcount(L));
     }
     return [...counts].sort((a, b) => a - b);
   }
 
   // 이 세계에서 틀린 말이 적힌 카드(이름표 기준), 말한 사람 순서로.
   function falseCards(p, w) {
-    return p.speakers.filter((x) => {
-      const actual = speaker(x, w.m, w.s);
-      return w.L & (1 << p.speakers.indexOf(actual)) || actual === w.b;
-    });
+    return p.speakers.filter((x, i) => w.F & (1 << i));
   }
 
   // 논리 퍼즐 → 세계 계산용 모양
@@ -135,11 +138,13 @@
   }
 
   // 무작위 퍼즐 하나. 같은 (tier, seed)면 같은 퍼즐. 조건을 만족하는 것이 안 나오면 null.
-  function make(tier, seed, maxTries = 20000) {
+  // 시도를 조금씩 나눠 할 수 있게 생성기로 쓴다(어려운 조합은 수천 번 시도해 화면이 멈출 수 있다).
+  function* makeSteps(tier, seed, maxTries = 20000) {
     const spec = G.tiers[tier];
     const r = makeRng(seed);
     const magic = r.choice(spec.magics);    // 마법 조합을 먼저 정한다(조합마다 통과율이 달라 시도마다 고르면 안안만 많이 나온다)
     for (let t = 0; t < maxTries; t++) {
+      if (t % 40 === 39) yield null;
       const k = r.choice(spec.sizes);
       const n = r.choice(spec.ns);
       const inc = r.choice(G.incidents);
@@ -171,5 +176,26 @@
     return null;
   }
 
-  root.TrialCore = { make, worlds, liarCounts, falseCards, problem, content };
+  function make(tier, seed, maxTries) {
+    const it = makeSteps(tier, seed, maxTries);
+    let r;
+    do { r = it.next(); } while (!r.done);
+    return r.value;
+  }
+
+  // 화면용: 30ms 씩 나눠 만들고 사이사이 화면에 양보한다.
+  function makeAsync(tier, seed) {
+    return new Promise((resolve) => {
+      const it = makeSteps(tier, seed);
+      const step = () => {
+        const t0 = Date.now();
+        let r;
+        do { r = it.next(); } while (!r.done && Date.now() - t0 < 30);
+        if (r.done) resolve(r.value); else setTimeout(step, 0);
+      };
+      step();
+    });
+  }
+
+  root.TrialCore = { make, makeAsync, worlds, liarCounts, falseCards, problem, content };
 })(typeof window !== "undefined" ? window : globalThis);

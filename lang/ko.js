@@ -34,7 +34,9 @@
 
   // 말하는 사람(말투 v)이 x 를 부르는 말.
   function call(v, x) {
+    if (v.nick && v.nick[x]) return v.nick[x];                    // 호칭표의 별명(코코의 「히키」 등)
     if (v.call === "surname") return FULL[x].split(" ")[0];
+    if (v.call === "full") return FULL[x];
     return NAMES[x] + (v.call === "씨" || v.call === "군" ? " " + v.call : v.call);     // 쨩은 붙여, 씨·군은 띄어 쓴다
   }
 
@@ -43,7 +45,7 @@
     const [kind, args] = st;
     const v = V[shown];
     const sty = v.style;
-    const tag = (v.tag && v.tag[kind]) || "";
+    const tag = args.length && v.nick && v.nick[args[0]] ? "" : (v.tag && v.tag[kind]) || "";     // 별명 뒤에는 안 붙인다
     const n = args.map((a) => call(v, a));
     const me = v.topic || j(v.self, "은", "는");
     const of = (w) => w + (v.casual ? " " : "의 ");
@@ -97,8 +99,8 @@
     const lines = ["틀린 말을 한 카드: " + (fc.length ? fc.map((x) => NAMES[x]).join(", ") : "없음")];
     if (p.magic.includes("anan")) {
       const bs = new Set(ws.map((w) => w.b));
-      if (bs.size === 1) lines.push(`${j(NAMES[[...bs][0]], "은", "는")} 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다.`);
-      else lines.push(`${order(bs).map((x) => NAMES[x]).join(", ")} 중 한 명은 안안에게 세뇌당했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.`);
+      if (bs.size === 1) lines.push(`${j(NAMES[[...bs][0]], "은", "는")} 안안에게 세뇌당해 제멋대로 말했을 뿐, 거짓말쟁이가 아니다.`);
+      else lines.push(`${order(bs).map((x) => NAMES[x]).join(", ")} 중 한 명은 안안에게 세뇌당해 제멋대로 말했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.`);
     }
     if (p.magic.includes("margo")) {
       const ms = new Set(ws.map((w) => w.m));
@@ -185,6 +187,7 @@
     today: "오늘",
     record: (rec, duration) => rec ? `판결 끝 · 회귀 ${rec.r}번${rec.t == null ? "" : ` · ${duration(rec.t)}`}` : "아직 판결 전",
     randomTitle: "무작위 재판",
+    preparing: "재판을 준비하는 중…",
     randomDesc: "누를 때마다 새 사건을 그 자리에서 만든다. 답이 하나뿐인지는 확인하지만, 재미와 난이도는 운에 맡긴다.",
     records: "사건 기록",
     recordsNote: "판결을 끝낸 사건에는 도장이, 한 번도 돌아오지 않고 끝냈다면 붉게 찬 도장이 찍힌다",
@@ -223,20 +226,20 @@
     nbClearConfirm: "한 번 더 누르면 지운다",
     nbClearWarn: "이 문제의 가정 표와 메모가 지워진다.",
     judgeIdle: "범인을 고르면 판결할 수 있다",
-    accusation: (name, q) => `「${name}, 네가 ${q.verb}.」`,
+    accusation: (name) => `「${name}, 네가 바로 이 사건의 범인이다.」`,
     rewind: "되감는다: 범인이 아닌 사람 하나를 알아 온다",
     tally: (r, m) => `회귀 ${r}번 · 틀린 말 표시 ${m}개`,
     clockLabel: "걸린 시간",
     stamp: "판결",
     hiro: "니카이도 히로",
     recordRight: (n, time) => n === 0 ? `한 번도 돌아오지 않고 ${time} 만에 판결했다.` : `회귀 ${n}번, ${time} 만에 판결했다.`,
-    hiroRight: (n) => n === 0 ? "…올바른 판결이야. 틀린 건 틀렸다고 말해야지." : "몇 번을 돌아오든 상관없어. 올바른 판결에 닿았으면 그걸로 돼.",
+    hiroRight: (n) => n === 0 ? "...올바르지 않은 일을 바로잡았다. 이 세상의 악을 없애는 것이야말로 내가 해야 할 일이지." : "올바른 판결에 닿을 수만 있다면, 몇번을 되돌아오더라도 상관없어.",
     morning: "…눈을 뜨니 그날 아침이었다.",
     rewindInfo: (n, name) => `회귀 ${n}번째. ${j(name, "은", "는")} 범인이 아니다. 그건 기억하고 있다.`,
-    hiroRewind: "알아낸 건 버리지 않아. 이번엔 틀리지 않아.",
+    hiroRewind: "알아낸 사실을 기억해 두자. 이번에야말로 올바른 답에 도달하겠다.",
     wrongTitle: "옳지 않은 판결이었다.",
     wrongRecord: (n) => `회귀 ${n}번째. 틀린 판결의 기억은 남아 있다.`,
-    hiroWrong: "옳지 않은 건… 나였어. 다시 해.",
+    hiroWrong: "…내 판결이 틀렸어. 다시 한다.",      // 임시(Claude). 원작 대사와 겹치지 않는 사용자 문장으로 바꿀 것
     next: { random: "같은 난이도로 하나 더", daily: "지난 재판 목록으로", fixed: "다음 사건", tutorial: "쉬움 1번으로", last: "사건 기록으로" },
     footer: [
       "『魔法少女ノ魔女裁判』의 비공식 2차창작 팬게임 데모입니다. 원작의 권리는 원작자에게 있습니다.",

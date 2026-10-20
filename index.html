@@ -115,6 +115,7 @@ a { color: var(--blood-ink); }
 .day .meta { color: var(--muted); font-size: 13px; }
 @media (max-width: 480px) { .day { grid-template-columns: minmax(0, 1fr); } .day .d { grid-row: auto; } }
 #clock { font-variant-numeric: tabular-nums; }
+.loading { font-family: var(--font-display); font-size: 22px; color: var(--muted); margin: 40px 0; }
 .daily h3, .random h3, .tutorial h3 { font-size: 24px; }
 .random .what div { color: var(--muted); font-size: 14px; }
 .tiers { display: grid; gap: 22px; }
@@ -339,14 +340,22 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     window.scrollTo({ top: 0 });
   }
 
-  function openRandom(tier) {
-    for (let i = 0; i < 5; i++) {
-      const seed = 1 + Math.floor(Math.random() * 999999);
-      state = { view: "puzzle", random: { tier, seed }, ...fresh() };
-      if (current()) break;     // 측정상 첫 번에 된다(난이도별 200개 표본에서 실패 0)
-    }
+  // 무작위 재판은 나눠서 만든다(어려움의 일부 조합은 1~2초 걸린다). 그동안 "준비하는 중"을 보인다.
+  async function openRandom(tier) {
+    state = { view: "loading" };
     render();
     window.scrollTo({ top: 0 });
+    for (let i = 0; i < 5; i++) {
+      const seed = 1 + Math.floor(Math.random() * 999999);
+      const q = await CORE.makeAsync(tier, seed);
+      if (state.view !== "loading") return;        // 그사이 다른 곳으로 갔다
+      if (!q) continue;                              // 측정상 첫 번에 된다(난이도별 100개 표본에서 실패 0)
+      views[`random-${tier}-${seed}`] = { q, p: L.decorate(q) };
+      state = { view: "puzzle", random: { tier, seed }, ...fresh() };
+      break;
+    }
+    if (state.view === "loading") state = { view: "home" };
+    render();
   }
 
   // ---- 화면 ----
@@ -585,6 +594,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   function render(focusKey) {
     if (state.view === "home") home();
     else if (state.view === "archive") archive();
+    else if (state.view === "loading") app.innerHTML = `<p class="loading" aria-live="polite">${esc(T.preparing)}</p>` + footer();
     else puzzleView();
     if (focusKey) {
       const el = app.querySelector(`[data-k="${CSS.escape(focusKey)}"]`);
@@ -680,7 +690,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   try { window.claude?.hot?.snapshot?.(() => ({ state })); } catch (e) { /* 없음 */ }
   const start = (data) => {
     const s = data && data.state;
-    if (s && (s.view === "home" || s.view === "archive")) state = s;
+    if (s && (s.view === "home" || s.view === "archive" || s.view === "loading")) state = s.view === "loading" ? { view: "home" } : s;
     else if (s && s.view === "puzzle" && Array.isArray(s.memory) && (s.random || findLogic(s.id))) state = { ...fresh(), ...s };
     render();
   };
