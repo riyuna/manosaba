@@ -282,6 +282,7 @@
       seed,
       incident: inc.text,
       verb: inc.did,
+      victim: { id: inc.owner, name: FULL[inc.owner], line: inc.line, written: !!V[inc.owner].written },
       n: p.n,
       magic: p.magic.map((x) => ({ who: NAMES[x], name: G.magic_name[x], text: G.magic_text[x] })),
       suspects: sp.map((s) => ({ id: s, name: NAMES[s], full: FULL[s], written: !!V[s].written, says: render(p.statements[s], s, inc) })),

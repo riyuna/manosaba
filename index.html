@@ -110,6 +110,13 @@ a { color: var(--seal); }
 .case-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .case-top .where { color: var(--muted); font-size: 14px; }
 .incident { font-family: var(--font-display); font-size: clamp(24px, 5.2vw, 32px); line-height: 1.35; text-wrap: balance; margin: 0; }
+.victim { margin: -14px 0 0; display: grid; gap: 2px; padding-left: 14px; border-left: 3px solid var(--seal); }
+.victim .who { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+.victim .line { font-size: 17px; }
+.victim .line::before { content: "「"; color: var(--muted); }
+.victim .line::after { content: "」"; color: var(--muted); }
+.victim .line.written::before { content: "『"; }
+.victim .line.written::after { content: "』"; }
 .rules { display: grid; gap: 10px; }
 .rule {
   border-left: 3px solid var(--ink); padding: 2px 0 2px 14px; margin: 0;
@@ -341,6 +348,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         <span class="where">${where}</span>
       </div>
       <h2 class="incident">${esc(p.incident)}</h2>
+      ${p.victim ? `<p class="victim"><span class="who">${esc(p.victim.name)}${p.victim.written ? " · 필담" : ""}</span>
+        <span class="line ${p.victim.written ? "written" : ""}">${esc(p.victim.line)}</span></p>` : ""}
       <div class="rules">
         <p class="rule">이 중 딱 <strong>${p.n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.</p>
         <p class="rule">범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다.</p>
