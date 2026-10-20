@@ -5139,7 +5139,7 @@ window.PUZZLES = {
     },
     "reia": {
      "self": "나",
-     "call": "",
+     "call": "군",
      "style": "hada",
      "end": "!",
      "pre": {

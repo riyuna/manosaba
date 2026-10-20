@@ -35,7 +35,7 @@
   // 말하는 사람(말투 v)이 x 를 부르는 말.
   function call(v, x) {
     if (v.call === "surname") return FULL[x].split(" ")[0];
-    return NAMES[x] + (v.call === "씨" ? " 씨" : v.call);
+    return NAMES[x] + (v.call === "씨" || v.call === "군" ? " " + v.call : v.call);     // 쨩은 붙여, 씨·군은 띄어 쓴다
   }
 
   // 카드 하나의 말. 카드에 적힌 사람(shown)의 말투로 쓴다(흉내·뒤바뀜 모두 상대인 척 말한다).
