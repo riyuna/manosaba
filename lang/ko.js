@@ -40,47 +40,66 @@
     return NAMES[x] + (v.call === "씨" || v.call === "군" ? " " + v.call : v.call);     // 쨩은 붙여, 씨·군은 띄어 쓴다
   }
 
-  // 카드 하나의 말. 카드에 적힌 사람(shown)의 말투로 쓴다(흉내·뒤바뀜 모두 상대인 척 말한다).
-  function render(st, shown, inc) {
+  // x 카드의 말 하나를 voice 의 말투로 쓴다. plain 이면 앞뒤 덧말 없이(전해 들은 말 속에 넣을 때).
+  function say(st, x, voice, inc, plain) {
     const [kind, args] = st;
-    const v = V[shown];
+    const v = V[voice];
     const sty = v.style;
-    const tag = args.length && v.nick && v.nick[args[0]] ? "" : (v.tag && v.tag[kind]) || "";     // 별명 뒤에는 안 붙인다
-    const n = args.map((a) => call(v, a));
+    const dk = kind === "iam" ? "swap_claim" : kind;          // 정체 주장은 뒤바뀜 주장의 덧말을 같이 쓴다
+    const tag = args.length && v.nick && v.nick[args[0]] ? "" : (v.tag && v.tag[dk]) || "";     // 별명 뒤에는 안 붙인다
+    const nm = (y) => call(v, y);
     const me = v.topic || j(v.self, "은", "는");
     const of = (w) => w + (v.casual ? " " : "의 ");
+    const role = (r) => K.roles[r];
     let core;
     switch (kind) {
-      case "accuse": core = `${j(n[0] + tag, "이", "가")} ${conj(inc.did, sty)}`; break;
-      case "culprit_is": core = `범인은 ${copula(n[0], sty)}`; break;
-      case "deny": core = `${j(n[0], "은", "는")} ${conj(inc.didnt, sty)}`; break;
+      case "accuse": core = `${j(nm(args[0]) + tag, "이", "가")} ${conj(inc.did, sty)}`; break;
+      case "culprit_is": core = `범인은 ${copula(nm(args[0]), sty)}`; break;
+      case "deny": core = `${j(nm(args[0]), "은", "는")} ${conj(inc.didnt, sty)}`; break;
       case "deny_self": core = `${me} ${conj(inc.didnt, sty)}`; break;
-      case "either": core = `${n[0]} 아니면 ${j(n[1], "이", "가")} ${conj(inc.did, sty)}`; break;
-      case "self_or": core = `${v.self} 아니면 ${j(n[0], "이", "가")} ${conj(inc.did, sty)}`; break;
-      case "meta_false": core = `${of(n[0])}말은 ${conj("틀렸어", sty)}`; break;
-      case "meta_true": core = `${of(n[0])}말은 ${conj("맞아", sty)}`; break;
-      case "swap_claim": {
-        const swapped = conj("바뀌어 있어", sty);
-        if (shown === "miria" || shown === args[0]) {
-          const other = shown === "miria" ? n[0] : call(v, "miria");
-          core = `${me} ${j(other, "과", "와")} 영혼이 ${swapped}`;
-        } else {
-          core = `${j(call(v, "miria"), "과", "와")} ${j(n[0], "은", "는")} 영혼이 ${swapped}`;
-        }
+      case "either": core = `${nm(args[0])} 아니면 ${j(nm(args[1]), "이", "가")} ${conj(inc.did, sty)}`; break;
+      case "self_or": core = `${v.self} 아니면 ${j(nm(args[0]), "이", "가")} ${conj(inc.did, sty)}`; break;
+      case "meta_false": core = `${of(nm(args[0]))}말은 ${conj("틀렸어", sty)}`; break;
+      case "meta_true": core = `${of(nm(args[0]))}말은 ${conj("맞아", sty)}`; break;
+      case "swap_claim": core = `${j(nm("miria"), "과", "와")} ${j(nm(args[0]), "은", "는")} 영혼이 ${conj("바뀌어 있어", sty)}`; break;
+      case "iam": core = `${me} ${j(nm(x), "과", "와")} 영혼이 ${conj("바뀌어 있어", sty)}`; break;
+      case "swap_deny":
+        core = x === "miria" ? `${me} 아무와도 영혼이 ${conj("안 바뀌었어", sty)}`
+          : `${me} ${j(nm("miria"), "과", "와")} 영혼이 ${conj("안 바뀌었어", sty)}`;
+        break;
+      case "role_is": core = `${j(nm(args[0]), "은", "는")} ${copula(role(args[1]), sty)}`; break;
+      case "culprit_role": core = `${j(role(args[0]), "이", "가")} ${copula("범인", sty)}`; break;
+      case "count_is": {
+        const w = j(role(args[0]), "은", "는");
+        core = args[1] === 0 ? `${w} ${conj("없어", sty)}` : `${w} ${copula(K.nums[String(args[1])], sty)}`;
         break;
       }
+      case "vision": core = `환시로 ${conj("봤어", sty)}. 범인은 ${args.map(nm).join(", ")} 중 ${copula("하나", sty)}`; break;
+      case "alibi":
+        core = `천리안으로 봤는데, 그때 ${j(nm(args[0]), "이랑", "랑")} ${j(nm(args[1]), "은", "는")} 다른 곳에서 내 방송을 보고 ${conj("있었어", sty)}`;
+        break;
+      case "hearsay": core = `${j(nm(args[0]), "은", "는")} '${say(args[1], args[0], args[0], inc, true)}'라고 ${conj("했어", sty)}`; break;
       default: throw new Error(kind);
     }
     if (v.stutter) core = `${core[0]}, ${core}`;
-    const end = (v.endk && kind in v.endk) ? v.endk[kind] : v.end;
-    return ((v.pre && v.pre[kind]) || "") + core + end + ((v.post && v.post[kind]) || "");
+    const end = (v.endk && dk in v.endk) ? v.endk[dk] : v.end;
+    if (plain) return core + end;
+    return ((v.pre && v.pre[dk]) || "") + core + end + ((v.post && v.post[dk]) || "");
+  }
+
+  // 카드 하나의 말들. 카드의 말투 주인의 말투로 쓴다.
+  function render(sts, x, inc) {
+    const voice = Core.voiceOf(sts, x);
+    return sts.map((st) => say(st, x, voice, inc, false));
   }
 
   // ---- 해설 ----
 
   function explainWrong(p, c) {
-    const counts = Core.liarCounts(p, c);
     const who = j(NAMES[c], "이", "가");
+    if (p.mode === "shown") return `${who} 범인이라면 거짓말쟁이 ${p.n}명·트롤러 ${p.t}명으로는 말들을 맞출 수 없다.`;
+    if (p.mode) return `${who} 범인이라면 정직한 사람이 과반이 되게 말들을 맞출 수 없다.`;
+    const counts = Core.liarCounts(p, c);
     let tail = "";
     if (p.magic.length) {
       const parts = [];
@@ -93,7 +112,31 @@
     return `${who} 범인이라면 거짓말하는 사람이 ${counts.join("명 또는 ")}명이 되어 버린다${tail}. ${p.n}명이어야 해.`;
   }
 
+  function explainRightVH(p, ws) {
+    const lines = [];
+    const rolesAt = (i) => new Set(ws.map((w) => w.roles[i]));
+    for (const r of ["H", "L", "T"]) {
+      const fixed = p.speakers.filter((x, i) => rolesAt(i).size === 1 && rolesAt(i).has(r));
+      if (fixed.length) lines.push(`${K.roles[r]}: ${fixed.map((x) => NAMES[x]).join(", ")}`);
+    }
+    const loose = p.speakers.map((x, i) => [x, ["H", "L", "T"].filter((r) => rolesAt(i).has(r))]).filter(([, rs]) => rs.length > 1);
+    if (loose.length) {
+      lines.push("말만으로는 역할이 정해지지 않는 사람: "
+        + loose.map(([x, rs]) => `${NAMES[x]}(${rs.map((r) => K.roles[r]).join(" 또는 ")})`).join(", "));
+    }
+    Core.reports(p).forEach((q, i) => {
+      const hs = new Set(ws.map((w) => w.h[i]));
+      const said = `${j(NAMES[q.by], "이", "가")} 전한 ${NAMES[q.who]}의 말`;
+      if (hs.size === 1 && hs.has(true)) lines.push(`${j(said, "은", "는")} 정말 ${j(NAMES[q.who], "이", "가")} 한 말이었다.`);
+      else if (hs.size === 1) lines.push(`${j(said, "은", "는")} 지어낸 말이었다.`);
+      else lines.push(`${j(said, "이", "가")} 정말인지는 알 수 없다.`);
+    });
+    lines.push(`범인: ${NAMES[ws[0].c]}`);
+    return lines;
+  }
+
   function explainRight(p, ws) {
+    if (p.mode) return explainRightVH(p, ws);
     const order = (xs) => [...xs].sort((a, b) => p.speakers.indexOf(a) - p.speakers.indexOf(b));
     const fc = Core.falseCards(p, ws[0]);
     const lines = ["틀린 말을 한 카드: " + (fc.length ? fc.map((x) => NAMES[x]).join(", ") : "없음")];
@@ -111,14 +154,30 @@
     if (p.magic.includes("miria")) {
       const ss = new Set(ws.map((w) => w.s));
       if (ss.size === 1 && ss.has(null)) lines.push("미리아는 아무와도 뒤바뀌지 않았다.");
-      else if (ss.size === 1) {
-        const other = NAMES[[...ss][0]];
-        lines.push(`미리아와 ${j(other, "은", "는")} 영혼이 뒤바뀌어 있었다. 미리아 이름의 말은 ${other}의 말, ${other} 이름의 말은 미리아의 말이었다.`);
-      } else lines.push("미리아가 누구와 뒤바뀌었는지(뒤바뀌었는지 아닌지도)는 말만으로는 정해지지 않는다.");
+      else if (ss.size === 1) lines.push(`미리아와 ${j(NAMES[[...ss][0]], "은", "는")} 영혼이 뒤바뀌어 있었다.`);
+      else lines.push("미리아가 누구와 뒤바뀌었는지(뒤바뀌었는지 아닌지도)는 말만으로는 정해지지 않는다.");
+      const s = ss.size === 1 ? [...ss][0] : null;
+      for (const x of fc) {        // 연기: 거짓말쟁이가 자기 영혼이 아닌 말투로 말했다
+        const k = Core.voiceOf(p.statements[x], x);
+        if (k !== x) lines.push(`${NAMES[x]} 카드의 ${NAMES[k]} 말투는 연기였다.`);
+        else if (ss.size === 1 && Core.soulIn(x, s) !== x) {
+          lines.push(`${NAMES[x]} 카드는 ${NAMES[x]}의 몸에 든 ${j(NAMES[Core.soulIn(x, s)], "이", "가")} ${NAMES[x]}인 척 말한 것이었다.`);
+        }
+      }
     }
     if (!p.magic.length) lines[0] = lines[0].replace("틀린 말을 한 카드", "거짓말을 한 사람");
     lines.push(`범인: ${NAMES[ws[0].c]}`);
     return lines;
+  }
+
+  // 규칙 칸의 마법 상자. 아주 어려움은 환시·천리안 말이 있을 때 그 안내.
+  function magicView(q) {
+    let ids = q.magic_ids;
+    if (q.mode) {
+      const kinds = new Set(q.speakers.flatMap((s) => q.logic[s].map((st) => st[0])));
+      ids = [["nanoka", "vision"], ["coco", "alibi"]].filter(([, k]) => kinds.has(k)).map(([x]) => x);
+    }
+    return ids.map((x) => ({ who: NAMES[x], name: K.magic[x].name, text: K.magic[x].text }));
   }
 
   // 논리 퍼즐 → 화면용 글이 붙은 퍼즐
@@ -133,24 +192,28 @@
       id: q.id, key: q.key, tier: q.tier, incident: inc.text, verb: inc.did,
       victim: { id: owner, name: FULL[owner], line: inc.line, written: !!V[owner].written },
       n: q.n,
-      magic: q.magic_ids.map((x) => ({ who: NAMES[x], name: K.magic[x].name, text: K.magic[x].text })),
-      suspects: q.speakers.map((s) => ({ id: s, name: NAMES[s], full: FULL[s], written: !!V[s].written,
-                                         says: render(q.logic[s], s, inc) })),
+      magic: magicView(q),
+      suspects: q.speakers.map((s) => {
+        const voice = Core.voiceOf(q.logic[s], s);
+        return { id: s, name: NAMES[s], full: FULL[s], written: !!V[voice].written, voice: voice !== s ? NAMES[voice] : null,
+                 says: render(q.logic[s], s, inc) };
+      }),
       answer: q.answer, why_not: whyNot, solution: explainRight(p, ws),
-      false_cards: q.false_cards.slice(), worlds: ws.length, logic: q.logic, magic_ids: q.magic_ids.slice(),
+      false_cards: q.false_cards ? q.false_cards.slice() : null, worlds: ws.length, logic: q.logic, magic_ids: q.magic_ids.slice(),
     };
     if (q.seed !== undefined) out.seed = q.seed;
     return out;
   }
 
-  // 자기를 "나·저" 말고 다르게 부르는 사람: [{ name, word }]
+  // 자기를 "나·저" 말고 다르게 부르는 말투(카드의 말투 주인 기준): [{ name, word }]
   function selfWords(q) {
-    return q.speakers.filter((s) => !["나", "저"].includes(V[s].self)).map((s) => ({ name: NAMES[s], word: V[s].self }));
+    const voices = [...new Set(q.speakers.map((s) => Core.voiceOf(q.logic[s], s)))];   // 안 들린 사람의 말투도 전해 들은 말 속에 나온다
+    return voices.filter((s) => !["나", "저"].includes(V[s].self)).map((s) => ({ name: NAMES[s], word: V[s].self }));
   }
 
   // ---- 화면 문구 ----
   // html 이 붙은 항목은 팩이 만든 믿을 수 있는 글만 넣는다(퍼즐 글은 화면에서 이스케이프한다).
-  const TIER = { easy: "쉬움", normal: "보통", hard: "어려움", daily: "오늘의 재판", tutorial: "튜토리얼" };
+  const TIER = { easy: "쉬움", normal: "보통", hard: "어려움", veryhard: "아주 어려움", daily: "오늘의 재판", tutorial: "튜토리얼" };
   const ui = {
     lang: "ko",
     title: "감옥저택의 번외재판",
@@ -168,6 +231,7 @@
       easy: "용의자 3~4명, 거짓말쟁이 1명. 마법 없음",
       normal: "마법 규칙이 하나 붙는다",
       hard: "용의자가 늘고, 말에 대한 말과 마법이 섞인다",
+      veryhard: "정직한 사람·거짓말쟁이·트롤러, 말이 둘인 사람, 전해 들은 말. 수를 숨기는 판도 있다",
     },
     tutorialTitle: "튜토리얼",
     tutorialDesc: "처음이라면 여기부터. 무엇을 누르면 되는지 한 판으로 알려 준다.",
@@ -197,7 +261,16 @@
       : q.seed !== undefined ? `무작위 재판 · ${TIER[q.tier]} · 문제 번호 ${q.seed}`
       : date ? `오늘의 재판 · ${ui.dateLabel(date)} · ${TIER[q.tier]}` : `${TIER[q.tier]} ${index}번`,
     ruleLiarsHtml: (n) => `이 중 딱 <strong>${n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.`,
+    // 아주 어려움: 수를 알려 주는 판(shown)과 숨기는 판(hidden)
+    ruleRolesHtml: (q) => (q.mode === "shown"
+      ? `이 중 딱 <strong>${q.n}명</strong>이 거짓말쟁이, <strong>${q.t}명</strong>이 트롤러다. `
+      : "거짓말쟁이와 트롤러가 몇 명인지는 모른다. 다만 <strong>정직한 사람이 과반</strong>이다. ")
+      + "거짓말쟁이의 말은 전부 틀리고, 트롤러의 말은 맞든 틀리든 상관없고, 정직한 사람의 말은 전부 맞다.",
+    ruleHearsay: "잘 들리지 않은 말은 다른 사람이 전해 준다. 전한 사람이 정직하면 정말 그렇게 말한 것이고(그 말의 맞고 틀림은 원래 말한 사람 몫), 거짓말쟁이가 전했다면 그런 말은 없었던 것이다. 트롤러가 전한 말은 알 수 없다.",
     ruleCulprit: "범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다.",
+    unheard: "(잘 들리지 않았다)",
+    voiceBadge: (name) => `${name}의 말투`,
+    num: (i) => "①②③"[i],
     selfWords: (q) => {
       const items = selfWords(q);
       if (!items.length) return "";
@@ -215,11 +288,11 @@
     memory: (t) => `회귀의 기억: ${t}`,
     nbTitle: "히로의 수첩",
     nbSub: "가정 표와 메모. 이 브라우저에만 남는다",
-    nbHelp: "열마다 \"이 사람이 범인이라면\"을 가정하고, 칸을 눌러 그때 각 카드의 말이 맞는지(○) 틀린지(×) 적는다. 맨 아래 줄에 × 수가 나온다.",
+    nbHelp: "열마다 \"이 사람이 범인이라면\"을 가정하고, 칸을 눌러 그때 각 말이 맞는지(○) 틀린지(×) 적는다. 맨 아래 줄에 × 수가 나온다.",
     nbCorner: "범인이라면 →",
-    nbRow: (name) => `${name}의 말`,
+    nbRow: (name, i, total) => `${name}의 말${total > 1 ? " " + "①②③"[i] : ""}`,
     nbFoot: "× 수",
-    nbCell: (c, r, v) => `${j(c, "이", "가")} 범인이라면 ${r}의 말: ${v === "o" ? "맞음" : v === "x" ? "틀림" : "비어 있음"}`,
+    nbCell: (c, row, v) => `${j(c, "이", "가")} 범인이라면 ${row}: ${v === "o" ? "맞음" : v === "x" ? "틀림" : "비어 있음"}`,
     nbMemo: "메모",
     nbPlaceholder: "예: 셰리가 범인이면 코코의 말은 틀린다. 그러면 거짓말쟁이는…",
     nbClear: "수첩 비우기",

@@ -186,7 +186,12 @@ a { color: var(--blood-ink); }
 .card .who { font-family: var(--font-display); font-size: 21px; }
 .card .via { font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; margin-left: 6px; vertical-align: 3px; }
 .card blockquote { margin: 0; font-size: 17px; min-width: 0; }
-.card.marked blockquote { text-decoration: line-through; text-decoration-color: var(--blood-ink); text-decoration-thickness: 2px; color: var(--muted); }
+.card .says { display: grid; gap: 6px; }
+.card .line { display: flex; gap: 8px; align-items: baseline; min-width: 0; }
+.card .num { color: var(--brass); font-size: 15px; flex: none; }
+.card .unheard { margin: 0; color: var(--muted); font-style: italic; }
+.card .via.voice { color: var(--brass); border-color: rgba(201, 171, 112, .45); }
+.card.marked blockquote, .card.marked .unheard { text-decoration: line-through; text-decoration-color: var(--blood-ink); text-decoration-thickness: 2px; color: var(--muted); }
 .card.accused { border-color: var(--blood); box-shadow: 0 0 0 1px var(--blood) inset, 0 0 24px rgba(181, 45, 67, .25); }
 .card.cleared { opacity: .55; }
 .card .hint { font-size: 14px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; }
@@ -311,6 +316,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     return { iso, index: dayIndex(iso), puzzle: dailyOf(dayIndex(iso)) };
   }
 
+  const TIERS = ["easy", "normal", "hard", "veryhard"];
   let state = { view: "home" };
 
   function findLogic(id) {
@@ -383,7 +389,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   function home() {
     const d = today();
     const tut = DATA.tutorial;
-    const tiers = ["easy", "normal", "hard"].map((t) => `
+    const tiers = TIERS.map((t) => `
       <section class="tier" aria-label="${esc(T.tier[t])}">
         <header><h3>${esc(T.tier[t])}</h3><small>${esc(T.tierNote[t])}</small></header>
         <div class="tiles">${DATA.tiers[t].map((p, i) => tile(p, i + 1)).join("")}</div>
@@ -407,7 +413,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           <div>${esc(T.randomDesc)}</div>
         </div>
         <div class="bar">
-          ${["easy", "normal", "hard"].map((t) => `<button class="btn ghost" data-random="${t}">${esc(T.tier[t])}</button>`).join("")}
+          ${TIERS.map((t) => `<button class="btn ghost" data-random="${t}">${esc(T.tier[t])}</button>`).join("")}
         </div>
       </section>
       <div class="section-title"><h2>${esc(T.records)}</h2><span>${esc(T.recordsNote)}</span></div>
@@ -460,15 +466,17 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   function notebook(p) {
     const note = noteOf(p);
     const ids = p.suspects.map((s) => s.id);
+    // 줄 = 말 하나. 말이 둘인 카드는 두 줄(두 번째 말의 칸 이름은 「카드#2」), 안 들린 카드는 줄이 없다
+    const lines = p.suspects.flatMap((s) => s.says.map((_, i) => ({ r: i ? `${s.id}#${i + 1}` : s.id, label: T.nbRow(s.name, i, s.says.length) })));
     const head = ids.map((c) => `<th scope="col">${esc(nameOf(p, c))}</th>`).join("");
-    const rows = ids.map((r) => `
-      <tr><th scope="row">${esc(T.nbRow(nameOf(p, r)))}</th>${ids.map((c) => {
+    const rows = lines.map(({ r, label }) => `
+      <tr><th scope="row">${esc(label)}</th>${ids.map((c) => {
         const v = note.g[`${c}|${r}`] || "";
         return `<td><button class="cell ${v}" data-cell="${c}|${r}" data-k="cell:${c}|${r}"
-          aria-label="${esc(T.nbCell(nameOf(p, c), nameOf(p, r), v))}">${v === "o" ? "○" : v === "x" ? "×" : ""}</button></td>`;
+          aria-label="${esc(T.nbCell(nameOf(p, c), label, v))}">${v === "o" ? "○" : v === "x" ? "×" : ""}</button></td>`;
       }).join("")}</tr>`).join("");
     const counts = ids.map((c) => {
-      const x = ids.filter((r) => note.g[`${c}|${r}`] === "x").length;
+      const x = lines.filter(({ r }) => note.g[`${c}|${r}`] === "x").length;
       return `<td>${x || ""}</td>`;
     }).join("");
     return `
@@ -503,9 +511,11 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       return `
         <article class="card ${marked ? "marked" : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}">
           <header class="plate">
-            <span class="who">${esc(s.full)}${s.written ? `<span class="via">${esc(T.written)}</span>` : ""}</span>
+            <span class="who">${esc(s.full)}${s.voice ? `<span class="via voice">${esc(T.voiceBadge(s.voice))}</span>` : ""}${s.written ? `<span class="via">${esc(T.written)}</span>` : ""}</span>
           </header>
-          <blockquote class="say ${s.written ? "written" : ""}">${esc(s.says)}</blockquote>
+          <div class="says">${s.says.length ? s.says.map((t, i) => `
+            <div class="line">${s.says.length > 1 ? `<span class="num" aria-hidden="true">${T.num(i)}</span>` : ""}<blockquote class="say ${s.written ? "written" : ""}">${esc(t)}</blockquote></div>`).join("")
+            : `<p class="unheard">${esc(T.unheard)}</p>`}</div>
           <div class="acts">
             <button class="chip" data-mark="${s.id}" data-k="mark:${s.id}" aria-pressed="${marked}">${esc(T.markFalse)}</button>
             <button class="chip" data-accuse="${s.id}" data-k="accuse:${s.id}" aria-pressed="${accused}" ${state.solved || known ? "disabled" : ""}>${esc(known ? T.notCulprit : T.accuse)}</button>
@@ -530,8 +540,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       ${dialog(p.victim.name, p.victim.line, p.victim.written)}
       ${guide(q, 2, "rules")}
       <div class="rules">
-        <p class="rule">${T.ruleLiarsHtml(p.n)}</p>
+        <p class="rule">${q.mode ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n)}</p>
         <p class="rule">${esc(T.ruleCulprit)}</p>
+        ${q.mode && CORE.reports(CORE.problem(q)).length ? `<p class="rule">${esc(T.ruleHearsay)}</p>` : ""}
         ${self ? `<p class="rule">${esc(self)}</p>` : ""}
         <div class="magic hiro"><span class="tag">${esc(T.hiroTag)}</span><span>${esc(T.hiroRule)}</span></div>
         ${magic}
