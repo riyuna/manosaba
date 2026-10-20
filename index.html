@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Ccircle cx=%2732%27 cy=%2732%27 r=%2728%27 fill=%27none%27 stroke=%27%23a8263e%27 stroke-width=%276%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-size=%2730%27 text-anchor=%27middle%27 fill=%27%23a8263e%27%3E%ED%8C%90%3C/text%3E%3C/svg%3E">
+<title>작은 재판</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="『魔法少女ノ魔女裁判』 비공식 팬메이드 논리 퍼즐. 거짓말 사이에서 범인을 찾는다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Song+Myung&display=swap">
+<style>
+/* 레이아웃: 재판 기록부 한 권. 가운데 한 줄 기둥에 사건 → 규칙 → 증언 카드(피고석처럼 두 줄) → 판결 순으로 내려가고, 판결은 붉은 인장으로 찍힌다. */
+:root {
+  --paper: #f2eff4;
+  --sheet: #fbfafc;
+  --ink: #241a2b;
+  --muted: #675b6f;
+  --line: #d8cfdd;
+  --seal: #a8263e;
+  --seal-soft: #f3dde2;
+  --brass: #7d5f17;
+  --brass-soft: #f1e8d2;
+  --ok: #2c6a4c;
+  --font-display: "Song Myung", "Nanum Myeongjo", "AppleMyungjo", serif;
+  --font-body: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  --r: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #16111a; --sheet: #211a27; --ink: #eee7f2; --muted: #a99bb2; --line: #3b3044;
+    --seal: #e3687f; --seal-soft: #3c1f29; --brass: #d9b65f; --brass-soft: #33291a; --ok: #74c69d;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #16111a; --sheet: #211a27; --ink: #eee7f2; --muted: #a99bb2; --line: #3b3044;
+  --seal: #e3687f; --seal-soft: #3c1f29; --brass: #d9b65f; --brass-soft: #33291a; --ok: #74c69d;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 48px;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; text-wrap: balance; margin: 0; }
+button { font: inherit; color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
+a { color: var(--seal); }
+
+/* 머리 */
+.masthead { display: grid; gap: 6px; }
+.masthead .eyebrow { font-size: 13px; letter-spacing: .08em; color: var(--muted); }
+.masthead h1 { font-size: clamp(40px, 9vw, 64px); line-height: 1.05; }
+.masthead p { margin: 0; color: var(--muted); max-width: 34em; }
+.notice {
+  border: 1px solid var(--line); border-radius: var(--r); background: var(--sheet);
+  padding: 12px 16px; font-size: 14px; color: var(--muted); display: grid; gap: 2px;
+}
+.notice b { color: var(--ink); font-weight: 400; }
+
+/* 목록 */
+.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.section-title h2 { font-size: 26px; }
+.section-title span { color: var(--muted); font-size: 14px; }
+.daily, .random {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px;
+}
+.daily .date { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 14px; }
+.daily .what, .random .what { min-width: 0; }
+.daily h3, .random h3 { font-size: 22px; }
+.random .what div { color: var(--muted); font-size: 14px; }
+.random .bar { gap: 8px; }
+.tiers { display: grid; gap: 20px; }
+.tier { display: grid; gap: 10px; }
+.tier header { display: flex; align-items: baseline; gap: 10px; }
+.tier header h3 { font-size: 22px; }
+.tier header small { color: var(--muted); font-size: 14px; }
+.tiles { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 520px) { .tiles { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.tile {
+  aspect-ratio: 1; max-width: 100%; border: 1px solid var(--line); border-radius: 8px; background: var(--sheet);
+  font-variant-numeric: tabular-nums; font-size: 17px; cursor: pointer; position: relative;
+}
+.tile:hover { border-color: var(--seal); }
+.tile.done { background: var(--seal-soft); border-color: var(--seal); color: var(--seal); }
+.tile.done::after { content: "판"; position: absolute; right: 4px; bottom: 1px; font-family: var(--font-display); font-size: 11px; }
+.tile.perfect { background: var(--seal); color: var(--sheet); }
+
+.btn {
+  border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 999px;
+  padding: 9px 20px; cursor: pointer; font-size: 15px;
+}
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.seal { background: var(--seal); border-color: var(--seal); color: var(--sheet); }
+
+/* 사건 */
+.case-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.case-top .where { color: var(--muted); font-size: 14px; }
+.incident { font-family: var(--font-display); font-size: clamp(24px, 5.2vw, 32px); line-height: 1.35; text-wrap: balance; margin: 0; }
+.rules { display: grid; gap: 10px; }
+.rule {
+  border-left: 3px solid var(--ink); padding: 2px 0 2px 14px; margin: 0;
+}
+.rule strong { font-weight: 400; color: var(--seal); }
+.magic {
+  background: var(--brass-soft); border-radius: var(--r); padding: 12px 16px; display: grid; gap: 2px;
+}
+.magic .tag { font-size: 12px; letter-spacing: .08em; color: var(--brass); }
+.magic.hiro { background: var(--seal-soft); }
+.magic.hiro .tag { color: var(--seal); }
+
+/* 증언 카드 */
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 560px) { .cards { grid-template-columns: minmax(0, 1fr); } }
+.card {
+  background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 14px 16px 12px; display: grid; gap: 10px; min-width: 0; position: relative;
+  transition: border-color .15s, background .15s;
+}
+.card .who { font-family: var(--font-display); font-size: 20px; }
+.card blockquote { margin: 0; font-size: 17px; min-width: 0; }
+.card blockquote::before { content: "「"; color: var(--muted); }
+.card blockquote::after { content: "」"; color: var(--muted); }
+.card.marked blockquote { text-decoration: line-through; text-decoration-color: var(--seal); text-decoration-thickness: 2px; color: var(--muted); }
+.card.accused { border-color: var(--seal); box-shadow: 0 0 0 1px var(--seal) inset; }
+.card.cleared { opacity: .55; }
+.card .hint { font-size: 14px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; }
+.card .acts { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 4px 12px;
+  font-size: 14px; cursor: pointer; color: var(--muted);
+}
+.chip[aria-pressed="true"] { border-color: var(--seal); color: var(--seal); background: var(--seal-soft); }
+
+.tally { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* 판결 */
+.verdict {
+  background: var(--sheet); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px;
+  display: grid; gap: 8px; position: relative; overflow: hidden;
+}
+.verdict.right { border-color: var(--ok); }
+.verdict.wrong { border-color: var(--seal); }
+.verdict h3 { font-size: 22px; }
+.verdict ul { margin: 0; padding-left: 18px; }
+.verdict .hiro { color: var(--muted); font-size: 15px; }
+.verdict.rewind { border-color: var(--muted); border-style: dashed; }
+.verdict .morning { font-family: var(--font-display); font-size: 18px; }
+.verdict .record { color: var(--muted); font-size: 14px; }
+.stamp {
+  position: absolute; right: 14px; top: 12px; width: 72px; height: 72px; border-radius: 50%;
+  border: 3px solid var(--seal); color: var(--seal); display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 24px; transform: rotate(-12deg); opacity: .9;
+  animation: stamp .35s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+.verdict.right h3 { padding-right: 84px; min-height: 56px; }
+@keyframes stamp { from { transform: rotate(-12deg) scale(2.2); opacity: 0; } to { transform: rotate(-12deg) scale(1); opacity: .9; } }
+.shake { animation: shake .3s; }
+@keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+@media (prefers-reduced-motion: reduce) { .stamp, .shake { animation: none; } }
+
+footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script src="puzzles.js"></script>
+<script src="generator.js"></script>
+<script>
+(function () {
+  "use strict";
+  const DATA = window.PUZZLES;
+  const TIER = { easy: "쉬움", normal: "보통", hard: "어려움", daily: "오늘의 재판" };
+  const GEN = window.SmallTrialGen;
+  const TIER_NOTE = {
+    easy: "용의자 3~4명, 거짓말쟁이 1명. 마법 없음",
+    normal: "마법 규칙이 하나 붙는다",
+    hard: "용의자가 늘고, 말에 대한 말과 마법이 섞인다",
+  };
+  const KEY = "small-trial:cleared";
+  const BEST = "small-trial:best";     // 사건별 최소 회귀 횟수
+  const app = document.getElementById("app");
+
+  // 받침에 따라 조사를 고른다: josa("셰리", "을", "를") -> "셰리를"
+  const josa = (w, a, b) => {
+    const c = w.charCodeAt(w.length - 1);
+    return w + (c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 ? a : b);
+  };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function loadCleared() {
+    try { return new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch (e) { return new Set(); }
+  }
+  function saveCleared(set) {
+    try { localStorage.setItem(KEY, JSON.stringify([...set])); } catch (e) { /* 저장이 막혀도 게임은 된다 */ }
+  }
+  function loadBest() {
+    try { return JSON.parse(localStorage.getItem(BEST) || "{}") || {}; } catch (e) { return {}; }
+  }
+  function saveBest(obj) {
+    try { localStorage.setItem(BEST, JSON.stringify(obj)); } catch (e) { /* 위와 같음 */ }
+  }
+
+  function today() {
+    const d = new Date();
+    const days = Math.floor((Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) - Date.UTC(2026, 0, 1)) / 86400000);
+    const n = DATA.daily.length;
+    return { label: `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`, puzzle: DATA.daily[((days % n) + n) % n] };
+  }
+
+  let cleared = loadCleared();
+  let best = loadBest();
+  let state = { view: "home" };
+
+  function findPuzzle(id) {
+    for (const t of Object.values(DATA.tiers)) for (const p of t) if (p.id === id) return p;
+    return DATA.daily.find((p) => p.id === id);
+  }
+
+  // 무작위 재판은 (난이도, 번호)로 다시 만든다. 같은 번호면 같은 문제.
+  let made = null;
+  function randomPuzzle(r) {
+    if (!made || made.tier !== r.tier || made.seed !== r.seed) made = GEN.make(r.tier, r.seed);
+    return made;
+  }
+  const current = () => (state.random ? randomPuzzle(state.random) : findPuzzle(state.id));
+
+  function openPuzzle(p, fromDaily) {
+    state = { view: "puzzle", id: p.id, daily: !!fromDaily, marks: [], culprit: null, solved: false,
+              rewinds: 0, memory: [], verdict: null };
+    render();
+    window.scrollTo({ top: 0 });
+  }
+
+  function openRandom(tier) {
+    let seed, p;
+    for (let i = 0; i < 5 && !p; i++) { seed = 1 + Math.floor(Math.random() * 999999); p = randomPuzzle({ tier, seed }); }
+    if (!p) return;     // 측정상 일어나지 않는다(난이도별 200개 표본에서 실패 0)
+    state = { view: "puzzle", random: { tier, seed }, marks: [], culprit: null, solved: false,
+              rewinds: 0, memory: [], verdict: null };
+    render();
+    window.scrollTo({ top: 0 });
+  }
+
+  // ---- 화면 ----
+
+  function header() {
+    return `
+      <header class="masthead">
+        <div class="eyebrow">마녀재판 팬메이드 논리 퍼즐</div>
+        <h1>작은 재판</h1>
+        <p>감옥 저택에서 소소한 사건이 일어났다. 판결하는 사람은 니카이도 히로, 바로 너다. 용의자들의 말 중 몇 개는 거짓이다. 말들이 모두 맞아떨어지는 경우는 하나뿐이니, 그때의 범인을 찾아 판결하자.</p>
+      </header>
+      <div class="notice" role="note">
+        <span><b>비공식 팬메이드</b> 작품이다. 공식 이미지·음성·텍스트는 쓰지 않았고, 사건과 대사는 전부 자작이다.</span>
+        <span>제작에 AI(Claude)의 도움을 받았다.</span>
+        <span>원작의 줄거리는 다루지 않지만, 캐릭터와 마법(히로의 마법 포함) 등 원작 설정이 나오므로 <b>스포일러에 주의</b>.</span>
+        <span lang="ja">非公式のファンメイド作品・ネタバレあり・AI利用</span>
+      </div>`;
+  }
+
+  function home() {
+    const d = today();
+    const tiers = ["easy", "normal", "hard"].map((t) => `
+      <section class="tier" aria-label="${TIER[t]}">
+        <header><h3>${TIER[t]}</h3><small>${TIER_NOTE[t]}</small></header>
+        <div class="tiles">
+          ${DATA.tiers[t].map((p, i) => `
+            <button class="tile ${cleared.has(p.id) ? "done" : ""} ${best[p.id] === 0 ? "perfect" : ""}" data-open="${p.id}"
+              aria-label="${TIER[t]} ${i + 1}번${cleared.has(p.id) ? `, 판결 끝${p.id in best ? `, 최소 회귀 ${best[p.id]}번` : ""}` : ""}">${i + 1}</button>`).join("")}
+        </div>
+      </section>`).join("");
+    app.innerHTML = header() + `
+      <section class="daily" aria-label="오늘의 재판">
+        <div class="what">
+          <div class="date">${d.label} · ${TIER[d.puzzle.tier]}</div>
+          <h3>오늘의 재판</h3>
+          <div>${esc(d.puzzle.incident)}</div>
+        </div>
+        <button class="btn seal" data-daily="1">재판을 연다</button>
+      </section>
+      <section class="random" aria-label="무작위 재판">
+        <div class="what">
+          <h3>무작위 재판</h3>
+          <div>누를 때마다 새 사건을 그 자리에서 만든다. 답이 하나뿐인지는 확인하지만, 재미와 난이도는 운에 맡긴다.</div>
+        </div>
+        <div class="bar">
+          ${["easy", "normal", "hard"].map((t) => `<button class="btn ghost" data-random="${t}">${TIER[t]}</button>`).join("")}
+        </div>
+      </section>
+      <div class="section-title"><h2>사건 기록</h2><span>판결을 끝낸 사건에는 도장이, 한 번도 돌아오지 않고 끝냈다면 꽉 찬 도장이 찍힌다</span></div>
+      <div class="tiers">${tiers}</div>` + footer();
+  }
+
+  function puzzleView() {
+    const p = current();
+    const where = state.random ? `무작위 재판 · ${TIER[p.tier]} · 문제 번호 ${p.seed}`
+      : state.daily ? `오늘의 재판 · ${TIER[p.tier]}` : `${TIER[p.tier]} ${DATA.tiers[p.tier].indexOf(p) + 1}번`;
+    const cards = p.suspects.map((s) => {
+      const marked = state.marks.includes(s.id);
+      const accused = state.culprit === s.id;
+      const known = state.memory.includes(s.id);
+      return `
+        <article class="card ${marked ? "marked" : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}">
+          <div class="who">${esc(s.name)}</div>
+          <blockquote>${esc(s.says)}</blockquote>
+          <div class="acts">
+            <button class="chip" data-mark="${s.id}" aria-pressed="${marked}">틀린 말</button>
+            <button class="chip" data-accuse="${s.id}" aria-pressed="${accused}" ${state.solved || known ? "disabled" : ""}>${known ? "범인 아님" : "범인으로 지목"}</button>
+          </div>
+          ${known ? `<div class="hint">회귀의 기억: ${esc(p.why_not[s.id])}</div>` : ""}
+        </article>`;
+    }).join("");
+    const magic = p.magic.map((m) => `
+      <div class="magic"><span class="tag">마법 규칙 · ${esc(m.who)}의 ${esc(m.name)}</span><span>${esc(m.text)}</span></div>`).join("");
+    const culpritName = state.culprit ? p.suspects.find((s) => s.id === state.culprit).name : null;
+    const unknown = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id)).length;
+    app.innerHTML = `
+      <div class="case-top">
+        <button class="btn ghost" data-home="1">사건 기록으로</button>
+        <span class="where">${where}</span>
+      </div>
+      <h2 class="incident">${esc(p.incident)}</h2>
+      <div class="rules">
+        <p class="rule">이 중 딱 <strong>${p.n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.</p>
+        <p class="rule">범인은 딱 한 명. 거짓말쟁이가 범인이라는 법은 없다.</p>
+        <div class="magic hiro"><span class="tag">판결하는 사람 · 니카이도 히로의 사망 회귀</span>
+          <span>판결이 틀리면 히로는 그날 아침으로 돌아간다. 돌아와도 기억은 남는다. 스스로 되감아서 범인이 아닌 사람 하나를 알아 올 수도 있다. 돌아온 횟수는 판결 기록에 남는다.</span></div>
+        ${magic}
+      </div>
+      <div class="cards">${cards}</div>
+      <div class="bar">
+        <button class="btn seal" data-judge="1" ${!state.culprit || state.solved ? "disabled" : ""}>
+          ${culpritName ? esc(accusation(culpritName, p)) : "범인을 고르면 판결할 수 있다"}</button>
+        <button class="btn ghost" data-rewind="1" ${state.solved || unknown === 0 ? "disabled" : ""}>되감는다: 범인이 아닌 사람 하나를 알아 온다</button>
+        <span class="tally">회귀 ${state.rewinds}번 · 틀린 말 표시 ${state.marks.length}개</span>
+      </div>
+      ${verdictView(p)}
+      ${state.solved ? `<div class="bar"><button class="btn" data-next="1">${state.random ? "같은 난이도로 하나 더" : state.daily ? "사건 기록으로" : "다음 사건"}</button></div>` : ""}
+      ` + footer();
+  }
+
+  // 히로가 범인을 제시하는 말: 「셰리, 네가 엎었어.」
+  const accusation = (name, p) => `「${name}, 네가 ${p.verb}.」`;
+  const nameOf = (p, id) => p.suspects.find((s) => s.id === id).name;
+
+  function verdictView(p) {
+    const v = state.verdict;
+    if (!v) return "";
+    if (v.right) {
+      const n = state.rewinds;
+      return `
+        <section class="verdict right" aria-live="polite">
+          <div class="stamp" aria-hidden="true">판결</div>
+          <h3>${esc(accusation(nameOf(p, p.answer), p))}</h3>
+          <ul>${p.solution.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
+          <div class="record">${n === 0 ? "한 번도 돌아오지 않고 판결했다." : `회귀 ${n}번 끝에 판결했다.`}</div>
+          <div class="hiro">히로: 「${n === 0 ? "…올바른 판결이야. 틀린 건 틀렸다고 말해야지." : "몇 번을 돌아오든 상관없어. 올바른 판결에 닿았으면 그걸로 돼."}」</div>
+        </section>`;
+    }
+    if (v.rewind) {
+      return `
+        <section class="verdict rewind" aria-live="polite">
+          <div class="morning">…눈을 뜨니 그날 아침이었다.</div>
+          <div>회귀 ${state.rewinds}번째. ${esc(josa(nameOf(p, v.who), "은", "는"))} 범인이 아니다. 그건 기억하고 있다.</div>
+          <div class="hiro">히로: 「알아낸 건 버리지 않아. 이번엔 틀리지 않아.」</div>
+        </section>`;
+    }
+    return `
+      <section class="verdict wrong shake" aria-live="polite">
+        <h3>옳지 않은 판결이었다.</h3>
+        <div>${esc(p.why_not[v.culprit])}</div>
+        <div class="morning">…눈을 뜨니 그날 아침이었다.</div>
+        <div class="record">회귀 ${state.rewinds}번째. 틀린 판결의 기억은 남아 있다.</div>
+        <div class="hiro">히로: 「옳지 않은 건… 나였어. 다시 해.」</div>
+      </section>`;
+  }
+
+  function footer() {
+    return `
+      <footer>
+        <span>『魔法少女ノ魔女裁判』의 비공식 2차창작 팬게임 데모. 원작의 권리는 원작자에게 있다.</span>
+        <span>퍼즐은 프로그램이 만든다. 사건 기록의 퍼즐은 답(범인)이 하나뿐인지 두 가지 방법으로 검산했고, 무작위 재판은 만들 때마다 전수 조사로 확인한다. 제작에 AI(Claude)의 도움을 받았다.</span>
+      </footer>`;
+  }
+
+  function render() {
+    if (state.view === "home") home();
+    else puzzleView();
+  }
+
+  // ---- 조작 ----
+
+  app.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    const ds = b.dataset;
+    if (ds.open) return openPuzzle(findPuzzle(ds.open), false);
+    if (ds.daily) return openPuzzle(today().puzzle, true);
+    if (ds.random) return openRandom(ds.random);
+    if (ds.home) { state = { view: "home" }; render(); return; }
+    const p = state.view === "puzzle" ? current() : null;
+    if (!p) return;
+    if (ds.mark) {
+      const i = state.marks.indexOf(ds.mark);
+      if (i >= 0) state.marks.splice(i, 1); else state.marks.push(ds.mark);
+    } else if (ds.accuse && !state.solved) {
+      state.culprit = state.culprit === ds.accuse ? null : ds.accuse;
+      if (state.verdict && !state.verdict.right) state.verdict = null;
+    } else if (ds.judge && state.culprit && !state.solved) {
+      if (state.culprit === p.answer) {
+        state.solved = true;
+        state.verdict = { right: true };
+        if (!state.random) {
+          cleared.add(p.id); saveCleared(cleared);
+          if (!(p.id in best) || state.rewinds < best[p.id]) { best[p.id] = state.rewinds; saveBest(best); }
+        }
+      } else {
+        // 틀린 판결 = 사망 회귀. 지목한 사람이 범인이 아니라는 기억은 남는다
+        state.rewinds += 1;
+        state.memory.push(state.culprit);
+        state.verdict = { right: false, culprit: state.culprit };
+        state.culprit = null;
+      }
+    } else if (ds.rewind && !state.solved) {
+      const left = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id));
+      if (left.length) {
+        const who = left[Math.floor(Math.random() * left.length)].id;
+        state.rewinds += 1;
+        state.memory.push(who);
+        if (state.culprit === who) state.culprit = null;
+        state.verdict = { rewind: true, who };
+      }
+    } else if (ds.next) {
+      if (state.random) return openRandom(p.tier);
+      if (state.daily) { state = { view: "home" }; render(); return; }
+      const list = DATA.tiers[p.tier];
+      const next = list[list.indexOf(p) + 1];
+      if (next) return openPuzzle(next, false);
+      state = { view: "home" }; render(); return;
+    }
+    render();
+  });
+
+  // 열려 있는 화면은 새 버전이 올라와도 이어서 보이게 한다(뷰어 전용 훅, 없으면 무시).
+  try { window.claude?.hot?.snapshot?.(() => ({ state })); } catch (e) { /* 없음 */ }
+  const start = (data) => {
+    if (data && data.state && data.state.view && (data.state.view === "home" || Array.isArray(data.state.memory))) state = data.state;
+    render();
+  };
+  if (window.claude?.hot?.ready) window.claude.hot.ready(start); else start(window.claude?.hot?.data ?? {});
+})();
+</script>
+
+</html>
