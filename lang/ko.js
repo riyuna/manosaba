@@ -95,37 +95,81 @@
 
   // ---- 해설 ----
 
+  function magicTail(p) {
+    const parts = [];
+    if (p.magic.includes("anan")) parts.push("안안의 세뇌를 누구에게 걸었다고 해도");
+    if (p.magic.includes("margo")) parts.push("마고가 누구 흉내를 냈다고 해도");
+    if (p.magic.includes("miria")) parts.push("미리아가 누구와 뒤바뀌었다고 해도");
+    return parts.length ? ` (${parts.join(", ")})` : "";
+  }
+
   function explainWrong(p, c) {
     const who = j(NAMES[c], "이", "가");
-    if (p.mode === "shown") return `${who} 범인이라면 거짓말쟁이 ${p.n}명·트롤러 ${p.t}명으로는 말들을 맞출 수 없다.`;
-    if (p.mode) return `${who} 범인이라면 정직한 사람이 과반이 되게 말들을 맞출 수 없다.`;
-    const counts = Core.liarCounts(p, c);
-    let tail = "";
-    if (p.magic.length) {
-      const parts = [];
-      if (p.magic.includes("anan")) parts.push("안안의 세뇌를 누구에게 걸었다고 해도");
-      if (p.magic.includes("margo")) parts.push("마고가 누구 흉내를 냈다고 해도");
-      if (p.magic.includes("miria")) parts.push("미리아가 누구와 뒤바뀌었다고 해도");
-      tail = ` (${parts.join(", ")})`;
+    const tail = magicTail(p);
+    if (p.tier === "veryhard") {
+      if (p.mode === "shown") return `${who} 범인이라면 거짓말쟁이 ${p.n}명·트롤러 ${p.t + (p.magic.includes("anan") ? 1 : 0)}명으로는 말들을 맞출 수 없다${tail}.`;
+      return `${who} 범인이라면 정직한 사람이 과반이 되게 말들을 맞출 수 없다${tail}.`;
     }
+    const counts = Core.liarCounts(p, c);
     if (!counts.length) return `${who} 범인이라면 말들이 서로 어긋나 버린다${tail}.`;
     return `${who} 범인이라면 거짓말하는 사람이 ${counts.join("명 또는 ")}명이 되어 버린다${tail}. ${p.n}명이어야 해.`;
   }
 
-  function explainRightVH(p, ws) {
-    const lines = [];
-    const rolesAt = (i) => new Set(ws.map((w) => w.roles[i]));
-    for (const r of ["H", "L", "T"]) {
-      const fixed = p.speakers.filter((x, i) => rolesAt(i).size === 1 && rolesAt(i).has(r));
-      if (fixed.length) lines.push(`${K.roles[r]}: ${fixed.map((x) => NAMES[x]).join(", ")}`);
+  // 틀린 말 목록: 말이 전부 틀린 카드는 이름만, 일부만 틀리면 「에마(②)」
+  function falseLabel(p, F) {
+    const out = [];
+    for (const x of p.speakers) {
+      const n = p.statements[x].length;
+      const bad = [...Array(n).keys()].filter((i) => F.includes(Core.slotId(x, i)));
+      if (bad.length && bad.length === n) out.push(NAMES[x]);
+      else if (bad.length) out.push(`${NAMES[x]}(${bad.map((i) => "①②③"[i]).join("")})`);
     }
-    const loose = p.speakers.map((x, i) => [x, ["H", "L", "T"].filter((r) => rolesAt(i).has(r))]).filter(([, rs]) => rs.length > 1);
-    if (loose.length) {
-      lines.push("말만으로는 역할이 정해지지 않는 사람: "
-        + loose.map(([x, rs]) => `${NAMES[x]}(${rs.map((r) => K.roles[r]).join(" 또는 ")})`).join(", "));
+    return out.join(", ");
+  }
+
+  function explainRight(p, ws) {
+    const sp = p.speakers, st = p.statements, magic = p.magic;
+    const lines = [];
+    const F = Core.falseSays(ws);
+    if (F) lines.push((!magic.length && p.tier !== "veryhard" ? "거짓말을 한 사람: " : "틀린 말을 한 카드: ") + (falseLabel(p, F) || "없음"));
+    if (p.tier === "veryhard") {
+      const at = (i) => new Set(ws.map((w) => w.roles[i]));
+      for (const r of ["H", "L", "T"]) {
+        const fixed = sp.filter((x, i) => at(i).size === 1 && at(i).has(r));
+        if (fixed.length) lines.push(`${K.roles[r]}: ${fixed.map((x) => NAMES[x]).join(", ")}`);
+      }
+      const loose = sp.map((x, i) => [x, ["H", "L", "T"].filter((r) => at(i).has(r))]).filter(([, rs]) => rs.length > 1);
+      if (loose.length) {
+        lines.push("말만으로는 역할이 정해지지 않는 사람: "
+          + loose.map(([x, rs]) => `${NAMES[x]}(${rs.map((r) => K.roles[r]).join(" 또는 ")})`).join(", "));
+      }
+      if (magic.includes("anan")) lines.push("트롤러 중 (안안 말고) 한 명은 안안에게 세뇌당한 사람이다.");
+    } else if (magic.includes("anan")) {
+      const bs = sp.filter((x, i) => ws.some((w) => w.roles[i] === "T"));
+      if (bs.length === 1) lines.push(`${j(NAMES[bs[0]], "은", "는")} 안안에게 세뇌당해 제멋대로 말했을 뿐, 거짓말쟁이가 아니다.`);
+      else lines.push(`${bs.map((x) => NAMES[x]).join(", ")} 중 한 명은 안안에게 세뇌당해 제멋대로 말했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.`);
+    }
+    if (magic.includes("margo")) {
+      const ms = new Set(ws.map((w) => w.m));
+      if (ms.size === 1 && ms.has(null)) lines.push("마고는 아무의 흉내도 내지 않았다.");
+      else if (ms.size === 1) lines.push(`${NAMES[[...ms][0]]} 이름으로 나온 말은 사실 마고의 흉내였다.`);
+      else lines.push("마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.");
+    }
+    if (magic.includes("miria")) {
+      const ss = new Set(ws.map((w) => w.s));
+      if (ss.size === 1 && ss.has(null)) lines.push("미리아는 아무와도 뒤바뀌지 않았다.");
+      else if (ss.size === 1) lines.push(`미리아와 ${j(NAMES[[...ss][0]], "은", "는")} 영혼이 뒤바뀌어 있었다.`);
+      else lines.push("미리아가 누구와 뒤바뀌었는지(뒤바뀌었는지 아닌지도)는 말만으로는 정해지지 않는다.");
+      for (const x of sp) {        // 연기: 어느 세계에서나 자기 영혼이 아닌 말투로 말했다(정직한 사람은 못 한다)
+        const k = Core.voiceOf(st[x], x);
+        const souls = new Set(ws.map((w) => Core.soulIn(x, w.s)));
+        if (!st[x].length || souls.has(k)) continue;
+        if (k !== x) lines.push(`${NAMES[x]} 카드의 ${NAMES[k]} 말투는 연기였다.`);
+        else if (souls.size === 1) lines.push(`${NAMES[x]} 카드는 ${NAMES[x]}의 몸에 든 ${j(NAMES[[...souls][0]], "이", "가")} ${NAMES[x]}인 척 말한 것이었다.`);
+      }
     }
     Core.reports(p).forEach((q, i) => {
-      const hs = new Set(ws.map((w) => w.h[i]));
+      const hs = new Set(ws.map((w) => w.heard[i]));
       const said = `${j(NAMES[q.by], "이", "가")} 전한 ${NAMES[q.who]}의 말`;
       if (hs.size === 1 && hs.has(true)) lines.push(`${j(said, "은", "는")} 정말 ${j(NAMES[q.who], "이", "가")} 한 말이었다.`);
       else if (hs.size === 1) lines.push(`${j(said, "은", "는")} 지어낸 말이었다.`);
@@ -135,48 +179,10 @@
     return lines;
   }
 
-  function explainRight(p, ws) {
-    if (p.mode) return explainRightVH(p, ws);
-    const order = (xs) => [...xs].sort((a, b) => p.speakers.indexOf(a) - p.speakers.indexOf(b));
-    const fc = Core.falseCards(p, ws[0]);
-    const lines = ["틀린 말을 한 카드: " + (fc.length ? fc.map((x) => NAMES[x]).join(", ") : "없음")];
-    if (p.magic.includes("anan")) {
-      const bs = new Set(ws.map((w) => w.b));
-      if (bs.size === 1) lines.push(`${j(NAMES[[...bs][0]], "은", "는")} 안안에게 세뇌당해 제멋대로 말했을 뿐, 거짓말쟁이가 아니다.`);
-      else lines.push(`${order(bs).map((x) => NAMES[x]).join(", ")} 중 한 명은 안안에게 세뇌당해 제멋대로 말했을 뿐, 거짓말쟁이가 아니다. 누구인지는 말만으로는 알 수 없다.`);
-    }
-    if (p.magic.includes("margo")) {
-      const ms = new Set(ws.map((w) => w.m));
-      if (ms.size === 1 && ms.has(null)) lines.push("마고는 아무의 흉내도 내지 않았다.");
-      else if (ms.size === 1) lines.push(`${NAMES[[...ms][0]]} 이름으로 나온 말은 사실 마고의 흉내였다.`);
-      else lines.push("마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.");
-    }
-    if (p.magic.includes("miria")) {
-      const ss = new Set(ws.map((w) => w.s));
-      if (ss.size === 1 && ss.has(null)) lines.push("미리아는 아무와도 뒤바뀌지 않았다.");
-      else if (ss.size === 1) lines.push(`미리아와 ${j(NAMES[[...ss][0]], "은", "는")} 영혼이 뒤바뀌어 있었다.`);
-      else lines.push("미리아가 누구와 뒤바뀌었는지(뒤바뀌었는지 아닌지도)는 말만으로는 정해지지 않는다.");
-      const s = ss.size === 1 ? [...ss][0] : null;
-      for (const x of fc) {        // 연기: 거짓말쟁이가 자기 영혼이 아닌 말투로 말했다
-        const k = Core.voiceOf(p.statements[x], x);
-        if (k !== x) lines.push(`${NAMES[x]} 카드의 ${NAMES[k]} 말투는 연기였다.`);
-        else if (ss.size === 1 && Core.soulIn(x, s) !== x) {
-          lines.push(`${NAMES[x]} 카드는 ${NAMES[x]}의 몸에 든 ${j(NAMES[Core.soulIn(x, s)], "이", "가")} ${NAMES[x]}인 척 말한 것이었다.`);
-        }
-      }
-    }
-    if (!p.magic.length) lines[0] = lines[0].replace("틀린 말을 한 카드", "거짓말을 한 사람");
-    lines.push(`범인: ${NAMES[ws[0].c]}`);
-    return lines;
-  }
-
-  // 규칙 칸의 마법 상자. 아주 어려움은 환시·천리안 말이 있을 때 그 안내.
+  // 규칙 칸의 마법 상자: 마법 규칙 + 환시·천리안 말이 있으면 그 안내.
   function magicView(q) {
-    let ids = q.magic_ids;
-    if (q.mode) {
-      const kinds = new Set(q.speakers.flatMap((s) => q.logic[s].map((st) => st[0])));
-      ids = [["nanoka", "vision"], ["coco", "alibi"]].filter(([, k]) => kinds.has(k)).map(([x]) => x);
-    }
+    const kinds = new Set(q.speakers.flatMap((s) => q.logic[s].map((st) => st[0])));
+    const ids = q.magic_ids.concat([["nanoka", "vision"], ["coco", "alibi"]].filter(([, k]) => kinds.has(k)).map(([x]) => x));
     return ids.map((x) => ({ who: NAMES[x], name: K.magic[x].name, text: K.magic[x].text }));
   }
 
@@ -199,7 +205,7 @@
                  says: render(q.logic[s], s, inc) };
       }),
       answer: q.answer, why_not: whyNot, solution: explainRight(p, ws),
-      false_cards: q.false_cards ? q.false_cards.slice() : null, worlds: ws.length, logic: q.logic, magic_ids: q.magic_ids.slice(),
+      false_says: Core.falseSays(ws), worlds: ws.length, logic: q.logic, magic_ids: q.magic_ids.slice(),
     };
     if (q.seed !== undefined) out.seed = q.seed;
     return out;
@@ -222,7 +228,7 @@
     intro: "감옥 저택에서 '올바르지 않은' 일들이 일어나고 있다. 이를 바로잡는 건 바로 나, 니카이도 히로. 소녀들의 말 중 몇 개는 거짓이다. 말들이 모두 맞아떨어지는 경우는 하나뿐이니, 그 경우의 범인을 찾아 판결하자.",
     noticeHtml: [
       "<b>비공식 팬메이드</b> 작품입니다. 공식 이미지·음성·텍스트는 쓰지 않았고, 사건과 대사는 원작 대사를 옮기지 않고 새로 썼습니다.",
-      "<b>AI 이용</b>: 프로그래밍(퍼즐 생성기, 정답 검산, 화면)은 AI(Claude)의 도움을 받아 만들었습니다. 일부 대사와 문구도 AI의 도움을 받아 썼습니다.",
+      "<b>AI 이용</b>: 프로그래밍(퍼즐 생성기, 정답 검산, 화면)과 일부 문구(규칙·해설·안내 등)는 AI(Claude)의 도움을 받았습니다.",
       "원작의 줄거리는 다루지 않지만, 캐릭터와 마법(히로의 마법 포함) 등 원작 설정이 나오므로 <b>스포일러에 주의</b>해 주세요.",
     ],
     noticeJa: "非公式のファンメイド作品・ネタバレあり・AI利用",
@@ -230,8 +236,8 @@
     tierNote: {
       easy: "용의자 3~4명, 거짓말쟁이 1명. 마법 없음",
       normal: "마법 규칙이 하나 붙는다",
-      hard: "용의자가 늘고, 말에 대한 말과 마법이 섞인다",
-      veryhard: "정직한 사람·거짓말쟁이·트롤러, 말이 둘인 사람, 전해 들은 말. 수를 숨기는 판도 있다",
+      hard: "용의자가 늘고, 말에 대한 말과 마법이 섞인다. 나노카의 환시, 코코의 천리안도 나온다",
+      veryhard: "트롤러가 따로 있고 말이 둘인 사람, 전해 들은 말이 나온다. 마법은 전부, 수를 숨기는 판도 있다",
     },
     tutorialTitle: "튜토리얼",
     tutorialDesc: "처음이라면 여기부터. 무엇을 누르면 되는지 한 판으로 알려 준다.",
@@ -263,7 +269,7 @@
     ruleLiarsHtml: (n) => `이 중 딱 <strong>${n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.`,
     // 아주 어려움: 수를 알려 주는 판(shown)과 숨기는 판(hidden)
     ruleRolesHtml: (q) => (q.mode === "shown"
-      ? `이 중 딱 <strong>${q.n}명</strong>이 거짓말쟁이, <strong>${q.t}명</strong>이 트롤러다. `
+      ? `이 중 딱 <strong>${q.n}명</strong>이 거짓말쟁이, <strong>${q.t + (q.magic_ids.includes("anan") ? 1 : 0)}명</strong>이 트롤러다${q.magic_ids.includes("anan") ? "(안안에게 세뇌당한 사람 포함)" : ""}. `
       : "거짓말쟁이와 트롤러가 몇 명인지는 모른다. 다만 <strong>정직한 사람이 과반</strong>이다. ")
       + "거짓말쟁이의 말은 전부 틀리고, 트롤러의 말은 맞든 틀리든 상관없고, 정직한 사람의 말은 전부 맞다.",
     ruleHearsay: "잘 들리지 않은 말은 다른 사람이 전해 준다. 전한 사람이 정직하면 정말 그렇게 말한 것이고(그 말의 맞고 틀림은 원래 말한 사람 몫), 거짓말쟁이가 전했다면 그런 말은 없었던 것이다. 트롤러가 전한 말은 알 수 없다.",
@@ -282,7 +288,8 @@
     hiroRule: "판결이 틀리면 히로는 그날 아침으로 돌아간다. 돌아와도 기억은 남는다. 스스로 되감아서 범인이 아닌 사람 하나를 알아 올 수도 있다. 돌아온 횟수는 판결 기록에 남는다.",
     magicTag: (m) => `마법 규칙 · ${m.who}의 ${m.name}`,
     written: "필담",
-    markFalse: "틀린 말",
+    marks: { t: "진실", f: "거짓", r: "트롤러" },
+    markLabel: (name, m, on) => `${name}의 카드에 「${m}」 표시${on ? " (켜짐)" : ""}`,
     accuse: "범인으로 지목",
     notCulprit: "범인 아님",
     memory: (t) => `회귀의 기억: ${t}`,
@@ -301,7 +308,7 @@
     judgeIdle: "범인을 고르면 판결할 수 있다",
     accusation: (name) => `「${name}, 네가 바로 이 사건의 범인이다.」`,
     rewind: "되감는다: 범인이 아닌 사람 하나를 알아 온다",
-    tally: (r, m) => `회귀 ${r}번 · 틀린 말 표시 ${m}개`,
+    tally: (r, m) => `회귀 ${r}번 · 카드 표시 ${m}개`,
     clockLabel: "걸린 시간",
     stamp: "판결",
     hiro: "니카이도 히로",
@@ -312,18 +319,18 @@
     hiroRewind: "알아낸 사실을 기억해 두자. 이번에야말로 올바른 답에 도달하겠다.",
     wrongTitle: "옳지 않은 판결이었다.",
     wrongRecord: (n) => `회귀 ${n}번째. 틀린 판결의 기억은 남아 있다.`,
-    hiroWrong: "…내 판결이 틀렸어. 다시 한다.",      // 임시(Claude). 원작 대사와 겹치지 않는 사용자 문장으로 바꿀 것
+    hiroWrong: "...내가... 올바르지 않았어. 되돌아가서 바로잡아야 해.",
     next: { random: "같은 난이도로 하나 더", daily: "지난 재판 목록으로", fixed: "다음 사건", tutorial: "쉬움 1번으로", last: "사건 기록으로" },
     footer: [
       "『魔法少女ノ魔女裁判』의 비공식 2차창작 팬게임 데모입니다. 원작의 권리는 원작자에게 있습니다.",
       "퍼즐은 프로그램이 만듭니다. 사건 기록의 퍼즐은 답(범인)이 하나뿐인지 두 가지 방법으로 검산했고, 무작위 재판은 만들 때마다 전수 조사로 확인합니다.",
-      "프로그래밍은 AI(Claude)의 도움을 받아 진행했습니다.",
+      "프로그래밍과 일부 문구는 AI(Claude)의 도움을 받았습니다.",
     ],
     // 튜토리얼 판에서만 각 구역 앞에 나오는 안내(순서대로 읽는다)
     guide: {
       incident: "사건과 피해자의 한마디. 이번에 풀 사건이다.",
       rules: "규칙. 이 판은 거짓말쟁이가 딱 1명이다. 거짓말쟁이와 범인은 다를 수 있다. 붉은 칸은 히로의 마법, 누런 칸은 소녀들의 마법 규칙이다(이 판에는 없다).",
-      cards: "용의자들의 말. 「틀린 말」은 거짓 같은 말에 줄을 긋는 메모용이라 정답에 영향이 없다. 범인 같은 사람에게 「범인으로 지목」을 누른다.",
+      cards: "용의자들의 말. 「진실」·「거짓」(트롤러가 나오는 판에는 「트롤러」도)은 카드에 해 두는 표시라 정답에 영향이 없다. 범인 같은 사람에게 「범인으로 지목」을 누른다.",
       notebook: "히로의 수첩에서 가정해 본다. 예: 에마가 범인이라면 에마의 말(셰리가 먹었다) ×, 셰리의 말(에마는 안 먹었다) ×, 코코의 말(범인은 에마) ○. × 가 2개인데 거짓말쟁이는 1명이어야 하니, 에마는 범인이 아니다. 셰리와 코코의 열도 채워 보자.",
       bar: "범인을 골랐으면 아래의 판결 버튼을 누른다. 틀려도 끝나지 않는다. 히로가 그날 아침으로 돌아가고 회귀가 1번 늘 뿐이다. 막히면 「되감는다」로 범인이 아닌 사람 하나를 알아 올 수 있다.",
     },

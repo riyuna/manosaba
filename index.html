@@ -191,7 +191,13 @@ a { color: var(--blood-ink); }
 .card .num { color: var(--brass); font-size: 15px; flex: none; }
 .card .unheard { margin: 0; color: var(--muted); font-style: italic; }
 .card .via.voice { color: var(--brass); border-color: rgba(201, 171, 112, .45); }
-.card.marked blockquote, .card.marked .unheard { text-decoration: line-through; text-decoration-color: var(--blood-ink); text-decoration-thickness: 2px; color: var(--muted); }
+.card.m-f blockquote, .card.m-f .unheard { text-decoration: line-through; text-decoration-color: var(--blood-ink); text-decoration-thickness: 2px; color: var(--muted); }
+.card.m-t { border-color: rgba(134, 207, 165, .6); }
+.card.m-t .plate { border-bottom-color: rgba(134, 207, 165, .35); }
+.card.m-r { border-style: dashed; border-color: var(--brass); }
+.card.m-r blockquote { color: var(--muted); font-style: italic; }
+.chip.mark-t[aria-pressed="true"] { border-color: var(--ok); color: var(--ink); background: rgba(134, 207, 165, .14); }
+.chip.mark-r[aria-pressed="true"] { border-color: var(--brass); color: var(--ink); background: var(--brass-dim); }
 .card.accused { border-color: var(--blood); box-shadow: 0 0 0 1px var(--blood) inset, 0 0 24px rgba(181, 45, 67, .25); }
 .card.cleared { opacity: .55; }
 .card .hint { font-size: 14px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; }
@@ -336,7 +342,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     return views[k];
   }
 
-  const fresh = () => ({ marks: [], culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false,
+  const fresh = () => ({ marks: {}, culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false,
                          startedAt: Date.now(), elapsed: null });
 
   function openPuzzle(id, date) {
@@ -504,12 +510,14 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   function puzzleView() {
     const { q, p } = current();
     const index = state.random || state.date || q.tier === "tutorial" ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
+    // 카드 표시: 진실(t) / 거짓(f) / 트롤러(r, 트롤러가 나올 수 있는 판에만). 메모용이라 정답과 상관없다
+    const markKinds = q.tier === "veryhard" || q.magic_ids.includes("anan") ? ["t", "f", "r"] : ["t", "f"];
     const cards = p.suspects.map((s) => {
-      const marked = state.marks.includes(s.id);
+      const mark = state.marks[s.id] || "";
       const accused = state.culprit === s.id;
       const known = state.memory.includes(s.id);
       return `
-        <article class="card ${marked ? "marked" : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}">
+        <article class="card ${mark ? "m-" + mark : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}">
           <header class="plate">
             <span class="who">${esc(s.full)}${s.voice ? `<span class="via voice">${esc(T.voiceBadge(s.voice))}</span>` : ""}${s.written ? `<span class="via">${esc(T.written)}</span>` : ""}</span>
           </header>
@@ -517,7 +525,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
             <div class="line">${s.says.length > 1 ? `<span class="num" aria-hidden="true">${T.num(i)}</span>` : ""}<blockquote class="say ${s.written ? "written" : ""}">${esc(t)}</blockquote></div>`).join("")
             : `<p class="unheard">${esc(T.unheard)}</p>`}</div>
           <div class="acts">
-            <button class="chip" data-mark="${s.id}" data-k="mark:${s.id}" aria-pressed="${marked}">${esc(T.markFalse)}</button>
+            ${markKinds.map((m) => `<button class="chip mark-${m}" data-mark="${s.id}" data-mk="${m}" data-k="mark:${s.id}:${m}" aria-pressed="${mark === m}"
+              aria-label="${esc(T.markLabel(s.name, T.marks[m], mark === m))}">${esc(T.marks[m])}</button>`).join("")}
             <button class="chip" data-accuse="${s.id}" data-k="accuse:${s.id}" aria-pressed="${accused}" ${state.solved || known ? "disabled" : ""}>${esc(known ? T.notCulprit : T.accuse)}</button>
           </div>
           ${known ? `<div class="hint">${esc(T.memory(p.why_not[s.id]))}</div>` : ""}
@@ -540,9 +549,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       ${dialog(p.victim.name, p.victim.line, p.victim.written)}
       ${guide(q, 2, "rules")}
       <div class="rules">
-        <p class="rule">${q.mode ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n)}</p>
+        <p class="rule">${q.tier === "veryhard" ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n)}</p>
         <p class="rule">${esc(T.ruleCulprit)}</p>
-        ${q.mode && CORE.reports(CORE.problem(q)).length ? `<p class="rule">${esc(T.ruleHearsay)}</p>` : ""}
+        ${CORE.reports(CORE.problem(q)).length ? `<p class="rule">${esc(T.ruleHearsay)}</p>` : ""}
         ${self ? `<p class="rule">${esc(self)}</p>` : ""}
         <div class="magic hiro"><span class="tag">${esc(T.hiroTag)}</span><span>${esc(T.hiroRule)}</span></div>
         ${magic}
@@ -556,7 +565,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         <button class="btn" data-judge="1" data-k="judge" ${!state.culprit || state.solved ? "disabled" : ""}>
           ${esc(culpritName ? T.accusation(culpritName, p) : T.judgeIdle)}</button>
         <button class="btn rewind" data-rewind="1" data-k="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>${esc(T.rewind)}</button>
-        <span class="tally">${esc(T.tally(state.rewinds, state.marks.length))} · ${esc(T.clockLabel)} <span id="clock">${esc(T.duration((state.elapsed ?? (Date.now() - state.startedAt))))}</span></span>
+        <span class="tally">${esc(T.tally(state.rewinds, Object.keys(state.marks).length))} · ${esc(T.clockLabel)} <span id="clock">${esc(T.duration((state.elapsed ?? (Date.now() - state.startedAt))))}</span></span>
       </div>
       ${verdictView(p)}
       ${state.solved ? `<div class="bar"><button class="btn" data-next="1">${esc(nextLabel)}</button></div>` : ""}
@@ -629,8 +638,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     const { q, p } = cur;
     if (!ds.clearNote) state.confirmClear = false;
     if (ds.mark) {
-      const i = state.marks.indexOf(ds.mark);
-      if (i >= 0) state.marks.splice(i, 1); else state.marks.push(ds.mark);
+      if (state.marks[ds.mark] === ds.mk) delete state.marks[ds.mark]; else state.marks[ds.mark] = ds.mk;
     } else if (ds.accuse && !state.solved) {
       state.culprit = state.culprit === ds.accuse ? null : ds.accuse;
       if (state.verdict && !state.verdict.right) state.verdict = null;
@@ -702,7 +710,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   const start = (data) => {
     const s = data && data.state;
     if (s && (s.view === "home" || s.view === "archive" || s.view === "loading")) state = s.view === "loading" ? { view: "home" } : s;
-    else if (s && s.view === "puzzle" && Array.isArray(s.memory) && (s.random || findLogic(s.id))) state = { ...fresh(), ...s };
+    else if (s && s.view === "puzzle" && Array.isArray(s.memory) && (s.random || findLogic(s.id))) {
+      state = { ...fresh(), ...s };
+      if (Array.isArray(state.marks)) state.marks = Object.fromEntries(state.marks.map((id) => [id, "f"]));   // 예전 판: 「틀린 말」만
+    }
     render();
   };
   if (window.claude?.hot?.ready) window.claude.hot.ready(start); else start(window.claude?.hot?.data ?? {});
