@@ -1,4 +1,4 @@
-// 「작은 재판」 무작위 재판 생성기. tools/gen_puzzles.py 의 규칙을 JS로 옮긴 것이다.
+// 「감옥저택의 번외재판」 무작위 재판 생성기. tools/gen_puzzles.py 의 규칙을 JS로 옮긴 것이다.
 // 데이터(이름·사건·마법·난이도)는 puzzles.js 의 gen 에서 읽는다. 규칙을 고치면 두 파일을 같이 고칠 것.
 // 퍼즐로 내는 조건도 같다: 범인이 하나, 틀린 카드도 하나로 정해지고, 마법이 있으면 마법을 빼고는 같은 답이 안 나온다.
 // 검산: node tools/sample_random.js > out.json && python tools/check_puzzles.py --file out.json
