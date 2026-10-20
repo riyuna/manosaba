@@ -144,6 +144,7 @@ a { color: var(--blood-ink); }
 .btn:disabled { opacity: .35; cursor: not-allowed; filter: none; }
 .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 .btn.ghost:hover { border-color: var(--brass); }
+.btn.small { padding: 6px 14px; font-size: 14px; }
 .btn.rewind { background: transparent; color: var(--blood-ink); border-color: var(--blood); }
 
 /* 사건 */
@@ -363,10 +364,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   const TIERS = ["easy", "normal", "hard", "veryhard"];
   let state = { view: "home" };
 
-  const isTutorial = (q) => q.id === "tutorial" || q.id === "tutorial-veryhard";
+  const isTutorial = (q) => q.id.startsWith("tutorial");
   function findLogic(id) {
-    if (id === "tutorial") return DATA.tutorial;
-    if (id === "tutorial-veryhard") return DATA.tutorial_vh;
+    if (id.startsWith("tutorial")) return DATA.tutorials.find((p) => p.id === id);
     for (const t of Object.values(DATA.tiers)) for (const p of t) if (p.id === id) return p;
     return DATA.daily.find((p) => p.id === id);
   }
@@ -467,8 +467,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           <div>${esc(T.tutorialDesc)}</div>
         </div>
         <div class="bar">
-          ${T.tutorials.map((t) => `<button class="btn ghost" data-open="${t.id}">${esc(t.label)}${findLogic(t.id).key in done ? ` <span class="done-mark">· ${esc(T.tutorialDone)}</span>` : ""}</button>`).join("")}
-          <button class="btn ghost" data-book="1">${esc(T.rulebookTitle)}</button>
+          ${T.tutorials.map((t) => `<button class="btn ghost small" data-open="${t.id}">${esc(t.label)}${findLogic(t.id).key in done ? ` <span class="done-mark">· ${esc(T.tutorialDone)}</span>` : ""}</button>`).join("")}
+          <button class="btn small" data-book="1">${esc(T.rulebookTitle)}</button>
         </div>
       </section>
       <div class="tiers">${tiers}</div>` + footer();
@@ -505,7 +505,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   // 튜토리얼 판에서만 나오는 순서 안내
   function guide(q, step, key) {
     if (!isTutorial(q)) return "";
-    return `<div class="guide"><span class="step" aria-hidden="true">${step}</span><p>${esc(T.guide[q.id][key])}</p></div>`;
+    return `<div class="guide"><span class="step" aria-hidden="true">${step}</span><p>${esc(T.guide[q.id][key] || T.guide.common[key])}</p></div>`;
   }
 
   const nameOf = (p, id) => p.suspects.find((s) => s.id === id).name;
@@ -549,6 +549,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       <p>${esc(T.ruleCulprit)}</p>
       ${CORE.reports(CORE.problem(q)).length ? `<p>${esc(T.ruleHearsay)}</p>` : ""}
       ${self ? `<p>${esc(self)}</p>` : ""}
+      ${T.nickWords(q) ? `<p>${esc(T.nickWords(q))}</p>` : ""}
       <p>${links.length ? `${esc(T.magicIntro)} ${links.join(" · ")}` : esc(T.noMagic)}</p>`;
   }
 
@@ -618,7 +619,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     }).join("");
     const culpritName = state.culprit ? nameOf(p, state.culprit) : null;
     const unknown = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id)).length;
-    const nextLabel = state.random ? T.next.random : state.date ? T.next.daily : isTutorial(q) ? T.next[q.id]
+    const tutNext = isTutorial(q) && q.id !== "tutorial" ? T.tutorials[T.tutorials.findIndex((t) => t.id === q.id) + 1] : null;
+    const nextLabel = state.random ? T.next.random : state.date ? T.next.daily
+      : q.id === "tutorial" ? T.next.tutorial : isTutorial(q) ? (tutNext ? T.next.tutorialNext(tutNext.label) : T.next.tutorialLast)
       : DATA.tiers[q.tier][index] ? T.next.fixed : T.next.last;
     app.innerHTML = `
       <div class="case-top">
@@ -754,7 +757,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       if (state.random) return openRandom(q.tier);
       if (state.date) { state = { view: "archive" }; render(); window.scrollTo({ top: 0 }); return; }
       if (q.id === "tutorial") return openPuzzle(DATA.tiers.easy[0].id);
-      if (q.id === "tutorial-veryhard") return openPuzzle(DATA.tiers.veryhard[0].id);
+      if (isTutorial(q)) {          // 심화 튜토리얼은 다음 심화로, 마지막은 아주 어려움 1번으로
+        const nextTut = T.tutorials[T.tutorials.findIndex((t) => t.id === q.id) + 1];
+        return openPuzzle(nextTut ? nextTut.id : DATA.tiers.veryhard[0].id);
+      }
       const list = DATA.tiers[q.tier];
       const next = list[list.indexOf(q) + 1];
       if (next) return openPuzzle(next.id);
