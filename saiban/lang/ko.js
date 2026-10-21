@@ -32,6 +32,9 @@
                     sawayo: "이와요", eum: "임", nora: b ? "이로다" : "로다" }[style];
   }
 
+  // 「나」·「저」를 주어로: 내가·제가, 그 밖에는 이/가.
+  const subject = (self) => ({ 나: "내가", 저: "제가" })[self] || j(self, "이", "가");
+
   // 말하는 사람(말투 v)이 x 를 부르는 말.
   function call(v, x) {
     if (v.nick && v.nick[x]) return v.nick[x];                    // 호칭표의 별명(코코의 「히키」 등)
@@ -67,10 +70,12 @@
         core = v.self === who ? `사실 ${copula(who, sty)}` : `사실 ${me} ${copula(who, sty)}`;
         break;
       }
-      case "swap_deny":
-        core = x === "miria" ? `${me} 아무와도 영혼이 ${conj("안 바뀌었어", sty)}`
-          : `${me} ${j(nm("miria"), "과", "와")} 영혼이 ${conj("안 바뀌었어", sty)}`;
+      case "swap_deny": {           // 「진짜 아저씨는 이쪽이야」(사용자 예시) / 「제가 진짜 한나이와요!」
+        const who = NAMES[x];
+        core = x === "miria" ? `진짜 ${me} ${copula("이쪽", sty)}`
+          : v.self === who ? `진짜 ${copula(who, sty)}` : `${subject(v.self)} 진짜 ${copula(who, sty)}`;
         break;
+      }
       case "role_is": core = `${j(nm(args[0]), "은", "는")} ${copula(role(args[1]), sty)}`; break;
       case "culprit_role": core = `${j(role(args[0]), "이", "가")} ${copula("범인", sty)}`; break;
       case "count_is": {
@@ -82,14 +87,15 @@
       case "alibi":
         core = `천리안으로 봤는데, 그때 ${j(nm(args[0]), "이랑", "랑")} ${j(nm(args[1]), "은", "는")} 다른 곳에서 내 방송을 보고 ${conj("있었어", sty)}`;
         break;
-      case "on_air": return "당연히 나도 그때 방송하고 있었으니까 범인은 아니라구!";   // 사용자 문장. 코코만 한다
       case "hearsay": core = `${j(nm(args[0]), "은", "는")} '${say(args[1], args[0], args[0], inc, true)}'라고 ${conj("했어", sty)}`; break;
       default: throw new Error(kind);
     }
     if (v.stutter) core = `${core[0]}, ${core}`;
     const end = (v.endk && dk in v.endk) ? v.endk[dk] : v.end;
     if (plain) return core + end;
-    return ((v.pre && v.pre[dk]) || "") + core + end + ((v.post && v.post[dk]) || "");
+    let out = ((v.pre && v.pre[dk]) || "") + core + end + ((v.post && v.post[dk]) || "");
+    if (kind === "alibi") out += (/[.!?~…]$/.test(out) ? " " : ". ") + K.on_air;    // 코코의 「나도 방송 중」은 천리안 말의 일부다
+    return out;
   }
 
   // 카드 하나의 말들. 카드의 말투 주인의 말투로 쓴다.
@@ -103,8 +109,11 @@
   function magicTail(p) {
     const parts = [];
     if (p.magic.includes("anan")) parts.push("안안의 세뇌를 누구에게 걸었다고 해도");
-    if (p.magic.includes("margo")) parts.push("마고가 누구 흉내를 냈다고 해도");
-    if (p.magic.includes("miria")) parts.push("미리아가 누구와 뒤바뀌었다고 해도");
+    if (p.magic.includes("margo")) parts.push("마고가 누구 흉내를 냈든 안 냈든");
+    if (p.magic.includes("miria")) {
+      const pair = Core.swapPair(p);
+      parts.push(pair ? `미리아와 ${j(NAMES[pair], "이", "가")} 뒤바뀌었든 아니든` : "미리아가 누구와 뒤바뀌었든 아니든");
+    }
     return parts.length ? ` (${parts.join(", ")})` : "";
   }
 
@@ -158,20 +167,14 @@
       const ms = new Set(ws.map((w) => w.m));
       if (ms.size === 1 && ms.has(null)) lines.push("마고는 아무의 흉내도 내지 않았다.");
       else if (ms.size === 1) lines.push(`${NAMES[[...ms][0]]} 이름으로 나온 말은 사실 마고의 흉내였다.`);
-      else lines.push("마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.");
+      else if (ms.has(null)) lines.push("마고가 누구 흉내를 냈는지(냈는지 아닌지도)는 말만으로는 정해지지 않는다.");
+      else lines.push("마고가 흉내를 낸 것은 맞지만, 누구 흉내였는지는 말만으로는 정해지지 않는다.");
     }
     if (magic.includes("miria")) {
       const ss = new Set(ws.map((w) => w.s));
       if (ss.size === 1 && ss.has(null)) lines.push("미리아는 아무와도 뒤바뀌지 않았다.");
       else if (ss.size === 1) lines.push(`미리아와 ${j(NAMES[[...ss][0]], "은", "는")} 영혼이 뒤바뀌어 있었다.`);
       else lines.push("미리아가 누구와 뒤바뀌었는지(뒤바뀌었는지 아닌지도)는 말만으로는 정해지지 않는다.");
-      for (const x of sp) {        // 연기: 어느 세계에서나 자기 영혼이 아닌 말투로 말했다(정직한 사람은 못 한다)
-        const k = Core.voiceOf(st[x], x);
-        const souls = new Set(ws.map((w) => Core.soulIn(x, w.s)));
-        if (!st[x].length || souls.has(k)) continue;
-        if (k !== x) lines.push(`${NAMES[x]} 카드의 ${NAMES[k]} 말투는 연기였다.`);
-        else if (souls.size === 1) lines.push(`${NAMES[x]} 카드는 ${NAMES[x]}의 몸에 든 ${j(NAMES[[...souls][0]], "이", "가")} ${NAMES[x]}인 척 말한 것이었다.`);
-      }
     }
     Core.reports(p).forEach((q, i) => {
       const hs = new Set(ws.map((w) => w.heard[i]));
@@ -457,13 +460,13 @@
       },
       "tutorial-miria": {
         incident: "심화 3: 미리아의 뒤바뀜.",
-        ledger: "거짓말쟁이는 1명. 미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 영혼은 자기 말투로 말하고, 정직한 사람은 언제나 자기 영혼의 말투로 말한다. 맞고 틀림도 범인도 몸(카드 이름) 기준이다. 「뒤바뀜」 책갈피를 읽어 보자.",
-        cards: "에마 카드에 「미리아의 말투」 표시가 붙었다. 「사실 아저씨는 미리아야」는 이 몸에 든 건 사실 미리아라는 주장이다. 이 카드의 「아저씨」(나)는 지금 에마의 몸에 든 미리아라서, 「아저씨는 낙서 안 했어」는 에마 카드가 범인이 아니라는 말이다. 그리고 미리아의 「셰리는 안 했다」와 메루루의 「범인은 셰리」는 동시에 맞을 수 없다.",
-        grid: "거짓말쟁이는 미리아 카드와 메루루 카드 중 하나다. 그러면 에마 카드는 정직하고, 미리아와 에마는 정말 뒤바뀌어 있다. 그렇다면 미리아의 몸에는 에마의 영혼이 들어 있는데, 미리아 카드는 미리아의 말투로 말한다. 정직한 사람은 그럴 수 없으니…",
+        ledger: "거짓말쟁이는 1명. 미리아는 다른 한 사람과 영혼이 뒤바뀌어 있을 수도, 아닐 수도 있다. 뒤바뀜에 대한 말은 실제로 그럴 때만 맞고, 말투는 증거가 아니다. 그 밖의 것(맞고 틀림, 범인)은 모두 카드 기준이다. 「뒤바뀜」 책갈피를 읽어 보자.",
+        cards: "미리아 카드는 에마의 말투로 「사실 나는 에마야」라고 하고, 에마 카드는 「내가 진짜 에마야」라고 한다. 바뀌어 있든 아니든 둘 중 하나만 맞으니, 거짓말쟁이는 미리아 카드와 에마 카드 중 하나다. 거짓말쟁이는 1명뿐이니 셰리와 메루루는 정직하다.",
+        grid: "메루루가 정직하니 범인은 메루루의 말대로다. 그렇다면 미리아 카드의 「셰리쨩은 낙서 안 했어」는 맞을까? 정직한 사람은 맞는 말만 한다는 걸 떠올리면, 미리아와 에마가 정말 뒤바뀌어 있었는지도 알 수 있다.",
       },
       "tutorial-sight": {
         incident: "심화 4: 나노카의 환시와 코코의 천리안. 이 둘은 규칙을 바꾸지 않고, 특별한 증언으로 나온다.",
-        ledger: "거짓말쟁이는 1명. 「환시」와 「천리안」 책갈피를 펼쳐 보자. 환시는 범인을 몇 명으로 좁혀 주고, 천리안은 다른 곳에서 코코의 생방송을 보던 사람을 알려 준다. 방송 중이던 코코는 「나도 방송하고 있었으니 범인이 아니다」라는 말도 함께 한다. 모두 말한 사람이 정직할 때만 맞다. 코코가 부르는 별명은 「이번 재판」에 누구인지 적혀 있다.",
+        ledger: "거짓말쟁이는 1명. 「환시」와 「천리안」 책갈피를 펼쳐 보자. 환시는 범인을 몇 명으로 좁혀 주고, 천리안은 다른 곳에서 코코의 생방송을 보던 사람을 알려 준다. 코코의 천리안 말은 「그 사람들과 방송 중이던 나(코코)는 범인이 아니다」라는 말 하나다. 모두 말한 사람이 정직할 때만 맞다. 코코가 부르는 별명은 「이번 재판」에 누구인지 적혀 있다.",
         cards: "에마의 「범인은 나노카」와 셰리의 「나노카는 안 섞었다」는 동시에 맞을 수도, 동시에 틀릴 수도 없다. 그러니 둘 중 한 명이 거짓말쟁이고, 나머지는 모두 정직하다.",
         grid: "나노카와 코코는 정직하다. 환시가 말한 셋 중에서, 천리안으로 다른 곳에 있었던 사람과 방송 중이던 코코를 빼 보자.",
       },

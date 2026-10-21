@@ -55,7 +55,7 @@
     switch (kind) {
       case "accuse": case "culprit_is": return c === args[0];
       case "deny": return c !== args[0];
-      case "deny_self": case "on_air": return c !== x;     // on_air: 코코의 「나도 그때 방송하고 있었으니까 범인은 아니라구!」
+      case "deny_self": return c !== x;
       case "either": return args.includes(c);
       case "self_or": return c === x || c === args[0];
       case "meta_false": return !w.truth(args[0]).some((v) => v);    // 그 카드의 말이 전부 틀렸다
@@ -67,25 +67,26 @@
       case "culprit_role": return w.role[c] === args[0];
       case "count_is": return Object.values(w.role).filter((r) => r === args[0]).length === args[1];
       case "vision": return args.includes(c);             // 환시: 범인은 이 중 하나
-      case "alibi": return !args.includes(c);             // 천리안: 이 사람들은 다른 곳에 있었다
+      case "alibi": return !args.includes(c) && c !== x;  // 천리안: 말에 나온 사람들과 방송 중이던 코코(이 카드)는 범인이 아니다
       case "hearsay": return w.heard[args[0]];            // args[0] 이 정말 그 말을 했다
     }
     throw new Error(kind);
   }
 
-  // me 카드의 말 하나. avoid: 말에 이름으로 넣지 않을 사람, heard: 전해 들은 말 속에 들어갈 말.
-  function randomStatement(r, me, speakers, spec, metaOk, swapOk, avoid, hidden, heard) {
+  // me 카드의 말 하나. pair: 미리아와 뒤바뀜 이야기가 나오는 상대(그 둘 말고 남이 하는 「둘은 바뀌어 있다」만 여기서 나온다),
+  // avoid: 말에 이름으로 넣지 않을 사람, heard: 전해 들은 말 속에 들어갈 말.
+  function randomStatement(r, me, speakers, spec, metaOk, pair, avoid, hidden, heard) {
     const others = speakers.filter((s) => s !== me && !avoid.includes(s));
     let kinds = ["accuse", "culprit_is", "deny", "deny_self", "either", "self_or"];
     if (metaOk && !heard) kinds = kinds.concat(["meta_false", "meta_true"]);
-    if (swapOk && !heard) kinds = kinds.concat(me === "miria" ? ["swap_deny"] : ["swap_claim", "swap_deny"]);
+    if (pair && me !== "miria" && me !== pair && !heard) kinds = kinds.concat(["swap_claim"]);
     if (spec.roles) kinds = kinds.concat(["role_is", "role_is", "culprit_role"], hidden && !heard ? ["count_is"] : []);
     if (spec.testimony && !heard && !avoid.length) kinds = kinds.concat({ nanoka: ["vision", "vision"], coco: ["alibi", "alibi"] }[me] || []);
     const kind = r.choice(kinds);
-    if (kind === "deny_self" || kind === "swap_deny") return [kind, []];
+    if (kind === "deny_self") return [kind, []];
     if (kind === "either" || kind === "alibi") return [kind, r.sample(others, 2).sort()];
     if (kind === "vision") return [kind, r.sample(others, 3).sort()];
-    if (kind === "swap_claim") return [kind, [r.choice(speakers.filter((x) => x !== "miria" && x !== me))]];   // 거짓 주장도 된다
+    if (kind === "swap_claim") return [kind, [pair]];   // 거짓 주장도 된다
     if (kind === "role_is") return [kind, [r.choice(others), r.choice(["H", "L", "T"])]];
     if (kind === "culprit_role") return [kind, [r.choice(["H", "L", "T"])]];
     if (kind === "count_is") return [kind, [r.choice(["L", "T"]), r.choice([0, 1, 2])]];
@@ -94,6 +95,15 @@
 
   // ---- 세계 = { c 범인, roles 역할 문자열(말한 사람 순서), m 흉내 대상, s 미리아와 뒤바뀐 사람, heard 전해 들은 말이 정말 있었나, F 틀린 말 칸 이름들 } ----
   // p = { tier, speakers, statements, n, t, mode, magic }
+
+  // 뒤바뀜 이야기가 나오는 미리아의 상대. 미리아가 정말 바뀌어 있다면 상대는 이 사람뿐이다(2026-10-21). 없으면 null.
+  function swapPair(p) {
+    for (const x of p.speakers) for (const [kind, args] of p.statements[x]) {
+      if ((kind === "iam" || kind === "swap_deny") && x !== "miria") return x;
+      if (kind === "swap_claim") return args[0];
+    }
+    return null;
+  }
 
   // x 이름으로 나온 말을 실제로 한 사람. 마고의 흉내만 바꾼다(뒤바뀜은 몸 기준이라 그대로).
   const speaker = (x, m) => (x === m ? "margo" : x);
@@ -135,7 +145,8 @@
     const hasMeta = sp.some((x) => st[x].some((q) => q[0].startsWith("meta")));
     const slots = sp.flatMap((x) => st[x].map((_, i) => [x, i]));
     const mimic = magic.includes("margo") ? sp.filter((x) => x !== "margo" && x !== "anan" && st[x].length) : [];   // 안안은 필담
-    const ss = magic.includes("miria") ? [null].concat(sp.filter((x) => x !== "miria")) : [null];
+    const pair = swapPair(p);
+    const ss = magic.includes("miria") ? (pair ? [null, pair] : [null].concat(sp.filter((x) => x !== "miria"))) : [null];
     const out = [];
     for (const roles of roleSets(p)) {
       const role = Object.fromEntries(sp.map((x, i) => [x, roles[i]]));
@@ -144,8 +155,6 @@
         const rOf = Object.fromEntries(sp.map((x) => [x, role[speaker(x, m)]]));
         const trolls = hasMeta ? slots.filter(([x]) => rOf[x] === "T") : [];
         for (const s of ss) {
-          // 정직한 사람은 자기 영혼의 말투로 말한다(흉내 낸 카드는 마고의 연기라 빼고)
-          if (!sp.every((x) => rOf[x] !== "H" || x === m || !st[x].length || soulIn(x, s) === voice[x])) continue;
           for (const c of sp) {
             for (const h of bits(rep.length)) {
               const heard = Object.fromEntries(rep.map((q, i) => [q.who, h[i]]));
@@ -202,6 +211,28 @@
     return new Set(plain.map((w) => w.c)).size === 1 && plain[0].c === culprit;
   }
 
+  // 세계 w 에서 마법 mg 가 실제로 걸렸나. 세뇌는 늘 걸린다.
+  const magicActive = (w, mg) => mg === "anan" || (mg === "margo" && w.m !== null) || (mg === "miria" && w.s !== null);
+
+  // 마법마다 실제로 걸렸나: true(모든 세계에서 걸림) / false(모든 세계에서 안 걸림) / null(말만으로는 모름).
+  function magicUse(p, ws) {
+    const out = {};
+    for (const mg of p.magic) {
+      const act = new Set(ws.map((w) => magicActive(w, mg)));
+      out[mg] = act.size === 1 ? [...act][0] : null;
+    }
+    return out;
+  }
+
+  // 마법이 퍼즐에 맞게 쓰였는가. 걸렸는지 아닌지는 말들로 하나로 정해져야 하고, 실제로 걸린 마법은 빼면(같이 빼도)
+  // 같은 답이 하나로 나오지 않아야 한다. 실제로는 안 걸린 마법은 「걸렸을지도 모른다」를 지워야 하는 함정이다.
+  function magicOk(p, ws) {
+    const use = magicUse(p, ws);
+    if (Object.values(use).includes(null)) return false;
+    const used = p.magic.filter((mg) => use[mg]);
+    return !properSubsets(p.magic).some((rest) => used.some((mg) => !rest.includes(mg)) && solvesWithout(p, ws[0].c, rest));
+  }
+
   const cardKey = (sts) => JSON.stringify(sts);
 
   // 무작위 퍼즐 하나. 같은 (tier, seed)면 같은 퍼즐. 조건을 만족하는 것이 안 나오면 null.
@@ -212,6 +243,10 @@
     const magic = r.choice(spec.magics);    // 마법 조합을 먼저 정한다(조합마다 통과율이 달라 시도마다 고르면 쉬운 조합만 많이 나온다)
     const mode = r.choice(spec.modes);
     const hidden = mode === "hidden";
+    // 흉내·뒤바뀜을 실제로 걸 판인지 먼저 정한다. 마고가 흉내를 안 낸 판은 보통·어려움의 마고 단독에서만
+    // (안안+마고는 거의 안 만들어지고, 아주 어려움은 한 문제에 최대 19초 걸렸다)
+    const want = Object.fromEntries(magic.map((mg) => [mg,
+      mg === "anan" || (mg === "margo" && (magic.includes("anan") || tier === "veryhard")) || r.next() < G.use_p]));
     for (let t = 0; t < maxTries; t++) {
       if (t % 40 === 39) yield null;
       const k = r.choice(spec.sizes);
@@ -222,29 +257,31 @@
       const speakers = r.shuffle(magic.concat(r.sample(pool, k - magic.length)));
       const n = hidden ? null : r.choice(spec.ns);
       const tc = hidden ? null : r.choice(spec.ts);
+      // 미리아: 뒤바뀜 이야기가 나오는 상대 하나. 미리아와 그 상대는 둘 다 뒤바뀜에 대해 한마디씩 한다(2026-10-21 사용자)
+      const pair = magic.includes("miria") ? r.choice(speakers.filter((y) => y !== "miria")) : null;
       const statements = {};
       let metas = 0;
       for (const s of speakers) {
-        let iam = null;
-        if (magic.includes("miria") && r.next() < G.iam_p) {      // 「사실 나는 ○○다」 + 다른 말 하나
-          iam = s !== "miria" ? "miria" : r.choice(speakers.filter((y) => y !== "miria"));
+        let swap = null;
+        if (pair && (s === "miria" || s === pair)) {      // 「사실 나는 ○○다」(주장) 또는 「내가 진짜 ○○다」(부정) + 다른 말 하나
+          swap = r.next() < G.claim_p ? ["iam", [s === "miria" ? pair : "miria"]] : ["swap_deny", []];
         }
+        const claimed = swap && swap[0] === "iam" ? swap[1] : [];
         const sts = [];
-        const m = iam || r.next() >= spec.two ? 1 : 2;
+        const m = swap || r.next() >= spec.two ? 1 : 2;
         for (let i = 0; i < m; i++) {
-          const q = randomStatement(r, s, speakers, spec, metas < spec.meta, magic.includes("miria") && iam === null, iam ? [iam] : [], hidden, false);
+          const q = randomStatement(r, s, speakers, spec, metas < spec.meta, pair, claimed, hidden, false);
           if (q[0].startsWith("meta")) metas++;
           sts.push(q);
         }
-        const alibi = sts.find((q) => q[0] === "alibi");    // 코코의 천리안은 「나도 방송 중이었다」와 한 카드에
-        statements[s] = (iam ? [["iam", [iam]]] : []).concat(alibi ? [alibi, ["on_air", []]] : sts);
+        statements[s] = (swap ? [swap] : []).concat(sts);
       }
       if (r.next() < spec.hearsay) {
-        const a = r.choice(speakers.filter((x) => x !== "anan"));       // 안안은 필담이라 안 들릴 일이 없다
+        const a = r.choice(speakers.filter((x) => x !== "anan" && x !== "miria" && x !== pair));   // 안안은 필담. 뒤바뀜 두 사람은 말이 있어야 한다
         const b = r.choice(speakers.filter((x) => x !== a));
-        const q = ["hearsay", [a, randomStatement(r, a, speakers, spec, false, false, [], hidden, true)]];
+        const q = ["hearsay", [a, randomStatement(r, a, speakers, spec, false, null, [], hidden, true)]];
         statements[a] = [];
-        const keep = (r.next() < 0.5 || statements[b][0][0] === "iam") && statements[b][0][0] !== "alibi";   // 천리안 짝은 안 쪼갠다
+        const keep = r.next() < 0.5 || b === "miria" || b === pair;
         statements[b] = keep ? statements[b].slice(0, 1).concat([q]) : [q];
       }
       const cards = speakers.filter((s) => statements[s].length).map((s) => cardKey(statements[s]));
@@ -254,8 +291,8 @@
       const ws = worlds(p);
       if (!ws.length || new Set(ws.map((w) => w.c)).size !== 1) continue;
       if (spec.unique_false && falseSays(ws) === null) continue;
-      // 마법(의 일부)을 무시해도 같은 답이면 그 마법은 쓰이지 않은 것이다
-      if (properSubsets(magic).some((rest) => solvesWithout(p, ws[0].c, rest))) continue;
+      const use = magicUse(p, ws);
+      if (magic.some((mg) => use[mg] !== want[mg]) || !magicOk(p, ws)) continue;     // 정한 대로 걸리지(안 걸리지) 않았거나 마법이 쓰이지 않는다
       const id = `random-${tier}-${seed}`;
       return {
         id, key: id, tier, seed, incident: inc.id, n, t: tc, mode, speakers: speakers.slice(),
@@ -287,5 +324,5 @@
     });
   }
 
-  root.TrialCore = { make, makeAsync, worlds, liarCounts, falseSays, problem, content, voiceOf, soulIn, reports, slotId };
+  root.TrialCore = { make, makeAsync, worlds, liarCounts, falseSays, problem, content, voiceOf, soulIn, swapPair, reports, slotId };
 })(typeof window !== "undefined" ? window : globalThis);
