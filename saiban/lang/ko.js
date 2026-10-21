@@ -117,16 +117,66 @@
     return parts.length ? ` (${parts.join(", ")})` : "";
   }
 
+  // 키 배열을 앞에서부터 비교해 가장 작은 세계(파이썬 min(key=…)과 같은 순서)
+  const cmp = (a, b) => { for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i] ? -1 : 1; return 0; };
+  const minBy = (xs, key) => xs.reduce((best, x) => (cmp(key(x), key(best)) < 0 ? x : best));
+  const countOf = (roles, r) => roles.split("").filter((x) => x === r).length;
+  const magicN = (w) => (w.m !== null ? 1 : 0) + (w.s !== null ? 1 : 0);
+
+  // 그 세계에서 쓴 마법 가정: 「 (레이아가 세뇌당했고, 미리아와 에마가 뒤바뀌어 있었다고 쳐도)」. 없으면 빈 글.
+  function assumeNote(p, w) {
+    const stems = [];
+    const ts = p.speakers.filter((x, i) => w.roles[i] === "T").map((x) => NAMES[x]);
+    if (p.tier === "veryhard" && ts.length) stems.push(`${j(ts.join(", "), "이", "가")} 변덕쟁이였`);
+    else if (p.magic.includes("anan") && ts.length) stems.push(`${j(ts[0], "이", "가")} 세뇌당했`);
+    if (w.m) stems.push(`${NAMES[w.m]} 카드가 마고의 흉내였`);
+    if (w.s) stems.push(`미리아와 ${j(NAMES[w.s], "이", "가")} 뒤바뀌어 있었`);
+    return stems.length ? ` (${stems.join("고, ")}다고 쳐도)` : "";
+  }
+
+  // c 가 범인이고 미리아의 상대가 s 일 때 두 말 중 하나만 맞는 카드(말에 대한 말이 있는 카드는 빼고).
+  function mixedCards(p, c, s) {
+    return p.speakers.filter((x) => {
+      const sts = p.statements[x];
+      if (sts.length < 2 || sts.some(([k]) => k.startsWith("meta") || k === "hearsay")) return false;
+      return new Set(sts.map((q) => Core.content(q, x, x, { c, role: {}, s, heard: {}, truth: null }))).size === 2;
+    });
+  }
+
+  // 막히는 곳을 짚는다(2026-10-21 사용자). 수를 안 따지면 성립하는 세계가 있으면 거짓말쟁이(정직한 사람) 수가 가장 가까운 것을
+  // 보여 주고, 없으면 정직한 사람도 거짓말쟁이도 될 수 없는 카드(두 말 중 하나만 맞는 카드)를 댄다.
   function explainWrong(p, c) {
     const who = j(NAMES[c], "이", "가");
     const tail = magicTail(p);
-    if (p.tier === "veryhard") {
-      if (p.mode === "shown") return `${who} 범인이라면 거짓말쟁이 ${p.n}명·변덕쟁이 ${p.t + (p.magic.includes("anan") ? 1 : 0)}명으로는 말들을 맞출 수 없다${tail}.`;
-      return `${who} 범인이라면 정직한 사람이 과반(${Math.floor(p.speakers.length / 2) + 1}명 이상)이 되게 말들을 맞출 수 없다${tail}.`;
+    const said = (w) => { const label = falseLabel(p, w.F); return label ? `${label}의 말이 틀려` : "틀린 말이 하나도 없어"; };
+    if (p.tier === "veryhard" && p.mode === "hidden") {
+      const maj = Math.floor(p.speakers.length / 2) + 1;
+      const ws = Core.worlds({ ...p, relax: true }).filter((w) => w.c === c);
+      if (ws.length) {
+        const w = minBy(ws, (w) => [-countOf(w.roles, "H"), magicN(w), w.roles, w.m || "", w.s || ""]);
+        return `${who} 범인이라면 ${said(w)}, 정직한 사람이 ${countOf(w.roles, "H")}명뿐이다${assumeNote(p, w) || tail}. 과반(${maj}명 이상)이어야 해.`;
+      }
+      return `${who} 범인이라면 정직한 사람이 과반(${maj}명 이상)이 되게 말들을 맞출 수 없다${tail}.`;
     }
-    const counts = Core.liarCounts(p, c);
-    if (!counts.length) return `${who} 범인이라면 말들이 서로 어긋나 버린다${tail}.`;
-    return `${who} 범인이라면 거짓말하는 사람이 ${counts.join("명 또는 ")}명이 되어 버린다${tail}. ${p.n}명이어야 해.`;
+    const ws = Core.worlds({ ...p, n: null }).filter((w) => w.c === c);
+    if (ws.length) {
+      const w = minBy(ws, (w) => [Math.abs(countOf(w.roles, "L") - p.n), magicN(w), countOf(w.roles, "L"), w.roles, w.m || "", w.s || ""]);
+      return `${who} 범인이라면 ${said(w)}, 거짓말쟁이가 ${countOf(w.roles, "L")}명이 된다${assumeNote(p, w) || tail}. ${p.n}명이어야 해.`;
+    }
+    if (p.tier === "veryhard") return `${who} 범인이라면 거짓말쟁이 ${p.n}명·변덕쟁이 ${p.t + (p.magic.includes("anan") ? 1 : 0)}명으로는 말들을 맞출 수 없다${tail}.`;
+    const both = "정직한 사람도 거짓말쟁이도 될 수 없다";
+    const pair = p.magic.includes("miria") ? Core.swapPair(p) : null;
+    if (!p.magic.includes("anan") && pair) {
+      const a = mixedCards(p, c, null), b = mixedCards(p, c, pair);
+      if (a.length && b.length) {
+        if (a[0] === b[0]) return `${who} 범인이라면 미리아와 ${j(NAMES[pair], "이", "가")} 뒤바뀌었든 아니든 ${NAMES[a[0]]}의 두 말 중 하나만 맞게 된다. ${both}.`;
+        return `${who} 범인이라면 미리아와 ${j(NAMES[pair], "이", "가")} 안 바뀌었을 때는 ${NAMES[a[0]]}의, 바뀌었을 때는 ${NAMES[b[0]]}의 두 말 중 하나만 맞게 된다. ${both}.`;
+      }
+    } else if (!p.magic.includes("anan") && !p.magic.includes("miria")) {
+      const a = mixedCards(p, c, null);
+      if (a.length) return `${who} 범인이라면 ${NAMES[a[0]]}의 두 말 중 하나만 맞게 된다. ${both}${tail}.`;
+    }
+    return `${who} 범인이라면 말들이 서로 어긋나 버린다${tail}.`;
   }
 
   // 틀린 말 목록: 말이 전부 틀린 카드는 이름만, 일부만 틀리면 「에마(②)」
@@ -209,8 +259,15 @@
     const owner = OWNER[q.incident];
     const p = Core.problem(q);
     const ws = Core.worlds(p);
+    // 틀린 판결 해설은 그 사람을 지목했을 때 처음 계산한다(아주 어려움은 한 문제에 0.5초 넘게 걸려 문제를 열 때 다 만들면 멈춘다)
     const whyNot = {};
-    for (const s of q.speakers) if (s !== q.answer) whyNot[s] = explainWrong(p, s);
+    for (const s of q.speakers) {
+      if (s === q.answer) continue;
+      Object.defineProperty(whyNot, s, {
+        enumerable: true, configurable: true,
+        get() { const v = explainWrong(p, s); Object.defineProperty(whyNot, s, { value: v, enumerable: true }); return v; },
+      });
+    }
     const out = {
       id: q.id, key: q.key, tier: q.tier, incident: inc.text, verb: inc.did,
       victim: { id: owner, name: FULL[owner], line: inc.line, written: !!V[owner].written },

@@ -128,7 +128,7 @@
       if (p.mode === "shown") {
         if (p.n !== null && count(roles, "L") !== p.n) return false;
         if (count(roles, "T") !== p.t + (anan ? 1 : 0)) return false;    // 따로 있는 변덕쟁이 + 세뇌당한 한 명
-      } else if (count(roles, "H") * 2 <= sp.length) return false;     // 수를 숨긴 판: 정직한 사람이 과반
+      } else if (!p.relax && count(roles, "H") * 2 <= sp.length) return false;     // 수를 숨긴 판: 정직한 사람이 과반(relax: 해설용으로 안 따짐)
       if (anan && !sp.some((x, i) => roles[i] === "T" && x !== "anan")) return false;   // 안안은 자기를 세뇌하지 않는다
       return true;
     });

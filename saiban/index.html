@@ -321,9 +321,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=ef06f1b88d"></script>
-<script src="core.js?v=ef06f1b88d"></script>
-<script src="lang/ko.js?v=ef06f1b88d"></script>
+<script src="puzzles.js?v=eca28ab125"></script>
+<script src="core.js?v=eca28ab125"></script>
+<script src="lang/ko.js?v=eca28ab125"></script>
 <script>
 (function () {
   "use strict";
@@ -504,15 +504,15 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       <ul class="days">${rows.join("")}</ul>` + footer();
   }
 
-  // 이름 왼쪽에 붙이는 캐릭터 이모지(2026-10-21 사용자 검수: 공식 상징 아이콘을 참고해 유니코드 이모지로만, 나노카는 물총)
+  // 카드 이름 왼쪽에 붙이는 캐릭터 이모지(2026-10-21 사용자 검수: 공식 상징 아이콘을 참고해 유니코드 이모지로만, 나노카는 물총, 카드에만)
   const ICON = { ema: "🌸", hiro: "🖋️", anan: "🌙", noah: "🖌️", reia: "🗡️", miria: "📱", margo: "🃏",
-                 nanoka: "🔫", arisa: "🔥", sherry: "🔍", hanna: "🪡", coco: "🎧", meruru: "💊" };
+                 nanoka: "🔫", arisa: "🔥", sherry: "🔍", hanna: "🪡", coco: "🎧", meruru: "💊" };     // 히로는 카드가 없어 안 쓰인다
   const icon = (id) => (ICON[id] ? `<span class="icon" aria-hidden="true">${ICON[id]}</span>` : "");
 
-  function dialog(speaker, line, written, id) {
+  function dialog(speaker, line, written) {
     return `
       <figure class="dialog">
-        <figcaption class="speaker">${icon(id)}${esc(speaker)}${written ? ` · ${esc(T.written)}` : ""}</figcaption>
+        <figcaption class="speaker">${esc(speaker)}${written ? ` · ${esc(T.written)}` : ""}</figcaption>
         <blockquote class="say ${written ? "written" : ""}">${esc(line)}</blockquote>
       </figure>`;
   }
@@ -652,7 +652,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       </div>
       ${guide(q, 1, "incident")}
       <h2 class="incident">${esc(p.incident)}</h2>
-      ${dialog(p.victim.name, p.victim.line, p.victim.written, p.victim.id)}
+      ${dialog(p.victim.name, p.victim.line, p.victim.written)}
       ${guide(q, 2, "ledger")}
       ${ledger(q, p)}
       ${guide(q, 3, "cards")}
@@ -683,7 +683,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           <h3>${esc(T.accusation(nameOf(p, p.answer), state.lineSeed, p.answer))}</h3>
           <ul>${p.solution.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
           <div class="record">${esc(T.recordRight(n, T.duration(state.elapsed)))}</div>
-          ${dialog(T.hiro, T.line(n === 0 ? "right0" : "rightN", v.k), false, "hiro")}
+          ${dialog(T.hiro, T.line(n === 0 ? "right0" : "rightN", v.k))}
         </section>`;
     }
     if (v.rewind) {
@@ -691,7 +691,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         <section class="verdict frame rewind" aria-live="polite">
           <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
           <div>${esc(T.rewindInfo(state.rewinds, nameOf(p, v.who)))}</div>
-          ${dialog(T.hiro, T.rewindLine(v.nth || 1, v.k), false, "hiro")}
+          ${dialog(T.hiro, T.rewindLine(v.nth || 1, v.k))}
         </section>`;
     }
     return `
@@ -700,7 +700,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         <div>${esc(p.why_not[v.culprit])}</div>
         <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
         <div class="record">${esc(T.wrongRecord(state.rewinds))}</div>
-        ${dialog(T.hiro, T.wrongLine(v.nth || 1, v.k), false, "hiro")}
+        ${dialog(T.hiro, T.wrongLine(v.nth || 1, v.k))}
       </section>`;
   }
 
