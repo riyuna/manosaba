@@ -454,6 +454,7 @@
       ],
       wrong: ["...내가... 올바르지 않았어. 되돌아가서 바로잡아야 해.", "틀렸던 건... 나였어..."],   // 첫 오판
       wrongAgain: ["또 다시 올바르지 않은 답을 내리다니. 크윽! 올바르지 않아!"],                 // 두 번째 오판부터
+      wrongEma: ["내가... 내가 무슨 짓을......! 에마에게 사과해야만 해!"],                       // 에마를 잘못 지목했을 때는 언제나 이것
     },
     // 되돌아온 아침의 지문(사용자 문장): 이 문제에서 돌아온 횟수(오판·되감기 합)로 고른다
     morningLines: {
@@ -467,8 +468,8 @@
       for (const [a, b] of Object.entries(vars || {})) t = t.replace(`{${a}}`, b);
       return t;
     },
-    // n: 몇 번째 오판·되감기인지(1부터)
-    wrongLine: (n, k) => ui.line(n > 1 ? "wrongAgain" : "wrong", k),
+    // n: 몇 번째 오판·되감기인지(1부터), id: 잘못 지목한 사람(역할만 틀린 판결이면 없음)
+    wrongLine: (n, k, id) => ui.line(id === "ema" ? "wrongEma" : n > 1 ? "wrongAgain" : "wrong", k),
     rewindLine: (n, k) => ui.line(n > 1 ? "rewindAgain" : "rewind", k),
     morning: (rewinds, k) => ui.pick(ui.morningLines[rewinds >= 3 ? "many" : rewinds === 2 ? 2 : 1], k),
     accusation: (name, k, id) => `「${ui.line(id === "ema" ? "accuseEma" : "accuse", k, { name })}」`,
