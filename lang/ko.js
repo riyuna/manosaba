@@ -366,25 +366,46 @@
     nbClearConfirm: "한 번 더 누르면 지운다",
     nbClearWarn: "이 문제의 가정 표와 메모가 지워진다.",
     judgeIdle: "범인을 고르면 판결할 수 있다",
-    // 히로의 말(전부 사용자 문장). 상황마다 여러 개를 두면 판결할 때 하나를 고른다(그 판결 동안은 그대로).
-    // accuse: 범인 지목({name} 자리에 이름) / right0: 정답·회귀 0번 / rightN: 정답·회귀 1번 이상 / rewind: 스스로 되감기 / wrong: 틀린 판결
+    // 히로의 말(전부 사용자 문장, docs/hiro-lines.md). 상황마다 여러 개면 판결할 때 하나를 고른다(그 판결 동안은 그대로).
+    // 범인 지목은 문제를 열 때 하나를 골라 판결 버튼과 정답 제목에 같이 쓴다. {name} 자리에 지목한 사람 이름.
     hiroLines: {
-      accuse: ["{name}, 네가 바로 이 사건의 범인이다."],
-      right0: ["...올바르지 않은 일을 바로잡았다. 이 세상의 악을 없애는 것이야말로 내가 해야 할 일이지."],
-      rightN: ["올바른 판결에 닿을 수만 있다면, 몇번을 되돌아오더라도 상관없어."],
-      rewind: ["알아낸 사실을 기억해 두자. 이번에야말로 올바른 답에 도달하겠다."],
-      wrong: ["...내가... 올바르지 않았어. 되돌아가서 바로잡아야 해."],
+      accuse: ["{name}, 네가 바로 이 사건의 범인이다.", "올바르지 않은 건 바로 너야. {name}"],
+      accuseEma: ["에마, 너는 언제나 그런 식이었지. 올바르지 않아💢"],        // 에마를 지목할 때만
+      right0: [                                                            // 정답·회귀 0번
+        "...올바르지 않은 일을 바로잡았다. 이 세상의 악을 없애는 것이야말로 내가 해야 할 일이지.",
+        "이 세상을 바로잡는 것은 나만이 할 수 있는 일이야.",
+        "올바른 일을 했을 뿐이다.",
+      ],
+      rightN: [                                                            // 정답·회귀 있음
+        "올바른 판결에 닿을 수만 있다면, 몇번을 되돌아오더라도 상관없어.",
+        "사망회귀로 다시 돌아온 것은 올바르지 않았지만, 상관 없어.",
+        "...이건 올바르지 않은 일이 아니다. 올바름을 추구하기 위한 과정일 뿐이다.",
+      ],
+      rewind: ["알아낸 사실을 기억해 두자. 이번에야말로 올바른 답에 도달하겠다."],     // 첫 되감기
+      rewindAgain: [                                                       // 두 번째 되감기부터
+        "다시 이 방법을 사용하고 싶지는 않았는데... 그래도 기억해둬야 해.",
+        "올바른 답을 얻기 위해서는 이 방법 뿐이야.",
+      ],
+      wrong: ["...내가... 올바르지 않았어. 되돌아가서 바로잡아야 해.", "틀렸던 건... 나였어..."],   // 첫 오판
+      wrongAgain: ["또 다시 올바르지 않은 답을 내리다니. 크윽! 올바르지 않아!"],                 // 두 번째 오판부터
     },
-    // 되돌아온 아침의 지문(Claude, 화면 문구)
-    morningLines: ["…눈을 뜨니 그날 아침이었다."],
+    // 되돌아온 아침의 지문(사용자 문장): 이 문제에서 돌아온 횟수(오판·되감기 합)로 고른다
+    morningLines: {
+      1: ["감옥 저택 감방 2층 침대의 2층, 나는 다시 눈을 떴다."],
+      2: ["...다시 돌아왔구나. 이 감각도 처음은 아니다."],
+      many: ["'돌아왔다.'는 걸까. 이번이 몇번째일까."],                    // 3번째부터
+    },
+    pick: (xs, k) => xs[(k || 0) % xs.length],
     line: (kind, k, vars) => {
-      const xs = ui.hiroLines[kind];
-      let t = xs[(k || 0) % xs.length];
+      let t = ui.pick(ui.hiroLines[kind], k);
       for (const [a, b] of Object.entries(vars || {})) t = t.replace(`{${a}}`, b);
       return t;
     },
-    morning: (k) => ui.morningLines[(k || 0) % ui.morningLines.length],
-    accusation: (name, k) => `「${ui.line("accuse", k, { name })}」`,
+    // n: 몇 번째 오판·되감기인지(1부터)
+    wrongLine: (n, k) => ui.line(n > 1 ? "wrongAgain" : "wrong", k),
+    rewindLine: (n, k) => ui.line(n > 1 ? "rewindAgain" : "rewind", k),
+    morning: (rewinds, k) => ui.pick(ui.morningLines[rewinds >= 3 ? "many" : rewinds === 2 ? 2 : 1], k),
+    accusation: (name, k, id) => `「${ui.line(id === "ema" ? "accuseEma" : "accuse", k, { name })}」`,
     rewind: "되감는다: 범인이 아닌 사람 하나를 알아 온다",
     tally: (r, m) => `회귀 ${r}번 · 카드 표시 ${m}개`,
     clockLabel: "걸린 시간",

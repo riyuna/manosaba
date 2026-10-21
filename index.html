@@ -391,7 +391,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
 
   const roll = () => Math.floor(Math.random() * 1e6);     // 대사 고르기(같은 상황의 바리에이션 중 하나)
-  const fresh = () => ({ tab: "rules", lineSeed: roll(), marks: {}, culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false,
+  const fresh = () => ({ tab: "rules", lineSeed: roll(), wrongs: 0, selfRewinds: 0, marks: {}, culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false,
                          startedAt: Date.now(), elapsed: null });
 
   function openPuzzle(id, date) {
@@ -655,7 +655,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       ${guide(q, 5, "bar")}
       <div class="bar">
         <button class="btn" data-judge="1" data-k="judge" ${!state.culprit || state.solved ? "disabled" : ""}>
-          ${esc(culpritName ? T.accusation(culpritName, state.lineSeed) : T.judgeIdle)}</button>
+          ${esc(culpritName ? T.accusation(culpritName, state.lineSeed, state.culprit) : T.judgeIdle)}</button>
         <button class="btn rewind" data-rewind="1" data-k="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>${esc(T.rewind)}</button>
         <span class="tally">${esc(T.tally(state.rewinds, Object.keys(state.marks).length))} · ${esc(T.clockLabel)} <span id="clock">${esc(T.duration((state.elapsed ?? (Date.now() - state.startedAt))))}</span></span>
       </div>
@@ -674,7 +674,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       return `
         <section class="verdict frame right" aria-live="polite">
           <div class="stamp" aria-hidden="true">${esc(T.stamp)}</div>
-          <h3>${esc(T.accusation(nameOf(p, p.answer), state.lineSeed))}</h3>
+          <h3>${esc(T.accusation(nameOf(p, p.answer), state.lineSeed, p.answer))}</h3>
           <ul>${p.solution.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
           <div class="record">${esc(T.recordRight(n, T.duration(state.elapsed)))}</div>
           ${dialog(T.hiro, T.line(n === 0 ? "right0" : "rightN", v.k))}
@@ -683,18 +683,18 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     if (v.rewind) {
       return `
         <section class="verdict frame rewind" aria-live="polite">
-          <div class="morning">${esc(T.morning(v.k))}</div>
+          <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
           <div>${esc(T.rewindInfo(state.rewinds, nameOf(p, v.who)))}</div>
-          ${dialog(T.hiro, T.line("rewind", v.k))}
+          ${dialog(T.hiro, T.rewindLine(v.nth || 1, v.k))}
         </section>`;
     }
     return `
       <section class="verdict frame wrong shake" aria-live="polite">
         <h3>${esc(T.wrongTitle)}</h3>
         <div>${esc(p.why_not[v.culprit])}</div>
-        <div class="morning">${esc(T.morning(v.k))}</div>
+        <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
         <div class="record">${esc(T.wrongRecord(state.rewinds))}</div>
-        ${dialog(T.hiro, T.line("wrong", v.k))}
+        ${dialog(T.hiro, T.wrongLine(v.nth || 1, v.k))}
       </section>`;
   }
 
@@ -757,8 +757,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       } else {
         // 틀린 판결 = 사망 회귀. 지목한 사람이 범인이 아니라는 기억은 남는다
         state.rewinds += 1;
+        state.wrongs = (state.wrongs || 0) + 1;
         state.memory.push(state.culprit);
-        state.verdict = { right: false, culprit: state.culprit, k: roll() };
+        state.verdict = { right: false, culprit: state.culprit, k: roll(), nth: state.wrongs, rewinds: state.rewinds };
         state.culprit = null;
       }
     } else if (ds.rewind && !state.solved) {
@@ -768,7 +769,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         state.rewinds += 1;
         state.memory.push(who);
         if (state.culprit === who) state.culprit = null;
-        state.verdict = { rewind: true, who, k: roll() };
+        state.selfRewinds = (state.selfRewinds || 0) + 1;
+        state.verdict = { rewind: true, who, k: roll(), nth: state.selfRewinds, rewinds: state.rewinds };
       }
     } else if (ds.next) {
       if (state.random) return openRandom(q.tier);
