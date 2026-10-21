@@ -321,9 +321,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=1747243e71"></script>
-<script src="core.js?v=1747243e71"></script>
-<script src="lang/ko.js?v=1747243e71"></script>
+<script src="puzzles.js?v=98568b4beb"></script>
+<script src="core.js?v=98568b4beb"></script>
+<script src="lang/ko.js?v=98568b4beb"></script>
 <script>
 (function () {
   "use strict";
@@ -506,7 +506,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
   // 카드 이름 왼쪽에 붙이는 캐릭터 이모지(2026-10-21 사용자 검수: 공식 상징 아이콘을 참고해 유니코드 이모지로만, 나노카는 물총, 카드에만)
   const ICON = { ema: "🌸", hiro: "🖋️", anan: "🌙", noah: "🖌️", reia: "🗡️", miria: "📱", margo: "🃏",
-                 nanoka: "🔫", arisa: "🔥", sherry: "🔍", hanna: "🪡", coco: "🎧", meruru: "💊" };     // 히로는 카드가 없어 안 쓰인다
+                 nanoka: "🔫", arisa: "🔥", sherry: "🔍", hanna: "🪡", coco: "🎧", meruru: "🧪" };     // 히로는 카드가 없어 안 쓰인다
   const icon = (id) => (ICON[id] ? `<span class="icon" aria-hidden="true">${ICON[id]}</span>` : "");
 
   function dialog(speaker, line, written) {
@@ -524,6 +524,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
 
   const nameOf = (p, id) => p.suspects.find((s) => s.id === id).name;
+  // 아주 어려움은 판결에 역할 표시가 들어간다(카드마다 그 말을 실제로 한 사람의 역할). 틀린 장 수
+  const needRoles = (q) => q.tier === "veryhard";
+  const ROLE_MARK = { H: "t", L: "f", T: "r" };
+  const wrongMarks = (p) => p.suspects.filter((s) => state.marks[s.id] !== ROLE_MARK[p.card_roles[s.id]]).length;
 
   // 히로의 수첩: 책갈피 = 이번 재판(규칙) / 사망 회귀 / 마법들 / 가정 표 / 메모. 오른쪽 위 리본은 규칙집.
   function ledgerTabs(p) {
@@ -559,6 +563,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       <h3>${esc(T.tabs.rules)}</h3>
       <p>${q.tier === "veryhard" ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n)}</p>
       <p>${esc(T.ruleCulprit)}</p>
+      ${q.tier === "veryhard" ? `<p>${esc(T.ruleJudgeRoles)}</p>${dialog(T.hiro, T.hiroRolesLine)}` : ""}
       ${CORE.reports(CORE.problem(q)).length ? `<p>${esc(T.ruleHearsay)}</p>` : ""}
       ${self ? `<p>${esc(self)}</p>` : ""}
       ${T.nickWords(q) ? `<p>${esc(T.nickWords(q))}</p>` : ""}
@@ -640,6 +645,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         </article>`;
     }).join("");
     const culpritName = state.culprit ? nameOf(p, state.culprit) : null;
+    const unmarked = needRoles(q) ? p.suspects.filter((s) => !state.marks[s.id]).length : 0;
     const unknown = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id)).length;
     const tutNext = isTutorial(q) && q.id !== "tutorial" ? T.tutorials[T.tutorials.findIndex((t) => t.id === q.id) + 1] : null;
     const nextLabel = state.random ? T.next.random : state.date ? T.next.daily
@@ -660,8 +666,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       ${workbench(q, p)}
       ${guide(q, 5, "bar")}
       <div class="bar">
-        <button class="btn" data-judge="1" data-k="judge" ${!state.culprit || state.solved ? "disabled" : ""}>
-          ${esc(culpritName ? T.accusation(culpritName, state.lineSeed, state.culprit) : T.judgeIdle)}</button>
+        <button class="btn" data-judge="1" data-k="judge" ${!state.culprit || state.solved || unmarked ? "disabled" : ""}>
+          ${esc(!culpritName ? T.judgeIdle : unmarked ? T.judgeNeedMarks(unmarked) : T.accusation(culpritName, state.lineSeed, state.culprit))}</button>
         <button class="btn rewind" data-rewind="1" data-k="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>${esc(T.rewind)}</button>
         <span class="tally">${esc(T.tally(state.rewinds, Object.keys(state.marks).length))} · ${esc(T.clockLabel)} <span id="clock">${esc(T.duration((state.elapsed ?? (Date.now() - state.startedAt))))}</span></span>
       </div>
@@ -697,7 +703,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     return `
       <section class="verdict frame wrong shake" aria-live="polite">
         <h3>${esc(T.wrongTitle)}</h3>
-        <div>${esc(p.why_not[v.culprit])}</div>
+        <div>${esc(v.roles ? T.wrongRoles(v.roles) : p.why_not[v.culprit])}</div>
         <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
         <div class="record">${esc(T.wrongRecord(state.rewinds))}</div>
         ${dialog(T.hiro, T.wrongLine(v.nth || 1, v.k))}
@@ -754,7 +760,13 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       if (!state.confirmClear) { state.confirmClear = true; }
       else { notesMem[p.key] = { g: {}, t: "" }; saveNote(p); state.confirmClear = false; }
     } else if (ds.judge && state.culprit && !state.solved) {
-      if (state.culprit === p.answer) {
+      const badRoles = state.culprit === p.answer && needRoles(q) ? wrongMarks(p) : 0;
+      if (badRoles) {
+        // 범인은 맞았지만 역할 표시가 틀렸다 = 역시 틀린 판결(회귀). 몇 장 틀렸는지만 기억한다
+        state.rewinds += 1;
+        state.wrongs = (state.wrongs || 0) + 1;
+        state.verdict = { right: false, roles: badRoles, k: roll(), nth: state.wrongs, rewinds: state.rewinds };
+      } else if (state.culprit === p.answer) {
         state.solved = true;
         state.verdict = { right: true, k: roll() };
         state.elapsed = Math.round(Date.now() - state.startedAt);
