@@ -47,16 +47,17 @@
   // 말 하나의 이름: 카드의 첫 말은 카드 이름, 두 번째 말은 「이름#2」(수첩 칸과 같다).
   const slotId = (x, i) => (i === 0 ? x : `${x}#${i + 1}`);
 
-  // x 카드의 말 st 의 내용이 맞는가. me: 말 속의 "나", w: { c, role, s, heard, truth(y) → y 카드 말들의 맞고 틀림 }
+  // x 카드의 말 st 의 내용이 맞는가. me: 말 속의 "나"(말투 주인, 글에만 쓴다), w: { c, role, s, heard, truth(y) → y 카드 말들의 맞고 틀림 }
+  // 범인은 몸(카드) 기준이고 영혼은 사건 때부터 이 몸에 있었으니, 「나는 안 했다」류의 "나"는 이 카드 x 다(2026-10-21).
   function content(st, x, me, w) {
     const [kind, args] = st;
     const c = w.c;
     switch (kind) {
       case "accuse": case "culprit_is": return c === args[0];
       case "deny": return c !== args[0];
-      case "deny_self": case "on_air": return c !== me;    // on_air: 코코의 「나도 그때 방송하고 있었으니까 범인은 아니라구!」
+      case "deny_self": case "on_air": return c !== x;     // on_air: 코코의 「나도 그때 방송하고 있었으니까 범인은 아니라구!」
       case "either": return args.includes(c);
-      case "self_or": return c === me || c === args[0];
+      case "self_or": return c === x || c === args[0];
       case "meta_false": return !w.truth(args[0]).some((v) => v);    // 그 카드의 말이 전부 틀렸다
       case "meta_true": return w.truth(args[0]).every((v) => v);     // 그 카드의 말이 전부 맞다
       case "swap_claim": return w.s === args[0];          // (남이 하는 말) 미리아와 args[0] 의 영혼이 뒤바뀌어 있다

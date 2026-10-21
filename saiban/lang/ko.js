@@ -62,7 +62,11 @@
       case "meta_false": core = `${of(nm(args[0]))}말은 ${conj("틀렸어", sty)}`; break;
       case "meta_true": core = `${of(nm(args[0]))}말은 ${conj("맞아", sty)}`; break;
       case "swap_claim": core = `${j(nm("miria"), "과", "와")} ${j(nm(args[0]), "은", "는")} 영혼이 ${conj("바뀌어 있어", sty)}`; break;
-      case "iam": core = `${me} ${j(nm(x), "과", "와")} 영혼이 ${conj("바뀌어 있어", sty)}`; break;
+      case "iam": {                 // 「사실 저는 한나이와요!」(노아처럼 자기를 이름으로 부르면 「사실 노아야~」)
+        const who = NAMES[args[0]];
+        core = v.self === who ? `사실 ${copula(who, sty)}` : `사실 ${me} ${copula(who, sty)}`;
+        break;
+      }
       case "swap_deny":
         core = x === "miria" ? `${me} 아무와도 영혼이 ${conj("안 바뀌었어", sty)}`
           : `${me} ${j(nm("miria"), "과", "와")} 영혼이 ${conj("안 바뀌었어", sty)}`;
@@ -181,7 +185,11 @@
       else if (hs.size === 1) lines.push(`${j(said, "은", "는")} 지어낸 말이었다.`);
       else lines.push(`${j(said, "이", "가")} 정말인지는 알 수 없다.`);
     });
-    lines.push(`범인: ${NAMES[ws[0].c]}`);
+    const c = ws[0].c;
+    const souls = new Set(ws.map((w) => Core.soulIn(c, w.s)));      // 범인은 몸(카드) 기준. 그 몸에 다른 영혼이 들어 있었으면 밝힌다
+    if (souls.size === 1 && souls.has(c)) lines.push(`범인: ${NAMES[c]}`);
+    else if (souls.size === 1) lines.push(`범인: ${NAMES[c]} (그 몸에 든 ${j(NAMES[[...souls][0]], "이", "가")} 저질렀다)`);
+    else lines.push(`범인: ${NAMES[c]} (그 몸에 든 영혼이 누구인지는 말만으로는 정해지지 않는다)`);
     return lines;
   }
 
@@ -241,13 +249,7 @@
     };
     for (const s of q.speakers) {
       const voice = Core.voiceOf(q.logic[s], s);
-      for (const st of q.logic[s]) {
-        visit(st, voice);
-        if (st[0] === "iam") {        // 「(나는) ○○와 영혼이 바뀌어 있어」의 ○○ = 카드 이름 주인
-          const nick = V[voice].nick && V[voice].nick[s];
-          if (nick && !seen.has(voice + s)) { seen.add(voice + s); out.push({ by: voice, nick, who: s }); }
-        }
-      }
+      for (const st of q.logic[s]) if (st[0] !== "iam") visit(st, voice);     // 「사실 나는 ○○다」는 자기 이름이라 별명이 없다
     }
     return out;
   }
@@ -455,8 +457,8 @@
       },
       "tutorial-miria": {
         incident: "심화 3: 미리아의 뒤바뀜.",
-        ledger: "거짓말쟁이는 1명. 미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 영혼은 자기 말투로 말하고, 정직한 사람은 언제나 자기 영혼의 말투로 말한다. 맞고 틀림은 몸(카드 이름) 기준이다. 「뒤바뀜」 책갈피를 읽어 보자.",
-        cards: "에마 카드에 「미리아의 말투」 표시가 붙었다. 「아저씨는 에마쨩과 영혼이 바뀌어 있어」는 이 몸에 든 건 사실 미리아라는 주장이고, 이 카드의 「아저씨」(나)는 미리아를 가리킨다. 그리고 미리아의 「셰리는 안 했다」와 메루루의 「범인은 셰리」는 동시에 맞을 수 없다.",
+        ledger: "거짓말쟁이는 1명. 미리아는 다른 한 사람과 영혼이 뒤바뀌었을 수도 있다. 영혼은 자기 말투로 말하고, 정직한 사람은 언제나 자기 영혼의 말투로 말한다. 맞고 틀림도 범인도 몸(카드 이름) 기준이다. 「뒤바뀜」 책갈피를 읽어 보자.",
+        cards: "에마 카드에 「미리아의 말투」 표시가 붙었다. 「사실 아저씨는 미리아야」는 이 몸에 든 건 사실 미리아라는 주장이다. 이 카드의 「아저씨」(나)는 지금 에마의 몸에 든 미리아라서, 「아저씨는 낙서 안 했어」는 에마 카드가 범인이 아니라는 말이다. 그리고 미리아의 「셰리는 안 했다」와 메루루의 「범인은 셰리」는 동시에 맞을 수 없다.",
         grid: "거짓말쟁이는 미리아 카드와 메루루 카드 중 하나다. 그러면 에마 카드는 정직하고, 미리아와 에마는 정말 뒤바뀌어 있다. 그렇다면 미리아의 몸에는 에마의 영혼이 들어 있는데, 미리아 카드는 미리아의 말투로 말한다. 정직한 사람은 그럴 수 없으니…",
       },
       "tutorial-sight": {
