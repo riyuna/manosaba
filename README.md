@@ -1,6 +1,6 @@
 # 감옥저택의 번외재판
 
-『魔法少女ノ魔女裁判』(마법소녀의 마녀재판)의 **비공식 팬메이드** 논리 퍼즐 데모입니다. https://kureha.moe/manosaba/
+『魔法少女ノ魔女裁判』(마법소녀의 마녀재판)의 **비공식 팬메이드** 논리 퍼즐 데모입니다. https://manosaba.moe/saiban/
 
 - 非公式のファンメイド作品・ネタバレあり・AI利用
 - 공식 이미지·음성·텍스트는 쓰지 않았습니다. 사건과 대사는 원작 대사를 옮기지 않고 새로 썼습니다.
@@ -9,6 +9,7 @@
 - 완전 무료이며 어떤 수익도 얻지 않습니다. 원작의 권리는 원작자(Acacia, 合同会社Re,AER)에게 있습니다.
 - 공식 가이드라인: https://manosaba.com/guidelines
 - 아이폰(Safari)에서는 직접 확인하지 못해 화면이 어긋날 수 있습니다.
-- 문의·오류 제보·삭제 요청: 트위터(현 X) [@riyuna_mano](https://x.com/riyuna_mano)
+- 문의·삭제 요청: 트위터(현 X) [@riyuna_mano](https://x.com/riyuna_mano)
+- 버그·오류 제보: [구글 폼](https://docs.google.com/forms/d/e/1FAIpQLSfksd0WrbKXEQB5IDFbvhnLRXxqHTqkOAtlBJHm5E3ZxQZv4g/viewform)
 
 이 저장소에는 빌드된 파일만 있습니다. 생성기·검산 도구의 원본은 따로 관리합니다.

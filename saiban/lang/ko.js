@@ -424,7 +424,11 @@
       "아이폰(Safari)에서는 직접 확인하지 못해 화면이 어긋날 수 있습니다.",
     ],
     // 꼬리말 마지막 줄(링크가 있어 html. 팩이 만든 믿을 수 있는 글만)
-    contactHtml: '문의·오류 제보·삭제 요청: 트위터(현 X) <a href="https://x.com/riyuna_mano" target="_blank" rel="noopener">@riyuna_mano</a>',
+    // 꼬리말 마지막 줄들(HTML). 사용자 2026-10-21: 공식 문의는 트위터, 버그 제보는 구글 폼.
+    contactHtml: [
+      '문의·삭제 요청: 트위터(현 X) <a href="https://x.com/riyuna_mano" target="_blank" rel="noopener">@riyuna_mano</a>',
+      '버그·오류 제보: <a href="https://docs.google.com/forms/d/e/1FAIpQLSfksd0WrbKXEQB5IDFbvhnLRXxqHTqkOAtlBJHm5E3ZxQZv4g/viewform" target="_blank" rel="noopener">구글 폼</a>',
+    ],
     // 튜토리얼 판에서만 각 구역 앞에 나오는 안내(순서대로 읽는다). 튜토리얼 id 별로, 없는 칸은 common
     guide: {
       common: {
