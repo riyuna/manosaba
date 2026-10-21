@@ -699,7 +699,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
 
   function footer() {
-    return `<footer>${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}</footer>`;
+    return `<footer>${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}<span>${T.contactHtml}</span></footer>`;
   }
 
   // 다시 그려도 누르던 버튼에 초점을 돌려 둔다(키보드로 표를 채울 때 끊기지 않게)
