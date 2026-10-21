@@ -54,7 +54,7 @@
     switch (kind) {
       case "accuse": case "culprit_is": return c === args[0];
       case "deny": return c !== args[0];
-      case "deny_self": return c !== me;
+      case "deny_self": case "on_air": return c !== me;    // on_air: 코코의 「나도 그때 방송하고 있었으니까 범인은 아니라구!」
       case "either": return args.includes(c);
       case "self_or": return c === me || c === args[0];
       case "meta_false": return !w.truth(args[0]).some((v) => v);    // 그 카드의 말이 전부 틀렸다
@@ -79,7 +79,7 @@
     if (metaOk && !heard) kinds = kinds.concat(["meta_false", "meta_true"]);
     if (swapOk && !heard) kinds = kinds.concat(me === "miria" ? ["swap_deny"] : ["swap_claim", "swap_deny"]);
     if (spec.roles) kinds = kinds.concat(["role_is", "role_is", "culprit_role"], hidden && !heard ? ["count_is"] : []);
-    if (spec.testimony && !heard) kinds = kinds.concat({ nanoka: ["vision", "vision"], coco: ["alibi", "alibi"] }[me] || []);
+    if (spec.testimony && !heard && !avoid.length) kinds = kinds.concat({ nanoka: ["vision", "vision"], coco: ["alibi", "alibi"] }[me] || []);
     const kind = r.choice(kinds);
     if (kind === "deny_self" || kind === "swap_deny") return [kind, []];
     if (kind === "either" || kind === "alibi") return [kind, r.sample(others, 2).sort()];
@@ -235,14 +235,15 @@
           if (q[0].startsWith("meta")) metas++;
           sts.push(q);
         }
-        statements[s] = (iam ? [["iam", [iam]]] : []).concat(sts);
+        const alibi = sts.find((q) => q[0] === "alibi");    // 코코의 천리안은 「나도 방송 중이었다」와 한 카드에
+        statements[s] = (iam ? [["iam", [iam]]] : []).concat(alibi ? [alibi, ["on_air", []]] : sts);
       }
       if (r.next() < spec.hearsay) {
         const a = r.choice(speakers.filter((x) => x !== "anan"));       // 안안은 필담이라 안 들릴 일이 없다
         const b = r.choice(speakers.filter((x) => x !== a));
         const q = ["hearsay", [a, randomStatement(r, a, speakers, spec, false, false, [], hidden, true)]];
         statements[a] = [];
-        const keep = r.next() < 0.5 || statements[b][0][0] === "iam";
+        const keep = (r.next() < 0.5 || statements[b][0][0] === "iam") && statements[b][0][0] !== "alibi";   // 천리안 짝은 안 쪼갠다
         statements[b] = keep ? statements[b].slice(0, 1).concat([q]) : [q];
       }
       const cards = speakers.filter((s) => statements[s].length).map((s) => cardKey(statements[s]));
