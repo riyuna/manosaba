@@ -139,7 +139,7 @@
     return p.speakers.filter((x) => {
       const sts = p.statements[x];
       if (sts.length < 2 || sts.some(([k]) => k.startsWith("meta") || k === "hearsay")) return false;
-      return new Set(sts.map((q) => Core.content(q, x, x, { c, role: {}, s, heard: {}, truth: null }))).size === 2;
+      return new Set(sts.map((q) => Core.content(q, x, Core.soulIn(x, s), { c, role: {}, s, heard: {}, truth: null }))).size === 2;
     });
   }
 
@@ -148,7 +148,7 @@
   function explainWrong(p, c) {
     const who = j(NAMES[c], "이", "가");
     const tail = magicTail(p);
-    const said = (w) => { const label = falseLabel(p, w.F); return label ? `${label}의 말이 틀려` : "틀린 말이 하나도 없어"; };
+    const said = (w) => { const label = falseLabel(p, w.F); return label ? `${label}${p.magic.includes("miria") ? " 카드" : ""}의 말이 틀려` : "틀린 말이 하나도 없어"; };
     if (p.tier === "veryhard" && p.mode === "hidden") {
       const maj = Math.floor(p.speakers.length / 2) + 1;
       const ws = Core.worlds({ ...p, relax: true }).filter((w) => w.c === c);
@@ -169,8 +169,8 @@
     if (!p.magic.includes("anan") && pair) {
       const a = mixedCards(p, c, null), b = mixedCards(p, c, pair);
       if (a.length && b.length) {
-        if (a[0] === b[0]) return `${who} 범인이라면 미리아와 ${j(NAMES[pair], "이", "가")} 뒤바뀌었든 아니든 ${NAMES[a[0]]}의 두 말 중 하나만 맞게 된다. ${both}.`;
-        return `${who} 범인이라면 미리아와 ${j(NAMES[pair], "이", "가")} 안 바뀌었을 때는 ${NAMES[a[0]]}의, 바뀌었을 때는 ${NAMES[b[0]]}의 두 말 중 하나만 맞게 된다. ${both}.`;
+        if (a[0] === b[0]) return `${who} 범인이라면 미리아와 ${j(NAMES[pair], "이", "가")} 뒤바뀌었든 아니든 ${NAMES[a[0]]} 카드의 두 말 중 하나만 맞게 된다. 그 말을 한 사람은 ${both}.`;
+        return `${who} 범인이라면 미리아와 ${j(NAMES[pair], "이", "가")} 안 바뀌었을 때는 ${NAMES[a[0]]} 카드의, 바뀌었을 때는 ${NAMES[b[0]]} 카드의 두 말 중 하나만 맞게 된다. 그 말을 한 사람은 ${both}.`;
       }
     } else if (!p.magic.includes("anan") && !p.magic.includes("miria")) {
       const a = mixedCards(p, c, null);
@@ -223,7 +223,10 @@
     if (magic.includes("miria")) {
       const ss = new Set(ws.map((w) => w.s));
       if (ss.size === 1 && ss.has(null)) lines.push("미리아는 아무와도 뒤바뀌지 않았다.");
-      else if (ss.size === 1) lines.push(`미리아와 ${j(NAMES[[...ss][0]], "은", "는")} 영혼이 뒤바뀌어 있었다.`);
+      else if (ss.size === 1) {
+        const z = [...ss][0];
+        lines.push(`미리아와 ${j(NAMES[z], "은", "는")} 영혼이 뒤바뀌어 있었다. 미리아 카드의 말은 ${j(NAMES[z], "이", "가")}, ${NAMES[z]} 카드의 말은 미리아가 한 것이다.`);
+      }
       else lines.push("미리아가 누구와 뒤바뀌었는지(뒤바뀌었는지 아닌지도)는 말만으로는 정해지지 않는다.");
     }
     Core.reports(p).forEach((q, i) => {
@@ -238,11 +241,7 @@
       else if (hs.size === 1) lines.push(`${j(said, "은", "는")} 지어낸 말이었다.`);
       else lines.push(`${j(said, "이", "가")} 정말인지는 알 수 없다.`);
     });
-    const c = ws[0].c;
-    const souls = new Set(ws.map((w) => Core.soulIn(c, w.s)));      // 범인은 몸(카드) 기준. 그 몸에 다른 영혼이 들어 있었으면 밝힌다
-    if (souls.size === 1 && souls.has(c)) lines.push(`범인: ${NAMES[c]}`);
-    else if (souls.size === 1) lines.push(`범인: ${NAMES[c]} (그 몸에 든 ${j(NAMES[[...souls][0]], "이", "가")} 저질렀다)`);
-    else lines.push(`범인: ${NAMES[c]} (그 몸에 든 영혼이 누구인지는 말만으로는 정해지지 않는다)`);
+    lines.push(`범인: ${NAMES[ws[0].c]}`);
     return lines;
   }
 
@@ -517,9 +516,9 @@
       },
       "tutorial-miria": {
         incident: "심화 3: 미리아의 뒤바뀜.",
-        ledger: "거짓말쟁이는 1명. 미리아는 다른 한 사람과 영혼이 뒤바뀌어 있을 수도, 아닐 수도 있다. 뒤바뀜에 대한 말은 실제로 그럴 때만 맞고, 말투는 증거가 아니다. 그 밖의 것(맞고 틀림, 범인)은 모두 카드 기준이다. 「뒤바뀜」 책갈피를 읽어 보자.",
-        cards: "미리아 카드는 에마의 말투로 「사실 나는 에마야」라고 하고, 에마 카드는 「내가 진짜 에마야」라고 한다. 바뀌어 있든 아니든 둘 중 하나만 맞으니, 거짓말쟁이는 미리아 카드와 에마 카드 중 하나다. 거짓말쟁이는 1명뿐이니 셰리와 메루루는 정직하다.",
-        grid: "메루루가 정직하니 범인은 메루루의 말대로다. 그렇다면 미리아 카드의 「셰리쨩은 낙서 안 했어」는 맞을까? 정직한 사람은 맞는 말만 한다는 걸 떠올리면, 미리아와 에마가 정말 뒤바뀌어 있었는지도 알 수 있다.",
+        ledger: "거짓말쟁이는 1명. 미리아는 다른 한 사람과 영혼이 뒤바뀌어 있을 수도, 아닐 수도 있다. 카드의 말은 그 몸 안에 든 사람이 한 말이고, 거짓말쟁이와 범인은 사람(원래 몸의 이름)으로 고른다. 「뒤바뀜」 책갈피를 읽어 보자.",
+        cards: "미리아 카드는 에마의 말투로 「사실 나는 에마야」라고 하고, 에마 카드는 「내가 진짜 에마야」라고 한다. 바뀌어 있든 아니든 둘 중 하나만 맞으니, 이 두 카드를 말한 미리아와 에마 중 한 명은 거짓말쟁이다. 거짓말쟁이는 1명뿐이니 셰리와 메루루는 정직하다.",
+        grid: "메루루가 정직하니 범인은 메루루의 말대로다. 그렇다면 미리아 카드의 「셰리쨩은 낙서 안 했어」는 맞을까? 그 카드를 말한 사람이 거짓말쟁이라는 걸 알면, 미리아와 에마가 정말 뒤바뀌어 있었는지도 알 수 있다.",
       },
       "tutorial-sight": {
         incident: "심화 4: 나노카의 환시와 코코의 천리안. 이 둘은 규칙을 바꾸지 않고, 특별한 증언으로 나온다.",

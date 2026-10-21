@@ -47,19 +47,19 @@
   // 말 하나의 이름: 카드의 첫 말은 카드 이름, 두 번째 말은 「이름#2」(수첩 칸과 같다).
   const slotId = (x, i) => (i === 0 ? x : `${x}#${i + 1}`);
 
-  // x 카드의 말 st 의 내용이 맞는가. me: 말 속의 "나"(말투 주인, 글에만 쓴다), w: { c, role, s, heard, truth(y) → y 카드 말들의 맞고 틀림 }
-  // 범인은 몸(카드) 기준이고 영혼은 사건 때부터 이 몸에 있었으니, 「나는 안 했다」류의 "나"는 이 카드 x 다(2026-10-21).
+  // x 카드의 말 st 의 내용이 맞는가. me: 말 속의 "나" = 그 말을 한 사람(뒤바뀌었으면 x 몸에 든 사람, 흉내면 흉내 낸 대상),
+  // w: { c, role, s, heard, truth(y) → y 카드 말들의 맞고 틀림 }. 2026-10-21 사용자 방침: 사람 기준(범행은 뒤바뀌기 전).
   function content(st, x, me, w) {
     const [kind, args] = st;
     const c = w.c;
     switch (kind) {
       case "accuse": case "culprit_is": return c === args[0];
       case "deny": return c !== args[0];
-      case "deny_self": return c !== x;
+      case "deny_self": return c !== me;
       case "either": return args.includes(c);
-      case "self_or": return c === x || c === args[0];
-      case "meta_false": return !w.truth(args[0]).some((v) => v);    // 그 카드의 말이 전부 틀렸다
-      case "meta_true": return w.truth(args[0]).every((v) => v);     // 그 카드의 말이 전부 맞다
+      case "self_or": return c === me || c === args[0];
+      case "meta_false": return !w.truth(soulIn(args[0], w.s)).some((v) => v);    // 그 사람의 말(그 사람이 든 몸의 카드)이 전부 틀렸다
+      case "meta_true": return w.truth(soulIn(args[0], w.s)).every((v) => v);     // 그 사람의 말이 전부 맞다
       case "swap_claim": return w.s === args[0];          // (남이 하는 말) 미리아와 args[0] 의 영혼이 뒤바뀌어 있다
       case "iam": return soulIn(x, w.s) === args[0];      // 이 몸(x)에 든 영혼은 사실 args[0] 이다
       case "swap_deny": return soulIn(x, w.s) === x;      // 이 몸의 영혼은 몸 주인 그대로다
@@ -67,7 +67,7 @@
       case "culprit_role": return w.role[c] === args[0];
       case "count_is": return Object.values(w.role).filter((r) => r === args[0]).length === args[1];
       case "vision": return args.includes(c);             // 환시: 범인은 이 중 하나
-      case "alibi": return !args.includes(c) && c !== x;  // 천리안: 말에 나온 사람들과 방송 중이던 코코(이 카드)는 범인이 아니다
+      case "alibi": return !args.includes(c) && c !== me; // 천리안: 말에 나온 사람들과 방송 중이던 코코(나)는 범인이 아니다
       case "hearsay": return w.heard[args[0]];            // args[0] 이 정말 그 말을 했다
     }
     throw new Error(kind);
@@ -81,7 +81,7 @@
     if (metaOk && !heard) kinds = kinds.concat(["meta_false", "meta_true"]);
     if (pair && me !== "miria" && me !== pair && !heard) kinds = kinds.concat(["swap_claim"]);
     if (spec.roles) kinds = kinds.concat(["role_is", "role_is", "culprit_role"], hidden && !heard ? ["count_is"] : []);
-    if (spec.testimony && !heard && !avoid.length) kinds = kinds.concat({ nanoka: ["vision", "vision"], coco: ["alibi", "alibi"] }[me] || []);
+    if (spec.testimony && !heard && !avoid.length && !(pair && (me === "miria" || me === pair))) kinds = kinds.concat({ nanoka: ["vision", "vision"], coco: ["alibi", "alibi"] }[me] || []);
     const kind = r.choice(kinds);
     if (kind === "deny_self") return [kind, []];
     if (kind === "either" || kind === "alibi") return [kind, r.sample(others, 2).sort()];
@@ -90,6 +90,10 @@
     if (kind === "role_is") return [kind, [r.choice(others), r.choice(["H", "L", "T"])]];
     if (kind === "culprit_role") return [kind, [r.choice(["H", "L", "T"])]];
     if (kind === "count_is") return [kind, [r.choice(["L", "T"]), r.choice([0, 1, 2])]];
+    if (kind.startsWith("meta") && pair) {     // 「○○의 말」이 뒤바뀜 두 사람을 가리키면 어느 카드인지 헷갈린다
+      const targets = others.filter((o) => o !== "miria" && o !== pair);
+      return targets.length ? [kind, [r.choice(targets)]] : ["deny_self", []];
+    }
     return [kind, [r.choice(others)]];
   }
 
@@ -105,8 +109,8 @@
     return null;
   }
 
-  // x 이름으로 나온 말을 실제로 한 사람. 마고의 흉내만 바꾼다(뒤바뀜은 몸 기준이라 그대로).
-  const speaker = (x, m) => (x === m ? "margo" : x);
+  // x 카드의 말을 실제로 한 사람: 마고가 흉내 냈으면 마고, 미리아와 뒤바뀌었으면 그 몸에 든 사람.
+  const speaker = (x, m, s) => (x === m ? "margo" : soulIn(x, s));
 
   // 전해 들은 말들: [{ by: 전한 사람, who: 잘 안 들린 사람, st: 그 사람이 했다는 말 }]
   function reports(p) {
@@ -140,7 +144,6 @@
 
   function worlds(p) {
     const sp = p.speakers, st = p.statements, magic = p.magic;
-    const voice = Object.fromEntries(sp.map((x) => [x, voiceOf(st[x], x)]));
     const rep = reports(p);
     const hasMeta = sp.some((x) => st[x].some((q) => q[0].startsWith("meta")));
     const slots = sp.flatMap((x) => st[x].map((_, i) => [x, i]));
@@ -152,9 +155,11 @@
       const role = Object.fromEntries(sp.map((x, i) => [x, roles[i]]));
       // 흉내당한 사람은 말을 안 했으니 정직한 사람으로 센다
       for (const m of [null].concat(mimic.filter((x) => role[x] === "H"))) {
-        const rOf = Object.fromEntries(sp.map((x) => [x, role[speaker(x, m)]]));
-        const trolls = hasMeta ? slots.filter(([x]) => rOf[x] === "T") : [];
         for (const s of ss) {
+          // 카드의 맞고 틀림은 그 말을 실제로 한 사람의 역할대로(흉내면 마고, 뒤바뀌었으면 그 몸에 든 사람)
+          const rOf = Object.fromEntries(sp.map((x) => [x, role[speaker(x, m, s)]]));
+          const me = Object.fromEntries(sp.map((x) => [x, soulIn(x, s)]));
+          const trolls = hasMeta ? slots.filter(([x]) => rOf[x] === "T") : [];
           for (const c of sp) {
             for (const h of bits(rep.length)) {
               const heard = Object.fromEntries(rep.map((q, i) => [q.who, h[i]]));
@@ -168,7 +173,7 @@
                 const w = { c, role, s, heard, truth: (y) => st[y].map((_, i) => tv.get(slotId(y, i))) };
                 let ok = true;
                 for (const [x, i] of slots) {
-                  const v = content(st[x][i], x, voice[x], w);
+                  const v = content(st[x][i], x, me[x], w);
                   const id = slotId(x, i);
                   if (tv.get(id) === null) tv.set(id, v);      // 변덕쟁이의 말(말에 대한 말이 없는 판): 내용이 곧 맞고 틀림
                   else if (v !== tv.get(id)) { ok = false; break; }
