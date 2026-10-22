@@ -320,9 +320,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=f322856da6"></script>
-<script src="core.js?v=f322856da6"></script>
-<script src="lang/ko.js?v=f322856da6"></script>
+<script src="puzzles.js?v=546bdff804"></script>
+<script src="core.js?v=546bdff804"></script>
+<script src="lang/ko.js?v=546bdff804"></script>
 <script>
 (function () {
   "use strict";
@@ -560,7 +560,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     const links = p.magic.map((m, i) => `<button class="link" data-tab="magic-${i}" data-k="link:magic-${i}">${esc(T.magicTitle(m))}</button>`);
     return `
       <h3>${esc(T.tabs.rules)}</h3>
-      <p>${q.tier === "veryhard" ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n)}</p>
+      <p>${q.tier === "veryhard" ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n, q.magic_ids.includes("anan"))}</p>
       <p>${esc(T.ruleCulprit)}</p>
       ${q.tier === "veryhard" ? `<p>${esc(T.ruleJudgeRoles)}</p>${dialog(T.hiro, T.hiroRolesLine)}` : ""}
       ${CORE.reports(CORE.problem(q)).length ? `<p>${esc(T.ruleHearsay)}</p>` : ""}

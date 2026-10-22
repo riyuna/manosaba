@@ -370,7 +370,8 @@
     where: (q, index, date) => q.id.startsWith("tutorial") ? `튜토리얼 · ${ui.tutorials.find((t) => t.id === q.id).label}`
       : q.seed !== undefined ? `무작위 재판 · ${TIER[q.tier]} · 문제 번호 ${q.seed}`
       : date ? `오늘의 재판 · ${ui.dateLabel(date)} · ${TIER[q.tier]}` : `${TIER[q.tier]} ${index}번`,
-    ruleLiarsHtml: (n) => `이 중 딱 <strong>${n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, 나머지의 말은 맞다.`,
+    ruleLiarsHtml: (n, anan) => `이 중 딱 <strong>${n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, `
+      + (anan ? "안안에게 세뇌당한 사람의 말은 맞는지 틀린지 알 수 없고, " : "") + "나머지의 말은 맞다.",     // 세뇌 문구는 사용자 문장(2026-10-22)
     // 아주 어려움: 수를 알려 주는 판(shown)과 숨기는 판(hidden)
     ruleRolesHtml: (q) => (q.mode === "shown"
       ? `이 중 딱 <strong>${q.n}명</strong>이 거짓말쟁이, <strong>${q.t + (q.magic_ids.includes("anan") ? 1 : 0)}명</strong>이 변덕쟁이다${q.magic_ids.includes("anan") ? "(안안에게 세뇌당한 사람 포함)" : ""}. `
