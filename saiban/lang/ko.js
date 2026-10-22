@@ -367,8 +367,14 @@
     recordsNote: "판결을 끝낸 사건은 붉은 테두리로, 한 번도 돌아오지 않고 끝냈다면 붉게 칠해 표시한다",
     tileLabel: (tier, i, rec) => `${TIER[tier]} ${i}번${rec ? `, 판결 끝, 최소 회귀 ${rec.r}번` : ""}`,
     back: "사건 기록으로",
+    // 무작위 재판은 번호만으로는 난이도를 모른다(같은 번호도 난이도마다 다른 문제). 둘을 한 덩어리로 보이고, 주소(?r=hard-120302)로 연다(2026-10-22 사용자)
+    randomCode: (tier, seed) => `${TIER[tier]} ${seed}번`,
+    copyLink: "이 문제 링크 복사",
+    copiedLink: "링크를 복사했다",
+    copyFallback: "이 주소를 복사해 공유하면 같은 문제가 열린다:",
+    badLink: (code) => `링크의 문제(${code})를 만들지 못했다. 사건 기록으로 돌아왔다.`,
     where: (q, index, date) => q.id.startsWith("tutorial") ? `튜토리얼 · ${ui.tutorials.find((t) => t.id === q.id).label}`
-      : q.seed !== undefined ? `무작위 재판 · ${TIER[q.tier]} · 문제 번호 ${q.seed}`
+      : q.seed !== undefined ? `무작위 재판 · ${ui.randomCode(q.tier, q.seed)}`
       : date ? `오늘의 재판 · ${ui.dateLabel(date)} · ${TIER[q.tier]}` : `${TIER[q.tier]} ${index}번`,
     ruleLiarsHtml: (n, anan) => `이 중 딱 <strong>${n}명</strong>이 거짓말을 하고 있다. 거짓말쟁이의 말은 틀리고, `
       + (anan ? "안안에게 세뇌당한 사람의 말은 맞는지 틀린지 알 수 없고, " : "") + "나머지의 말은 맞다.",     // 세뇌 문구는 사용자 문장(2026-10-22)

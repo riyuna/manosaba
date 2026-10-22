@@ -172,6 +172,10 @@ a { color: var(--blood-ink); }
 /* 사건 */
 .case-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .case-top .where { color: var(--muted); font-size: 14px; }
+.case-top .share { margin-left: auto; }
+.bad-link { margin: 0; color: var(--blood-ink); }
+.share-url { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 14px; display: grid; gap: 6px; }
+.share-url input { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 6px 8px; width: 100%; box-sizing: border-box; }
 .incident { font-size: clamp(26px, 5.6vw, 36px); line-height: 1.35; margin: 0; }
 
 /* 대사 상자: 이름표 + 대사 (피해자의 한마디, 히로의 말) */
@@ -331,9 +335,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=2b5711d49c"></script>
-<script src="core.js?v=2b5711d49c"></script>
-<script src="lang/ko.js?v=2b5711d49c"></script>
+<script src="puzzles.js?v=6d7b998f5f"></script>
+<script src="core.js?v=6d7b998f5f"></script>
+<script src="lang/ko.js?v=6d7b998f5f"></script>
 <script>
 (function () {
   "use strict";
@@ -412,12 +416,13 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
 
   // 무작위 재판은 나눠서 만든다(어려움의 일부 조합은 1~2초 걸린다). 그동안 "준비하는 중"을 보인다.
-  async function openRandom(tier) {
+  // fixed: 링크로 받은 번호(그 번호 하나만 만든다). 없으면 번호를 뽑는다.
+  async function openRandom(tier, fixed) {
     state = { view: "loading" };
     render();
     window.scrollTo({ top: 0 });
-    for (let i = 0; i < 5; i++) {
-      const seed = 1 + Math.floor(Math.random() * 999999);
+    for (let i = 0; i < (fixed ? 1 : 5); i++) {
+      const seed = fixed || 1 + Math.floor(Math.random() * 999999);
       const q = await CORE.makeAsync(tier, seed);
       if (state.view !== "loading") return;        // 그사이 다른 곳으로 갔다
       if (!q) continue;                              // 측정상 첫 번에 된다(난이도별 100개 표본에서 실패 0)
@@ -425,8 +430,29 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       state = { view: "puzzle", random: { tier, seed }, ...fresh() };
       break;
     }
-    if (state.view === "loading") state = { view: "home" };
+    if (state.view === "loading") state = { view: "home", notice: fixed ? T.badLink(T.randomCode(tier, fixed)) : null };
     render();
+  }
+
+  // 무작위 재판 링크: ?r=<난이도>-<번호>. 보고 있는 무작위 재판은 주소에도 적어 둔다(주소창을 그대로 복사해도 같은 문제가 열린다).
+  const SHARE_TIERS = ["easy", "normal", "hard", "veryhard"];
+  function sharedRandom() {
+    let m = null;
+    try { m = /^([a-z]+)-([1-9][0-9]{0,6})$/.exec(new URLSearchParams(location.search).get("r") || ""); } catch (e) { /* 없음 */ }
+    return m && SHARE_TIERS.includes(m[1]) ? { tier: m[1], seed: Number(m[2]) } : null;
+  }
+  const shareQuery = () => state.view === "puzzle" && state.random ? `?r=${state.random.tier}-${state.random.seed}` : "";
+  const shareUrl = () => location.origin + location.pathname + shareQuery();
+  function syncAddress() {
+    const q = shareQuery();
+    if (location.search === q || (!q && !location.search)) return;
+    try { history.replaceState(null, "", location.pathname + q + location.hash); } catch (e) { /* 미리보기 등에서는 막힐 수 있다 */ }
+  }
+  async function copyShare() {
+    const url = shareUrl();
+    try { await navigator.clipboard.writeText(url); state.share = "copied"; }
+    catch (e) { state.share = url; }               // 클립보드가 막히면 주소를 보여 준다
+    render("share");
   }
 
   // ---- 화면 ----
@@ -458,7 +484,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         <header><h3>${esc(T.tier[t])}</h3><small>${esc(T.tierNote[t])}</small></header>
         <div class="tiles">${DATA.tiers[t].map((p, i) => tile(p, i + 1)).join("")}</div>
       </section>`).join("");
-    app.innerHTML = header() + `
+    app.innerHTML = header() + (state.notice ? `<p class="bad-link" role="status">${esc(state.notice)}</p>` : "") + `
       <section class="daily" aria-label="${esc(T.dailyTitle)}">
         <div class="what">
           <div class="date">${esc(T.dateLabel(d.iso))} · ${esc(T.tier[d.puzzle.tier])}</div>
@@ -660,6 +686,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       <div class="case-top">
         <button class="btn ghost" data-home="1">${esc(T.back)}</button>
         <span class="where">${esc(T.where(q, index, state.date))}</span>
+        ${state.random ? `<span class="share"><button class="btn ghost small" data-share="1" data-k="share">${esc(state.share === "copied" ? T.copiedLink : T.copyLink)}</button></span>` : ""}
+        ${state.random && state.share && state.share !== "copied" ? `<p class="share-url">${esc(T.copyFallback)} <input readonly value="${esc(state.share)}" aria-label="${esc(T.copyLink)}"></p>` : ""}
       </div>
       ${guide(q, 1, "incident")}
       <h2 class="incident">${esc(p.incident)}</h2>
@@ -726,6 +754,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     else if (state.view === "archive") archive();
     else if (state.view === "loading") app.innerHTML = `<p class="loading" aria-live="polite">${esc(T.preparing)}</p>` + footer();
     else puzzleView();
+    syncAddress();
     if (focusKey) {
       const el = app.querySelector(`[data-k="${CSS.escape(focusKey)}"]`);
       if (el && !el.disabled) el.focus({ preventScroll: true });
@@ -742,6 +771,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     if (ds.day) { const i = Number(ds.day); return openPuzzle(dailyOf(i).id, isoOf(i)); }
     if (ds.archive) { state = { view: "archive" }; render(); window.scrollTo({ top: 0 }); return; }
     if (ds.random) return openRandom(ds.random);
+    if (ds.share) return copyShare();
     if (ds.book) return openBook();
     if (ds.home) { state = { view: "home" }; render(); return; }
     const cur = state.view === "puzzle" ? current() : null;
@@ -853,6 +883,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   try { window.claude?.hot?.snapshot?.(() => ({ state })); } catch (e) { /* 없음 */ }
   const start = (data) => {
     const s = data && data.state;
+    const shared = sharedRandom();
+    if (shared && !(s && s.view === "puzzle" && s.random && s.random.tier === shared.tier && s.random.seed === shared.seed)) {
+      return openRandom(shared.tier, shared.seed);
+    }
     if (s && (s.view === "home" || s.view === "archive" || s.view === "loading")) state = s.view === "loading" ? { view: "home" } : s;
     else if (s && s.view === "puzzle" && Array.isArray(s.memory) && (s.random || findLogic(s.id))) {
       state = { ...fresh(), ...s };
