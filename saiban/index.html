@@ -272,7 +272,7 @@ a { color: var(--blood-ink); }
 table.hyp { border-collapse: collapse; font-size: 14px; }
 table.hyp th { font-weight: 400; color: var(--muted); padding: 4px 6px; white-space: nowrap; }
 table.hyp thead th { font-size: 13px; text-align: center; }
-table.hyp tbody th, table.hyp tfoot th { text-align: left; color: var(--ink); }
+table.hyp tbody th { text-align: left; color: var(--ink); }
 table.hyp td { padding: 3px; text-align: center; }
 .cell {
   width: 38px; height: 34px; border: 1px solid var(--line); border-radius: 4px; background: var(--night);
@@ -282,7 +282,6 @@ table.hyp td { padding: 3px; text-align: center; }
 @media (max-width: 440px) { .cell { width: 31px; } table.hyp th { padding: 4px 3px; } }
 .cell.o { color: var(--ok); border-color: rgba(134, 207, 165, .5); }
 .cell.x { color: var(--blood-ink); border-color: var(--blood); background: var(--wine); }
-table.hyp tfoot td { font-family: var(--font-latin); font-size: 18px; font-weight: 600; color: var(--blood-ink); font-variant-numeric: tabular-nums; }
 .nb-label { font-size: 14px; color: var(--muted); }
 #memo-text {
   width: 100%; resize: vertical; min-height: 7em; background: var(--night); border: 1px solid var(--line);
@@ -321,9 +320,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=dc3faf22f4"></script>
-<script src="core.js?v=dc3faf22f4"></script>
-<script src="lang/ko.js?v=dc3faf22f4"></script>
+<script src="puzzles.js?v=f322856da6"></script>
+<script src="core.js?v=f322856da6"></script>
+<script src="lang/ko.js?v=f322856da6"></script>
 <script>
 (function () {
   "use strict";
@@ -592,20 +591,13 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         return `<td><button class="cell ${v}" data-cell="${c}|${r}" data-k="cell:${c}|${r}"
           aria-label="${esc(T.nbCell(nameOf(p, c), label, v))}">${v === "o" ? "○" : v === "x" ? "×" : ""}</button></td>`;
       }).join("")}</tr>`).join("");
-    // × 수 줄은 카드마다 말이 하나일 때만(말이 둘인 카드가 있으면 × 수 = 거짓말쟁이 수가 아니라 쓸모없다, 2026-10-22 사용자)
-    const single = p.suspects.every((s) => s.says.length <= 1);
-    const counts = ids.map((c) => {
-      const x = lines.filter(({ r }) => note.g[`${c}|${r}`] === "x").length;
-      return `<td>${x || ""}</td>`;
-    }).join("");
     return `
       <h3>${esc(T.workbenchGrid)}</h3>
-      <p class="nb-help">${esc(single ? T.nbHelp + " " + T.nbHelpCount : T.nbHelp)}</p>
+      <p class="nb-help">${esc(T.nbHelp)}</p>
       <div class="grid-wrap">
         <table class="hyp">
           <thead><tr><th scope="col">${esc(T.nbCorner)}</th>${head}</tr></thead>
           <tbody>${rows}</tbody>
-          ${single ? `<tfoot><tr><th scope="row">${esc(T.nbFoot)}</th>${counts}</tr></tfoot>` : ""}
         </table>
       </div>`;
   }
