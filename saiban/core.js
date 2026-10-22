@@ -216,6 +216,9 @@
     return new Set(plain.map((w) => w.c)).size === 1 && plain[0].c === culprit;
   }
 
+  // 역할(사람마다)·흉내 낸 카드·뒤바뀜이 모든 세계에서 같다(아주 어려움 생성 조건, 2026-10-22)
+  const settled = (ws) => new Set(ws.map((w) => JSON.stringify([w.roles, w.m, w.s]))).size === 1;
+
   // 카드마다 그 카드의 말을 실제로 한 사람(흉내면 마고, 뒤바뀌었으면 그 몸에 든 사람)의 역할. 하나로 안 정해지면 null.
   function cardRoles(p, ws) {
     const sp = p.speakers;
@@ -308,7 +311,7 @@
       const ws = worlds(p);
       if (!ws.length || new Set(ws.map((w) => w.c)).size !== 1) continue;
       if (spec.unique_false && falseSays(ws) === null) continue;
-      if (spec.unique_roles && cardRoles(p, ws) === null) continue;    // 아주 어려움: 카드마다 역할도 하나로 정해져야 판결할 수 있다
+      if (spec.unique_roles && !settled(ws)) continue;    // 아주 어려움: 역할이 전부 하나로 정해져야 판결할 수 있다
       const use = magicUse(p, ws);
       if (magic.some((mg) => use[mg] !== want[mg]) || !magicOk(p, ws)) continue;     // 정한 대로 걸리지(안 걸리지) 않았거나 마법이 쓰이지 않는다
       const id = `random-${tier}-${seed}`;
@@ -342,5 +345,5 @@
     });
   }
 
-  root.TrialCore = { make, makeAsync, worlds, liarCounts, falseSays, cardRoles, problem, content, voiceOf, soulIn, swapPair, reports, slotId };
+  root.TrialCore = { make, makeAsync, worlds, liarCounts, falseSays, cardRoles, settled, problem, content, voiceOf, soulIn, swapPair, reports, slotId };
 })(typeof window !== "undefined" ? window : globalThis);
