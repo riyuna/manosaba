@@ -321,9 +321,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=a1c678e16f"></script>
-<script src="core.js?v=a1c678e16f"></script>
-<script src="lang/ko.js?v=a1c678e16f"></script>
+<script src="puzzles.js?v=dc3faf22f4"></script>
+<script src="core.js?v=dc3faf22f4"></script>
+<script src="lang/ko.js?v=dc3faf22f4"></script>
 <script>
 (function () {
   "use strict";
@@ -592,18 +592,20 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         return `<td><button class="cell ${v}" data-cell="${c}|${r}" data-k="cell:${c}|${r}"
           aria-label="${esc(T.nbCell(nameOf(p, c), label, v))}">${v === "o" ? "○" : v === "x" ? "×" : ""}</button></td>`;
       }).join("")}</tr>`).join("");
+    // × 수 줄은 카드마다 말이 하나일 때만(말이 둘인 카드가 있으면 × 수 = 거짓말쟁이 수가 아니라 쓸모없다, 2026-10-22 사용자)
+    const single = p.suspects.every((s) => s.says.length <= 1);
     const counts = ids.map((c) => {
       const x = lines.filter(({ r }) => note.g[`${c}|${r}`] === "x").length;
       return `<td>${x || ""}</td>`;
     }).join("");
     return `
       <h3>${esc(T.workbenchGrid)}</h3>
-      <p class="nb-help">${esc(T.nbHelp)}</p>
+      <p class="nb-help">${esc(single ? T.nbHelp + " " + T.nbHelpCount : T.nbHelp)}</p>
       <div class="grid-wrap">
         <table class="hyp">
           <thead><tr><th scope="col">${esc(T.nbCorner)}</th>${head}</tr></thead>
           <tbody>${rows}</tbody>
-          <tfoot><tr><th scope="row">${esc(T.nbFoot)}</th>${counts}</tr></tfoot>
+          ${single ? `<tfoot><tr><th scope="row">${esc(T.nbFoot)}</th>${counts}</tr></tfoot>` : ""}
         </table>
       </div>`;
   }
