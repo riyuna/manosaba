@@ -531,13 +531,15 @@
       const items = nickWords(q);
       if (!items.length) return "";
       const by = [...new Set(items.map((i) => i.by))];
-      return "呼び名の案内：" + by.map((b) => `${NAMES[b]}の` + items.filter((i) => i.by === b)
+      return "呼び名の解説：" + by.map((b) => `${NAMES[b]}の` + items.filter((i) => i.by === b)
         .map((i) => `「${i.nick}」は${NAMES[i.who]}`).join("、")).join("／") + "。";
     },
     selfWords: (q) => {
       const items = selfWords(q);
       if (!items.length) return "";
-      return `口調の案内：${items.map((i) => `${i.name}の「${i.word}」`).join("、")}は、${items.length > 1 ? "どれも" : ""}自分自身を指す言葉だ。`;
+      // 사용자 2026-10-24: 「一人称の解説」, 「ココの一人称は「あてぃし」」 꼴로
+      return "一人称の解説：" + (items.length === 1 ? `${items[0].name}の一人称は「${items[0].word}」。`
+        : items.map((i) => `${i.name}は「${i.word}」`).join("、") + "。");
     },
     hiroTitle: "二階堂ヒロの死に戻り",
     hiroRule: "判決を間違えると、ヒロはその日の朝に戻る。戻っても記憶は残る。自分から死に戻って、犯人ではない人を一人知ることもできる。戻った回数は判決の記録に残る。",
