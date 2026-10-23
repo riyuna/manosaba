@@ -59,7 +59,9 @@ html[lang="ja"] {
   --font-body: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Gowun Batang", serif;
 }
 html[lang="ja"] body { line-break: strict; }       /* 「ー」·작은 가나로 줄을 시작하지 않게 */
-html[lang="ja"] :is(h1, h2, h3, .incident) { word-break: auto-phrase; }   /* 제목은 말마디에서 줄을 바꾼다(지원하는 브라우저만) */
+html[lang="ja"] :is(h1, h2, h3) { word-break: auto-phrase; }   /* 제목은 말마디에서 줄을 바꾼다(지원하는 브라우저만) */
+/* 사건 제목: 팩이 말마디 경계에 폭 없는 공백을 넣어 두었다. 그 자리에서만 바꾸고(모든 브라우저), 너무 길면 아무 데서나 */
+html[lang="ja"] .incident { word-break: keep-all; overflow-wrap: anywhere; }
 
 * { box-sizing: border-box; }
 body {
@@ -360,10 +362,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="../puzzles.js?v=da174916fa"></script>
-<script src="../core.js?v=da174916fa"></script>
-<script src="../lang/ko.js?v=da174916fa"></script>
-<script src="../lang/ja.js?v=da174916fa"></script>
+<script src="../puzzles.js?v=dc3b34cb27"></script>
+<script src="../core.js?v=dc3b34cb27"></script>
+<script src="../lang/ko.js?v=dc3b34cb27"></script>
+<script src="../lang/ja.js?v=dc3b34cb27"></script>
 <script>
 (function () {
   "use strict";
