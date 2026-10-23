@@ -174,6 +174,10 @@ a { color: var(--blood-ink); }
 .case-top .where { color: var(--muted); font-size: 14px; }
 .case-top .share { margin-left: auto; }
 .bad-link { margin: 0; color: var(--blood-ink); }
+.updates-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; margin-top: -12px; }
+.new-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blood-ink); margin-left: 8px; vertical-align: 2px; box-shadow: 0 0 0 3px rgba(239, 106, 126, .18); }
+.updates .tag { display: inline-block; font-size: 12px; color: var(--brass); border: 1px solid var(--brass); border-radius: 3px; padding: 0 5px; margin-right: 2px; vertical-align: 1px; }
+.linkish { border: 0; background: none; padding: 0; font: inherit; color: var(--blood-ink); text-decoration: underline; cursor: pointer; }
 .share-url { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 14px; display: grid; gap: 6px; }
 .share-url input { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 6px 8px; width: 100%; box-sizing: border-box; }
 .incident { font-size: clamp(26px, 5.6vw, 36px); line-height: 1.35; margin: 0; }
@@ -335,9 +339,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=a228d9b4b3"></script>
-<script src="core.js?v=a228d9b4b3"></script>
-<script src="lang/ko.js?v=a228d9b4b3"></script>
+<script src="puzzles.js?v=e72b33c95d"></script>
+<script src="core.js?v=e72b33c95d"></script>
+<script src="lang/ko.js?v=e72b33c95d"></script>
 <script>
 (function () {
   "use strict";
@@ -348,6 +352,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   // 브라우저에만 남는 기록. 퍼즐 내용으로 만든 key 로 저장해서, 퍼즐을 다시 만들어도 엉뚱한 문제에 붙지 않는다.
   const DONE = "small-trial:done";        // { key: { r: 회귀 수, t: 걸린 시간(ms) } } 가장 좋은 기록(회귀 적은 순, 같으면 빠른 순)
   const NOTE = "small-trial:note:";      // + key → { g: {"범인|카드": "o"|"x"}, t: 메모 }
+  const SEEN = "small-trial:updates-seen";   // 마지막으로 연 업데이트 기록의 날짜(그보다 새 기록이 있으면 붉은 점)
   const app = document.getElementById("app");
   document.documentElement.lang = T.lang;
 
@@ -485,6 +490,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
         <div class="tiles">${DATA.tiers[t].map((p, i) => tile(p, i + 1)).join("")}</div>
       </section>`).join("");
     app.innerHTML = header() + (state.notice ? `<p class="bad-link" role="status">${esc(state.notice)}</p>` : "") + `
+      <div class="updates-row">
+        <button class="btn ghost small" data-updates="1" data-k="updates">${esc(T.updatesTitle)}${hasNewUpdates() ? `<span class="new-dot" role="img" aria-label="${esc(T.updatesNew)}"></span>` : ""}</button>
+        <span>${esc(T.updatesLatest(T.updates[0].date))}</span>
+      </div>
       <section class="daily" aria-label="${esc(T.dailyTitle)}">
         <div class="what">
           <div class="date">${esc(T.dateLabel(d.iso))} · ${esc(T.tier[d.puzzle.tier])}</div>
@@ -744,7 +753,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
 
   function footer() {
-    return `<footer>${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}${T.contactHtml.map((h) => `<span>${h}</span>`).join("")}</footer>`;
+    return `<footer>${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}${T.contactHtml.map((h) => `<span>${h}</span>`).join("")}`
+      + `<span><button class="linkish" data-updates="1">${esc(T.updatesTitle)}</button></span></footer>`;
   }
 
   // 다시 그려도 누르던 버튼에 초점을 돌려 둔다(키보드로 표를 채울 때 끊기지 않게)
@@ -773,6 +783,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     if (ds.random) return openRandom(ds.random);
     if (ds.share) return copyShare();
     if (ds.book) return openBook();
+    if (ds.updates) return openUpdates();
     if (ds.home) { state = { view: "home" }; render(); return; }
     const cur = state.view === "puzzle" ? current() : null;
     if (!cur) return;
@@ -871,6 +882,23 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   book.addEventListener("click", (e) => { if (e.target === book || e.target.closest("[data-close]")) book.close(); });
   function openBook() {
     if (typeof book.showModal === "function") book.showModal(); else book.setAttribute("open", "");
+  }
+
+  // 업데이트 기록: 규칙집과 같은 모양의 대화상자. 열면 붉은 점을 끈다.
+  const hasNewUpdates = () => (load(SEEN, "") || "") < T.updates[0].date;
+  const updates = document.createElement("dialog");
+  updates.className = "rulebook updates";
+  updates.setAttribute("aria-labelledby", "updates-title");
+  updates.innerHTML = `<div class="rb-inner">
+      <div class="rb-head"><h2 id="updates-title">${esc(T.updatesTitle)}</h2><button class="btn ghost" data-close="1">${esc(T.close)}</button></div>
+      ${T.updates.map((u) => `<section><h3>${esc(T.dateLabel(u.date))}</h3><ul>${u.items.map(([tag, text]) =>
+        `<li>${tag ? `<span class="tag">${esc(tag)}</span> ` : ""}${esc(text)}</li>`).join("")}</ul></section>`).join("")}
+    </div>`;
+  document.body.appendChild(updates);
+  updates.addEventListener("click", (e) => { if (e.target === updates || e.target.closest("[data-close]")) updates.close(); });
+  function openUpdates() {
+    if (typeof updates.showModal === "function") updates.showModal(); else updates.setAttribute("open", "");
+    if (hasNewUpdates()) { save(SEEN, T.updates[0].date); if (state.view === "home") render("updates"); }
   }
 
   // 걸린 시간은 1초마다 그 숫자만 고친다(다시 그리지 않는다)
