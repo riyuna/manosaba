@@ -1,0 +1,1081 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Cmask%20id='m'%3E%3Crect%20width='64'%20height='64'%20fill='%23fff'/%3E%3Ccircle%20cx='32'%20cy='37'%20r='3.4'%20fill='%23000'/%3E%3Crect%20x='30.8'%20y='37'%20width='2.4'%20height='18'%20fill='%23000'/%3E%3C/mask%3E%3Ccircle%20cx='32'%20cy='32'%20r='28'%20fill='none'%20stroke='%23a8263e'%20stroke-width='5'/%3E%3Cg%20transform='rotate%2845%2032%2032%29'%20fill='%23a8263e'%3E%3Crect%20x='24'%20y='10'%20width='16'%20height='12'/%3E%3Cpath%20d='M24%2024H40L41.5%2036L32%2054L22.5%2036Z'%20mask='url%28%23m%29'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="manosaba.moe">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="牢屋敷の番外裁判">
+<meta property="og:description" content="『魔法少女ノ魔女裁判』の非公式ファンメイド論理パズル。嘘の中から犯人を見つけ出す。非公式のファンメイド作品・ネタバレあり・AI利用">
+<meta property="og:url" content="https://manosaba.moe/saiban/ja/">
+<meta property="og:image" content="https://manosaba.moe/saiban/og-ja.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="牢屋敷の番外裁判 — 非公式のファンメイド作品・ネタバレあり・AI利用">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ko" href="https://manosaba.moe/saiban/">
+<link rel="alternate" hreflang="ja" href="https://manosaba.moe/saiban/ja/">
+<script>window.TRIAL_LANG = "ja"; window.TRIAL_PAGES = {ko: "../", ja: "./"};</script>
+<title>牢屋敷の番外裁判</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="『魔法少女ノ魔女裁判』の非公式ファンメイド論理パズル。嘘の中から犯人を見つけ出す。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Gowun+Batang:wght@400;700&family=Song+Myung&family=Shippori+Mincho:wght@400;700&family=Zen+Antique&display=swap">
+<style>
+/* 레이아웃: 밤의 감옥 저택 예배당에서 열리는 재판. 위에서 스테인드글라스 빛이 번지는 어두운 기둥 하나에
+   사건 → 피해자의 한마디(대사 상자) → 규칙 → 피고석 명패(수감 번호) → 히로의 수첩 → 판결 순으로 내려간다.
+   원작의 그림·UI·로고는 쓰지 않는다(가이드라인 §7·§9). 분위기만 자작 CSS로 낸다. 한 가지 밤의 모습만 쓴다. */
+:root {
+  color-scheme: dark;
+  --night: #0e0a12;        /* 바탕: 저택의 밤 */
+  --panel: #18111d;        /* 패널 */
+  --panel-2: #211826;      /* 명패 */
+  --ink: #efe7ee;          /* 글자 */
+  --muted: #a99bae;        /* 보조 글자 */
+  --line: #3a2c41;         /* 선 */
+  --blood: #b52d43;        /* 판결·회귀 바탕 */
+  --blood-ink: #ef6a7e;    /* 판결·회귀 글자 */
+  --wine: #33101a;         /* 붉은 칸 바탕 */
+  --brass: #c9ab70;        /* 장식·마법 */
+  --brass-dim: #261f15;    /* 마법 칸 바탕 */
+  --ok: #86cfa5;           /* 정답 */
+  --paper: #1e1623;        /* 수첩 종이 */
+  --paper-edge: #4b3b53;   /* 수첩 테두리 */
+  --glass-blue: rgba(64, 104, 190, .20);
+  --glass-amber: rgba(214, 132, 52, .12);
+  --glass-wine: rgba(120, 20, 40, .28);
+  --font-display: "Song Myung", "Nanum Myeongjo", "AppleMyungjo", serif;
+  --font-body: "Gowun Batang", "Nanum Myeongjo", "AppleMyungjo", "Batang", serif;
+  --font-latin: "Cormorant Garamond", "Garamond", "Times New Roman", serif;
+  --r: 6px;
+}
+/* 일본어판: 가나가 있는 명조(Google Fonts, OFL). 한국어 글자(언어 전환 링크)는 뒤의 한국어 글꼴이 맡는다 */
+html[lang="ja"] {
+  --font-display: "Zen Antique", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Song Myung", serif;
+  --font-body: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Gowun Batang", serif;
+}
+html[lang="ja"] body { line-break: strict; }       /* 「ー」·작은 가나로 줄을 시작하지 않게 */
+html[lang="ja"] :is(h1, h2, h3, .incident) { word-break: auto-phrase; }   /* 제목은 말마디에서 줄을 바꾼다(지원하는 브라우저만) */
+
+* { box-sizing: border-box; }
+body {
+  background:
+    radial-gradient(56rem 34rem at 12% -8%, var(--glass-blue), transparent 62%),
+    radial-gradient(48rem 30rem at 92% -6%, var(--glass-amber), transparent 62%),
+    radial-gradient(70rem 50rem at 50% 115%, var(--glass-wine), transparent 70%),
+    var(--night);
+  background-color: var(--night);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 56px;
+  min-height: 100%;
+}
+.wrap { max-width: 780px; margin: 0 auto; display: grid; gap: 28px; }
+/* 문제 화면: 넓은 화면에서는 가정 표·메모가 오른쪽에 붙어 따라온다(스크롤해도 보인다). 좁은 화면에서는 카드 아래 */
+.trial { display: grid; grid-template-columns: minmax(0, 1fr); }
+.wrap .trial > * { margin: 0 0 28px; min-width: 0; }   /* .incident·.dialog 의 margin: 0 보다 앞서게 */
+.workbench { padding: 16px 18px 18px; display: grid; gap: 10px; align-content: start; }
+.workbench h3 { font-size: 20px; }
+.workbench h3 + .nb-help { margin-top: -4px; }
+@media (min-width: 1140px) {
+  .wrap.wide { max-width: 1260px; }
+  .trial { grid-template-columns: minmax(0, 780px) minmax(360px, 1fr); column-gap: 32px; }
+  .trial > * { grid-column: 1; }
+  .trial > .side { grid-column: 2; grid-row: 1 / span 40; align-self: start; position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; }
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; text-wrap: balance; margin: 0; }
+button, textarea { font: inherit; color: inherit; }
+button:focus-visible, a:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--blood-ink); outline-offset: 2px; }
+a { color: var(--blood-ink); }
+
+/* 놋쇠 모서리 장식: 테두리를 가진 상자 중 일부(머리판·수첩·판결)에만 */
+.frame { position: relative; border: 1px solid var(--line); background: var(--panel); border-radius: var(--r); }
+.frame::before, .frame::after {
+  content: ""; position: absolute; width: 16px; height: 16px; border: 0 solid var(--brass); opacity: .75; pointer-events: none;
+}
+.frame::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; border-top-left-radius: var(--r); }
+.frame::after { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; border-bottom-right-radius: var(--r); }
+
+/* 머리 */
+.masthead { display: grid; gap: 10px; padding-block: 8px 0; }
+.masthead .eyebrow { font-size: 13px; letter-spacing: .12em; color: var(--brass); }
+.masthead .top { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; }
+.langs { font-size: 14px; color: var(--muted); display: inline-flex; gap: 10px; }
+.langs a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.langs a:hover { color: var(--ink); }
+.langs [aria-current] { color: var(--ink); }
+.masthead h1 { font-size: clamp(38px, 9vw, 64px); line-height: 1.1; letter-spacing: .02em; }
+.masthead h1 .mark { color: var(--blood-ink); }
+.fleuron { color: var(--brass); font-size: 18px; letter-spacing: .6em; opacity: .8; }
+.masthead p { margin: 0; color: var(--muted); max-width: 36em; }
+.notice { padding: 14px 18px; font-size: 14px; color: var(--muted); display: grid; gap: 2px; }
+.notice b { color: var(--ink); font-weight: 700; }
+
+/* 튜토리얼 안내: 튜토리얼 판에서만 각 구역 앞에 붙는다 */
+.guide { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; color: var(--brass); font-size: 15px; }
+.guide .step {
+  font-family: var(--font-latin); font-weight: 600; font-size: 17px; width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--brass); display: grid; place-items: center; font-variant-numeric: lining-nums;
+}
+.guide p { margin: 0; color: var(--ink); }
+
+/* 홈 */
+.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.section-title h2 { font-size: 28px; }
+.section-title span { color: var(--muted); font-size: 14px; }
+.daily, .random, .tutorial {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  border: 1px solid var(--line); background: var(--panel); border-radius: var(--r); padding: 18px 20px;
+}
+.daily { border-color: var(--blood); background: linear-gradient(180deg, var(--wine), var(--panel)); }
+.daily .what, .random .what, .tutorial .what { min-width: 0; display: grid; gap: 2px; }
+.tutorial { border-color: rgba(201, 171, 112, .45); }
+.tutorial .what div { color: var(--muted); font-size: 14px; }
+.daily .date { font-family: var(--font-latin); font-size: 16px; color: var(--brass); font-variant-numeric: tabular-nums; }
+.daily .rec { color: var(--muted); font-size: 13px; }
+.days { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.day {
+  width: 100%; text-align: left; cursor: pointer; display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 2px 14px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 16px;
+}
+.day:hover { border-color: var(--brass); }
+.day.done { border-color: var(--blood); }
+.day .d { font-family: var(--font-latin); font-size: 17px; color: var(--brass); font-variant-numeric: tabular-nums; grid-row: span 2; }
+.day .d b { font-family: var(--font-body); font-weight: 700; font-size: 12px; color: var(--blood-ink); display: block; }
+.day .inc { min-width: 0; }
+.day .meta { color: var(--muted); font-size: 13px; }
+@media (max-width: 480px) { .day { grid-template-columns: minmax(0, 1fr); } .day .d { grid-row: auto; } }
+#clock { font-variant-numeric: tabular-nums; }
+.loading { font-family: var(--font-display); font-size: 22px; color: var(--muted); margin: 40px 0; }
+.daily h3, .random h3, .tutorial h3 { font-size: 24px; }
+.random .what div { color: var(--muted); font-size: 14px; }
+.tiers { display: grid; gap: 22px; }
+.tier { display: grid; gap: 10px; }
+.tier header { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.tier header h3 { font-size: 22px; }
+.tier header small { color: var(--muted); font-size: 14px; }
+.tiles { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 520px) { .tiles { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.tile {
+  aspect-ratio: 1; max-width: 100%; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel);
+  font-family: var(--font-latin); font-size: 22px; font-weight: 600; cursor: pointer; position: relative;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.tile:hover { border-color: var(--brass); }
+.tile.done { border-color: var(--blood); color: var(--blood-ink); }
+.tile.perfect { background: var(--blood); border-color: var(--blood); color: var(--ink); }
+
+.btn {
+  border: 1px solid var(--blood); background: var(--blood); color: var(--ink); border-radius: 999px;
+  padding: 9px 20px; cursor: pointer; font-size: 15px;
+}
+.btn:hover { filter: brightness(1.12); }
+.btn:disabled { opacity: .35; cursor: not-allowed; filter: none; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--brass); }
+.btn.small { padding: 6px 14px; font-size: 14px; }
+.btn.rewind { background: transparent; color: var(--blood-ink); border-color: var(--blood); }
+
+/* 사건 */
+.case-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.case-top .where { color: var(--muted); font-size: 14px; }
+.case-top .share { margin-left: auto; }
+.bad-link { margin: 0; color: var(--blood-ink); }
+.slot:empty { display: none; }
+.share-result { display: flex; gap: 10px; flex-wrap: wrap; }
+.share-result a.btn { text-decoration: none; }
+.share-text { width: 100%; box-sizing: border-box; font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 8px; resize: vertical; }
+.updates-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; margin-top: -12px; }
+.new-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blood-ink); margin-left: 8px; vertical-align: 2px; box-shadow: 0 0 0 3px rgba(239, 106, 126, .18); }
+.updates .tag { display: inline-block; font-size: 12px; color: var(--brass); border: 1px solid var(--brass); border-radius: 3px; padding: 0 5px; margin-right: 2px; vertical-align: 1px; }
+.linkish { border: 0; background: none; padding: 0; font: inherit; color: var(--blood-ink); text-decoration: underline; cursor: pointer; }
+.share-url { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 14px; display: grid; gap: 6px; }
+.share-url input { font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 6px 8px; width: 100%; box-sizing: border-box; }
+.incident { font-size: clamp(26px, 5.6vw, 36px); line-height: 1.35; margin: 0; }
+
+/* 대사 상자: 이름표 + 대사 (피해자의 한마디, 히로의 말) */
+.dialog {
+  margin: 0; border: 1px solid var(--line); border-radius: var(--r); padding: 22px 18px 14px; position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(0, 0, 0, .25)), var(--panel);
+}
+.dialog .speaker {
+  position: absolute; top: -13px; left: 14px; display: inline-flex; align-items: baseline; gap: 8px;
+  border: 2px solid transparent; border-radius: 4px; padding: 0 9px;     /* 2px: 그라데이션이 보이게(사용자 2026-10-23) */
+  background: linear-gradient(var(--night), var(--night)) padding-box,
+    linear-gradient(90deg, var(--who, var(--blood)), var(--who2, var(--who, var(--blood)))) border-box;   /* 이름표 테두리: 캐릭터 색(둘이면 그라데이션) */
+  font-family: var(--font-display); font-size: 15px;
+}
+.dialog blockquote { margin: 0; font-size: 17px; }
+.say::before { content: "「"; color: var(--muted); }
+.say::after { content: "」"; color: var(--muted); }
+.say.written::before { content: "『"; }
+.say.written::after { content: "』"; }
+
+/* 히로의 수첩: 위쪽 책갈피(탭)를 누르면 그 장이 펼쳐진다. 줄 그은 종이에 붉은 여백선 */
+.ledger { display: grid; }
+.ledger [role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-end; padding: 0 10px; }
+.tab {
+  --accent: var(--muted);
+  position: relative; top: 1px; border: 1px solid var(--line); border-bottom: 0; border-radius: 7px 7px 0 0;
+  background: #140e18; color: var(--muted); padding: 6px 11px 5px; font-size: 14px; cursor: pointer;
+  box-shadow: inset 0 3px 0 var(--accent);
+}
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper-edge); padding-bottom: 7px; z-index: 1; }
+.tab-hiro { --accent: var(--blood); }
+.tab-magic { --accent: var(--brass); }
+.ledger-page {
+  position: relative; display: grid; gap: 10px; align-content: start; min-height: 9em;
+  border: 1px solid var(--paper-edge); border-radius: 0 var(--r) var(--r) var(--r);
+  padding: 14px 18px 18px 46px; line-height: 1.8;
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(1.8em - 1px), rgba(239, 231, 238, .05) calc(1.8em - 1px), rgba(239, 231, 238, .05) 1.8em);
+}
+.ledger-page::before { content: ""; position: absolute; left: 30px; top: 0; bottom: 0; width: 1px; background: rgba(181, 45, 67, .45); }
+.ledger-page p { margin: 0; }
+.ledger-page strong { font-weight: 700; color: var(--blood-ink); }
+.ledger-page h3 { font-size: 21px; }
+.ledger-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.ledger-title { font-size: 12px; letter-spacing: .14em; color: var(--brass); }
+.page-hiro h3 { color: var(--blood-ink); }
+.page-magic h3 { color: var(--brass); }
+.link { background: none; border: 0; padding: 0; color: var(--brass); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.link:hover { color: var(--ink); }
+/* 규칙집 책갈피: 끝이 V자로 갈라진 붉은 리본 */
+.book-btn {
+  border: 0; cursor: pointer; background: var(--blood); color: var(--ink); font-size: 13px; letter-spacing: .06em;
+  padding: 5px 12px 11px; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%); margin-top: -15px;
+}
+.book-btn:hover { filter: brightness(1.15); }
+/* 규칙집 대화상자 */
+.rulebook {
+  padding: 0; width: min(680px, calc(100vw - 32px)); max-height: 86vh; overflow: auto;
+  border: 1px solid var(--brass); border-radius: var(--r); background: var(--panel); color: var(--ink);
+}
+.rulebook::backdrop { background: rgba(8, 5, 10, .74); }
+.rb-inner { padding: 0 20px 22px; display: grid; gap: 16px; }
+.rb-head { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 0 10px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.rb-head h2 { font-size: 26px; }
+.rulebook h3 { font-size: 19px; color: var(--brass); }
+.rulebook ul { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+.rulebook b { color: var(--ink); }
+.tutorial .bar .done-mark { color: var(--blood-ink); font-size: 13px; }
+
+/* 피고석 명패 */
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 560px) { .cards { grid-template-columns: minmax(0, 1fr); } }
+.card {
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 12px 16px 12px; display: grid; gap: 10px; min-width: 0;
+  transition: border-color .15s, box-shadow .15s;
+}
+.card .plate { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.card .who { font-family: var(--font-display); font-size: 21px; }
+.icon { margin-right: .35em; font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif; font-size: .9em; }
+.card .via { font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; margin-left: 6px; vertical-align: 3px; }
+.card blockquote { margin: 0; font-size: 17px; min-width: 0; }
+.card .says { display: grid; gap: 6px; }
+.card .line { display: flex; gap: 8px; align-items: baseline; min-width: 0; }
+.card .num { color: var(--brass); font-size: 15px; flex: none; }
+.card .unheard { margin: 0; color: var(--muted); font-style: italic; }
+.card .via.voice { color: var(--brass); border-color: rgba(201, 171, 112, .45); }
+.card.m-f blockquote, .card.m-f .unheard { text-decoration: line-through; text-decoration-color: var(--blood-ink); text-decoration-thickness: 2px; color: var(--muted); }
+.card.m-t { border-color: rgba(134, 207, 165, .6); }
+.card.m-t .plate { border-bottom-color: rgba(134, 207, 165, .35); }
+.card.m-r { border-style: dashed; border-color: var(--brass); }
+.card.m-r blockquote { color: var(--muted); font-style: italic; }
+.chip.mark-t[aria-pressed="true"] { border-color: var(--ok); color: var(--ink); background: rgba(134, 207, 165, .14); }
+.chip.mark-r[aria-pressed="true"] { border-color: var(--brass); color: var(--ink); background: var(--brass-dim); }
+.card.accused { border-color: var(--blood); box-shadow: 0 0 0 1px var(--blood) inset, 0 0 24px rgba(181, 45, 67, .25); }
+.card.cleared { opacity: .55; }
+.card .hint { font-size: 14px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 8px; }
+.card .acts { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 3px 12px;
+  font-size: 14px; cursor: pointer; color: var(--muted);
+}
+.chip:hover { border-color: var(--brass); color: var(--ink); }
+.chip[aria-pressed="true"] { border-color: var(--blood); color: var(--ink); background: var(--wine); }
+.chip:disabled { cursor: default; opacity: .7; }
+
+/* 히로의 수첩 */
+.nb-help { margin: 0; color: var(--muted); font-size: 14px; }
+.grid-wrap { overflow-x: auto; }
+table.hyp { border-collapse: collapse; font-size: 14px; }
+table.hyp th { font-weight: 400; color: var(--muted); padding: 4px 6px; white-space: nowrap; }
+table.hyp thead th { font-size: 13px; text-align: center; }
+table.hyp tbody th { text-align: left; color: var(--ink); }
+table.hyp td { padding: 3px; text-align: center; }
+.cell {
+  width: 38px; height: 34px; border: 1px solid var(--line); border-radius: 4px; background: var(--night);
+  cursor: pointer; font-size: 17px; line-height: 1;
+}
+.cell:hover { border-color: var(--brass); }
+@media (max-width: 440px) { .cell { width: 31px; } table.hyp th { padding: 4px 3px; } }
+.cell.o { color: var(--ok); border-color: rgba(134, 207, 165, .5); }
+.cell.x { color: var(--blood-ink); border-color: var(--blood); background: var(--wine); }
+.nb-label { font-size: 14px; color: var(--muted); }
+#memo-text {
+  width: 100%; resize: vertical; min-height: 7em; background: var(--night); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 10px 12px; line-height: 1.6;
+}
+.nb-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.nb-actions .warn { color: var(--blood-ink); font-size: 14px; }
+
+.tally { color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+.bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* 판결 */
+.verdict { padding: 20px; display: grid; gap: 12px; overflow: hidden; }
+.verdict.right { border-color: var(--brass); }
+.verdict.wrong { border-color: var(--blood); }
+.verdict.rewind { border-style: dashed; }
+.verdict h3 { font-size: 23px; }
+.verdict.right h3 { padding-right: 88px; min-height: 60px; }
+.verdict ul { margin: 0; padding-left: 18px; }
+.verdict .morning { font-family: var(--font-display); font-size: 19px; color: var(--muted); }
+.verdict .record { color: var(--muted); font-size: 14px; }
+.verdict .dialog { margin-top: 10px; }
+.stamp {
+  position: absolute; right: 16px; top: 14px; width: 76px; height: 76px; border-radius: 50%;
+  border: 3px double var(--blood-ink); color: var(--blood-ink); display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 24px; transform: rotate(-12deg); opacity: .92;
+  animation: stamp .35s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+@keyframes stamp { from { transform: rotate(-12deg) scale(2.2); opacity: 0; } to { transform: rotate(-12deg) scale(1); opacity: .92; } }
+.shake { animation: shake .3s; }
+@keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+@media (prefers-reduced-motion: reduce) { .stamp, .shake { animation: none; } }
+
+footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script src="../puzzles.js?v=38468a3901"></script>
+<script src="../core.js?v=38468a3901"></script>
+<script src="../lang/ko.js?v=38468a3901"></script>
+<script src="../lang/ja.js?v=38468a3901"></script>
+<script>
+(function () {
+  "use strict";
+  const DATA = window.PUZZLES;
+  const CORE = window.TrialCore;
+  // 언어: 배포본은 언어마다 페이지가 따로다(/saiban/ 한국어, /saiban/ja/ 일본어. 링크 미리보기가 언어마다 다르게).
+  // 배포 빌드가 TRIAL_LANG(이 페이지의 언어)과 TRIAL_PAGES(언어별 페이지 상대 주소)를 넣는다. 없으면(미리보기) 주소의 ?lang= 로 고른다.
+  // 고른 언어는 이 브라우저에 남겨, 다른 언어 페이지 링크로 들어와도 그 언어로 옮긴다. 처음 온 사람은 브라우저 언어가 일본어일 때만 일본어로.
+  const LANGS = [["ko", "한국어"], ["ja", "日本語"]];
+  const LANG_KEY = "small-trial:lang";
+  const PAGES = window.TRIAL_PAGES || null;
+  const HERE = window.TRIAL_LANG || "ko";
+  let asked = null;
+  try { asked = new URLSearchParams(location.search).get("lang"); } catch (e) { /* 없음 */ }
+  if (PAGES && !asked) {
+    let pref = null;
+    try { pref = localStorage.getItem(LANG_KEY); } catch (e) { /* 저장이 막혀 있으면 이 페이지 언어 그대로 */ }
+    const browser = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    const to = pref && pref !== HERE && PAGES[pref] ? pref : !pref && HERE === "ko" && /^ja\b/i.test(browser) ? "ja" : null;
+    if (to) { location.replace(PAGES[to] + location.search + location.hash); return; }
+  }
+  const LANG = asked && window.TrialLang[asked] ? asked : HERE;
+  const L = window.TrialLang[LANG];      // 언어 팩(lang/<언어>.js). 모양은 같다(decorate, ui, incidentText)
+  const T = L.ui;
+  // 브라우저에만 남는 기록. 퍼즐 내용으로 만든 key 로 저장해서, 퍼즐을 다시 만들어도 엉뚱한 문제에 붙지 않는다.
+  const DONE = "small-trial:done";        // { key: { r: 회귀 수, t: 걸린 시간(ms) } } 가장 좋은 기록(회귀 적은 순, 같으면 빠른 순)
+  const NOTE = "small-trial:note:";      // + key → { g: {"범인|카드": "o"|"x"}, t: 메모 }
+  const SEEN = "small-trial:updates-seen-n" + (LANG === "ko" ? "" : ":" + LANG); // 마지막으로 업데이트 기록을 열었을 때의 항목 수(그보다 많으면 붉은 점). 날짜로 재면 같은 날 더한 항목을 못 알린다. 기록은 언어마다 다르다
+  const app = document.getElementById("app");
+  document.documentElement.lang = T.lang;
+  document.title = T.title;
+
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  function load(k, fallback) {
+    try { const v = JSON.parse(localStorage.getItem(k)); return v == null ? fallback : v; } catch (e) { return fallback; }
+  }
+  function save(k, v) {
+    try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* 저장이 막혀도 게임은 된다 */ }
+  }
+  // 예전 판(번호로 저장)은 다른 문제를 가리키므로 버린다
+  try { localStorage.removeItem("small-trial:cleared"); localStorage.removeItem("small-trial:best"); } catch (e) { /* 없음 */ }
+
+  let done = load(DONE, {});
+  for (const k in done) if (typeof done[k] === "number") done[k] = { r: done[k], t: null };   // 예전 판: 회귀 수만
+  const better = (a, b) => !b || a.r < b.r || (a.r === b.r && (b.t == null || a.t < b.t));
+  try { localStorage.removeItem("small-trial:ui"); } catch (e) { /* 예전 판: 수첩 열림 상태 */ }
+  const notesMem = {};
+  function noteOf(p) {
+    if (!notesMem[p.key]) notesMem[p.key] = load(NOTE + p.key, null) || { g: {}, t: "" };
+    return notesMem[p.key];
+  }
+  function saveNote(p) { save(NOTE + p.key, noteOf(p)); }
+
+  // 오늘의 재판은 한국 시간(UTC+9) 날짜로 고른다. 날짜마다 한 문제, 2026-10-20부터.
+  const kstToday = () => new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
+  const DAY0 = Date.parse(DATA.daily[0].date);
+  const dayIndex = (iso) => Math.round((Date.parse(iso) - DAY0) / 86400000);
+  const isoOf = (i) => new Date(DAY0 + i * 86400000).toISOString().slice(0, 10);
+  const dailyOf = (i) => DATA.daily[((i % DATA.daily.length) + DATA.daily.length) % DATA.daily.length];
+  function today() {
+    const iso = kstToday();
+    return { iso, index: dayIndex(iso), puzzle: dailyOf(dayIndex(iso)) };
+  }
+
+  const TIERS = ["easy", "normal", "hard", "veryhard"];
+  let state = { view: "home" };
+
+  const isTutorial = (q) => q.id.startsWith("tutorial");
+  function findLogic(id) {
+    if (id.startsWith("tutorial")) return DATA.tutorials.find((p) => p.id === id);
+    for (const t of Object.values(DATA.tiers)) for (const p of t) if (p.id === id) return p;
+    return DATA.daily.find((p) => p.id === id);
+  }
+
+  // 화면용 퍼즐(글 붙음)은 한 번만 만든다. 무작위 재판은 (난이도, 번호)로 다시 만든다.
+  const views = {};
+  function current() {
+    const k = state.random ? `random-${state.random.tier}-${state.random.seed}` : state.id;
+    if (!views[k]) {
+      const q = state.random ? CORE.make(state.random.tier, state.random.seed) : findLogic(state.id);
+      views[k] = q && { q, p: L.decorate(q) };
+    }
+    return views[k];
+  }
+
+  const roll = () => Math.floor(Math.random() * 1e6);     // 대사 고르기(같은 상황의 바리에이션 중 하나)
+  const fresh = () => ({ tab: "rules", lineSeed: roll(), wrongs: 0, selfRewinds: 0, marks: {}, culprit: null, solved: false, rewinds: 0, memory: [], verdict: null, confirmClear: false,
+                         startedAt: Date.now(), elapsed: null });
+
+  function openPuzzle(id, date) {
+    state = { view: "puzzle", id, date: date || null, ...fresh() };
+    render();
+    window.scrollTo({ top: 0 });
+  }
+
+  // 무작위 재판은 나눠서 만든다(어려움의 일부 조합은 1~2초 걸린다). 그동안 "준비하는 중"을 보인다.
+  // fixed: 링크로 받은 번호(그 번호 하나만 만든다). 없으면 번호를 뽑는다.
+  async function openRandom(tier, fixed) {
+    state = { view: "loading" };
+    render();
+    window.scrollTo({ top: 0 });
+    for (let i = 0; i < (fixed ? 1 : 5); i++) {
+      const seed = fixed || 1 + Math.floor(Math.random() * 999999);
+      const q = await CORE.makeAsync(tier, seed);
+      if (state.view !== "loading") return;        // 그사이 다른 곳으로 갔다
+      if (!q) continue;                              // 측정상 첫 번에 된다(난이도별 100개 표본에서 실패 0)
+      views[`random-${tier}-${seed}`] = { q, p: L.decorate(q) };
+      state = { view: "puzzle", random: { tier, seed }, ...fresh() };
+      break;
+    }
+    if (state.view === "loading") state = { view: "home", notice: fixed ? T.badLink(T.randomCode(tier, fixed)) : null };
+    render();
+  }
+
+  // 문제 링크: 무작위 재판 ?r=<난이도>-<번호>, 오늘의 재판 ?d=<날짜>(오늘까지만, 앞날은 안 열린다), 사건 기록 ?p=<hard-3 같은 id>.
+  // 보고 있는 문제는 주소에도 적어 둔다(주소창을 그대로 복사해도 같은 문제가 열린다). 튜토리얼은 적지 않는다.
+  const SHARE_TIERS = ["easy", "normal", "hard", "veryhard"];
+  function sharedLink() {
+    let qs = null;
+    try { qs = new URLSearchParams(location.search); } catch (e) { return null; }
+    const r = /^([a-z]+)-([1-9][0-9]{0,6})$/.exec(qs.get("r") || "");
+    if (r && SHARE_TIERS.includes(r[1])) return { random: { tier: r[1], seed: Number(r[2]) } };
+    const d = qs.get("d") || "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d) && isoOf(dayIndex(d)) === d && dayIndex(d) >= 0 && dayIndex(d) <= today().index) {
+      return { id: dailyOf(dayIndex(d)).id, date: d };
+    }
+    const p = qs.get("p") || "";
+    if (/^[a-z]+-[0-9]+$/.test(p) && SHARE_TIERS.includes(p.split("-")[0]) && findLogic(p)) return { id: p, date: null };
+    return null;
+  }
+  const shareQuery = () => state.view !== "puzzle" ? ""
+    : state.random ? `?r=${state.random.tier}-${state.random.seed}`
+    : state.date ? `?d=${state.date}`
+    : state.id && !state.id.startsWith("tutorial") ? `?p=${state.id}` : "";
+  const shareUrl = () => location.origin + location.pathname + shareQuery();
+  function syncAddress() {
+    const q = shareQuery();
+    if (location.search === q || (!q && !location.search)) return;
+    try { history.replaceState(null, "", location.pathname + q + location.hash); } catch (e) { /* 미리보기 등에서는 막힐 수 있다 */ }
+  }
+  // 언어 바꾸기 링크: 보고 있는 문제 그대로 다른 언어 페이지로. 누르면 그 언어를 기억한다(아래 click)
+  const langHref = (id) => PAGES ? PAGES[id] + shareQuery() : `?lang=${id}` + shareQuery().replace(/^\?/, "&");
+  const langLinks = () => `<nav class="langs" aria-label="${esc(T.langLabel)}">${LANGS.map(([id, label]) => id === LANG
+    ? `<span lang="${id}" aria-current="true">${label}</span>`
+    : `<a href="${esc(langHref(id))}" lang="${id}" hreflang="${id}" data-lang="${id}">${label}</a>`).join("")}</nav>`;
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest("a[data-lang]");
+    if (a) try { localStorage.setItem(LANG_KEY, a.dataset.lang); } catch (x) { /* 저장이 막혀도 링크는 간다 */ }
+  });
+  // 판결 뒤 공유 글: 어떤 문제인지, 힌트(되감기)·틀린 판결 수, 걸린 시간, 그 문제 링크
+  function resultText(q, p) {
+    const index = state.random || state.date ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
+    return T.shareText(T.shareLabel(p, index, state.date), state.selfRewinds || 0, state.wrongs || 0, T.duration(state.elapsed));
+  }
+  async function copyResult(q, p) {
+    const all = `${resultText(q, p)}\n${shareUrl()}\n${T.shareTags}`;
+    try { await navigator.clipboard.writeText(all); state.shared = "copied"; }
+    catch (e) { state.shared = all; }
+    render("share-result");
+  }
+
+  async function copyShare() {
+    const url = shareUrl();
+    try { await navigator.clipboard.writeText(url); state.share = "copied"; }
+    catch (e) { state.share = url; }               // 클립보드가 막히면 주소를 보여 준다
+    render("share");
+  }
+
+  // ---- 화면 ----
+
+  function header() {
+    return `
+      <header class="masthead" data-part="masthead">
+        <div class="top"><div class="eyebrow">${esc(T.eyebrow)}</div>${langLinks()}</div>
+        <h1>${esc(T.titleParts[0])}<span class="mark">${esc(T.titleParts[1])}</span></h1>
+        <div class="fleuron" aria-hidden="true">❦ ❦ ❦</div>
+        <p>${esc(T.intro)}</p>
+      </header>
+      <div class="notice frame" role="note" data-part="notice">
+        ${T.noticeHtml.map((h) => `<span>${h}</span>`).join("")}
+        <span lang="ja">${esc(T.noticeJa)}</span>
+      </div>`;
+  }
+
+  function tile(p, i) {
+    const rec = done[p.key];
+    return `<button class="tile ${rec ? "done" : ""} ${rec && rec.r === 0 ? "perfect" : ""}" data-open="${p.id}"
+      aria-label="${esc(T.tileLabel(p.tier, i, done[p.key]))}">${i}</button>`;
+  }
+
+  function home() {
+    const d = today();
+    const tiers = TIERS.map((t) => `
+      <section class="tier" aria-label="${esc(T.tier[t])}" data-part="tier:${t}">
+        <header><h3>${esc(T.tier[t])}</h3><small>${esc(T.tierNote[t])}</small></header>
+        <div class="tiles">${DATA.tiers[t].map((p, i) => tile(p, i + 1)).join("")}</div>
+      </section>`).join("");
+    paint(header() + slot("bad-link", state.notice ? `<p class="bad-link" role="status">${esc(state.notice)}</p>` : "") + `
+      <div class="updates-row" data-part="updates-row">
+        <button class="btn ghost small" data-updates="1" data-k="updates" data-part="updates-btn">${esc(T.updatesTitle)}${hasNewUpdates() ? `<span class="new-dot" role="img" aria-label="${esc(T.updatesNew)}"></span>` : ""}</button>
+        <span>${esc(T.updatesLatest(T.updates[0].date))}</span>
+      </div>
+      <section class="daily" aria-label="${esc(T.dailyTitle)}" data-part="daily">
+        <div class="what">
+          <div class="date">${esc(T.dateLabel(d.iso))} · ${esc(T.tier[d.puzzle.tier])}</div>
+          <h3>${esc(T.dailyTitle)}</h3>
+          <div>${esc(L.incidentText(d.puzzle))}</div>
+          <div class="rec">${esc(T.record(done[d.puzzle.key], T.duration))}</div>
+        </div>
+        <div class="bar">
+          <button class="btn" data-day="${d.index}">${esc(T.dailyOpen)}</button>
+          <button class="btn ghost" data-archive="1">${esc(T.archiveOpen)}</button>
+        </div>
+      </section>
+      <section class="random" aria-label="${esc(T.randomTitle)}" data-part="random">
+        <div class="what">
+          <h3>${esc(T.randomTitle)}</h3>
+          <div>${esc(T.randomDesc)}</div>
+        </div>
+        <div class="bar">
+          ${TIERS.map((t) => `<button class="btn ghost" data-random="${t}">${esc(T.tier[t])}</button>`).join("")}
+        </div>
+      </section>
+      <div class="section-title" data-part="records-title"><h2>${esc(T.records)}</h2><span>${esc(T.recordsNote)}</span></div>
+      <section class="tutorial" aria-label="${esc(T.tutorialTitle)}" data-part="tutorials">
+        <div class="what">
+          <h3>${esc(T.tutorialTitle)}</h3>
+          <div>${esc(T.tutorialDesc)}</div>
+        </div>
+        <div class="bar">
+          ${T.tutorials.map((t) => `<button class="btn ghost small" data-open="${t.id}">${esc(t.label)}${findLogic(t.id).key in done ? ` <span class="done-mark">· ${esc(T.tutorialDone)}</span>` : ""}</button>`).join("")}
+          <button class="btn small" data-book="1">${esc(T.rulebookTitle)}</button>
+        </div>
+      </section>
+      <div class="tiers" data-part="tiers">${tiers}</div>` + footer());
+  }
+
+  // 지난 오늘의 재판: 오늘부터 2026-10-20까지 거슬러 올라간다
+  function archive() {
+    const t = today();
+    const rows = [];
+    for (let i = t.index; i >= 0; i--) {
+      const q = dailyOf(i);
+      const rec = done[q.key];
+      rows.push(`
+        <li><button class="day ${rec ? "done" : ""}" data-day="${i}">
+          <span class="d">${esc(T.dateLabel(isoOf(i)))}${i === t.index ? ` <b>${esc(T.today)}</b>` : ""}</span>
+          <span class="inc">${esc(L.incidentText(q))}</span>
+          <span class="meta">${esc(T.tier[q.tier])} · ${esc(T.record(rec, T.duration))}</span>
+        </button></li>`);
+    }
+    paint(`
+      <div class="case-top" data-part="archive-top"><button class="btn ghost" data-home="1">${esc(T.back)}</button></div>
+      <div class="section-title" data-part="archive-title"><h2>${esc(T.archiveTitle)}</h2><span>${esc(T.archiveNote)}</span></div>
+      <ul class="days" data-part="days">${rows.join("")}</ul>` + footer());
+  }
+
+  // 카드 이름 왼쪽에 붙이는 캐릭터 이모지(2026-10-21 사용자 검수: 공식 상징 아이콘을 참고해 유니코드 이모지로만, 나노카는 물총, 카드에만)
+  const ICON = { ema: "🌸", hiro: "🖋️", anan: "🌙", noah: "🖌️", reia: "🗡️", miria: "📱", margo: "🃏",
+                 nanoka: "🔫", arisa: "🔥", sherry: "🔍", hanna: "🪡", coco: "🎧", meruru: "🧪" };     // 히로는 카드가 없어 안 쓰인다
+  const icon = (id) => (ICON[id] ? `<span class="icon" aria-hidden="true">${ICON[id]}</span>` : "");
+
+  // 대사 상자 이름표 테두리 색(캐릭터 이미지 색). 2026-10-23 사용자가 정함. 색이 둘이면 왼쪽→오른쪽 그라데이션.
+  const NAME_COLOR = {
+    hiro: ["#b52d43"],                 // 지금 그대로
+    ema: ["#f2a7c3"],                  // 연핑크
+    nanoka: ["#9a9aa3"],               // 회색
+    coco: ["#f07c2c"],                 // 주황(헤드셋 색)
+    sherry: ["#3f73d1"],               // 파랑(머리색). 색 2는 뺐다(사용자)
+    hanna: ["#2f8f55"],                // 진한 초록(옷색)
+    noah: ["#f2f9ff", "#a9daf6"],      // 아주 연한 하늘색 그라데이션
+    reia: ["#f2a65a"],                 // 주황(코코와 헷갈리지 않게 조금 밝게)
+    margo: ["#9b6fd6"],                // 보라
+    anan: ["#7f8fd0"],                 // 연한 남색
+    arisa: ["#9a9aa3", "#d0404f"],     // 회색+붉은색
+    meruru: ["#f4f7fb", "#a9dcf5"],    // 흰색+얼음 하늘색
+    miria: ["#f0dc8c"],                // 크림 금색(Claude 제안, 사용자 "나머지는 그대로")
+  };
+  function dialog(speaker, line, written, who = "hiro", part = "") {
+    return `
+      <figure class="dialog"${part ? ` data-part="${part}"` : ""}>
+        <figcaption class="speaker" style="${(([a, b = a]) => `--who: ${a}; --who2: ${b}`)(NAME_COLOR[who] || NAME_COLOR.hiro)}">${esc(speaker)}${written ? ` · ${esc(T.written)}` : ""}</figcaption>
+        <blockquote class="say ${written ? "written" : ""}">${esc(line)}</blockquote>
+      </figure>`;
+  }
+
+  // 튜토리얼 판에서만 나오는 순서 안내
+  function guide(q, step, key) {
+    if (!isTutorial(q)) return "";
+    return `<div class="guide" data-part="guide:${key}"><span class="step" aria-hidden="true">${step}</span><p>${esc(T.guide[q.id][key] || T.guide.common[key])}</p></div>`;
+  }
+
+  const nameOf = (p, id) => p.suspects.find((s) => s.id === id).name;
+  // 아주 어려움은 판결에 역할 표시가 들어간다(카드마다 그 말을 실제로 한 사람의 역할). 틀린 장 수
+  const needRoles = (q) => q.tier === "veryhard";
+  const ROLE_MARK = { H: "t", L: "f", T: "r" };
+  const wrongMarks = (p) => p.suspects.filter((s) => state.marks[s.id] !== ROLE_MARK[p.card_roles[s.id]]).length;
+
+  // 히로의 수첩: 책갈피 = 이번 재판(규칙) / 사망 회귀 / 마법들 / 가정 표 / 메모. 오른쪽 위 리본은 규칙집.
+  function ledgerTabs(p) {
+    return [["rules", T.tabs.rules, "rules"], ["hiro", T.tabs.hiro, "hiro"]]
+      .concat(p.magic.map((m, i) => [`magic-${i}`, m.name, "magic"]));
+  }
+
+  function ledger(q, p) {
+    const tabs = ledgerTabs(p);
+    const cur = tabs.some(([id]) => id === state.tab) ? state.tab : "rules";
+    const kind = tabs.find(([id]) => id === cur)[2];
+    let page;
+    if (cur === "rules") page = rulesPage(q, p);
+    else if (cur === "hiro") page = `<h3>${esc(T.hiroTitle)}</h3><p>${esc(T.hiroRule)}</p>`;
+    else { const m = p.magic[Number(cur.slice(6))]; page = `<h3>${esc(T.magicTitle(m))}</h3><p>${esc(m.text)}</p>`; }
+    return `
+      <section class="ledger" aria-label="${esc(T.ledgerTitle)}" data-part="ledger">
+        <div role="tablist" aria-label="${esc(T.ledgerTitle)}" data-part="ledger-tabs">${tabs.map(([id, label, k]) => `
+          <button role="tab" id="tab-${id}" class="tab tab-${k}" data-tab="${id}" data-k="tab:${id}" data-part="tab:${id}" aria-selected="${id === cur}"
+            aria-controls="ledger-page" tabindex="${id === cur ? 0 : -1}">${esc(label)}</button>`).join("")}</div>
+        <div class="ledger-page page-${kind}" id="ledger-page" role="tabpanel" aria-labelledby="tab-${cur}" data-part="ledger-page">
+          <div class="ledger-head"><span class="ledger-title">${esc(T.ledgerTitle)}</span>
+            <button class="book-btn" data-book="1" data-k="book">${esc(T.rulebookTitle)}</button></div>
+          ${page}
+        </div>
+      </section>`;
+  }
+
+  function rulesPage(q, p) {
+    const self = T.selfWords(q);
+    const links = p.magic.map((m, i) => `<button class="link" data-tab="magic-${i}" data-k="link:magic-${i}">${esc(T.magicTitle(m))}</button>`);
+    return `
+      <h3>${esc(T.tabs.rules)}</h3>
+      <p>${q.tier === "veryhard" ? T.ruleRolesHtml(q) : T.ruleLiarsHtml(p.n, q.magic_ids.includes("anan"))}</p>
+      <p>${esc(T.ruleCulprit)}</p>
+      ${q.tier === "veryhard" ? `<p>${esc(T.ruleJudgeRoles)}</p>${dialog(T.hiro, T.hiroRolesLine)}` : ""}
+      ${CORE.reports(CORE.problem(q)).length ? `<p>${esc(T.ruleHearsay)}</p>` : ""}
+      ${self ? `<p>${esc(self)}</p>` : ""}
+      ${T.nickWords(q) ? `<p>${esc(T.nickWords(q))}</p>` : ""}
+      <p>${links.length ? `${esc(T.magicIntro)} ${links.join(" · ")}` : esc(T.noMagic)}</p>`;
+  }
+
+  // 가정 표와 메모: 수첩에서 떼어 냈다(사용자 2026-10-21). 넓은 화면에서는 오른쪽에 붙어 따라오고, 좁은 화면에서는 카드 아래.
+  function workbench(q, p) {
+    return `
+      <aside class="side workbench frame" aria-label="${esc(T.workbenchTitle)}" data-part="side">
+        ${guide(q, 4, "grid")}
+        ${gridPage(p)}
+        ${memoPage()}
+      </aside>`;
+  }
+
+  function gridPage(p) {
+    const note = noteOf(p);
+    const ids = p.suspects.map((s) => s.id);
+    // 줄 = 말 하나. 말이 둘인 카드는 두 줄(두 번째 말의 칸 이름은 「카드#2」), 안 들린 카드는 줄이 없다
+    const lines = p.suspects.flatMap((s) => s.says.map((_, i) => ({ r: i ? `${s.id}#${i + 1}` : s.id, label: T.nbRow(s.name, i, s.says.length) })));
+    const head = ids.map((c) => `<th scope="col">${esc(nameOf(p, c))}</th>`).join("");
+    const rows = lines.map(({ r, label }) => `
+      <tr data-part="row:${r}"><th scope="row">${esc(label)}</th>${ids.map((c) => {
+        const v = note.g[`${c}|${r}`] || "";
+        return `<td><button class="cell ${v}" data-cell="${c}|${r}" data-k="cell:${c}|${r}" data-part="cell:${c}|${r}"
+          aria-label="${esc(T.nbCell(nameOf(p, c), label, v))}">${v === "o" ? "○" : v === "x" ? "×" : ""}</button></td>`;
+      }).join("")}</tr>`).join("");
+    return `
+      <h3>${esc(T.workbenchGrid)}</h3>
+      <p class="nb-help">${esc(T.nbHelp)}</p>
+      <div class="grid-wrap">
+        <table class="hyp" data-part="grid">
+          <thead><tr><th scope="col">${esc(T.nbCorner)}</th>${head}</tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  }
+
+  function memoPage() {
+    return `
+      <h3><label for="memo-text">${esc(T.workbenchMemo)}</label></h3>
+      <p class="nb-help">${esc(T.nbMemo)}</p>
+      <textarea id="memo-text" rows="6" placeholder="${esc(T.nbPlaceholder)}" data-part="memo-text"></textarea>
+      <div class="nb-actions" data-part="memo-actions">
+        <button class="btn ghost" data-clear-note="1" data-k="clear">${esc(state.confirmClear ? T.nbClearConfirm : T.nbClear)}</button>
+        ${state.confirmClear ? `<span class="warn">${esc(T.nbClearWarn)}</span>` : ""}
+      </div>`;
+  }
+
+  function puzzleView() {
+    const { q, p } = current();
+    const index = state.random || state.date || isTutorial(q) ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
+    // 카드 표시: 진실(t) / 거짓(f) / 변덕쟁이(r, 변덕쟁이가 나올 수 있는 판에만). 메모용이라 정답과 상관없다
+    const markKinds = q.tier === "veryhard" || q.magic_ids.includes("anan") ? ["t", "f", "r"] : ["t", "f"];
+    const cards = p.suspects.map((s) => {
+      const mark = state.marks[s.id] || "";
+      const accused = state.culprit === s.id;
+      const known = state.memory.includes(s.id);
+      return `
+        <article class="card ${mark ? "m-" + mark : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}" data-part="card:${s.id}">
+          <header class="plate" data-part="plate:${s.id}">
+            <span class="who">${icon(s.id)}${esc(s.full)}${s.voice ? `<span class="via voice">${esc(T.voiceBadge(s.voice))}</span>` : ""}${s.written ? `<span class="via">${esc(T.written)}</span>` : ""}</span>
+          </header>
+          <div class="says" data-part="says:${s.id}">${s.says.length ? s.says.map((t, i) => `
+            <div class="line">${s.says.length > 1 ? `<span class="num" aria-hidden="true">${T.num(i)}</span>` : ""}<blockquote class="say ${s.written ? "written" : ""}">${esc(t)}</blockquote></div>`).join("")
+            : `<p class="unheard">${esc(T.unheard)}</p>`}</div>
+          <div class="acts" data-part="acts:${s.id}">
+            ${markKinds.map((m) => `<button class="chip mark-${m}" data-mark="${s.id}" data-mk="${m}" data-k="mark:${s.id}:${m}" data-part="mark:${s.id}:${m}" aria-pressed="${mark === m}"
+              aria-label="${esc(T.markLabel(s.name, T.marks[m], mark === m))}">${esc(T.marks[m])}</button>`).join("")}
+            <button class="chip" data-accuse="${s.id}" data-k="accuse:${s.id}" data-part="accuse:${s.id}" aria-pressed="${accused}" ${state.solved || known ? "disabled" : ""}>${esc(known ? T.notCulprit : T.accuse)}</button>
+          </div>
+          ${slot(`hint:${s.id}`, known ? `<div class="hint">${esc(T.memory(p.why_not[s.id]))}</div>` : "")}
+        </article>`;
+    }).join("");
+    const culpritName = state.culprit ? nameOf(p, state.culprit) : null;
+    const unmarked = needRoles(q) ? p.suspects.filter((s) => !state.marks[s.id]).length : 0;
+    const unknown = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id)).length;
+    const tutNext = isTutorial(q) && q.id !== "tutorial" ? T.tutorials[T.tutorials.findIndex((t) => t.id === q.id) + 1] : null;
+    const nextLabel = state.random ? T.next.random : state.date ? T.next.daily
+      : q.id === "tutorial" ? T.next.tutorial : isTutorial(q) ? (tutNext ? T.next.tutorialNext(tutNext.label) : T.next.tutorialLast)
+      : DATA.tiers[q.tier][index] ? T.next.fixed : T.next.last;
+    paint(`<div class="trial" data-part="trial">
+      <div class="case-top" data-part="top">
+        <button class="btn ghost" data-home="1">${esc(T.back)}</button>
+        <span class="where">${esc(T.where(q, index, state.date))}</span>
+        ${state.random ? `<span class="share"><button class="btn ghost small" data-share="1" data-k="share">${esc(state.share === "copied" ? T.copiedLink : T.copyLink)}</button></span>` : ""}
+        ${state.random && state.share && state.share !== "copied" ? `<p class="share-url">${esc(T.copyFallback)} <input readonly value="${esc(state.share)}" aria-label="${esc(T.copyLink)}"></p>` : ""}
+      </div>
+      ${guide(q, 1, "incident")}
+      <h2 class="incident" data-part="incident">${esc(p.incident)}</h2>
+      ${dialog(p.victim.name, p.victim.line, p.victim.written, p.victim.id, "victim")}
+      ${guide(q, 2, "ledger")}
+      ${ledger(q, p)}
+      ${guide(q, 3, "cards")}
+      <div class="cards" data-part="cards">${cards}</div>
+      ${workbench(q, p)}
+      ${guide(q, 5, "bar")}
+      <div class="bar" data-part="bar">
+        <button class="btn" data-judge="1" data-k="judge" data-part="judge" ${!state.culprit || state.solved || unmarked ? "disabled" : ""}>
+          ${esc(!culpritName ? T.judgeIdle : unmarked ? T.judgeNeedMarks(unmarked) : T.accusation(culpritName, state.lineSeed, state.culprit))}</button>
+        <button class="btn rewind" data-rewind="1" data-k="rewind" data-part="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>${esc(T.rewind)}</button>
+        <span class="tally" data-part="tally">${esc(T.tally(state.rewinds, Object.keys(state.marks).length))} · ${esc(T.clockLabel)} <span id="clock"></span></span>
+      </div>
+      ${slot("verdict", verdictView(p))}
+      ${slot("next", state.solved ? `<div class="bar"><button class="btn" data-next="1">${esc(nextLabel)}</button></div>` : "")}
+      </div>` + footer());
+    const memo = document.getElementById("memo-text");
+    if (memo) memo.value = noteOf(p).t;
+  }
+
+  function verdictView(p) {
+    const v = state.verdict;
+    if (!v) return "";
+    if (v.right) {
+      const n = state.rewinds;
+      const { q } = current();
+      const intent = isTutorial(q) ? "" : "https://twitter.com/intent/tweet?text="
+        + encodeURIComponent(`${resultText(q, p)}\n${T.shareTags}`) + "&url=" + encodeURIComponent(shareUrl());
+      return `
+        <section class="verdict frame right" aria-live="polite" data-part="verdict-box">
+          <div class="stamp" aria-hidden="true">${esc(T.stamp)}</div>
+          <h3>${esc(T.accusation(nameOf(p, p.answer), state.lineSeed, p.answer))}</h3>
+          <ul>${p.solution.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
+          <div class="record">${esc(T.recordRight(n, T.duration(state.elapsed)))}</div>
+          ${dialog(T.hiro, T.line(n === 0 ? "right0" : "rightN", v.k))}
+          ${intent ? `<div class="share-result" data-part="share-result">
+            <a class="btn small" href="${esc(intent)}" target="_blank" rel="noopener">${esc(T.shareX)}</a>
+            <button class="btn ghost small" data-share-result="1" data-k="share-result">${esc(state.shared === "copied" ? T.shareCopied : T.shareCopy)}</button>
+          </div>` : ""}
+          ${intent && state.shared && state.shared !== "copied" ? `<textarea class="share-text" data-part="share-text" readonly rows="4" aria-label="${esc(T.shareCopy)}">${esc(state.shared)}</textarea>` : ""}
+        </section>`;
+    }
+    if (v.rewind) {
+      return `
+        <section class="verdict frame rewind" aria-live="polite" data-part="verdict-box">
+          <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
+          <div>${esc(T.rewindInfo(state.rewinds, nameOf(p, v.who)))}</div>
+          ${dialog(T.hiro, T.rewindLine(v.nth || 1, v.k))}
+        </section>`;
+    }
+    return `
+      <section class="verdict frame wrong shake" aria-live="polite" data-part="verdict-box">
+        <h3>${esc(T.wrongTitle)}</h3>
+        <div>${esc(v.roles ? T.wrongRoles(v.roles) : p.why_not[v.culprit])}</div>
+        <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
+        <div class="record">${esc(T.wrongRecord(state.rewinds))}</div>
+        ${dialog(T.hiro, T.wrongLine(v.nth || 1, v.k, v.culprit))}
+      </section>`;
+  }
+
+  function footer() {
+    return `<footer data-part="footer">${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}${T.contactHtml.map((h) => `<span>${h}</span>`).join("")}`
+      + `<span><button class="linkish" data-updates="1">${esc(T.updatesTitle)}</button></span>${langLinks()}</footer>`;
+  }
+
+  // ---- 그리기: 바뀐 조각만 바꿔 끼운다 ----
+  // 2026-10-23 버그 제보(사용자 전달): 누를 때마다 #app 전체를 다시 그려서 웹 번역 확장이 번역해 둔 글이 전부 원문으로 돌아갔다.
+  // 화면을 data-part 조각으로 나눠 두고, 지난번에 그린 글(HTML 문자열, 번역 전)과 비교한다.
+  //   같으면 그대로 둔다(번역·초점·스크롤 유지). 하위 조각을 뺀 안쪽이 같으면 그 요소의 속성만 맞추고 하위 조각으로 내려간다.
+  //   아니면 그 조각만 통째로 바꾼다. 생겼다 없어지는 것(판결 상자 등)은 빈 자리(.slot)를 늘 깔아 두어 바깥 구조가 흔들리지 않게 한다.
+  const ROOT_PART = "@";
+  let painted = null;                       // 조각 key -> { html, inner, kids }
+  const partsIn = (el) => [...el.querySelectorAll("[data-part]")].filter((k) => k.parentElement.closest("[data-part]") === el);
+  const partOf = (el, key) => [...el.querySelectorAll("[data-part]")].find((e) => e.dataset.part === key);
+  function describe(root) {
+    const out = {};
+    (function walk(el) {
+      const key = el.dataset.part;
+      if (key in out) console.error("조각 key 중복:", key);
+      const kids = partsIn(el);
+      const shell = el.cloneNode(true);
+      for (const k of partsIn(shell)) { const slot = document.createElement("i"); slot.dataset.slot = k.dataset.part; k.replaceWith(slot); }
+      out[key] = { html: el.outerHTML, inner: shell.innerHTML, kids: kids.map((k) => k.dataset.part) };
+      kids.forEach(walk);
+    })(root);
+    return out;
+  }
+  function sync(live, fresh, key, next) {
+    const a = painted[key], b = next[key];
+    if (!a) return false;
+    if (a.html === b.html) return true;
+    if (a.inner !== b.inner || a.kids.join("\n") !== b.kids.join("\n")) return false;
+    if (key !== ROOT_PART) {
+      for (const { name } of [...live.attributes]) if (!fresh.hasAttribute(name)) live.removeAttribute(name);
+      for (const { name, value } of [...fresh.attributes]) if (live.getAttribute(name) !== value) live.setAttribute(name, value);
+    }
+    for (const k of b.kids) {
+      const lk = partOf(live, k), fk = partOf(fresh, k);
+      if (!lk) return false;
+      if (!sync(lk, fk, k, next)) lk.replaceWith(fk);
+    }
+    return true;
+  }
+  function paint(html) {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = html;
+    const box = document.createElement("div");
+    box.dataset.part = ROOT_PART;
+    box.append(tpl.content);
+    const next = describe(box);
+    if (!(painted && sync(app, box, ROOT_PART, next))) app.replaceChildren(...box.childNodes);
+    painted = next;
+  }
+  const slot = (key, html) => `<div class="slot" data-part="${key}">${html.trim()}</div>`;
+
+  // 다시 그려도 누르던 버튼에 초점을 돌려 둔다(키보드로 표를 채울 때 끊기지 않게)
+  function render(focusKey) {
+    app.classList.toggle("wide", state.view === "puzzle");
+    if (state.view === "home") home();
+    else if (state.view === "archive") archive();
+    else if (state.view === "loading") paint(`<p class="loading" data-part="loading" aria-live="polite">${esc(T.preparing)}</p>` + footer());
+    else puzzleView();
+    tickClock();
+    syncAddress();
+    if (focusKey) {
+      const el = app.querySelector(`[data-k="${CSS.escape(focusKey)}"]`);
+      if (el && !el.disabled) el.focus({ preventScroll: true });
+    }
+  }
+
+  // ---- 조작 ----
+
+  app.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    const ds = b.dataset;
+    if (ds.open) return openPuzzle(ds.open);
+    if (ds.day) { const i = Number(ds.day); return openPuzzle(dailyOf(i).id, isoOf(i)); }
+    if (ds.archive) { state = { view: "archive" }; render(); window.scrollTo({ top: 0 }); return; }
+    if (ds.random) return openRandom(ds.random);
+    if (ds.share) return copyShare();
+    if (ds.book) return openBook();
+    if (ds.updates) return openUpdates();
+    if (ds.home) { state = { view: "home" }; render(); return; }
+    const cur = state.view === "puzzle" ? current() : null;
+    if (!cur) return;
+    if (ds.shareResult) return copyResult(cur.q, cur.p);
+    const { q, p } = cur;
+    if (!ds.clearNote) state.confirmClear = false;
+    if (ds.tab) {
+      state.tab = ds.tab;
+      if (ds.k.startsWith("link:")) return render(`tab:${ds.tab}`);     // 「이번 재판」의 마법 이름을 누르면 그 책갈피로
+    } else if (ds.mark) {
+      if (state.marks[ds.mark] === ds.mk) delete state.marks[ds.mark]; else state.marks[ds.mark] = ds.mk;
+    } else if (ds.accuse && !state.solved) {
+      state.culprit = state.culprit === ds.accuse ? null : ds.accuse;
+      if (state.verdict && !state.verdict.right) state.verdict = null;
+    } else if (ds.cell) {
+      const note = noteOf(p);
+      const next = { "": "o", o: "x", x: "" }[note.g[ds.cell] || ""];
+      if (next) note.g[ds.cell] = next; else delete note.g[ds.cell];
+      saveNote(p);
+    } else if (ds.clearNote) {
+      if (!state.confirmClear) { state.confirmClear = true; }
+      else { notesMem[p.key] = { g: {}, t: "" }; saveNote(p); state.confirmClear = false; }
+    } else if (ds.judge && state.culprit && !state.solved) {
+      const badRoles = state.culprit === p.answer && needRoles(q) ? wrongMarks(p) : 0;
+      if (badRoles) {
+        // 범인은 맞았지만 역할 표시가 틀렸다 = 역시 틀린 판결(회귀). 몇 장 틀렸는지만 기억한다
+        state.rewinds += 1;
+        state.wrongs = (state.wrongs || 0) + 1;
+        state.verdict = { right: false, roles: badRoles, k: roll(), nth: state.wrongs, rewinds: state.rewinds };
+      } else if (state.culprit === p.answer) {
+        state.solved = true;
+        state.verdict = { right: true, k: roll() };
+        state.elapsed = Math.round(Date.now() - state.startedAt);
+        const rec = { r: state.rewinds, t: state.elapsed };
+        if (!state.random && better(rec, done[p.key])) { done[p.key] = rec; save(DONE, done); }
+      } else {
+        // 틀린 판결 = 사망 회귀. 지목한 사람이 범인이 아니라는 기억은 남는다
+        state.rewinds += 1;
+        state.wrongs = (state.wrongs || 0) + 1;
+        state.memory.push(state.culprit);
+        state.verdict = { right: false, culprit: state.culprit, k: roll(), nth: state.wrongs, rewinds: state.rewinds };
+        state.culprit = null;
+      }
+    } else if (ds.rewind && !state.solved) {
+      const left = p.suspects.filter((s) => s.id !== p.answer && !state.memory.includes(s.id));
+      if (left.length) {
+        const who = left[Math.floor(Math.random() * left.length)].id;
+        state.rewinds += 1;
+        state.memory.push(who);
+        if (state.culprit === who) state.culprit = null;
+        state.selfRewinds = (state.selfRewinds || 0) + 1;
+        state.verdict = { rewind: true, who, k: roll(), nth: state.selfRewinds, rewinds: state.rewinds };
+      }
+    } else if (ds.next) {
+      if (state.random) return openRandom(q.tier);
+      if (state.date) { state = { view: "archive" }; render(); window.scrollTo({ top: 0 }); return; }
+      if (q.id === "tutorial") return openPuzzle(DATA.tiers.easy[0].id);
+      if (isTutorial(q)) {          // 심화 튜토리얼은 다음 심화로, 마지막은 아주 어려움 1번으로
+        const nextTut = T.tutorials[T.tutorials.findIndex((t) => t.id === q.id) + 1];
+        return openPuzzle(nextTut ? nextTut.id : DATA.tiers.veryhard[0].id);
+      }
+      const list = DATA.tiers[q.tier];
+      const next = list[list.indexOf(q) + 1];
+      if (next) return openPuzzle(next.id);
+      state = { view: "home" }; render(); return;
+    }
+    render(ds.k);
+  });
+
+  // 메모는 쓰는 대로 저장한다(다시 그리지 않는다)
+  app.addEventListener("input", (e) => {
+    if (e.target.id !== "memo-text" || state.view !== "puzzle") return;
+    const { p } = current();
+    noteOf(p).t = e.target.value;
+    saveNote(p);
+  });
+  // 책갈피는 왼쪽·오른쪽 화살표로도 넘긴다
+  app.addEventListener("keydown", (e) => {
+    const t = e.target;
+    if (t.getAttribute("role") !== "tab" || (e.key !== "ArrowLeft" && e.key !== "ArrowRight") || state.view !== "puzzle") return;
+    const ids = ledgerTabs(current().p).map(([id]) => id);
+    const i = ids.indexOf(t.dataset.tab) + (e.key === "ArrowRight" ? 1 : -1);
+    state.tab = ids[(i + ids.length) % ids.length];
+    e.preventDefault();
+    render(`tab:${state.tab}`);
+  });
+
+  // 규칙집: 한 번 만들어 두고 연다(화면을 다시 그려도 닫히지 않게 #app 밖에 둔다)
+  const book = document.createElement("dialog");
+  book.className = "rulebook";
+  book.setAttribute("aria-labelledby", "rulebook-title");
+  book.innerHTML = `<div class="rb-inner">
+      <div class="rb-head"><h2 id="rulebook-title">${esc(T.rulebookTitle)}</h2><button class="btn ghost" data-close="1">${esc(T.close)}</button></div>
+      ${T.rulebook().map((sec) => `<section><h3>${esc(sec.h)}</h3><ul>${sec.items.map((i) => `<li>${i}</li>`).join("")}</ul></section>`).join("")}
+    </div>`;
+  document.body.appendChild(book);
+  book.addEventListener("click", (e) => { if (e.target === book || e.target.closest("[data-close]")) book.close(); });
+  function openBook() {
+    if (typeof book.showModal === "function") book.showModal(); else book.setAttribute("open", "");
+  }
+
+  // 업데이트 기록: 규칙집과 같은 모양의 대화상자. 열면 붉은 점을 끈다.
+  const updateCount = () => T.updates.reduce((n, u) => n + u.items.length, 0);
+  const hasNewUpdates = () => (Number(load(SEEN, 0)) || 0) < updateCount();
+  const updates = document.createElement("dialog");
+  updates.className = "rulebook updates";
+  updates.setAttribute("aria-labelledby", "updates-title");
+  updates.innerHTML = `<div class="rb-inner">
+      <div class="rb-head"><h2 id="updates-title">${esc(T.updatesTitle)}</h2><button class="btn ghost" data-close="1">${esc(T.close)}</button></div>
+      ${T.updates.map((u) => `<section><h3>${esc(T.dateLabel(u.date))}</h3><ul>${u.items.map(([tag, text]) =>
+        `<li>${tag ? `<span class="tag">${esc(tag)}</span> ` : ""}${esc(text)}</li>`).join("")}</ul></section>`).join("")}
+    </div>`;
+  document.body.appendChild(updates);
+  updates.addEventListener("click", (e) => { if (e.target === updates || e.target.closest("[data-close]")) updates.close(); });
+  function openUpdates() {
+    if (typeof updates.showModal === "function") updates.showModal(); else updates.setAttribute("open", "");
+    if (hasNewUpdates()) { save(SEEN, updateCount()); if (state.view === "home") render("updates"); }
+  }
+
+  // 걸린 시간은 그 숫자만 고친다(조각 비교에 넣으면 누를 때마다 바뀐 것으로 보인다). 그린 직후와 1초마다.
+  function tickClock() {
+    const el = document.getElementById("clock");
+    if (el && state.view === "puzzle") el.textContent = T.duration(state.elapsed ?? (Date.now() - state.startedAt));
+  }
+  setInterval(() => { if (!state.solved) tickClock(); }, 1000);
+
+  // 열려 있는 화면은 새 버전이 올라와도 이어서 보이게 한다(뷰어 전용 훅, 없으면 무시).
+  try { window.claude?.hot?.snapshot?.(() => ({ state })); } catch (e) { /* 없음 */ }
+  const start = (data) => {
+    const s = data && data.state;
+    const link = sharedLink();
+    if (link && link.random && !(s && s.view === "puzzle" && s.random && s.random.tier === link.random.tier && s.random.seed === link.random.seed)) {
+      return openRandom(link.random.tier, link.random.seed);
+    }
+    if (link && link.id && !(s && s.view === "puzzle" && !s.random && s.id === link.id)) return openPuzzle(link.id, link.date);
+    if (s && (s.view === "home" || s.view === "archive" || s.view === "loading")) state = s.view === "loading" ? { view: "home" } : s;
+    else if (s && s.view === "puzzle" && Array.isArray(s.memory) && (s.random || findLogic(s.id))) {
+      state = { ...fresh(), ...s };
+      if (Array.isArray(state.marks)) state.marks = Object.fromEntries(state.marks.map((id) => [id, "f"]));   // 예전 판: 「틀린 말」만
+    }
+    render();
+  };
+  if (window.claude?.hot?.ready) window.claude.hot.ready(start); else start(window.claude?.hot?.data ?? {});
+})();
+</script>
+
+</html>

@@ -11,5 +11,6 @@
 - 아이폰(Safari)에서는 직접 확인하지 못해 화면이 어긋날 수 있습니다.
 - 문의·삭제 요청: 트위터(현 X) [@riyuna_mano](https://x.com/riyuna_mano)
 - 버그·오류 제보: [구글 폼](https://docs.google.com/forms/d/e/1FAIpQLSfksd0WrbKXEQB5IDFbvhnLRXxqHTqkOAtlBJHm5E3ZxQZv4g/viewform)
+- 日本語版「牢屋敷の番外裁判」: https://manosaba.moe/saiban/ja/ （非公式のファンメイド作品・ネタバレあり・AI利用。キャラクターの台詞は作者が書き、ルール・解説などの文章はAIの助けを借りて翻訳しました）
 
 이 저장소에는 빌드된 파일만 있습니다. 생성기·검산 도구의 원본은 따로 관리합니다.

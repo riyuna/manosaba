@@ -16,12 +16,15 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="감옥저택의 번외재판 — 非公式のファンメイド作品・ネタバレあり・AI利用">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ko" href="https://manosaba.moe/saiban/">
+<link rel="alternate" hreflang="ja" href="https://manosaba.moe/saiban/ja/">
+<script>window.TRIAL_LANG = "ko"; window.TRIAL_PAGES = {ko: "./", ja: "ja/"};</script>
 <title>감옥저택의 번외재판</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="『魔法少女ノ魔女裁判』 비공식 팬메이드 논리 퍼즐. 거짓말 사이에서 범인을 찾는다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Gowun+Batang:wght@400;700&family=Song+Myung&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Gowun+Batang:wght@400;700&family=Song+Myung&family=Shippori+Mincho:wght@400;700&family=Zen+Antique&display=swap">
 <style>
 /* 레이아웃: 밤의 감옥 저택 예배당에서 열리는 재판. 위에서 스테인드글라스 빛이 번지는 어두운 기둥 하나에
    사건 → 피해자의 한마디(대사 상자) → 규칙 → 피고석 명패(수감 번호) → 히로의 수첩 → 판결 순으로 내려간다.
@@ -50,6 +53,13 @@
   --font-latin: "Cormorant Garamond", "Garamond", "Times New Roman", serif;
   --r: 6px;
 }
+/* 일본어판: 가나가 있는 명조(Google Fonts, OFL). 한국어 글자(언어 전환 링크)는 뒤의 한국어 글꼴이 맡는다 */
+html[lang="ja"] {
+  --font-display: "Zen Antique", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "Song Myung", serif;
+  --font-body: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Gowun Batang", serif;
+}
+html[lang="ja"] body { line-break: strict; }       /* 「ー」·작은 가나로 줄을 시작하지 않게 */
+html[lang="ja"] :is(h1, h2, h3, .incident) { word-break: auto-phrase; }   /* 제목은 말마디에서 줄을 바꾼다(지원하는 브라우저만) */
 
 * { box-sizing: border-box; }
 body {
@@ -97,6 +107,11 @@ a { color: var(--blood-ink); }
 /* 머리 */
 .masthead { display: grid; gap: 10px; padding-block: 8px 0; }
 .masthead .eyebrow { font-size: 13px; letter-spacing: .12em; color: var(--brass); }
+.masthead .top { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; }
+.langs { font-size: 14px; color: var(--muted); display: inline-flex; gap: 10px; }
+.langs a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.langs a:hover { color: var(--ink); }
+.langs [aria-current] { color: var(--ink); }
 .masthead h1 { font-size: clamp(38px, 9vw, 64px); line-height: 1.1; letter-spacing: .02em; }
 .masthead h1 .mark { color: var(--blood-ink); }
 .fleuron { color: var(--brass); font-size: 18px; letter-spacing: .6em; opacity: .8; }
@@ -345,22 +360,41 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=ceb4b168cc"></script>
-<script src="core.js?v=ceb4b168cc"></script>
-<script src="lang/ko.js?v=ceb4b168cc"></script>
+<script src="puzzles.js?v=38468a3901"></script>
+<script src="core.js?v=38468a3901"></script>
+<script src="lang/ko.js?v=38468a3901"></script>
+<script src="lang/ja.js?v=38468a3901"></script>
 <script>
 (function () {
   "use strict";
   const DATA = window.PUZZLES;
   const CORE = window.TrialCore;
-  const L = window.TrialLang.ko;      // 언어 팩. 다른 언어는 같은 모양으로 lang/<언어>.js 에 더한다
+  // 언어: 배포본은 언어마다 페이지가 따로다(/saiban/ 한국어, /saiban/ja/ 일본어. 링크 미리보기가 언어마다 다르게).
+  // 배포 빌드가 TRIAL_LANG(이 페이지의 언어)과 TRIAL_PAGES(언어별 페이지 상대 주소)를 넣는다. 없으면(미리보기) 주소의 ?lang= 로 고른다.
+  // 고른 언어는 이 브라우저에 남겨, 다른 언어 페이지 링크로 들어와도 그 언어로 옮긴다. 처음 온 사람은 브라우저 언어가 일본어일 때만 일본어로.
+  const LANGS = [["ko", "한국어"], ["ja", "日本語"]];
+  const LANG_KEY = "small-trial:lang";
+  const PAGES = window.TRIAL_PAGES || null;
+  const HERE = window.TRIAL_LANG || "ko";
+  let asked = null;
+  try { asked = new URLSearchParams(location.search).get("lang"); } catch (e) { /* 없음 */ }
+  if (PAGES && !asked) {
+    let pref = null;
+    try { pref = localStorage.getItem(LANG_KEY); } catch (e) { /* 저장이 막혀 있으면 이 페이지 언어 그대로 */ }
+    const browser = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    const to = pref && pref !== HERE && PAGES[pref] ? pref : !pref && HERE === "ko" && /^ja\b/i.test(browser) ? "ja" : null;
+    if (to) { location.replace(PAGES[to] + location.search + location.hash); return; }
+  }
+  const LANG = asked && window.TrialLang[asked] ? asked : HERE;
+  const L = window.TrialLang[LANG];      // 언어 팩(lang/<언어>.js). 모양은 같다(decorate, ui, incidentText)
   const T = L.ui;
   // 브라우저에만 남는 기록. 퍼즐 내용으로 만든 key 로 저장해서, 퍼즐을 다시 만들어도 엉뚱한 문제에 붙지 않는다.
   const DONE = "small-trial:done";        // { key: { r: 회귀 수, t: 걸린 시간(ms) } } 가장 좋은 기록(회귀 적은 순, 같으면 빠른 순)
   const NOTE = "small-trial:note:";      // + key → { g: {"범인|카드": "o"|"x"}, t: 메모 }
-  const SEEN = "small-trial:updates-seen-n"; // 마지막으로 업데이트 기록을 열었을 때의 항목 수(그보다 많으면 붉은 점). 날짜로 재면 같은 날 더한 항목을 못 알린다
+  const SEEN = "small-trial:updates-seen-n" + (LANG === "ko" ? "" : ":" + LANG); // 마지막으로 업데이트 기록을 열었을 때의 항목 수(그보다 많으면 붉은 점). 날짜로 재면 같은 날 더한 항목을 못 알린다. 기록은 언어마다 다르다
   const app = document.getElementById("app");
   document.documentElement.lang = T.lang;
+  document.title = T.title;
 
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -471,6 +505,15 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     if (location.search === q || (!q && !location.search)) return;
     try { history.replaceState(null, "", location.pathname + q + location.hash); } catch (e) { /* 미리보기 등에서는 막힐 수 있다 */ }
   }
+  // 언어 바꾸기 링크: 보고 있는 문제 그대로 다른 언어 페이지로. 누르면 그 언어를 기억한다(아래 click)
+  const langHref = (id) => PAGES ? PAGES[id] + shareQuery() : `?lang=${id}` + shareQuery().replace(/^\?/, "&");
+  const langLinks = () => `<nav class="langs" aria-label="${esc(T.langLabel)}">${LANGS.map(([id, label]) => id === LANG
+    ? `<span lang="${id}" aria-current="true">${label}</span>`
+    : `<a href="${esc(langHref(id))}" lang="${id}" hreflang="${id}" data-lang="${id}">${label}</a>`).join("")}</nav>`;
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest("a[data-lang]");
+    if (a) try { localStorage.setItem(LANG_KEY, a.dataset.lang); } catch (x) { /* 저장이 막혀도 링크는 간다 */ }
+  });
   // 판결 뒤 공유 글: 어떤 문제인지, 힌트(되감기)·틀린 판결 수, 걸린 시간, 그 문제 링크
   function resultText(q, p) {
     const index = state.random || state.date ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
@@ -495,7 +538,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   function header() {
     return `
       <header class="masthead" data-part="masthead">
-        <div class="eyebrow">${esc(T.eyebrow)}</div>
+        <div class="top"><div class="eyebrow">${esc(T.eyebrow)}</div>${langLinks()}</div>
         <h1>${esc(T.titleParts[0])}<span class="mark">${esc(T.titleParts[1])}</span></h1>
         <div class="fleuron" aria-hidden="true">❦ ❦ ❦</div>
         <p>${esc(T.intro)}</p>
@@ -808,7 +851,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
   function footer() {
     return `<footer data-part="footer">${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}${T.contactHtml.map((h) => `<span>${h}</span>`).join("")}`
-      + `<span><button class="linkish" data-updates="1">${esc(T.updatesTitle)}</button></span></footer>`;
+      + `<span><button class="linkish" data-updates="1">${esc(T.updatesTitle)}</button></span>${langLinks()}</footer>`;
   }
 
   // ---- 그리기: 바뀐 조각만 바꿔 끼운다 ----
