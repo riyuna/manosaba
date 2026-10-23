@@ -447,6 +447,8 @@
 
   // ---- 화면 문구 ----
   const TIER = { easy: "やさしい", normal: "ふつう", hard: "むずかしい", veryhard: "とてもむずかしい", daily: "今日の裁判", tutorial: "チュートリアル" };
+  // 문제 번호: 「やさしい」の1番(사용자 2026-10-24: 「やさしい1番」은 '친절한 1번'으로 읽힐 수 있다. 「一番」은 '제일'이라 숫자로)
+  const numbered = (tier, n) => `「${TIER[tier]}」の${n}番`;
   const VH_BAR = "「とてもむずかしい」では、犯人と一緒にすべてのカードに役割（真・偽・気まぐれ屋）の印をつけないと、判決ボタンが押せない。犯人が合っていても、役割が一つでも間違っていれば間違った判決になり、ヒロはその日の朝に戻る。";
   const ui = {
     lang: "ja",
@@ -496,9 +498,9 @@
     randomDesc: "押すたびに、新しい事件をその場で作る。唯一解かどうかは検証するが、面白さと難しさは運まかせ。",
     records: "事件記録",
     recordsNote: "判決を終えた事件は赤い枠で、一度も死に戻らずに終えた事件は赤く塗って示す",
-    tileLabel: (tier, i, rec) => `${TIER[tier]} ${i}番${rec ? `、判決済み、最少死に戻り${rec.r}回` : ""}`,
+    tileLabel: (tier, i, rec) => `${numbered(tier, i)}${rec ? `、判決済み、最少死に戻り${rec.r}回` : ""}`,
     back: "事件記録へ",
-    randomCode: (tier, seed) => `${TIER[tier]} ${seed}番`,
+    randomCode: (tier, seed) => numbered(tier, seed),
     copyLink: "この問題のリンクをコピー",
     copiedLink: "リンクをコピーした",
     copyFallback: "このURLをコピーして共有すれば、同じ問題が開く：",
@@ -507,7 +509,7 @@
     shareCopy: "結果をコピー",
     shareCopied: "結果をコピーした",
     shareLabel: (q, index, date) => q.seed !== undefined ? `ランダム裁判 ${ui.randomCode(q.tier, q.seed)}`
-      : date ? `今日の裁判 ${ui.dateLabel(date)}（${TIER[q.tier]}）` : `${TIER[q.tier]} ${index}番`,
+      : date ? `今日の裁判 ${ui.dateLabel(date)}（${TIER[q.tier]}）` : numbered(q.tier, index),
     shareText: (label, hints, wrongs, time) => `牢屋敷の番外裁判・${label}\n`
       + (hints ? `ヒント${hints}個` : "ヒントなし") + "、"
       + (wrongs ? `誤審${wrongs}回の末に` : "")
@@ -515,7 +517,7 @@
     shareTags: "#まのさば二次創作",
     where: (q, index, date) => q.id.startsWith("tutorial") ? `チュートリアル・${ui.tutorials.find((t) => t.id === q.id).label}`
       : q.seed !== undefined ? `ランダム裁判・${ui.randomCode(q.tier, q.seed)}`
-      : date ? `今日の裁判・${ui.dateLabel(date)}・${TIER[q.tier]}` : `${TIER[q.tier]} ${index}番`,
+      : date ? `今日の裁判・${ui.dateLabel(date)}・${TIER[q.tier]}` : numbered(q.tier, index),
     ruleLiarsHtml: (n, anan) => `この中のちょうど<strong>${n}人</strong>が嘘をついている。嘘つきの証言は間違っていて、`
       + (anan ? "アンアンに洗脳された人の証言は正しいかどうかわからず、" : "") + "残りの人の証言は正しい。",
     ruleRolesHtml: (q) => (q.mode === "shown"
@@ -629,8 +631,8 @@
     rewindInfo: (n, name) => `死に戻り${n}回目。${name}は犯人ではない。それは覚えている。`,
     wrongTitle: "正しくない判決だった。",
     wrongRecord: (n) => `死に戻り${n}回目。間違った判決の記憶は残っている。`,
-    next: { random: "同じ難易度でもう一問", daily: "過去の裁判の一覧へ", fixed: "次の事件", tutorial: "やさしい1番へ",
-            tutorialNext: (label) => `次のチュートリアル：${label}`, tutorialLast: "とてもむずかしい1番へ", last: "事件記録へ" },
+    next: { random: "同じ難易度でもう一問", daily: "過去の裁判の一覧へ", fixed: "次の事件", tutorial: `${numbered("easy", 1)}へ`,
+            tutorialNext: (label) => `次のチュートリアル：${label}`, tutorialLast: `${numbered("veryhard", 1)}へ`, last: "事件記録へ" },
     footer: [
       "『魔法少女ノ魔女裁判』の非公式二次創作ファンゲームのデモです。原作の権利は原作者に帰属します。",
       "パズルはプログラムが作っています。事件記録のパズルは唯一解かどうかを二通りの方法で検証し、ランダム裁判は作るたびに全数調査で検証しています。",
