@@ -637,7 +637,8 @@
     ],
     contactHtml: [
       'お問い合わせ・削除依頼：Twitter（X） <a href="https://x.com/riyuna_mano" target="_blank" rel="noopener">@riyuna_mano</a>',
-      'バグ・エラーの報告：<a href="https://docs.google.com/forms/d/e/1FAIpQLSfksd0WrbKXEQB5IDFbvhnLRXxqHTqkOAtlBJHm5E3ZxQZv4g/viewform" target="_blank" rel="noopener">Googleフォーム</a>',
+      // 일본어판 전용 폼(사용자 2026-10-24 새로 만듦, 일본어 문항). 한국어판은 기존 폼 그대로
+      'ご意見・バグ報告：<a href="https://docs.google.com/forms/d/e/1FAIpQLSc9Q21_zZy4RrJrHElNprxi8Oguxsq96vD9QBRl0SZEnGZbiw/viewform" target="_blank" rel="noopener">Googleフォーム</a>',
     ],
     guide: {
       common: {
