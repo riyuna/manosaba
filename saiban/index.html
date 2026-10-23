@@ -174,6 +174,10 @@ a { color: var(--blood-ink); }
 .case-top .where { color: var(--muted); font-size: 14px; }
 .case-top .share { margin-left: auto; }
 .bad-link { margin: 0; color: var(--blood-ink); }
+.slot:empty { display: none; }
+.share-result { display: flex; gap: 10px; flex-wrap: wrap; }
+.share-result a.btn { text-decoration: none; }
+.share-text { width: 100%; box-sizing: border-box; font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 8px; resize: vertical; }
 .updates-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; margin-top: -12px; }
 .new-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blood-ink); margin-left: 8px; vertical-align: 2px; box-shadow: 0 0 0 3px rgba(239, 106, 126, .18); }
 .updates .tag { display: inline-block; font-size: 12px; color: var(--brass); border: 1px solid var(--brass); border-radius: 3px; padding: 0 5px; margin-right: 2px; vertical-align: 1px; }
@@ -189,7 +193,9 @@ a { color: var(--blood-ink); }
 }
 .dialog .speaker {
   position: absolute; top: -13px; left: 14px; display: inline-flex; align-items: baseline; gap: 8px;
-  background: var(--night); border: 1px solid var(--blood); border-radius: 4px; padding: 1px 10px;
+  border: 2px solid transparent; border-radius: 4px; padding: 0 9px;     /* 2px: 그라데이션이 보이게(사용자 2026-10-23) */
+  background: linear-gradient(var(--night), var(--night)) padding-box,
+    linear-gradient(90deg, var(--who, var(--blood)), var(--who2, var(--who, var(--blood)))) border-box;   /* 이름표 테두리: 캐릭터 색(둘이면 그라데이션) */
   font-family: var(--font-display); font-size: 15px;
 }
 .dialog blockquote { margin: 0; font-size: 17px; }
@@ -339,9 +345,9 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=e72b33c95d"></script>
-<script src="core.js?v=e72b33c95d"></script>
-<script src="lang/ko.js?v=e72b33c95d"></script>
+<script src="puzzles.js?v=4fbfd920f4"></script>
+<script src="core.js?v=4fbfd920f4"></script>
+<script src="lang/ko.js?v=4fbfd920f4"></script>
 <script>
 (function () {
   "use strict";
@@ -352,7 +358,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   // 브라우저에만 남는 기록. 퍼즐 내용으로 만든 key 로 저장해서, 퍼즐을 다시 만들어도 엉뚱한 문제에 붙지 않는다.
   const DONE = "small-trial:done";        // { key: { r: 회귀 수, t: 걸린 시간(ms) } } 가장 좋은 기록(회귀 적은 순, 같으면 빠른 순)
   const NOTE = "small-trial:note:";      // + key → { g: {"범인|카드": "o"|"x"}, t: 메모 }
-  const SEEN = "small-trial:updates-seen";   // 마지막으로 연 업데이트 기록의 날짜(그보다 새 기록이 있으면 붉은 점)
+  const SEEN = "small-trial:updates-seen-n"; // 마지막으로 업데이트 기록을 열었을 때의 항목 수(그보다 많으면 붉은 점). 날짜로 재면 같은 날 더한 항목을 못 알린다
   const app = document.getElementById("app");
   document.documentElement.lang = T.lang;
 
@@ -439,20 +445,44 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     render();
   }
 
-  // 무작위 재판 링크: ?r=<난이도>-<번호>. 보고 있는 무작위 재판은 주소에도 적어 둔다(주소창을 그대로 복사해도 같은 문제가 열린다).
+  // 문제 링크: 무작위 재판 ?r=<난이도>-<번호>, 오늘의 재판 ?d=<날짜>(오늘까지만, 앞날은 안 열린다), 사건 기록 ?p=<hard-3 같은 id>.
+  // 보고 있는 문제는 주소에도 적어 둔다(주소창을 그대로 복사해도 같은 문제가 열린다). 튜토리얼은 적지 않는다.
   const SHARE_TIERS = ["easy", "normal", "hard", "veryhard"];
-  function sharedRandom() {
-    let m = null;
-    try { m = /^([a-z]+)-([1-9][0-9]{0,6})$/.exec(new URLSearchParams(location.search).get("r") || ""); } catch (e) { /* 없음 */ }
-    return m && SHARE_TIERS.includes(m[1]) ? { tier: m[1], seed: Number(m[2]) } : null;
+  function sharedLink() {
+    let qs = null;
+    try { qs = new URLSearchParams(location.search); } catch (e) { return null; }
+    const r = /^([a-z]+)-([1-9][0-9]{0,6})$/.exec(qs.get("r") || "");
+    if (r && SHARE_TIERS.includes(r[1])) return { random: { tier: r[1], seed: Number(r[2]) } };
+    const d = qs.get("d") || "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d) && isoOf(dayIndex(d)) === d && dayIndex(d) >= 0 && dayIndex(d) <= today().index) {
+      return { id: dailyOf(dayIndex(d)).id, date: d };
+    }
+    const p = qs.get("p") || "";
+    if (/^[a-z]+-[0-9]+$/.test(p) && SHARE_TIERS.includes(p.split("-")[0]) && findLogic(p)) return { id: p, date: null };
+    return null;
   }
-  const shareQuery = () => state.view === "puzzle" && state.random ? `?r=${state.random.tier}-${state.random.seed}` : "";
+  const shareQuery = () => state.view !== "puzzle" ? ""
+    : state.random ? `?r=${state.random.tier}-${state.random.seed}`
+    : state.date ? `?d=${state.date}`
+    : state.id && !state.id.startsWith("tutorial") ? `?p=${state.id}` : "";
   const shareUrl = () => location.origin + location.pathname + shareQuery();
   function syncAddress() {
     const q = shareQuery();
     if (location.search === q || (!q && !location.search)) return;
     try { history.replaceState(null, "", location.pathname + q + location.hash); } catch (e) { /* 미리보기 등에서는 막힐 수 있다 */ }
   }
+  // 판결 뒤 공유 글: 어떤 문제인지, 힌트(되감기)·틀린 판결 수, 걸린 시간, 그 문제 링크
+  function resultText(q, p) {
+    const index = state.random || state.date ? 0 : DATA.tiers[q.tier].indexOf(q) + 1;
+    return T.shareText(T.shareLabel(p, index, state.date), state.selfRewinds || 0, state.wrongs || 0, T.duration(state.elapsed));
+  }
+  async function copyResult(q, p) {
+    const all = `${resultText(q, p)}\n${shareUrl()}\n${T.shareTags}`;
+    try { await navigator.clipboard.writeText(all); state.shared = "copied"; }
+    catch (e) { state.shared = all; }
+    render("share-result");
+  }
+
   async function copyShare() {
     const url = shareUrl();
     try { await navigator.clipboard.writeText(url); state.share = "copied"; }
@@ -464,13 +494,13 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
   function header() {
     return `
-      <header class="masthead">
+      <header class="masthead" data-part="masthead">
         <div class="eyebrow">${esc(T.eyebrow)}</div>
         <h1>${esc(T.titleParts[0])}<span class="mark">${esc(T.titleParts[1])}</span></h1>
         <div class="fleuron" aria-hidden="true">❦ ❦ ❦</div>
         <p>${esc(T.intro)}</p>
       </header>
-      <div class="notice frame" role="note">
+      <div class="notice frame" role="note" data-part="notice">
         ${T.noticeHtml.map((h) => `<span>${h}</span>`).join("")}
         <span lang="ja">${esc(T.noticeJa)}</span>
       </div>`;
@@ -485,16 +515,16 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   function home() {
     const d = today();
     const tiers = TIERS.map((t) => `
-      <section class="tier" aria-label="${esc(T.tier[t])}">
+      <section class="tier" aria-label="${esc(T.tier[t])}" data-part="tier:${t}">
         <header><h3>${esc(T.tier[t])}</h3><small>${esc(T.tierNote[t])}</small></header>
         <div class="tiles">${DATA.tiers[t].map((p, i) => tile(p, i + 1)).join("")}</div>
       </section>`).join("");
-    app.innerHTML = header() + (state.notice ? `<p class="bad-link" role="status">${esc(state.notice)}</p>` : "") + `
-      <div class="updates-row">
-        <button class="btn ghost small" data-updates="1" data-k="updates">${esc(T.updatesTitle)}${hasNewUpdates() ? `<span class="new-dot" role="img" aria-label="${esc(T.updatesNew)}"></span>` : ""}</button>
+    paint(header() + slot("bad-link", state.notice ? `<p class="bad-link" role="status">${esc(state.notice)}</p>` : "") + `
+      <div class="updates-row" data-part="updates-row">
+        <button class="btn ghost small" data-updates="1" data-k="updates" data-part="updates-btn">${esc(T.updatesTitle)}${hasNewUpdates() ? `<span class="new-dot" role="img" aria-label="${esc(T.updatesNew)}"></span>` : ""}</button>
         <span>${esc(T.updatesLatest(T.updates[0].date))}</span>
       </div>
-      <section class="daily" aria-label="${esc(T.dailyTitle)}">
+      <section class="daily" aria-label="${esc(T.dailyTitle)}" data-part="daily">
         <div class="what">
           <div class="date">${esc(T.dateLabel(d.iso))} · ${esc(T.tier[d.puzzle.tier])}</div>
           <h3>${esc(T.dailyTitle)}</h3>
@@ -506,7 +536,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           <button class="btn ghost" data-archive="1">${esc(T.archiveOpen)}</button>
         </div>
       </section>
-      <section class="random" aria-label="${esc(T.randomTitle)}">
+      <section class="random" aria-label="${esc(T.randomTitle)}" data-part="random">
         <div class="what">
           <h3>${esc(T.randomTitle)}</h3>
           <div>${esc(T.randomDesc)}</div>
@@ -515,8 +545,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           ${TIERS.map((t) => `<button class="btn ghost" data-random="${t}">${esc(T.tier[t])}</button>`).join("")}
         </div>
       </section>
-      <div class="section-title"><h2>${esc(T.records)}</h2><span>${esc(T.recordsNote)}</span></div>
-      <section class="tutorial" aria-label="${esc(T.tutorialTitle)}">
+      <div class="section-title" data-part="records-title"><h2>${esc(T.records)}</h2><span>${esc(T.recordsNote)}</span></div>
+      <section class="tutorial" aria-label="${esc(T.tutorialTitle)}" data-part="tutorials">
         <div class="what">
           <h3>${esc(T.tutorialTitle)}</h3>
           <div>${esc(T.tutorialDesc)}</div>
@@ -526,7 +556,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           <button class="btn small" data-book="1">${esc(T.rulebookTitle)}</button>
         </div>
       </section>
-      <div class="tiers">${tiers}</div>` + footer();
+      <div class="tiers" data-part="tiers">${tiers}</div>` + footer());
   }
 
   // 지난 오늘의 재판: 오늘부터 2026-10-20까지 거슬러 올라간다
@@ -543,10 +573,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
           <span class="meta">${esc(T.tier[q.tier])} · ${esc(T.record(rec, T.duration))}</span>
         </button></li>`);
     }
-    app.innerHTML = `
-      <div class="case-top"><button class="btn ghost" data-home="1">${esc(T.back)}</button></div>
-      <div class="section-title"><h2>${esc(T.archiveTitle)}</h2><span>${esc(T.archiveNote)}</span></div>
-      <ul class="days">${rows.join("")}</ul>` + footer();
+    paint(`
+      <div class="case-top" data-part="archive-top"><button class="btn ghost" data-home="1">${esc(T.back)}</button></div>
+      <div class="section-title" data-part="archive-title"><h2>${esc(T.archiveTitle)}</h2><span>${esc(T.archiveNote)}</span></div>
+      <ul class="days" data-part="days">${rows.join("")}</ul>` + footer());
   }
 
   // 카드 이름 왼쪽에 붙이는 캐릭터 이모지(2026-10-21 사용자 검수: 공식 상징 아이콘을 참고해 유니코드 이모지로만, 나노카는 물총, 카드에만)
@@ -554,10 +584,26 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
                  nanoka: "🔫", arisa: "🔥", sherry: "🔍", hanna: "🪡", coco: "🎧", meruru: "🧪" };     // 히로는 카드가 없어 안 쓰인다
   const icon = (id) => (ICON[id] ? `<span class="icon" aria-hidden="true">${ICON[id]}</span>` : "");
 
-  function dialog(speaker, line, written) {
+  // 대사 상자 이름표 테두리 색(캐릭터 이미지 색). 2026-10-23 사용자가 정함. 색이 둘이면 왼쪽→오른쪽 그라데이션.
+  const NAME_COLOR = {
+    hiro: ["#b52d43"],                 // 지금 그대로
+    ema: ["#f2a7c3"],                  // 연핑크
+    nanoka: ["#9a9aa3"],               // 회색
+    coco: ["#f07c2c"],                 // 주황(헤드셋 색)
+    sherry: ["#3f73d1"],               // 파랑(머리색). 색 2는 뺐다(사용자)
+    hanna: ["#2f8f55"],                // 진한 초록(옷색)
+    noah: ["#f2f9ff", "#a9daf6"],      // 아주 연한 하늘색 그라데이션
+    reia: ["#f2a65a"],                 // 주황(코코와 헷갈리지 않게 조금 밝게)
+    margo: ["#9b6fd6"],                // 보라
+    anan: ["#7f8fd0"],                 // 연한 남색
+    arisa: ["#9a9aa3", "#d0404f"],     // 회색+붉은색
+    meruru: ["#f4f7fb", "#a9dcf5"],    // 흰색+얼음 하늘색
+    miria: ["#f0dc8c"],                // 크림 금색(Claude 제안, 사용자 "나머지는 그대로")
+  };
+  function dialog(speaker, line, written, who = "hiro", part = "") {
     return `
-      <figure class="dialog">
-        <figcaption class="speaker">${esc(speaker)}${written ? ` · ${esc(T.written)}` : ""}</figcaption>
+      <figure class="dialog"${part ? ` data-part="${part}"` : ""}>
+        <figcaption class="speaker" style="${(([a, b = a]) => `--who: ${a}; --who2: ${b}`)(NAME_COLOR[who] || NAME_COLOR.hiro)}">${esc(speaker)}${written ? ` · ${esc(T.written)}` : ""}</figcaption>
         <blockquote class="say ${written ? "written" : ""}">${esc(line)}</blockquote>
       </figure>`;
   }
@@ -565,7 +611,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   // 튜토리얼 판에서만 나오는 순서 안내
   function guide(q, step, key) {
     if (!isTutorial(q)) return "";
-    return `<div class="guide"><span class="step" aria-hidden="true">${step}</span><p>${esc(T.guide[q.id][key] || T.guide.common[key])}</p></div>`;
+    return `<div class="guide" data-part="guide:${key}"><span class="step" aria-hidden="true">${step}</span><p>${esc(T.guide[q.id][key] || T.guide.common[key])}</p></div>`;
   }
 
   const nameOf = (p, id) => p.suspects.find((s) => s.id === id).name;
@@ -589,11 +635,11 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     else if (cur === "hiro") page = `<h3>${esc(T.hiroTitle)}</h3><p>${esc(T.hiroRule)}</p>`;
     else { const m = p.magic[Number(cur.slice(6))]; page = `<h3>${esc(T.magicTitle(m))}</h3><p>${esc(m.text)}</p>`; }
     return `
-      <section class="ledger" aria-label="${esc(T.ledgerTitle)}">
-        <div role="tablist" aria-label="${esc(T.ledgerTitle)}">${tabs.map(([id, label, k]) => `
-          <button role="tab" id="tab-${id}" class="tab tab-${k}" data-tab="${id}" data-k="tab:${id}" aria-selected="${id === cur}"
+      <section class="ledger" aria-label="${esc(T.ledgerTitle)}" data-part="ledger">
+        <div role="tablist" aria-label="${esc(T.ledgerTitle)}" data-part="ledger-tabs">${tabs.map(([id, label, k]) => `
+          <button role="tab" id="tab-${id}" class="tab tab-${k}" data-tab="${id}" data-k="tab:${id}" data-part="tab:${id}" aria-selected="${id === cur}"
             aria-controls="ledger-page" tabindex="${id === cur ? 0 : -1}">${esc(label)}</button>`).join("")}</div>
-        <div class="ledger-page page-${kind}" id="ledger-page" role="tabpanel" aria-labelledby="tab-${cur}">
+        <div class="ledger-page page-${kind}" id="ledger-page" role="tabpanel" aria-labelledby="tab-${cur}" data-part="ledger-page">
           <div class="ledger-head"><span class="ledger-title">${esc(T.ledgerTitle)}</span>
             <button class="book-btn" data-book="1" data-k="book">${esc(T.rulebookTitle)}</button></div>
           ${page}
@@ -618,7 +664,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   // 가정 표와 메모: 수첩에서 떼어 냈다(사용자 2026-10-21). 넓은 화면에서는 오른쪽에 붙어 따라오고, 좁은 화면에서는 카드 아래.
   function workbench(q, p) {
     return `
-      <aside class="side workbench frame" aria-label="${esc(T.workbenchTitle)}">
+      <aside class="side workbench frame" aria-label="${esc(T.workbenchTitle)}" data-part="side">
         ${guide(q, 4, "grid")}
         ${gridPage(p)}
         ${memoPage()}
@@ -632,16 +678,16 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     const lines = p.suspects.flatMap((s) => s.says.map((_, i) => ({ r: i ? `${s.id}#${i + 1}` : s.id, label: T.nbRow(s.name, i, s.says.length) })));
     const head = ids.map((c) => `<th scope="col">${esc(nameOf(p, c))}</th>`).join("");
     const rows = lines.map(({ r, label }) => `
-      <tr><th scope="row">${esc(label)}</th>${ids.map((c) => {
+      <tr data-part="row:${r}"><th scope="row">${esc(label)}</th>${ids.map((c) => {
         const v = note.g[`${c}|${r}`] || "";
-        return `<td><button class="cell ${v}" data-cell="${c}|${r}" data-k="cell:${c}|${r}"
+        return `<td><button class="cell ${v}" data-cell="${c}|${r}" data-k="cell:${c}|${r}" data-part="cell:${c}|${r}"
           aria-label="${esc(T.nbCell(nameOf(p, c), label, v))}">${v === "o" ? "○" : v === "x" ? "×" : ""}</button></td>`;
       }).join("")}</tr>`).join("");
     return `
       <h3>${esc(T.workbenchGrid)}</h3>
       <p class="nb-help">${esc(T.nbHelp)}</p>
       <div class="grid-wrap">
-        <table class="hyp">
+        <table class="hyp" data-part="grid">
           <thead><tr><th scope="col">${esc(T.nbCorner)}</th>${head}</tr></thead>
           <tbody>${rows}</tbody>
         </table>
@@ -652,8 +698,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     return `
       <h3><label for="memo-text">${esc(T.workbenchMemo)}</label></h3>
       <p class="nb-help">${esc(T.nbMemo)}</p>
-      <textarea id="memo-text" rows="6" placeholder="${esc(T.nbPlaceholder)}"></textarea>
-      <div class="nb-actions">
+      <textarea id="memo-text" rows="6" placeholder="${esc(T.nbPlaceholder)}" data-part="memo-text"></textarea>
+      <div class="nb-actions" data-part="memo-actions">
         <button class="btn ghost" data-clear-note="1" data-k="clear">${esc(state.confirmClear ? T.nbClearConfirm : T.nbClear)}</button>
         ${state.confirmClear ? `<span class="warn">${esc(T.nbClearWarn)}</span>` : ""}
       </div>`;
@@ -669,19 +715,19 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
       const accused = state.culprit === s.id;
       const known = state.memory.includes(s.id);
       return `
-        <article class="card ${mark ? "m-" + mark : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}">
-          <header class="plate">
+        <article class="card ${mark ? "m-" + mark : ""} ${accused ? "accused" : ""} ${known ? "cleared" : ""}" data-card="${s.id}" data-part="card:${s.id}">
+          <header class="plate" data-part="plate:${s.id}">
             <span class="who">${icon(s.id)}${esc(s.full)}${s.voice ? `<span class="via voice">${esc(T.voiceBadge(s.voice))}</span>` : ""}${s.written ? `<span class="via">${esc(T.written)}</span>` : ""}</span>
           </header>
-          <div class="says">${s.says.length ? s.says.map((t, i) => `
+          <div class="says" data-part="says:${s.id}">${s.says.length ? s.says.map((t, i) => `
             <div class="line">${s.says.length > 1 ? `<span class="num" aria-hidden="true">${T.num(i)}</span>` : ""}<blockquote class="say ${s.written ? "written" : ""}">${esc(t)}</blockquote></div>`).join("")
             : `<p class="unheard">${esc(T.unheard)}</p>`}</div>
-          <div class="acts">
-            ${markKinds.map((m) => `<button class="chip mark-${m}" data-mark="${s.id}" data-mk="${m}" data-k="mark:${s.id}:${m}" aria-pressed="${mark === m}"
+          <div class="acts" data-part="acts:${s.id}">
+            ${markKinds.map((m) => `<button class="chip mark-${m}" data-mark="${s.id}" data-mk="${m}" data-k="mark:${s.id}:${m}" data-part="mark:${s.id}:${m}" aria-pressed="${mark === m}"
               aria-label="${esc(T.markLabel(s.name, T.marks[m], mark === m))}">${esc(T.marks[m])}</button>`).join("")}
-            <button class="chip" data-accuse="${s.id}" data-k="accuse:${s.id}" aria-pressed="${accused}" ${state.solved || known ? "disabled" : ""}>${esc(known ? T.notCulprit : T.accuse)}</button>
+            <button class="chip" data-accuse="${s.id}" data-k="accuse:${s.id}" data-part="accuse:${s.id}" aria-pressed="${accused}" ${state.solved || known ? "disabled" : ""}>${esc(known ? T.notCulprit : T.accuse)}</button>
           </div>
-          ${known ? `<div class="hint">${esc(T.memory(p.why_not[s.id]))}</div>` : ""}
+          ${slot(`hint:${s.id}`, known ? `<div class="hint">${esc(T.memory(p.why_not[s.id]))}</div>` : "")}
         </article>`;
     }).join("");
     const culpritName = state.culprit ? nameOf(p, state.culprit) : null;
@@ -691,31 +737,31 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     const nextLabel = state.random ? T.next.random : state.date ? T.next.daily
       : q.id === "tutorial" ? T.next.tutorial : isTutorial(q) ? (tutNext ? T.next.tutorialNext(tutNext.label) : T.next.tutorialLast)
       : DATA.tiers[q.tier][index] ? T.next.fixed : T.next.last;
-    app.innerHTML = `<div class="trial">
-      <div class="case-top">
+    paint(`<div class="trial" data-part="trial">
+      <div class="case-top" data-part="top">
         <button class="btn ghost" data-home="1">${esc(T.back)}</button>
         <span class="where">${esc(T.where(q, index, state.date))}</span>
         ${state.random ? `<span class="share"><button class="btn ghost small" data-share="1" data-k="share">${esc(state.share === "copied" ? T.copiedLink : T.copyLink)}</button></span>` : ""}
         ${state.random && state.share && state.share !== "copied" ? `<p class="share-url">${esc(T.copyFallback)} <input readonly value="${esc(state.share)}" aria-label="${esc(T.copyLink)}"></p>` : ""}
       </div>
       ${guide(q, 1, "incident")}
-      <h2 class="incident">${esc(p.incident)}</h2>
-      ${dialog(p.victim.name, p.victim.line, p.victim.written)}
+      <h2 class="incident" data-part="incident">${esc(p.incident)}</h2>
+      ${dialog(p.victim.name, p.victim.line, p.victim.written, p.victim.id, "victim")}
       ${guide(q, 2, "ledger")}
       ${ledger(q, p)}
       ${guide(q, 3, "cards")}
-      <div class="cards">${cards}</div>
+      <div class="cards" data-part="cards">${cards}</div>
       ${workbench(q, p)}
       ${guide(q, 5, "bar")}
-      <div class="bar">
-        <button class="btn" data-judge="1" data-k="judge" ${!state.culprit || state.solved || unmarked ? "disabled" : ""}>
+      <div class="bar" data-part="bar">
+        <button class="btn" data-judge="1" data-k="judge" data-part="judge" ${!state.culprit || state.solved || unmarked ? "disabled" : ""}>
           ${esc(!culpritName ? T.judgeIdle : unmarked ? T.judgeNeedMarks(unmarked) : T.accusation(culpritName, state.lineSeed, state.culprit))}</button>
-        <button class="btn rewind" data-rewind="1" data-k="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>${esc(T.rewind)}</button>
-        <span class="tally">${esc(T.tally(state.rewinds, Object.keys(state.marks).length))} · ${esc(T.clockLabel)} <span id="clock">${esc(T.duration((state.elapsed ?? (Date.now() - state.startedAt))))}</span></span>
+        <button class="btn rewind" data-rewind="1" data-k="rewind" data-part="rewind" ${state.solved || unknown === 0 ? "disabled" : ""}>${esc(T.rewind)}</button>
+        <span class="tally" data-part="tally">${esc(T.tally(state.rewinds, Object.keys(state.marks).length))} · ${esc(T.clockLabel)} <span id="clock"></span></span>
       </div>
-      ${verdictView(p)}
-      ${state.solved ? `<div class="bar"><button class="btn" data-next="1">${esc(nextLabel)}</button></div>` : ""}
-      </div>` + footer();
+      ${slot("verdict", verdictView(p))}
+      ${slot("next", state.solved ? `<div class="bar"><button class="btn" data-next="1">${esc(nextLabel)}</button></div>` : "")}
+      </div>` + footer());
     const memo = document.getElementById("memo-text");
     if (memo) memo.value = noteOf(p).t;
   }
@@ -725,25 +771,33 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     if (!v) return "";
     if (v.right) {
       const n = state.rewinds;
+      const { q } = current();
+      const intent = isTutorial(q) ? "" : "https://twitter.com/intent/tweet?text="
+        + encodeURIComponent(`${resultText(q, p)}\n${T.shareTags}`) + "&url=" + encodeURIComponent(shareUrl());
       return `
-        <section class="verdict frame right" aria-live="polite">
+        <section class="verdict frame right" aria-live="polite" data-part="verdict-box">
           <div class="stamp" aria-hidden="true">${esc(T.stamp)}</div>
           <h3>${esc(T.accusation(nameOf(p, p.answer), state.lineSeed, p.answer))}</h3>
           <ul>${p.solution.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
           <div class="record">${esc(T.recordRight(n, T.duration(state.elapsed)))}</div>
           ${dialog(T.hiro, T.line(n === 0 ? "right0" : "rightN", v.k))}
+          ${intent ? `<div class="share-result" data-part="share-result">
+            <a class="btn small" href="${esc(intent)}" target="_blank" rel="noopener">${esc(T.shareX)}</a>
+            <button class="btn ghost small" data-share-result="1" data-k="share-result">${esc(state.shared === "copied" ? T.shareCopied : T.shareCopy)}</button>
+          </div>` : ""}
+          ${intent && state.shared && state.shared !== "copied" ? `<textarea class="share-text" data-part="share-text" readonly rows="4" aria-label="${esc(T.shareCopy)}">${esc(state.shared)}</textarea>` : ""}
         </section>`;
     }
     if (v.rewind) {
       return `
-        <section class="verdict frame rewind" aria-live="polite">
+        <section class="verdict frame rewind" aria-live="polite" data-part="verdict-box">
           <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
           <div>${esc(T.rewindInfo(state.rewinds, nameOf(p, v.who)))}</div>
           ${dialog(T.hiro, T.rewindLine(v.nth || 1, v.k))}
         </section>`;
     }
     return `
-      <section class="verdict frame wrong shake" aria-live="polite">
+      <section class="verdict frame wrong shake" aria-live="polite" data-part="verdict-box">
         <h3>${esc(T.wrongTitle)}</h3>
         <div>${esc(v.roles ? T.wrongRoles(v.roles) : p.why_not[v.culprit])}</div>
         <div class="morning">${esc(T.morning(v.rewinds || state.rewinds, v.k))}</div>
@@ -753,17 +807,68 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
 
   function footer() {
-    return `<footer>${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}${T.contactHtml.map((h) => `<span>${h}</span>`).join("")}`
+    return `<footer data-part="footer">${T.footer.map((l) => `<span>${esc(l)}</span>`).join("")}${T.contactHtml.map((h) => `<span>${h}</span>`).join("")}`
       + `<span><button class="linkish" data-updates="1">${esc(T.updatesTitle)}</button></span></footer>`;
   }
+
+  // ---- 그리기: 바뀐 조각만 바꿔 끼운다 ----
+  // 2026-10-23 버그 제보(사용자 전달): 누를 때마다 #app 전체를 다시 그려서 웹 번역 확장이 번역해 둔 글이 전부 원문으로 돌아갔다.
+  // 화면을 data-part 조각으로 나눠 두고, 지난번에 그린 글(HTML 문자열, 번역 전)과 비교한다.
+  //   같으면 그대로 둔다(번역·초점·스크롤 유지). 하위 조각을 뺀 안쪽이 같으면 그 요소의 속성만 맞추고 하위 조각으로 내려간다.
+  //   아니면 그 조각만 통째로 바꾼다. 생겼다 없어지는 것(판결 상자 등)은 빈 자리(.slot)를 늘 깔아 두어 바깥 구조가 흔들리지 않게 한다.
+  const ROOT_PART = "@";
+  let painted = null;                       // 조각 key -> { html, inner, kids }
+  const partsIn = (el) => [...el.querySelectorAll("[data-part]")].filter((k) => k.parentElement.closest("[data-part]") === el);
+  const partOf = (el, key) => [...el.querySelectorAll("[data-part]")].find((e) => e.dataset.part === key);
+  function describe(root) {
+    const out = {};
+    (function walk(el) {
+      const key = el.dataset.part;
+      if (key in out) console.error("조각 key 중복:", key);
+      const kids = partsIn(el);
+      const shell = el.cloneNode(true);
+      for (const k of partsIn(shell)) { const slot = document.createElement("i"); slot.dataset.slot = k.dataset.part; k.replaceWith(slot); }
+      out[key] = { html: el.outerHTML, inner: shell.innerHTML, kids: kids.map((k) => k.dataset.part) };
+      kids.forEach(walk);
+    })(root);
+    return out;
+  }
+  function sync(live, fresh, key, next) {
+    const a = painted[key], b = next[key];
+    if (!a) return false;
+    if (a.html === b.html) return true;
+    if (a.inner !== b.inner || a.kids.join("\n") !== b.kids.join("\n")) return false;
+    if (key !== ROOT_PART) {
+      for (const { name } of [...live.attributes]) if (!fresh.hasAttribute(name)) live.removeAttribute(name);
+      for (const { name, value } of [...fresh.attributes]) if (live.getAttribute(name) !== value) live.setAttribute(name, value);
+    }
+    for (const k of b.kids) {
+      const lk = partOf(live, k), fk = partOf(fresh, k);
+      if (!lk) return false;
+      if (!sync(lk, fk, k, next)) lk.replaceWith(fk);
+    }
+    return true;
+  }
+  function paint(html) {
+    const tpl = document.createElement("template");
+    tpl.innerHTML = html;
+    const box = document.createElement("div");
+    box.dataset.part = ROOT_PART;
+    box.append(tpl.content);
+    const next = describe(box);
+    if (!(painted && sync(app, box, ROOT_PART, next))) app.replaceChildren(...box.childNodes);
+    painted = next;
+  }
+  const slot = (key, html) => `<div class="slot" data-part="${key}">${html.trim()}</div>`;
 
   // 다시 그려도 누르던 버튼에 초점을 돌려 둔다(키보드로 표를 채울 때 끊기지 않게)
   function render(focusKey) {
     app.classList.toggle("wide", state.view === "puzzle");
     if (state.view === "home") home();
     else if (state.view === "archive") archive();
-    else if (state.view === "loading") app.innerHTML = `<p class="loading" aria-live="polite">${esc(T.preparing)}</p>` + footer();
+    else if (state.view === "loading") paint(`<p class="loading" data-part="loading" aria-live="polite">${esc(T.preparing)}</p>` + footer());
     else puzzleView();
+    tickClock();
     syncAddress();
     if (focusKey) {
       const el = app.querySelector(`[data-k="${CSS.escape(focusKey)}"]`);
@@ -787,6 +892,7 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
     if (ds.home) { state = { view: "home" }; render(); return; }
     const cur = state.view === "puzzle" ? current() : null;
     if (!cur) return;
+    if (ds.shareResult) return copyResult(cur.q, cur.p);
     const { q, p } = cur;
     if (!ds.clearNote) state.confirmClear = false;
     if (ds.tab) {
@@ -885,7 +991,8 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   }
 
   // 업데이트 기록: 규칙집과 같은 모양의 대화상자. 열면 붉은 점을 끈다.
-  const hasNewUpdates = () => (load(SEEN, "") || "") < T.updates[0].date;
+  const updateCount = () => T.updates.reduce((n, u) => n + u.items.length, 0);
+  const hasNewUpdates = () => (Number(load(SEEN, 0)) || 0) < updateCount();
   const updates = document.createElement("dialog");
   updates.className = "rulebook updates";
   updates.setAttribute("aria-labelledby", "updates-title");
@@ -898,23 +1005,25 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   updates.addEventListener("click", (e) => { if (e.target === updates || e.target.closest("[data-close]")) updates.close(); });
   function openUpdates() {
     if (typeof updates.showModal === "function") updates.showModal(); else updates.setAttribute("open", "");
-    if (hasNewUpdates()) { save(SEEN, T.updates[0].date); if (state.view === "home") render("updates"); }
+    if (hasNewUpdates()) { save(SEEN, updateCount()); if (state.view === "home") render("updates"); }
   }
 
-  // 걸린 시간은 1초마다 그 숫자만 고친다(다시 그리지 않는다)
-  setInterval(() => {
+  // 걸린 시간은 그 숫자만 고친다(조각 비교에 넣으면 누를 때마다 바뀐 것으로 보인다). 그린 직후와 1초마다.
+  function tickClock() {
     const el = document.getElementById("clock");
-    if (el && state.view === "puzzle" && !state.solved) el.textContent = T.duration(Date.now() - state.startedAt);
-  }, 1000);
+    if (el && state.view === "puzzle") el.textContent = T.duration(state.elapsed ?? (Date.now() - state.startedAt));
+  }
+  setInterval(() => { if (!state.solved) tickClock(); }, 1000);
 
   // 열려 있는 화면은 새 버전이 올라와도 이어서 보이게 한다(뷰어 전용 훅, 없으면 무시).
   try { window.claude?.hot?.snapshot?.(() => ({ state })); } catch (e) { /* 없음 */ }
   const start = (data) => {
     const s = data && data.state;
-    const shared = sharedRandom();
-    if (shared && !(s && s.view === "puzzle" && s.random && s.random.tier === shared.tier && s.random.seed === shared.seed)) {
-      return openRandom(shared.tier, shared.seed);
+    const link = sharedLink();
+    if (link && link.random && !(s && s.view === "puzzle" && s.random && s.random.tier === link.random.tier && s.random.seed === link.random.seed)) {
+      return openRandom(link.random.tier, link.random.seed);
     }
+    if (link && link.id && !(s && s.view === "puzzle" && !s.random && s.id === link.id)) return openPuzzle(link.id, link.date);
     if (s && (s.view === "home" || s.view === "archive" || s.view === "loading")) state = s.view === "loading" ? { view: "home" } : s;
     else if (s && s.view === "puzzle" && Array.isArray(s.memory) && (s.random || findLogic(s.id))) {
       state = { ...fresh(), ...s };

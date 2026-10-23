@@ -373,6 +373,18 @@
     copiedLink: "링크를 복사했다",
     copyFallback: "이 주소를 복사해 공유하면 같은 문제가 열린다:",
     badLink: (code) => `링크의 문제(${code})를 만들지 못했다. 사건 기록으로 돌아왔다.`,
+    // 판결 뒤 공유(2026-10-23 사용자: 「감옥저택의 번외재판 XXX 난이도 XXXX번/오늘의 문제를 힌트 x개/힌트 없이 n분 nn초 안에 풀었어요!」).
+    // 힌트 = 되감기. 틀린 판결이 있었으면 「오판 n번 끝에」를 붙인다(힌트 없이라고만 쓰면 틀린 판결이 감춰진다).
+    shareX: "트위터(X)에 공유",          // 사용자 2026-10-23: 「X(트위터)」가 아니라 「트위터(X)」
+    shareCopy: "결과 복사",
+    shareCopied: "결과를 복사했다",
+    shareLabel: (q, index, date) => q.seed !== undefined ? `무작위 재판 ${ui.randomCode(q.tier, q.seed)}`
+      : date ? `오늘의 재판 ${ui.dateLabel(date)} (${TIER[q.tier]})` : `${TIER[q.tier]} ${index}번`,
+    shareText: (label, hints, wrongs, time) => `감옥저택의 번외재판 · ${label}\n`
+      + (hints ? `힌트 ${hints}개` : "힌트 없이")
+      + (wrongs ? `${hints ? "," : ""} 오판 ${wrongs}번 끝에` : hints ? "로" : "")
+      + ` ${time} 만에 풀었어요!`,
+    shareTags: "#まのさば二次創作",
     where: (q, index, date) => q.id.startsWith("tutorial") ? `튜토리얼 · ${ui.tutorials.find((t) => t.id === q.id).label}`
       : q.seed !== undefined ? `무작위 재판 · ${ui.randomCode(q.tier, q.seed)}`
       : date ? `오늘의 재판 · ${ui.dateLabel(date)} · ${TIER[q.tier]}` : `${TIER[q.tier]} ${index}번`,
@@ -424,6 +436,10 @@
     updatesNew: "새 소식 있음",
     updates: [
       { date: "2026-10-23", items: [
+        ["화면", "대사 상자의 이름표 테두리를 캐릭터마다 다른 색으로 바꿨습니다."],
+        ["수정", "버튼을 누를 때마다 화면 전체를 다시 그리던 것을, 바뀐 부분만 다시 그리게 고쳤습니다. 웹 번역 확장으로 번역한 글이 누를 때마다 원문으로 돌아가던 문제가 줄어듭니다. 제보해 주셔서 감사합니다."],
+        ["기능", "판결을 끝내면 결과를 X(트위터)에 공유하거나 복사할 수 있습니다. 공유한 링크로 들어오면 같은 문제가 열립니다."],
+        ["기능", "오늘의 재판과 사건 기록의 문제도 주소로 바로 열 수 있습니다."],
         ["규칙", "마고의 흉내내기: 흉내 낸 말 속의 「나」·「저」는 마고가 아니라 목소리 주인(카드에 적힌 사람)이라는 것을 예시와 함께 규칙에 적었습니다. 처음부터 이 규칙으로 만든 퍼즐이라 답은 바뀌지 않습니다. 제보해 주셔서 감사합니다."],
       ] },
       { date: "2026-10-22", items: [
