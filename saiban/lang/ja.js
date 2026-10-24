@@ -514,7 +514,7 @@
       + (hints ? `ヒント${hints}個` : "ヒントなし") + "、"
       + (wrongs ? `誤審${wrongs}回の末に` : "")
       + `${time}で解きました！`,
-    shareTags: "#まのさば二次創作",
+    shareTags: "#番外裁判",     // 사용자 2026-10-24: 결과 공유가 2차 창작 태그를 덮지 않게 전용 태그로(한국어·일본어 같은 태그)
     where: (q, index, date) => q.id.startsWith("tutorial") ? `チュートリアル・${ui.tutorials.find((t) => t.id === q.id).label}`
       : q.seed !== undefined ? `ランダム裁判・${ui.randomCode(q.tier, q.seed)}`
       : date ? `今日の裁判・${ui.dateLabel(date)}・${TIER[q.tier]}` : numbered(q.tier, index),
@@ -561,6 +561,7 @@
     updatesNew: "新しいお知らせあり",
     updates: [
       { date: "2026-10-24", items: [
+        ["機能", "結果を共有するときのハッシュタグを #番外裁判 にしました。結果の投稿で二次創作タグ（#まのさば二次創作）が埋もれないようにするためです。"],
         ["機能", "日本語版を公開しました。キャラクターの台詞は作者が書き、ルール・解説などの文章の翻訳には、AI(Claude)を一部使っております（台詞の日本語もAIで一部直しています）。不自然な日本語があれば、お知らせいただけるとうれしいです。"],
       ] },
     ],

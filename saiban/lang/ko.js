@@ -384,7 +384,7 @@
       + (hints ? `힌트 ${hints}개` : "힌트 없이")
       + (wrongs ? `${hints ? "," : ""} 오판 ${wrongs}번 끝에` : hints ? "로" : "")
       + ` ${time} 만에 풀었어요!`,
-    shareTags: "#まのさば二次創作",
+    shareTags: "#番外裁判",     // 사용자 2026-10-24: 결과 공유가 2차 창작 태그를 덮지 않게 전용 태그로(한국어·일본어 같은 태그)
     where: (q, index, date) => q.id.startsWith("tutorial") ? `튜토리얼 · ${ui.tutorials.find((t) => t.id === q.id).label}`
       : q.seed !== undefined ? `무작위 재판 · ${ui.randomCode(q.tier, q.seed)}`
       : date ? `오늘의 재판 · ${ui.dateLabel(date)} · ${TIER[q.tier]}` : `${TIER[q.tier]} ${index}번`,
@@ -437,6 +437,7 @@
     updatesNew: "새 소식 있음",
     updates: [
       { date: "2026-10-24", items: [
+        ["기능", "결과 공유 글의 해시태그를 #番外裁判 으로 바꿨습니다. 결과 글이 2차 창작 태그(#まのさば二次創作)를 덮지 않게 하려는 것입니다."],
         ["기능", "일본어판(日本語)을 열었습니다. 첫 화면 위나 화면 맨 아래의 「日本語」를 누르면 바뀝니다. 판결 기록과 메모는 두 언어가 같이 씁니다."],
       ] },
       { date: "2026-10-23", items: [
