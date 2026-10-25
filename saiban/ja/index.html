@@ -96,6 +96,7 @@ body {
   .trial > .side { grid-column: 2; grid-row: 1 / span 40; align-self: start; position: sticky; top: 16px; max-height: calc(100vh - 32px);
                    overflow-x: hidden; overflow-y: auto; scrollbar-gutter: stable; }
   .trial > .side .cell { width: 34px; }      /* 6명이어도 패널 폭 안에 들게 */
+  .trial > .side table.hyp thead th + th { width: 40px; min-width: 40px; }
 }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 400; text-wrap: balance; margin: 0; }
 button, textarea { font: inherit; color: inherit; }
@@ -333,16 +334,26 @@ ul.lines li::marker { color: var(--brass); }
 table.hyp { border-collapse: collapse; font-size: 14px; }
 table.hyp th { font-weight: 400; color: var(--muted); padding: 4px 6px; white-space: nowrap; }
 table.hyp thead th { font-size: 13px; text-align: center; }
+/* 열 폭을 고르게(2026-10-25 사용자: 「정렬도 이상하고 폭도 안 맞고」). 이름 길이(2~3글자)와 상관없이 같은 폭.
+   가장 긴 이름(3글자)과 칸이 다 들어가는 폭이라 내용이 폭을 늘리지 않는다 */
+table.hyp thead th + th { width: 46px; min-width: 46px; padding-left: 0; padding-right: 0; }
 /* 일본어: 열 이름(가타카나 4자)이 칸보다 넓어 표가 넘친다. 세로쓰기로 칸 폭에 맞춘다 */
 html[lang="ja"] table.hyp thead th + th { writing-mode: vertical-rl; text-orientation: mixed; padding: 6px 0; vertical-align: bottom; line-height: 1.2; }
 table.hyp tbody th { text-align: left; color: var(--ink); }
-table.hyp td { padding: 3px; text-align: center; }
+table.hyp td { padding: 3px; text-align: center; vertical-align: middle; }
+/* 칸: 빈 칸과 ○·× 칸이 글자 기준선으로 줄을 맞추면, 글꼴(특히 Windows의 대체 글꼴)에 따라 칸이 오르내리고 줄 높이가 바뀐다.
+   기준선 대신 가운데로 맞추고, 글자는 칸 한가운데에(안쪽 여백 0) */
 .cell {
   width: 38px; height: 34px; border: 1px solid var(--line); border-radius: 4px; background: var(--night);
   cursor: pointer; font-size: 17px; line-height: 1;
+  padding: 0; display: inline-grid; place-items: center; vertical-align: middle;
 }
 .cell:hover { border-color: var(--brass); }
-@media (max-width: 440px) { .cell { width: 31px; } table.hyp th { padding: 4px 3px; } }
+@media (max-width: 440px) {
+  .cell { width: 31px; } table.hyp th { padding: 4px 3px; }
+  table.hyp td { padding: 3px 2px; }
+  table.hyp thead th + th { width: 36px; min-width: 36px; font-size: 12px; padding-left: 0; padding-right: 0; }
+}
 .cell.o { color: var(--ok); border-color: rgba(134, 207, 165, .5); }
 .cell.x { color: var(--blood-ink); border-color: var(--blood); background: var(--wine); }
 .nb-label { font-size: 14px; color: var(--muted); }
@@ -383,10 +394,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="../puzzles.js?v=ec06b1be44"></script>
-<script src="../core.js?v=ec06b1be44"></script>
-<script src="../lang/ko.js?v=ec06b1be44"></script>
-<script src="../lang/ja.js?v=ec06b1be44"></script>
+<script src="../puzzles.js?v=3d9d62471d"></script>
+<script src="../core.js?v=3d9d62471d"></script>
+<script src="../lang/ko.js?v=3d9d62471d"></script>
+<script src="../lang/ja.js?v=3d9d62471d"></script>
 <script>
 (function () {
   "use strict";
