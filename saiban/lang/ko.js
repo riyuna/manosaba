@@ -12,7 +12,11 @@
   const V = K.voices;
   const OWNER = Object.fromEntries(G.incidents.map((i) => [i.id, i.owner]));
 
-  const batchim = (w) => { const c = w.charCodeAt(w.length - 1); return c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 !== 0; };
+  // 별명·성 표시(화면에서 점선 밑줄·툴팁): \u0001누구\u0002글\u0003. 받침은 표시를 뺀 글로 본다
+  const MARK = /\u0001[a-z]+\u0002|\u0003/g;
+  const mark = (x, w) => `\u0001${x}\u0002${w}\u0003`;
+  const unmark = (w) => w.replace(MARK, "");
+  const batchim = (w) => { w = unmark(w); const c = w.charCodeAt(w.length - 1); return c >= 0xac00 && c <= 0xd7a3 && (c - 0xac00) % 28 !== 0; };
   // 받침에 따라 조사를 고른다: j("셰리", "을", "를") -> "셰리를"
   const j = (w, a, b) => w + (batchim(w) ? a : b);
 
@@ -37,8 +41,8 @@
 
   // 말하는 사람(말투 v)이 x 를 부르는 말.
   function call(v, x) {
-    if (v.nick && v.nick[x]) return v.nick[x];                    // 호칭표의 별명(코코의 「히키」 등)
-    if (v.call === "surname") return FULL[x].split(" ")[0];
+    if (v.nick && v.nick[x]) return mark(x, v.nick[x]);           // 호칭표의 별명(코코의 「히키」 등)
+    if (v.call === "surname") return mark(x, FULL[x].split(" ")[0]);
     if (v.call === "full") return FULL[x];
     return NAMES[x] + (v.call === "씨" || v.call === "군" ? " " + v.call : v.call);     // 쨩은 붙여, 씨·군은 띄어 쓴다
   }
@@ -275,8 +279,9 @@
       suspects: q.speakers.map((s) => {
         const voice = Core.voiceOf(q.logic[s], s);
         return { id: s, name: NAMES[s], full: FULL[s], written: !!V[voice].written, voice: voice !== s ? NAMES[voice] : null,
-                 says: render(q.logic[s], s, inc) };
+                 says: render(q.logic[s], s, inc).map(unmark) };
       }),
+      marked: Object.fromEntries(q.speakers.map((s) => [s, render(q.logic[s], s, inc)])),     // 별명·성 표시가 든 말(화면용)
       answer: q.answer, why_not: whyNot, solution: explainRight(p, ws),
       false_says: Core.falseSays(ws), card_roles: Core.cardRoles(p, ws), worlds: ws.length, logic: q.logic, magic_ids: q.magic_ids.slice(),
     };
@@ -430,12 +435,24 @@
     rulebookTitle: "규칙집",
     close: "닫기",
     langLabel: "언어",
+    // 규칙 낱말 툴팁(2026-10-25 사용자 전달 피드백: 「거짓말쟁이·변덕쟁이 같은 키워드를 커서를 올려 빠르게 확인」)
+    glossary: {
+      "정직한 사람": "말이 전부 맞는 사람.",
+      "거짓말쟁이": "말이 전부 틀리는 사람.",
+      "변덕쟁이": "말 하나하나가 맞을 수도 틀릴 수도 있는 사람. 안안에게 세뇌당한 사람도 변덕쟁이로 센다.",
+    },
     // 업데이트 기록(2026-10-23 사용자: 패치 노트, 새 소식 붉은 점). 플레이어에게 보이는 변화만, 새것이 위. 날짜는 한국 시간.
     // 꼭 적는 것: 규칙 글이 바뀐 것(답이 그대로여도), 퍼즐이 다시 만들어져 기록이 사라진 것(문제 번호까지), 새 기능.
     updatesTitle: "업데이트 기록",
     updatesLatest: (iso) => `마지막 업데이트 ${ui.dateLabel(iso)}`,
     updatesNew: "새 소식 있음",
     updates: [
+      { date: "2026-10-25", items: [
+        ["화면", "카드 속 별명·성(예: 코코의 「노앗치」, 아리사의 「사와타리」)에 그 사람 색의 점선 밑줄을 그었습니다. 마우스를 올리거나 누르면 누구인지 나오고, 그 사람의 카드가 빛납니다."],
+        ["화면", "마법 설명을 한 줄에 한 뜻씩 나눠 다시 정리했습니다. 규칙은 바뀌지 않았습니다. 설명 속 「거짓말쟁이」·「변덕쟁이」 같은 낱말에 마우스를 올리거나 누르면 뜻이 나옵니다."],
+        ["수정", "넓은 화면에서 가정 표를 누를 때마다 오른쪽 패널의 스크롤바가 나왔다 사라지던 문제를 고쳤습니다. 제보해 주셔서 감사합니다."],
+        ["화면", "수첩 속 히로 대사 상자의 위 여백을 넓히고, 첫 화면의 규칙집 버튼을 수첩과 같은 리본 모양으로 바꿨습니다."],
+      ] },
       { date: "2026-10-24", items: [
         ["기능", "결과 공유 글의 해시태그를 #番外裁判 으로 바꿨습니다. 결과 글이 2차 창작 태그(#まのさば二次創作)를 덮지 않게 하려는 것입니다."],
         ["기능", "일본어판(日本語)을 열었습니다. 첫 화면 위나 화면 맨 아래의 「日本語」를 누르면 바뀝니다. 판결 기록과 메모는 두 언어가 같이 씁니다."],
@@ -612,7 +629,8 @@
       "자기를 「나·저」가 아닌 말로 부르는 사람도 있다: 미리아의 「아저씨」, 안안의 「이 몸」, 노아의 「노아」. 안안은 스케치북에 써서 말하므로 『』로 적는다.",
       "남을 별명이나 성으로 부르는 사람도 있다(코코의 「양아치」, 아리사의 「사와타리」 등). 별명이 나오면 「이번 재판」에 누구인지 적혀 있다.",
     ] },
-    { h: "마법", items: ["anan", "margo", "miria", "nanoka", "coco"].map((x) => `<b>${NAMES[x]}의 ${K.magic[x].name}</b>: ${K.magic[x].text}`)
+    { h: "마법", terms: true, items: ["anan", "margo", "miria", "nanoka", "coco"]
+        .map((x) => `<b>${NAMES[x]}의 ${K.magic[x].name}</b><ul class="lines">${K.magic[x].text.map((l) => `<li>${l}</li>`).join("")}</ul>`)
         .concat(["마고의 흉내내기와 미리아의 뒤바뀜은 한 재판에 같이 걸리지 않는다. 나노카의 환시와 코코의 천리안은 어려움부터 나온다."]) },
     { h: "난이도", items: ["easy", "normal", "hard", "veryhard"].map((t) => `<b>${TIER[t]}</b>: ${ui.tierNote[t]}`) },
     { h: "수첩과 카드 표시", items: [
@@ -627,5 +645,5 @@
   // 사건 글만(목록용. decorate 처럼 세계를 계산하지 않는다)
   const incidentText = (q) => K.incidents[q.incident].text;
 
-  root.TrialLang.ko = { decorate, ui, josa: j, incidentText };
+  root.TrialLang.ko = { decorate, ui, josa: j, incidentText, fullName: (x) => FULL[x] };
 })(typeof window !== "undefined" ? window : globalThis);
