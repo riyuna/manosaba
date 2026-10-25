@@ -1134,8 +1134,13 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
   document.addEventListener("focusin", (e) => { const el = tipOf(e); if (el) showTip(el); });
   document.addEventListener("focusout", (e) => { if (e.target === tipFor) hideTip(); });
   document.addEventListener("click", (e) => { const el = tipOf(e); if (el) { el.focus({ preventScroll: true }); showTip(el); } });
-  // 스크롤: 눌러서 연 툴팁(초점)은 글자를 따라가고, 마우스를 올려 연 것은 닫는다
-  addEventListener("scroll", () => { if (tipFor) { if (document.activeElement === tipFor) placeTip(); else hideTip(); } }, { passive: true, capture: true });
+  // 스크롤: 툴팁이 글자를 따라간다(마우스가 글자를 벗어나면 pointerout 이 닫는다). 글자가 화면 밖으로 나가면 닫는다
+  addEventListener("scroll", () => {
+    if (!tipFor) return;
+    if (!tipFor.isConnected) { hideTip(); return; }
+    const r = tipFor.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) hideTip(); else placeTip();
+  }, { passive: true, capture: true });
 
   // 걸린 시간은 그 숫자만 고친다(조각 비교에 넣으면 누를 때마다 바뀐 것으로 보인다). 그린 직후와 1초마다.
   function tickClock() {
