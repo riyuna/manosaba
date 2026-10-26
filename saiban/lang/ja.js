@@ -1,4 +1,4 @@
-// 「牢屋敷の番外裁判」日本語パック(일본어 팩). 한국어 팩(lang/ko.js)과 같은 모양(decorate, ui, incidentText)이다.
+// 「牢屋敷ノ番外裁判」日本語パック(일본어 팩). 한국어 팩(lang/ko.js)과 같은 모양(decorate, ui, incidentText)이다.
 // 퍼즐은 두 언어가 같다(논리만 puzzles.js 에서 공유). 일본어 자료(이름·말투·사건·마법 문구)와 문법은 전부 이 파일 안에 있다.
 // 캐릭터 대사(히로·피해자·말투 견본)는 사용자가 쓴 것(docs/ja-lines.md, Claude 교정 포함), 화면 문구·규칙·해설은 Claude.
 // 말투는 견본 6줄(① 누가 했다 ② 나는 안 했다 ③ 범인은 ④ 누구의 말은 틀렸다 ⑤ 내가 진짜 ⑥ 누구는 거짓말쟁이)을 그대로 내도록 만들었다.
@@ -25,7 +25,7 @@
   const MOTTE = { ta: "持っていった", te: "持っていって", masu: "持っていき", rta: "持ってった", rte: "持ってって", nakatta: "持っていかなかった" };
   const INCIDENTS = {
     sweets: { text: "ナノカが|作っておいた|お菓子が、|跡形もなく|消えた。", ta: "食べた", te: "食べて", masu: "食べ", rta: "食った", rte: "食って", rmasu: "食い", kana: "たべてない", nakatta: "食べなかった",
-      line: "…私が作ったお菓子を食べたのは誰だ？早く出てきなさいよ。" },
+      line: "…私が作ったお菓子を食べたのは誰？早く出てきなさいよ。" },
     pot: { text: "シェリーが|大切に|している|植木鉢が、|ひっくり返されていた。", ta: "ひっくり返した", te: "ひっくり返して", masu: "ひっくり返し", nakatta: "ひっくり返さなかった",
       line: "事件です！これは名探偵シェリーちゃんへの挑戦状です！" },
     sketch: { text: "ノアの|スケッチブックに、|誰かが|落書きを|した。", ta: "落書きした", te: "落書きして", masu: "落書きし", nakatta: "落書きしなかった",
@@ -51,7 +51,7 @@
     letter: { text: "エマが|みんなに|渡そうと|書いた|手紙が、|くしゃくしゃに|なっていた。", ta: "くしゃくしゃにした", te: "くしゃくしゃにして", masu: "くしゃくしゃにし", nakatta: "くしゃくしゃにしなかった",
       line: "ううっ、みんなのために書いた手紙なのに！誰がくしゃくしゃにしたの？ボ、ボク…嫌われるようなことはしてないと思ってたのに…しくしく" },
     goggles: { text: "ナノカの|ゴーグルに、|指の|跡が|べったり|ついていた。", ta: "触った", te: "触って", masu: "触り", nakatta: "触らなかった",
-      line: "…ゴーグルについたこの汚れはなんだ？誰も勝手に触るなと言ったはずなのに。触った犯人が黒幕に違いない。" },
+      line: "…ゴーグルについたこの汚れは何？誰も勝手に触らないでって言ったはずよ。触った犯人が黒幕に違いないわ。" },
     headphones: { text: "ココの|ヘッドホンの|コードが、|ぐちゃぐちゃに|絡まっていた。", ta: "絡ませた", te: "絡ませて", masu: "絡ませ", nakatta: "絡ませなかった",
       line: "誰？あてぃしのヘッドホンのコード絡ませたやつ！さっさと自首しなよ！" },
     magnifier: { text: "シェリーの|虫眼鏡が|消えた。", ...MOTTE,
@@ -154,8 +154,9 @@
     margo: { self: "私", call: "ちゃん", reg: "casual", meta: "の言ってること、", v: "わよ♡", n: "よ♡", nk: { role_is: "ね♡" },
              pre: { accuse: "あら、", deny_self: "フフッ、", meta_false: "フフッ、", meta_true: "フフッ、", self_or: "フフッ、" },
              syllables: true, swapDeny: "あら、本物のマーゴはこっちよ♡" },
-    nanoka: { self: "私", call: "full", reg: "casual", over: { right: ["正しい", "v"] }, meta: "の言葉は", v: "。", n: "だ。",
-              omae: true, swapDeny: "私が本物のナノカだ。" },
+    // 2026-10-26 일본인 플레이어 지적: 나노카는 여성 말투(「〜よ」·「〜だわ」). 남성적인 「〜だ」·「お前」를 「〜わ」·「〜よ」·「あなた」로
+    nanoka: { self: "私", call: "full", reg: "casual", over: { right: ["正しい", "v"] }, meta: "の言葉は", v: "わ。", n: "よ。",
+              you: "あなた", swapDeny: "私が本物のナノカよ。" },
     arisa: { self: "ウチ", call: "surname", reg: "rough", meta: "の言ってることは", v: "。", n: "だ。",
              vk: { accuse: "ぞ。" }, nk: { role_is: "だ！" },
              nick: { miria: "おっさん", sherry: "ハエ女" }, tag: { accuse: "のやつ" },
@@ -217,7 +218,7 @@
         core = v.inverted ? `${nm(a0)}${tag}ですね、${inc.ta}のは！` : `${nm(a0)}${tag}が${R.did(inc)}${vE}`;
         break;
       case "culprit_is":
-        core = v.omae ? `犯人は${nm(a0)}、お前${nE}` : v.hesitant ? `犯人は…${nm(a0)}、${nE}` : `犯人は${nm(a0)}${nE}`;
+        core = v.you ? `犯人は${nm(a0)}、${v.you}${nE}` : v.hesitant ? `犯人は…${nm(a0)}、${nE}` : `犯人は${nm(a0)}${nE}`;
         break;
       case "deny": core = `${nm(a0)}は${R.neg(inc)}${vE}`; break;
       case "deny_self":
@@ -238,7 +239,7 @@
         if (voice === x && v.swapDeny) { core = v.swapDeny; whole = true; }
         else core = `${v.self}が本物の${NAMES[x]}${nE}`;
         break;
-      case "role_is": core = v.omae ? `${nm(a0)}、お前は${ROLES[a1]}${nE}` : `${nm(a0)}は${ROLES[a1]}${nE}`; break;
+      case "role_is": core = v.you ? `${nm(a0)}、${v.you}は${ROLES[a1]}${nE}` : `${nm(a0)}は${ROLES[a1]}${nE}`; break;
       case "culprit_role": core = `犯人は${ROLES[a0]}${nE}`; break;
       case "count_is": core = a1 === 0 ? `${ROLES[a0]}は${R.none}${vE}` : `${ROLES[a0]}は${NUMS[a1]}${nE}`; break;
       case "vision": core = `幻視で${R.saw}${stop(vE)}犯人は${args.map(nm).join("、")}のうちの誰か${nE}`; break;
@@ -475,9 +476,9 @@
   const VH_BAR = "「とてもむずかしい」では、犯人と一緒にすべてのカードに役割（真・偽・気まぐれ屋）の印をつけないと、判決ボタンが押せない。犯人が合っていても、役割が一つでも間違っていれば間違った判決になり、ヒロはその日の朝に戻る。";
   const ui = {
     lang: "ja",
-    title: "牢屋敷の番外裁判",
+    title: "牢屋敷ノ番外裁判",
     eyebrow: "魔法少女ノ魔女裁判 非公式ファンメイド・論理パズル",
-    titleParts: ["牢屋敷の", "番外裁判"],
+    titleParts: ["牢屋敷ノ", "番外裁判"],     // 2026-10-26 사용자: 「の」 → 「ノ」, 뒷부분은 글자마다 붉은 마름모
     intro: "牢屋敷で「正しくない」事件が起きている。それを正すのは私、二階堂ヒロだ。少女たちの証言のうち、いくつかは嘘だ。すべての証言が矛盾なく成り立つ場合は、ただ一つ。その場合の犯人を捜し出し、判決を下そう。",     // 사용자 문장
     noticeHtml: [
       "<b>非公式のファンメイド作品</b>です。公式の画像・音声・テキストは使っておらず、事件と台詞は原作の台詞を写さずに新しく書きました。",
@@ -533,7 +534,7 @@
     shareCopied: "結果をコピーした",
     shareLabel: (q, index, date) => q.seed !== undefined ? `ランダム裁判 ${ui.randomCode(q.tier, q.seed)}`
       : date ? `今日の裁判 ${ui.dateLabel(date)}（${TIER[q.tier]}）` : numbered(q.tier, index),
-    shareText: (label, hints, wrongs, time) => `牢屋敷の番外裁判・${label}\n`
+    shareText: (label, hints, wrongs, time) => `牢屋敷ノ番外裁判・${label}\n`
       + (hints ? `ヒント${hints}個` : "ヒントなし") + "、"
       + (wrongs ? `誤審${wrongs}回の末に` : "")
       + `${time}で解きました！`,
@@ -589,6 +590,8 @@
     updatesNew: "新しいお知らせあり",
     updates: [
       { date: "2026-10-26", items: [
+        ["画面", "タイトルを「牢屋敷ノ番外裁判」にして、ロゴを赤いひし形のデザインに変えました。"],
+        ["修正", "黒部ナノカの口調を女性の口調（「〜わ」「〜よ」「あなた」）に直しました。ご指摘ありがとうございました。"],
         ["修正", "「城ケ崎ノア」の表記の誤り（「城ヶ崎」になっていました）と、ヒロの二人称（「君」）を直しました。ご指摘ありがとうございました。"],
         ["修正", "仮定表の列の幅を名前の長さに関係なくそろえ、マスを押してもマスの大きさや行の高さが変わらないようにしました。"],
       ] },
