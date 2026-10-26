@@ -13,7 +13,7 @@
     reia: "レイア", miria: "ミリア", margo: "マーゴ", anan: "アンアン", arisa: "アリサ", meruru: "メルル",
   };
   const SURNAME = {
-    ema: "桜羽", nanoka: "黒部", coco: "沢渡", sherry: "橘", hanna: "遠野", noah: "城ヶ崎",
+    ema: "桜羽", nanoka: "黒部", coco: "沢渡", sherry: "橘", hanna: "遠野", noah: "城ケ崎",
     reia: "蓮見", miria: "佐伯", margo: "宝生", anan: "夏目", arisa: "紫藤", meruru: "氷上",
   };
   const FULL = Object.fromEntries(Object.keys(NAMES).map((x) => [x, SURNAME[x] + NAMES[x]]));
@@ -589,6 +589,7 @@
     updatesNew: "新しいお知らせあり",
     updates: [
       { date: "2026-10-26", items: [
+        ["修正", "「城ケ崎ノア」の表記の誤り（「城ヶ崎」になっていました）と、ヒロの二人称（「君」）を直しました。ご指摘ありがとうございました。"],
         ["修正", "仮定表の列の幅を名前の長さに関係なくそろえ、マスを押してもマスの大きさや行の高さが変わらないようにしました。"],
       ] },
       { date: "2026-10-25", items: [
@@ -624,7 +625,8 @@
     wrongRoles: (n) => `犯人は合っていた。でも、役割の印が${n}枚間違っていた。`,
     // 히로의 말(전부 사용자 문장, docs/ja-lines.md B2·B3)
     hiroLines: {
-      accuse: ["{name}、あなたがこの事件の犯人だ。", "正しくないのはお前だ、{name}。"],
+      // 2026-10-26 일본인 플레이어 지적: 히로의 2인칭은 「君」(accuseEma 의 「君」과 같게)
+      accuse: ["{name}、君がこの事件の犯人だ。", "正しくないのは君だ、{name}。"],
       accuseEma: ["エマ、君はいつもそうだった。正しくない💢"],
       right0: [
         "…正しくないことを正した。この世の悪をなくすことこそ、私のなすべきことだ。",
