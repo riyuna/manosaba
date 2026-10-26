@@ -126,9 +126,12 @@ a { color: var(--blood-ink); }
 .masthead h1 .t1 { display: inline-flex; align-items: center; white-space: nowrap; }   /* 좁은 화면에서도 「감옥저택◆의◆」는 한 덩어리 */
 .masthead h1 .mark { color: var(--blood-ink); }
 .masthead h1 .dia { position: relative; display: inline-grid; place-items: center; width: 1.2em; height: 1.2em; margin: 0 .02em; }
-.masthead h1 .dia::before { content: ""; position: absolute; inset: 14.6%; background: var(--blood); transform: rotate(45deg);
-  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .28), 0 0 18px rgba(181, 45, 67, .35); }
-.masthead h1 .dia span { position: relative; color: #fff6f7; font-size: .6em; line-height: 1; }
+/* 벨벳 버건디(2026-10-26 사용자 「좀 더 어두운 버건디에 질감」, 시안 2): 가운데가 살짝 밝은 짙은 버건디 + 고운 입자(SVG 노이즈) + 금 이중 테두리.
+   테두리 두께는 em 이라 글자 크기를 따라 커지고 작아진다 */
+.masthead h1 .dia::before { content: ""; position: absolute; inset: 14.6%; transform: rotate(45deg);
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"), radial-gradient(circle at 38% 32%, #8a2034 0%, #5a0f1f 52%, #33060f 100%);
+  box-shadow: inset 0 0 0 .024em rgba(201, 171, 112, .58), inset 0 0 0 .062em rgba(51, 6, 15, .9), inset 0 0 0 .078em rgba(201, 171, 112, .26), 0 0 .25em rgba(80, 10, 25, .5); }
+.masthead h1 .dia span { position: relative; color: #f6ece6; font-size: .6em; line-height: 1; text-shadow: 0 1px 2px rgba(0, 0, 0, .6); }
 .fleuron { color: var(--brass); font-size: 18px; letter-spacing: .6em; opacity: .8; }
 .masthead p { margin: 0; color: var(--muted); max-width: 36em; }
 .notice { padding: 14px 18px; font-size: 14px; color: var(--muted); display: grid; gap: 2px; }
@@ -402,10 +405,10 @@ footer { color: var(--muted); font-size: 13px; display: grid; gap: 2px; border-t
 
 <div class="wrap" id="app"></div>
 
-<script src="puzzles.js?v=92c2e7be88"></script>
-<script src="core.js?v=92c2e7be88"></script>
-<script src="lang/ko.js?v=92c2e7be88"></script>
-<script src="lang/ja.js?v=92c2e7be88"></script>
+<script src="puzzles.js?v=12212d2460"></script>
+<script src="core.js?v=12212d2460"></script>
+<script src="lang/ko.js?v=12212d2460"></script>
+<script src="lang/ja.js?v=12212d2460"></script>
 <script>
 (function () {
   "use strict";
